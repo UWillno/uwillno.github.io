@@ -8,7 +8,8 @@
         witch results in a scale of 1 and a 1:1 mapping between CSS pixels
         and Qt device independent pixels. -->
     <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
-
+	<meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
     <title>web</title>
     <style>
       /* Make the html body cover the entire (visual) viewport with no scroll bars. */
@@ -43,7 +44,7 @@
 
             try {
                 showUi(spinner);
-                status.innerHTML = 'Loading...';
+                status.innerHTML = 'Downloading/Compiling…<br><h3 style="color:#23D1A1">若加载时间过长，请确保网络与Github的连通性，或使用科学上网工具？</h3>';
 
                 const instance = await qtLoad({
                     qt: {
@@ -55,6 +56,7 @@
                                 exitData.code !== undefined ? ` with code ` : '';
                             status.innerHTML +=
                                 exitData.text !== undefined ? ` ()` : '';
+				status.innerHTML += '<br><h3 style="color:#23D1A1">因采用多线程构建，请使用支持SharedArrayBuffers的浏览器，如Firefox、Edge、Chrome…</h3>'
                             showUi(spinner);
                         },
                         entryFunction: window.createQtAppInstance,
@@ -65,12 +67,11 @@
             } catch (e) {
                 console.error(e);
                 console.error(e.stack);
-                status.innerHTML = e.message;
-                showUi(spinner);
             }
         }
     </script>
     <script src="web.js"></script>
+<script src="coi-serviceworker.js"></script>
     <script type="text/javascript" src="qtloader.js"></script>
   </body>
 </html>
