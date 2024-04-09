@@ -10,31 +10,33 @@
     <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
     
     <title>UWillno's blog</title>
- <link rel="shortcut icon" href="qtlogo.svg" >
     <style>
       /* Make the html body cover the entire (visual) viewport with no scroll bars. */
       html, body { padding: 0; margin: 0; overflow: hidden; height: 100% }
       #screen { width: 100%; height: 100%; }
     </style>
-  </head>
+  </head> <link rel="shortcut icon" href="qtlogo.svg" >
   <body onload="init()">
+
     <figure style="overflow:visible;" id="qtspinner">
       <center style="margin-top:1.5em; line-height:150%">
         <img src="qtlogo.svg" width="320" height="200" style="display:block"></img>
-        <strong>Qt for WebAssembly: UWillno's blog</strong>
-<h4>加载过慢或失败，请使用科学上网工具！</h4>
-<h1 style="visibility: hidden; user-select: none;">Qt for Webassembly QML文本选中、复制-clipboard error "NotAllowedError" "Support for multiple ClipboardItems is not implemented."
-QML Image加载远程图片- server replied: Forbidden
-测试页面
-QHttpServer设置允许跨域请求
-关于写的一些垃圾课设/毕设
-六爻功能说明
-ReferenceError: SharedArrayBuffer is not defined
-Linux下Qt creator中文输入问题
-Uwzz原理补全
-Arch Linux系统迁移</h1>
-
-        <div id="qtstatus"></div>
+            <div id="qtstatus"></div>
+        <strong>Qt for WebAssembly: UWillno's blog
+    <h4>加载过慢或失败，请使用科学上网工具！采用多线程构建请使用支持SharedArrayBuffer的浏览器，如Edge,Chrome,FireFox……</h4>
+    <h4>Loading is too slow or fails, please use proxy tools! Because of multi-threaded Kit, please use a browser that supports SharedArrayBuffer, such as Edge, Chrome, FireFox...</h4><h1 style="visibility: hidden; user-select: none;">
+    皇极经世的功能说明
+    Qt for Webassembly QML文本选中、复制-clipboard error "NotAllowedError" "Support for multiple ClipboardItems is not implemented."
+    QML Image加载远程图片- server replied: Forbidden
+    测试页面
+    QHttpServer设置允许跨域请求
+    关于写的一些垃圾课设/毕设
+    六爻功能说明
+    ReferenceError: SharedArrayBuffer is not defined
+    Linux下Qt creator中文输入问题
+    Uwzz原理补全
+    Arch Linux系统迁移</h1>
+        </strong>
         <noscript>JavaScript is disabled. Please enable JavaScript to use this application.</noscript>
       </center>
     </figure>
@@ -70,7 +72,7 @@ Arch Linux系统迁移</h1>
                                 exitData.text !== undefined ? ` (${exitData.text})` : '';
                             showUi(spinner);
                         },
-                        entryFunction: window.createQtAppInstance,
+                        entryFunction: window.blog_entry,
                         containerElements: [screen],
                         
                     }
@@ -83,5 +85,6 @@ Arch Linux系统迁移</h1>
     </script>
     <script src="blog.js"></script>
     <script type="text/javascript" src="qtloader.js"></script>
+    <script src="coi-serviceworker.js"></script>
   </body>
 </html>
