@@ -54,6 +54,7 @@
       <div id="screen"></div>
 
     <script type="text/javascript">
+      var instance = null;
         async function init()
         {
             const spinner = document.querySelector('#qtspinner');
@@ -71,7 +72,7 @@
                 showUi(spinner);
                 status.innerHTML = 'Loading...';
     
-                const instance = await qtLoad({
+                instance = await qtLoad({
                     qt: {
                         onLoaded: () => showUi(screen),
                         onExit: exitData =>
@@ -110,7 +111,7 @@
 <item>
 <title>变更日志</title>
 <link>https://uwillno.com?blog=changelog</link>
-<pubDate>Fri, 06 Dec 2024 00:00:00 GMT</pubDate>
+<pubDate>Sat, 07 Dec 2024 00:00:00 GMT</pubDate>
 <category>日志</category>
 </item>
 <item>
@@ -344,7 +345,7 @@
 <item>
 <title>Changelog</title>
 <link>https://uwillno.com?blog=changelog</link>
-<pubDate>Fri, 06 Dec 2024 00:00:00 GMT</pubDate>
+<pubDate>Sat, 07 Dec 2024 00:00:00 GMT</pubDate>
 <category>Log</category>
 </item>
 <item>
