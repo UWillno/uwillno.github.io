@@ -1,3 +1,8 @@
+<!--
+Copyright (C) 2024 The Qt Company Ltd.
+SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
+-->
+
 <!doctype html>
 <html lang="en-us">
   <head>
@@ -7,6 +12,8 @@
     <!--Set visual viewport size for mobile devices to the device size,
         witch results in a scale of 1 and a 1:1 mapping between CSS pixels
         and Qt device independent pixels. -->
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
+
     <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
     
     <meta name="keywords" content="UWillno,博客,Blog,Qt,WebAssembly">
@@ -37,41 +44,37 @@
         color: #000;
       }
     </style>
-  </head> <link rel="shortcut icon" href="qtlogo.svg" >
+  </head>
   <body onload="init()">
     <figure style="overflow:visible;" id="qtspinner">
       <center style="margin-top:1.5em; line-height:150%">
-        <img src="qtlogo.svg" height="150" style="display:block"></img>
-            <div id="qtstatus"></div>
-        <strong>Qt for WebAssembly: UWillno's blog
-    <h4>加载过慢或失败，请使用科学上网工具！采用多线程构建请使用支持SharedArrayBuffer的浏览器，如Edge,Chrome……<br>一个Qt爱好者的自娱自乐，仅用于学习、研究、交流……<br><s>尽量采用最新Qt版本，</s>可能会有很多bug……</h4>
-    <h4>Loading is too slow or fails, please use proxy tools! Because of multi-threaded Kit, please use a browser that supports SharedArrayBuffer, such as Edge, Chrome...<br>A Qt enthusiast's self-entertainment, only for learning, research and communication...<br><s>Try to use the latest Qt version, </s>there may be many bugs…</h4>
-        </strong>
-
+        <img src="qtlogo.svg" width="320" height="200" style="display:block"></img>
+        <strong>Qt for WebAssembly: UWillno's blog</strong>
+        <div id="qtstatus"></div>
         <noscript>JavaScript is disabled. Please enable JavaScript to use this application.</noscript>
-         </center>
-   </figure>
-      <div id="screen"></div>
+      </center>
+    </figure>
+    <div id="screen"></div>
 
     <script type="text/javascript">
-      var instance = null;
+      var instance =null;
         async function init()
         {
             const spinner = document.querySelector('#qtspinner');
             const screen = document.querySelector('#screen');
             const status = document.querySelector('#qtstatus');
-    
+
             const showUi = (ui) => {
                 [spinner, screen].forEach(element => element.style.display = 'none');
                 if (screen === ui)
                     screen.style.position = 'default';
                 ui.style.display = 'block';
             }
-    
+
             try {
                 showUi(spinner);
                 status.innerHTML = 'Loading...';
-    
+
                 instance = await qtLoad({
                     qt: {
                         onLoaded: () => showUi(screen),
@@ -97,22 +100,21 @@
     </script>
     <script src="blog.js"></script>
     <script type="text/javascript" src="qtloader.js"></script>
-    <script src="coi-serviceworker.js"></script>
     <footer>
-    <a href="https://icp.gov.moe/?keyword=20249102" target="_blank">萌ICP备20249102号</a>
-  </footer>
-  <h1 style="visibility: hidden; user-select: none;">
-    <?xml version="1.0" encoding="UTF-8" ?>
+      <a href="https://icp.gov.moe/?keyword=20249102" target="_blank">萌ICP备20249102号</a>
+    </footer>
+    <h1 style="visibility: hidden; user-select: none;">
+      <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
 <title>UWillno's blog</title>
 <link>https://uwillno.com</link>
 <description>UWillno's blog</description>
 <item>
-<title>变更日志</title>
-<link>https://uwillno.com?blog=changelog</link>
-<pubDate>Thu, 12 Dec 2024 00:00:00 GMT</pubDate>
-<category>日志</category>
+<title>快开门压力容器（蒸压釜）实操题</title>
+<link>https://uwillno.com?blog=32</link>
+<pubDate>Mon, 30 Dec 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
 </item>
 <item>
 <title>计划报废产品记录</title>
@@ -289,12 +291,6 @@
 <category>技术</category>
 </item>
 <item>
-<title>Arch Linux系统迁移</title>
-<link>https://uwillno.com?blog=1</link>
-<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
 <title>Uwzz原理补全</title>
 <link>https://uwillno.com?blog=2</link>
 <pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
@@ -307,12 +303,62 @@
 <category>技术</category>
 </item>
 <item>
-<title>留言/评论/测试/……专用</title>
-<link>https://uwillno.com?blog=test</link>
+<title>Arch Linux系统迁移</title>
+<link>https://uwillno.com?blog=1</link>
+<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
+<category>技术</category>
 </item>
 <item>
-<title>Vlog</title>
-<link>https://uwillno.com?vlog</link>
+<title>农历</title>
+<link>https://uwillno.com?func=lunar</link>
+</item>
+<item>
+<title>六爻</title>
+<link>https://uwillno.com?func=6yao</link>
+</item>
+<item>
+<title>六壬</title>
+<link>https://uwillno.com?func=6ren</link>
+</item>
+<item>
+<title>皇极经世</title>
+<link>https://uwillno.com?func=hjjs</link>
+</item>
+<item>
+<title>AES</title>
+<link>https://uwillno.com?func=aes</link>
+</item>
+<item>
+<title>HTML编辑</title>
+<link>https://uwillno.com?func=htmleditor</link>
+</item>
+<item>
+<title>图片拼接</title>
+<link>https://uwillno.com?func=imagestitching</link>
+</item>
+<item>
+<title>文本编辑</title>
+<link>https://uwillno.com?func=texteditor</link>
+</item>
+<item>
+<title>天纪笔记</title>
+<link>https://uwillno.com?func=tj</link>
+</item>
+<item>
+<title>卡巴斯基密码管理器：txt转csv</title>
+<link>https://uwillno.com?func=kpm</link>
+</item>
+<item>
+<title>本程序</title>
+<link>https://uwillno.com?about=program}</link>
+</item>
+<item>
+<title>本站</title>
+<link>https://uwillno.com?about=website}</link>
+</item>
+<item>
+<title>本站</title>
+<link>https://uwillno.com?about=me}</link>
 </item>
 <item>
 <title>rss</title>
@@ -323,7 +369,7 @@
 <link>https://uwillno.com?blog</link>
 </item>
 <item>
-<title>自用</title>
+<title>功能</title>
 <link>https://uwillno.com?func</link>
 </item>
 <item>
@@ -336,17 +382,17 @@
 </item>
 </channel>
 </rss>
-    <?xml version="1.0" encoding="UTF-8" ?>
+      <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
 <title>UWillno's blog</title>
 <link>https://uwillno.com</link>
 <description>UWillno's blog</description>
 <item>
-<title>Changelog</title>
-<link>https://uwillno.com?blog=changelog</link>
-<pubDate>Thu, 12 Dec 2024 00:00:00 GMT</pubDate>
-<category>Log</category>
+<title>Quick opening pressure vessel (autoclave) practical questions</title>
+<link>https://uwillno.com?blog=32</link>
+<pubDate>Mon, 30 Dec 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
 </item>
 <item>
 <title>Planned obsolescence product records</title>
@@ -385,7 +431,7 @@
 <category>Technology</category>
 </item>
 <item>
-<title>Use Qt/C++ to call JavaScript to implement routing in Qt for WebAssembly</title>
+<title>Using Qt/C++ to call JavaScript to implement routing in Qt for WebAssembly</title>
 <link>https://uwillno.com?blog=26</link>
 <pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate>
 <category>Technology</category>
@@ -397,13 +443,13 @@
 <category>Moved on</category>
 </item>
 <item>
-<title>I am only 23, not qualified to talk about love and marriage</title>
+<title>I’m only 23, so I’m not qualified to talk about love and marriage.</title>
 <link>https://uwillno.com?blog=24</link>
 <pubDate>Mon, 07 Oct 2024 00:00:00 GMT</pubDate>
 <category>Miscellaneous talk</category>
 </item>
 <item>
-<title>As I get older, I no longer play with devices</title>
+<title>As I get older, I no longer mess with devices.</title>
 <link>https://uwillno.com?blog=23</link>
 <pubDate>Fri, 04 Oct 2024 00:00:00 GMT</pubDate>
 <category>Miscellaneous talk</category>
@@ -415,13 +461,13 @@
 <category>Technology</category>
 </item>
 <item>
-<title>Discussing Why I've Given Up on Many Games Recently</title>
+<title>Let’s talk about why I’ve given up on so many games recently.</title>
 <link>https://uwillno.com?blog=21</link>
 <pubDate>Thu, 19 Sep 2024 00:00:00 GMT</pubDate>
 <category>Miscellaneous talk</category>
 </item>
 <item>
-<title>Problem records of using MediaPlayer in Qt for WebAssembly</title>
+<title>Problem records using MediaPlayer in Qt for WebAssembly</title>
 <link>https://uwillno.com?blog=17</link>
 <pubDate>Mon, 16 Sep 2024 00:00:00 GMT</pubDate>
 <category>Technology</category>
@@ -445,7 +491,7 @@
 <category>Function Description</category>
 </item>
 <item>
-<title>Instructions on deprecated functions</title>
+<title>Abandonment function description</title>
 <link>https://uwillno.com?blog=14</link>
 <pubDate>Mon, 29 Jul 2024 00:00:00 GMT</pubDate>
 <category>Function Description</category>
@@ -457,7 +503,7 @@
 <category>Technology</category>
 </item>
 <item>
-<title>Qt compresses resource files, remotely loads resource files and translates</title>
+<title>Qt compresses resource files, remotely loads resource files, and translates</title>
 <link>https://uwillno.com?blog=12</link>
 <pubDate>Fri, 17 May 2024 00:00:00 GMT</pubDate>
 <category>Technology</category>
@@ -493,7 +539,7 @@
 <category>Technology</category>
 </item>
 <item>
-<title>About some rubbish course/graduation plans written</title>
+<title>About writing some rubbish course plans/graduation plans</title>
 <link>https://uwillno.com?blog=6</link>
 <pubDate>Fri, 22 Sep 2023 00:00:00 GMT</pubDate>
 <category>Miscellaneous talk</category>
@@ -505,13 +551,13 @@
 <category>Function Description</category>
 </item>
 <item>
-<title>Complaints about software exam experience</title>
+<title>Complaints about soft exam experience</title>
 <link>https://uwillno.com?blog=19</link>
 <pubDate>Wed, 21 Jun 2023 00:00:00 GMT</pubDate>
 <category>Complaints</category>
 </item>
 <item>
-<title>Complaining about education experience</title>
+<title>Complaints about Educational Experience</title>
 <link>https://uwillno.com?blog=18</link>
 <pubDate>Tue, 20 Jun 2023 00:00:00 GMT</pubDate>
 <category>Complaints</category>
@@ -523,30 +569,74 @@
 <category>Technology</category>
 </item>
 <item>
-<title>Arch Linux system migration</title>
-<link>https://uwillno.com?blog=1</link>
-<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
 <title>Uwzz principle completion</title>
 <link>https://uwillno.com?blog=2</link>
 <pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
 <category>Technology</category>
 </item>
 <item>
-<title>Qt creator Chinese input problem on Linux</title>
+<title>Qt creator Chinese input problem under Linux</title>
 <link>https://uwillno.com?blog=3</link>
 <pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
 <category>Technology</category>
 </item>
 <item>
-<title>Message/Comment/Test/…Exclusively</title>
-<link>https://uwillno.com?blog=test</link>
+<title>Arch Linux system migration</title>
+<link>https://uwillno.com?blog=1</link>
+<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
+<category>Technology</category>
 </item>
 <item>
-<title>Vlog</title>
-<link>https://uwillno.com?vlog</link>
+<title>Lunar</title>
+<link>https://uwillno.com?func=lunar</link>
+</item>
+<item>
+<title>6yao</title>
+<link>https://uwillno.com?func=6yao</link>
+</item>
+<item>
+<title>6ren</title>
+<link>https://uwillno.com?func=6ren</link>
+</item>
+<item>
+<title>HJJS</title>
+<link>https://uwillno.com?func=hjjs</link>
+</item>
+<item>
+<title>AES</title>
+<link>https://uwillno.com?func=aes</link>
+</item>
+<item>
+<title>HTML Editor</title>
+<link>https://uwillno.com?func=htmleditor</link>
+</item>
+<item>
+<title>Image stitching</title>
+<link>https://uwillno.com?func=imagestitching</link>
+</item>
+<item>
+<title>Text Editor</title>
+<link>https://uwillno.com?func=texteditor</link>
+</item>
+<item>
+<title>Tianji Notes</title>
+<link>https://uwillno.com?func=tj</link>
+</item>
+<item>
+<title>KPM: txt to csv</title>
+<link>https://uwillno.com?func=kpm</link>
+</item>
+<item>
+<title>Program</title>
+<link>https://uwillno.com?about=program}</link>
+</item>
+<item>
+<title>Website</title>
+<link>https://uwillno.com?about=website}</link>
+</item>
+<item>
+<title>Website</title>
+<link>https://uwillno.com?about=me}</link>
 </item>
 <item>
 <title>rss</title>
@@ -557,7 +647,7 @@
 <link>https://uwillno.com?blog</link>
 </item>
 <item>
-<title>Self Use</title>
+<title>Functions</title>
 <link>https://uwillno.com?func</link>
 </item>
 <item>
@@ -570,6 +660,6 @@
 </item>
 </channel>
 </rss>
-</h1>
+  </h1>
   </body>
 </html>
