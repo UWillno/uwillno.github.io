@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's blog</description>
 <item>
+<title>Troubleshooting AX200 Bluetooth anomalies</title>
+<link>https://uwillno.com?blog=33</link>
+<pubDate>Tue, 14 Jan 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
 <title>Quick opening pressure vessel (autoclave) practical questions</title>
 <link>https://uwillno.com?blog=32</link>
 <pubDate>Mon, 30 Dec 2024 00:00:00 GMT</pubDate>
@@ -29,16 +35,16 @@
 <category>Technology</category>
 </item>
 <item>
-<title>Qt/C++ interacts with Java and uses JNI</title>
-<link>https://uwillno.com?blog=28</link>
-<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
 <title>AR glasses Thunderbird Air2 toss record</title>
 <link>https://uwillno.com?blog=27</link>
 <pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
 <category>Moved on</category>
+</item>
+<item>
+<title>Qt/C++ interacts with Java and uses JNI</title>
+<link>https://uwillno.com?blog=28</link>
+<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
 </item>
 <item>
 <title>Blog issue record (WASM platform)</title>
@@ -185,6 +191,12 @@
 <category>Technology</category>
 </item>
 <item>
+<title>Arch Linux system migration</title>
+<link>https://uwillno.com?blog=1</link>
+<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
 <title>Uwzz principle completion</title>
 <link>https://uwillno.com?blog=2</link>
 <pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
@@ -193,12 +205,6 @@
 <item>
 <title>Qt creator Chinese input problem under Linux</title>
 <link>https://uwillno.com?blog=3</link>
-<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Arch Linux system migration</title>
-<link>https://uwillno.com?blog=1</link>
 <pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
 <category>Technology</category>
 </item>
