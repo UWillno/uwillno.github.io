@@ -28,6 +28,8 @@ SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
     
     <meta name="location" content="province=湖北;city=武汉">
     <link rel="icon" type="image/png" href="uwillno第三版.png">
+    <!-- <link rel="prefetch" href="https://uwillno.com/blogres/ttf/MiSans-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous"> -->
+
     <title>UWillno's blog</title>
     <style>
       /* Make the html body cover the entire (visual) viewport with no scroll bars. */
@@ -43,12 +45,12 @@ SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
           color: #FFF;
         }
       }
-      @font-face { font-family: 'MiSans'; src: url('https://uwillno.com/blogres/ttf/MiSans-Regular.ttf') format('truetype'); font-display: swap;}
+      <!-- @font-face { font-family: 'MiSans'; src: url('https://uwillno.com/blogres/ttf/MiSans-Regular.ttf') format('truetype'); font-display: swap;} -->
       
-      /* 全局字体覆盖 */
+      <!-- /* 全局字体覆盖 */
       * {
         font-family: 'MiSans', sans-serif !important;; ;
-      }
+      } -->
       footer {
         text-align: center;
         padding: 10px;
@@ -109,14 +111,17 @@ SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
                             showUi(spinner);
                         },
                         entryFunction: window.blog_entry,
-                        containerElements: [screen],
-                        
+                        containerElements: [screen],                        
                     }
                 });
             } catch (e) {
                 console.error(e);
                 console.error(e.stack);
             }
+            fetch("https://uwillno.com/blogres/ttf/MiSans-Regular.ttf", {
+              mode: "cors", 
+              cache: "force-cache"  // 尽量使用缓存（避免重复下载）
+            });
         }
     </script>
     <script src="blog.js"></script>
