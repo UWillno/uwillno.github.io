@@ -1,0 +1,911 @@
+<!--
+Copyright (C) 2024 The Qt Company Ltd.
+SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
+-->
+
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!--Set visual viewport size for mobile devices to the device size,
+        witch results in a scale of 1 and a 1:1 mapping between CSS pixels
+        and Qt device independent pixels. -->
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
+
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
+    
+    <meta name="keywords" content="UWillno,博客,Blog,Qt,WebAssembly">
+    
+    <meta name="author" content="UWillno">
+    
+    <meta name="description" content="UWillno的博客,UWillno's blog">
+    
+    <meta name="copyright" content="UWillno"> 
+    
+    <meta name="robots" content="all">
+    
+    <meta name="location" content="province=湖北;city=武汉">
+    <link rel="icon" type="image/png" href="uwillno第三版.png">
+    <!-- <link rel="prefetch" href="https://uwillno.com/blogres/ttf/MiSans-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous"> -->
+
+    <title>UWillno's blog</title>
+    <style>
+      /* Make the html body cover the entire (visual) viewport with no scroll bars. */
+      html, body { padding: 0; margin: 0; overflow: hidden; height: 100% }
+      #screen { width: 100%; height: 100%; }
+      html {
+        background-color: #FFF;
+        color: #000;
+      }
+      @media(prefers-color-scheme: dark) {
+        html {
+          background-color: #000;
+          color: #FFF;
+        }
+      }
+      footer {
+        text-align: center;
+        padding: 10px;
+      }
+      
+      footer a {
+        text-decoration: none;
+        color: #000;
+      }
+      @media(prefers-color-scheme: dark) {
+      footer a {
+        text-decoration: none;
+        color: #FFF;
+        }
+      }
+    </style>
+  </head>
+  <body onload="init()">
+    <figure style="overflow:visible;" id="qtspinner">
+      <center style="margin-top:1.5em; line-height:150%">
+        <img src="uwillno第二版.svg" width="260" height="260" style="display:block"></img>
+        <strong>Qt for WebAssembly: UWillno's blog</strong>
+        <div id="qtstatus"></div>
+        <noscript>JavaScript is disabled. Please enable JavaScript to use this application.</noscript>
+      </center>
+    </figure>
+    <div id="screen"></div>
+
+    <script type="text/javascript">
+      var instance =null;
+        async function init()
+        {
+            const spinner = document.querySelector('#qtspinner');
+            const screen = document.querySelector('#screen');
+            const status = document.querySelector('#qtstatus');
+
+            const showUi = (ui) => {
+                [spinner, screen].forEach(element => element.style.display = 'none');
+                if (screen === ui)
+                    screen.style.position = 'default';
+                ui.style.display = 'block';
+            }
+
+            try {
+                showUi(spinner);
+                status.innerHTML = 'Loading...';
+
+                instance = await qtLoad({
+                    qt: {
+                        onLoaded: () => showUi(screen),
+                        onExit: exitData =>
+                        {
+                            status.innerHTML = 'Application exit';
+                            status.innerHTML +=
+                                exitData.code !== undefined ? ` with code ${exitData.code}` : '';
+                            status.innerHTML +=
+                                exitData.text !== undefined ? ` (${exitData.text})` : '';
+                            showUi(spinner);
+                        },
+                        entryFunction: window.blog_entry,
+                        containerElements: [screen],                        
+                    }
+                });
+            } catch (e) {
+                console.error(e);
+                console.error(e.stack);
+            }
+            fetch("https://uwillno.com/blogres/ttf/MiSans-Regular.ttf", {
+              mode: "cors", 
+              cache: "force-cache"  // 尽量使用缓存（避免重复下载）
+            });
+        }
+    </script>
+    <script src="blog.js"></script>
+    <script type="text/javascript" src="qtloader.js"></script>
+    <footer>
+      请确保网络能与Github、Cloudflare连通，若加载时间过长，请使用科学上网工具。<br>
+      Please make sure the network can connect to Github and Cloudflare, and use a web proxy tool if it takes too long to load.<br>
+      <a href="https://icp.gov.moe/?keyword=20249102" target="_blank">萌ICP备20249102号</a>
+    </footer>
+    <h1 style="visibility: hidden; user-select: none;">
+      <?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>UWillno's blog</title>
+<link>https://uwillno.com</link>
+<description>UWillno's blog</description>
+<item>
+<title>误启火绒USB控制导致WIN TO GO异常解决方案</title>
+<link>https://uwillno.com?blog=43</link>
+<pubDate>Tue, 08 Jul 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Moto G75体验记录</title>
+<link>https://uwillno.com?blog=42</link>
+<pubDate>Wed, 02 Jul 2025 00:00:00 GMT</pubDate>
+<category>杂谈</category>
+</item>
+<item>
+<title>Uww2开发记录2</title>
+<link>https://uwillno.com?blog=41</link>
+<pubDate>Sun, 01 Jun 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>武汉移动光猫H60G改桥接 公网IPV6折腾</title>
+<link>https://uwillno.com?blog=40</link>
+<pubDate>Sun, 04 May 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Uww2开发记录</title>
+<link>https://uwillno.com?blog=39</link>
+<pubDate>Thu, 01 May 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Qt for Android 存储权限申请 2</title>
+<link>https://uwillno.com?blog=38</link>
+<pubDate>Thu, 10 Apr 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>记录&lt;&gt;导致markdown、xml异常处理</title>
+<link>https://uwillno.com?blog=37</link>
+<pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>记录处理std::unique_ptr&lt;QWebSocket&gt;</title>
+<link>https://uwillno.com?blog=36</link>
+<pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Qt for Android 存储权限申请</title>
+<link>https://uwillno.com?blog=35</link>
+<pubDate>Tue, 04 Mar 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Android/QT/QML WebView折腾</title>
+<link>https://uwillno.com?blog=34</link>
+<pubDate>Fri, 28 Feb 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>AX200蓝牙异常排查</title>
+<link>https://uwillno.com?blog=33</link>
+<pubDate>Tue, 14 Jan 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>快开门压力容器（蒸压釜）实操题</title>
+<link>https://uwillno.com?blog=32</link>
+<pubDate>Mon, 30 Dec 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>计划报废产品记录</title>
+<link>https://uwillno.com?blog=31</link>
+<pubDate>Fri, 06 Dec 2024 00:00:00 GMT</pubDate>
+<category>吐槽</category>
+</item>
+<item>
+<title>安卓锁机软件破解</title>
+<link>https://uwillno.com?blog=30</link>
+<pubDate>Tue, 19 Nov 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>视频批量添加字幕</title>
+<link>https://uwillno.com?blog=29</link>
+<pubDate>Fri, 01 Nov 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Qt/C++与Java交互、JNI使用</title>
+<link>https://uwillno.com?blog=28</link>
+<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>AR眼镜雷鸟Air2折腾记录</title>
+<link>https://uwillno.com?blog=27</link>
+<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+<category>拔草</category>
+</item>
+<item>
+<title>博客问题记录（WASM平台）</title>
+<link>https://uwillno.com?blog=logs</link>
+<pubDate>Sun, 20 Oct 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Qt for WebAssembly中使用Qt/C++调用JavaScript实现路由</title>
+<link>https://uwillno.com?blog=26</link>
+<pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>AR眼镜/头戴显示器平替产品</title>
+<link>https://uwillno.com?blog=25</link>
+<pubDate>Wed, 09 Oct 2024 00:00:00 GMT</pubDate>
+<category>拔草</category>
+</item>
+<item>
+<title>我才23，谈什么恋爱与婚姻</title>
+<link>https://uwillno.com?blog=24</link>
+<pubDate>Mon, 07 Oct 2024 00:00:00 GMT</pubDate>
+<category>杂谈</category>
+</item>
+<item>
+<title>上年纪了，不再搞机了</title>
+<link>https://uwillno.com?blog=23</link>
+<pubDate>Fri, 04 Oct 2024 00:00:00 GMT</pubDate>
+<category>杂谈</category>
+</item>
+<item>
+<title>Cloudflare Workers + R2实现简易评论系统</title>
+<link>https://uwillno.com?blog=22</link>
+<pubDate>Mon, 23 Sep 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>谈谈我为什么近期弃坑了很多游戏</title>
+<link>https://uwillno.com?blog=21</link>
+<pubDate>Thu, 19 Sep 2024 00:00:00 GMT</pubDate>
+<category>杂谈</category>
+</item>
+<item>
+<title>Qt for WebAssembly中使用MediaPlayer的问题记录</title>
+<link>https://uwillno.com?blog=17</link>
+<pubDate>Mon, 16 Sep 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>节日吐槽</title>
+<link>https://uwillno.com?blog=20</link>
+<pubDate>Sat, 14 Sep 2024 00:00:00 GMT</pubDate>
+<category>吐槽</category>
+</item>
+<item>
+<title>大理游记</title>
+<link>https://uwillno.com?blog=16</link>
+<pubDate>Wed, 11 Sep 2024 00:00:00 GMT</pubDate>
+<category>游记</category>
+</item>
+<item>
+<title>Vlog功能说明</title>
+<link>https://uwillno.com?blog=15</link>
+<pubDate>Tue, 27 Aug 2024 00:00:00 GMT</pubDate>
+<category>功能说明</category>
+</item>
+<item>
+<title>弃坑功能说明</title>
+<link>https://uwillno.com?blog=14</link>
+<pubDate>Mon, 29 Jul 2024 00:00:00 GMT</pubDate>
+<category>功能说明</category>
+</item>
+<item>
+<title>CMake/QMake着色器文件自动生成</title>
+<link>https://uwillno.com?blog=13</link>
+<pubDate>Fri, 05 Jul 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Qt压缩资源文件，远程加载资源文件、翻译</title>
+<link>https://uwillno.com?blog=12</link>
+<pubDate>Fri, 17 May 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>折腾QSettings::WebIndexedDBFormat/JSPI记录</title>
+<link>https://uwillno.com?blog=11</link>
+<pubDate>Thu, 16 May 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>皇极经世的功能说明</title>
+<link>https://uwillno.com?blog=10</link>
+<pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate>
+<category>功能说明</category>
+</item>
+<item>
+<title>Qt for Webassembly QML文本选中、复制</title>
+<link>https://uwillno.com?blog=9</link>
+<pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>QML Image加载远程图片- server replied: Forbidden</title>
+<link>https://uwillno.com?blog=8</link>
+<pubDate>Mon, 08 Jan 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>QHttpServer设置允许跨域请求</title>
+<link>https://uwillno.com?blog=7</link>
+<pubDate>Tue, 31 Oct 2023 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>关于写的一些垃圾课设/毕设</title>
+<link>https://uwillno.com?blog=6</link>
+<pubDate>Fri, 22 Sep 2023 00:00:00 GMT</pubDate>
+<category>杂谈</category>
+</item>
+<item>
+<title>六爻功能说明</title>
+<link>https://uwillno.com?blog=5</link>
+<pubDate>Sat, 12 Aug 2023 00:00:00 GMT</pubDate>
+<category>功能说明</category>
+</item>
+<item>
+<title>软考经历吐槽</title>
+<link>https://uwillno.com?blog=19</link>
+<pubDate>Wed, 21 Jun 2023 00:00:00 GMT</pubDate>
+<category>吐槽</category>
+</item>
+<item>
+<title>教育经历吐槽</title>
+<link>https://uwillno.com?blog=18</link>
+<pubDate>Tue, 20 Jun 2023 00:00:00 GMT</pubDate>
+<category>吐槽</category>
+</item>
+<item>
+<title>ReferenceError: SharedArrayBuffer is not defined</title>
+<link>https://uwillno.com?blog=4</link>
+<pubDate>Tue, 23 May 2023 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Uwzz原理补全</title>
+<link>https://uwillno.com?blog=2</link>
+<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Arch Linux系统迁移</title>
+<link>https://uwillno.com?blog=1</link>
+<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Linux下Qt creator中文输入问题</title>
+<link>https://uwillno.com?blog=3</link>
+<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>NANUWLVE</title>
+<link>https://uwillno.com?blog=nanuwlve</link>
+<pubDate>Sun, 06 Oct 2013 00:00:00 GMT</pubDate>
+<category>NaN</category>
+</item>
+<item>
+<title>NANHYFXX</title>
+<link>https://uwillno.com?blog=nanhyfxx</link>
+<pubDate>Sun, 06 Oct 2013 00:00:00 GMT</pubDate>
+<category>NaN</category>
+</item>
+<item>
+<title>NANUWLAB</title>
+<link>https://uwillno.com?blog=nanuwlab</link>
+<pubDate>Sun, 06 Oct 2013 00:00:00 GMT</pubDate>
+<category>NaN</category>
+</item>
+<item>
+<title>农历</title>
+<link>https://uwillno.com?func=lunar</link>
+</item>
+<item>
+<title>六爻</title>
+<link>https://uwillno.com?func=6yao</link>
+</item>
+<item>
+<title>六壬</title>
+<link>https://uwillno.com?func=6ren</link>
+</item>
+<item>
+<title>皇极经世</title>
+<link>https://uwillno.com?func=hjjs</link>
+</item>
+<item>
+<title>AES</title>
+<link>https://uwillno.com?func=aes</link>
+</item>
+<item>
+<title>HTML编辑</title>
+<link>https://uwillno.com?func=htmleditor</link>
+</item>
+<item>
+<title>图片拼接</title>
+<link>https://uwillno.com?func=imagestitching</link>
+</item>
+<item>
+<title>文本编辑</title>
+<link>https://uwillno.com?func=texteditor</link>
+</item>
+<item>
+<title>天纪笔记</title>
+<link>https://uwillno.com?func=tj</link>
+</item>
+<item>
+<title>卡巴斯基密码管理器：txt转csv</title>
+<link>https://uwillno.com?func=kpm</link>
+</item>
+<item>
+<title>身份验证器</title>
+<link>https://uwillno.com?func=otp</link>
+</item>
+<item>
+<title>二维码</title>
+<link>https://uwillno.com?func=qr</link>
+</item>
+<item>
+<title>WebSocket</title>
+<link>https://uwillno.com?func=ws</link>
+</item>
+<item>
+<title>水印相机</title>
+<link>https://uwillno.com?func=watermark</link>
+</item>
+<item>
+<title>周期排班推理</title>
+<link>https://uwillno.com?func=pba</link>
+</item>
+<item>
+<title>个人排班查询</title>
+<link>https://uwillno.com?func=pb</link>
+</item>
+<item>
+<title>本程序</title>
+<link>https://uwillno.com?about=program</link>
+</item>
+<item>
+<title>本站</title>
+<link>https://uwillno.com?about=website</link>
+</item>
+<item>
+<title>本人</title>
+<link>https://uwillno.com?about=me</link>
+</item>
+<item>
+<title>rss</title>
+<link>https://uwillno.com?rss</link>
+</item>
+<item>
+<title>记录</title>
+<link>https://uwillno.com?blog</link>
+</item>
+<item>
+<title>时刻</title>
+<link>https://uwillno.com?moment</link>
+</item>
+<item>
+<title>功能</title>
+<link>https://uwillno.com?func</link>
+</item>
+<item>
+<title>关于</title>
+<link>https://uwillno.com?about</link>
+</item>
+<item>
+<title>友链</title>
+<link>https://uwillno.com?links</link>
+</item>
+</channel>
+</rss>
+      <?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>UWillno's blog</title>
+<link>https://uwillno.com</link>
+<description>UWillno's blog</description>
+<item>
+<title>Solution to WIN TO GO exception caused by mistake by turning on the Huorong USB control</title>
+<link>https://uwillno.com?blog=43</link>
+<pubDate>Tue, 08 Jul 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Moto G75 experience record</title>
+<link>https://uwillno.com?blog=42</link>
+<pubDate>Wed, 02 Jul 2025 00:00:00 GMT</pubDate>
+<category>Miscellaneous talk</category>
+</item>
+<item>
+<title>Uww2 Development Record2</title>
+<link>https://uwillno.com?blog=41</link>
+<pubDate>Sun, 01 Jun 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Wuhan mobile optical cat H60G change bridge public network IPV6 tossing</title>
+<link>https://uwillno.com?blog=40</link>
+<pubDate>Sun, 04 May 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Uww2 Development Record</title>
+<link>https://uwillno.com?blog=39</link>
+<pubDate>Thu, 01 May 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Qt for Android Storage Permission Application 2</title>
+<link>https://uwillno.com?blog=38</link>
+<pubDate>Thu, 10 Apr 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Record&lt;&gt; causes markdown and xml to exceptions</title>
+<link>https://uwillno.com?blog=37</link>
+<pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Record processing std::unique_ptr&lt;QWebSocket&gt;</title>
+<link>https://uwillno.com?blog=36</link>
+<pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Qt for Android Storage Permission Application</title>
+<link>https://uwillno.com?blog=35</link>
+<pubDate>Tue, 04 Mar 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Some issues with Android/QT/QML WebView</title>
+<link>https://uwillno.com?blog=34</link>
+<pubDate>Fri, 28 Feb 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Troubleshooting AX200 Bluetooth anomalies</title>
+<link>https://uwillno.com?blog=33</link>
+<pubDate>Tue, 14 Jan 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Quick opening pressure vessel (autoclave) practical questions</title>
+<link>https://uwillno.com?blog=32</link>
+<pubDate>Mon, 30 Dec 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Planned obsolescence product records</title>
+<link>https://uwillno.com?blog=31</link>
+<pubDate>Fri, 06 Dec 2024 00:00:00 GMT</pubDate>
+<category>Complaints</category>
+</item>
+<item>
+<title>Android lock software crack</title>
+<link>https://uwillno.com?blog=30</link>
+<pubDate>Tue, 19 Nov 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Add subtitles to videos in batches</title>
+<link>https://uwillno.com?blog=29</link>
+<pubDate>Fri, 01 Nov 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Qt/C++ interacts with Java and uses JNI</title>
+<link>https://uwillno.com?blog=28</link>
+<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>AR glasses Thunderbird Air2 toss record</title>
+<link>https://uwillno.com?blog=27</link>
+<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+<category>Moved on</category>
+</item>
+<item>
+<title>Blog issue record (WASM platform)</title>
+<link>https://uwillno.com?blog=logs</link>
+<pubDate>Sun, 20 Oct 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Using Qt/C++ to call JavaScript to implement routing in Qt for WebAssembly</title>
+<link>https://uwillno.com?blog=26</link>
+<pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>AR glasses/head-mounted display replacement products</title>
+<link>https://uwillno.com?blog=25</link>
+<pubDate>Wed, 09 Oct 2024 00:00:00 GMT</pubDate>
+<category>Moved on</category>
+</item>
+<item>
+<title>I’m only 23, so I’m not qualified to talk about love and marriage.</title>
+<link>https://uwillno.com?blog=24</link>
+<pubDate>Mon, 07 Oct 2024 00:00:00 GMT</pubDate>
+<category>Miscellaneous talk</category>
+</item>
+<item>
+<title>As I get older, I no longer mess with devices.</title>
+<link>https://uwillno.com?blog=23</link>
+<pubDate>Fri, 04 Oct 2024 00:00:00 GMT</pubDate>
+<category>Miscellaneous talk</category>
+</item>
+<item>
+<title>Cloudflare Workers + R2 implements a simple comment system</title>
+<link>https://uwillno.com?blog=22</link>
+<pubDate>Mon, 23 Sep 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Let’s talk about why I’ve given up on so many games recently.</title>
+<link>https://uwillno.com?blog=21</link>
+<pubDate>Thu, 19 Sep 2024 00:00:00 GMT</pubDate>
+<category>Miscellaneous talk</category>
+</item>
+<item>
+<title>Problem records using MediaPlayer in Qt for WebAssembly</title>
+<link>https://uwillno.com?blog=17</link>
+<pubDate>Mon, 16 Sep 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Holiday complaints</title>
+<link>https://uwillno.com?blog=20</link>
+<pubDate>Sat, 14 Sep 2024 00:00:00 GMT</pubDate>
+<category>Complaints</category>
+</item>
+<item>
+<title>Dali Travel Notes</title>
+<link>https://uwillno.com?blog=16</link>
+<pubDate>Wed, 11 Sep 2024 00:00:00 GMT</pubDate>
+<category>Travel notes</category>
+</item>
+<item>
+<title>Vlog function description</title>
+<link>https://uwillno.com?blog=15</link>
+<pubDate>Tue, 27 Aug 2024 00:00:00 GMT</pubDate>
+<category>Function Description</category>
+</item>
+<item>
+<title>Abandonment function description</title>
+<link>https://uwillno.com?blog=14</link>
+<pubDate>Mon, 29 Jul 2024 00:00:00 GMT</pubDate>
+<category>Function Description</category>
+</item>
+<item>
+<title>CMake/QMake shader files are automatically generated</title>
+<link>https://uwillno.com?blog=13</link>
+<pubDate>Fri, 05 Jul 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Qt compresses resource files, remotely loads resource files, and translates</title>
+<link>https://uwillno.com?blog=12</link>
+<pubDate>Fri, 17 May 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Fiddle with QSettings::WebIndexedDBFormat/JSPI records</title>
+<link>https://uwillno.com?blog=11</link>
+<pubDate>Thu, 16 May 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Function description of Huangji Jingshi</title>
+<link>https://uwillno.com?blog=10</link>
+<pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate>
+<category>Function Description</category>
+</item>
+<item>
+<title>Qt for Webassembly QML text selection and copy</title>
+<link>https://uwillno.com?blog=9</link>
+<pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>QML Image loads remote images - server replied: Forbidden</title>
+<link>https://uwillno.com?blog=8</link>
+<pubDate>Mon, 08 Jan 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>QHttpServer settings allow cross-domain requests</title>
+<link>https://uwillno.com?blog=7</link>
+<pubDate>Tue, 31 Oct 2023 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>About writing some rubbish course plans/graduation plans</title>
+<link>https://uwillno.com?blog=6</link>
+<pubDate>Fri, 22 Sep 2023 00:00:00 GMT</pubDate>
+<category>Miscellaneous talk</category>
+</item>
+<item>
+<title>Six Yao function description</title>
+<link>https://uwillno.com?blog=5</link>
+<pubDate>Sat, 12 Aug 2023 00:00:00 GMT</pubDate>
+<category>Function Description</category>
+</item>
+<item>
+<title>Complaints about soft exam experience</title>
+<link>https://uwillno.com?blog=19</link>
+<pubDate>Wed, 21 Jun 2023 00:00:00 GMT</pubDate>
+<category>Complaints</category>
+</item>
+<item>
+<title>Complaints about Educational Experience</title>
+<link>https://uwillno.com?blog=18</link>
+<pubDate>Tue, 20 Jun 2023 00:00:00 GMT</pubDate>
+<category>Complaints</category>
+</item>
+<item>
+<title>ReferenceError: SharedArrayBuffer is not defined</title>
+<link>https://uwillno.com?blog=4</link>
+<pubDate>Tue, 23 May 2023 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Uwzz principle completion</title>
+<link>https://uwillno.com?blog=2</link>
+<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Arch Linux system migration</title>
+<link>https://uwillno.com?blog=1</link>
+<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>Qt creator Chinese input problem under Linux</title>
+<link>https://uwillno.com?blog=3</link>
+<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
+<title>NANHUWLVE</title>
+<link>https://uwillno.com?blog=nanuwlve</link>
+<pubDate>Sun, 06 Oct 2013 00:00:00 GMT</pubDate>
+<category>NaN</category>
+</item>
+<item>
+<title>NANHYFXX</title>
+<link>https://uwillno.com?blog=nanhyfxx</link>
+<pubDate>Sun, 06 Oct 2013 00:00:00 GMT</pubDate>
+<category>NaN</category>
+</item>
+<item>
+<title>NANUWLAB</title>
+<link>https://uwillno.com?blog=nanuwlab</link>
+<pubDate>Sun, 06 Oct 2013 00:00:00 GMT</pubDate>
+<category>NaN</category>
+</item>
+<item>
+<title>Lunar</title>
+<link>https://uwillno.com?func=lunar</link>
+</item>
+<item>
+<title>6yao</title>
+<link>https://uwillno.com?func=6yao</link>
+</item>
+<item>
+<title>6ren</title>
+<link>https://uwillno.com?func=6ren</link>
+</item>
+<item>
+<title>HJJS</title>
+<link>https://uwillno.com?func=hjjs</link>
+</item>
+<item>
+<title>AES</title>
+<link>https://uwillno.com?func=aes</link>
+</item>
+<item>
+<title>HTML Editor</title>
+<link>https://uwillno.com?func=htmleditor</link>
+</item>
+<item>
+<title>Image stitching</title>
+<link>https://uwillno.com?func=imagestitching</link>
+</item>
+<item>
+<title>Text Editor</title>
+<link>https://uwillno.com?func=texteditor</link>
+</item>
+<item>
+<title>Tianji Notes</title>
+<link>https://uwillno.com?func=tj</link>
+</item>
+<item>
+<title>KPM: txt to csv</title>
+<link>https://uwillno.com?func=kpm</link>
+</item>
+<item>
+<title>Authenticator</title>
+<link>https://uwillno.com?func=otp</link>
+</item>
+<item>
+<title>QR code</title>
+<link>https://uwillno.com?func=qr</link>
+</item>
+<item>
+<title>WebSocket</title>
+<link>https://uwillno.com?func=ws</link>
+</item>
+<item>
+<title>Watermark Camera</title>
+<link>https://uwillno.com?func=watermark</link>
+</item>
+<item>
+<title>周期排班推理</title>
+<link>https://uwillno.com?func=pba</link>
+</item>
+<item>
+<title>个人排班查询</title>
+<link>https://uwillno.com?func=pb</link>
+</item>
+<item>
+<title>Program</title>
+<link>https://uwillno.com?about=program</link>
+</item>
+<item>
+<title>Website</title>
+<link>https://uwillno.com?about=website</link>
+</item>
+<item>
+<title>Myself</title>
+<link>https://uwillno.com?about=me</link>
+</item>
+<item>
+<title>rss</title>
+<link>https://uwillno.com?rss</link>
+</item>
+<item>
+<title>Logs</title>
+<link>https://uwillno.com?blog</link>
+</item>
+<item>
+<title>Moment</title>
+<link>https://uwillno.com?moment</link>
+</item>
+<item>
+<title>Functions</title>
+<link>https://uwillno.com?func</link>
+</item>
+<item>
+<title>About</title>
+<link>https://uwillno.com?about</link>
+</item>
+<item>
+<title>Links</title>
+<link>https://uwillno.com?links</link>
+</item>
+</channel>
+</rss>
+  </h1>
+  </body>
+</html>

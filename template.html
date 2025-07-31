@@ -1,0 +1,133 @@
+<!--
+Copyright (C) 2024 The Qt Company Ltd.
+SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
+-->
+
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!--Set visual viewport size for mobile devices to the device size,
+        witch results in a scale of 1 and a 1:1 mapping between CSS pixels
+        and Qt device independent pixels. -->
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
+
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
+    
+    <meta name="keywords" content="UWillno,博客,Blog,Qt,WebAssembly">
+    
+    <meta name="author" content="UWillno">
+    
+    <meta name="description" content="UWillno的博客,UWillno's blog">
+    
+    <meta name="copyright" content="UWillno"> 
+    
+    <meta name="robots" content="all">
+    
+    <meta name="location" content="province=湖北;city=武汉">
+    <link rel="icon" type="image/png" href="uwillno第三版.png">
+    <!-- <link rel="prefetch" href="https://uwillno.com/blogres/ttf/MiSans-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous"> -->
+
+    <title>UWillno's blog</title>
+    <style>
+      /* Make the html body cover the entire (visual) viewport with no scroll bars. */
+      html, body { padding: 0; margin: 0; overflow: hidden; height: 100% }
+      #screen { width: 100%; height: 100%; }
+      html {
+        background-color: #FFF;
+        color: #000;
+      }
+      @media(prefers-color-scheme: dark) {
+        html {
+          background-color: #000;
+          color: #FFF;
+        }
+      }
+      footer {
+        text-align: center;
+        padding: 10px;
+      }
+      
+      footer a {
+        text-decoration: none;
+        color: #000;
+      }
+      @media(prefers-color-scheme: dark) {
+      footer a {
+        text-decoration: none;
+        color: #FFF;
+        }
+      }
+    </style>
+  </head>
+  <body onload="init()">
+    <figure style="overflow:visible;" id="qtspinner">
+      <center style="margin-top:1.5em; line-height:150%">
+        <img src="uwillno第二版.svg" width="260" height="260" style="display:block"></img>
+        <strong>Qt for WebAssembly: UWillno's blog</strong>
+        <div id="qtstatus"></div>
+        <noscript>JavaScript is disabled. Please enable JavaScript to use this application.</noscript>
+      </center>
+    </figure>
+    <div id="screen"></div>
+
+    <script type="text/javascript">
+      var instance =null;
+        async function init()
+        {
+            const spinner = document.querySelector('#qtspinner');
+            const screen = document.querySelector('#screen');
+            const status = document.querySelector('#qtstatus');
+
+            const showUi = (ui) => {
+                [spinner, screen].forEach(element => element.style.display = 'none');
+                if (screen === ui)
+                    screen.style.position = 'default';
+                ui.style.display = 'block';
+            }
+
+            try {
+                showUi(spinner);
+                status.innerHTML = 'Loading...';
+
+                instance = await qtLoad({
+                    qt: {
+                        onLoaded: () => showUi(screen),
+                        onExit: exitData =>
+                        {
+                            status.innerHTML = 'Application exit';
+                            status.innerHTML +=
+                                exitData.code !== undefined ? ` with code ${exitData.code}` : '';
+                            status.innerHTML +=
+                                exitData.text !== undefined ? ` (${exitData.text})` : '';
+                            showUi(spinner);
+                        },
+                        entryFunction: window.blog_entry,
+                        containerElements: [screen],                        
+                    }
+                });
+            } catch (e) {
+                console.error(e);
+                console.error(e.stack);
+            }
+            fetch("https://uwillno.com/blogres/ttf/MiSans-Regular.ttf", {
+              mode: "cors", 
+              cache: "force-cache"  // 尽量使用缓存（避免重复下载）
+            });
+        }
+    </script>
+    <script src="blog.js"></script>
+    <script type="text/javascript" src="qtloader.js"></script>
+    <footer>
+      请确保网络能与Github、Cloudflare连通，若加载时间过长，请使用科学上网工具。<br>
+      Please make sure the network can connect to Github and Cloudflare, and use a web proxy tool if it takes too long to load.<br>
+      <a href="https://icp.gov.moe/?keyword=20249102" target="_blank">萌ICP备20249102号</a>
+    </footer>
+    <h1 style="visibility: hidden; user-select: none;">
+      {UWrss}
+      {UWrss_en}
+  </h1>
+  </body>
+</html>
