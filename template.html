@@ -13,7 +13,7 @@
     <meta name="copyright" content="UWillno" />
     <meta name="robots" content="all" />
     <meta name="location" content="province=湖北;city=武汉" />
-    <link rel="icon" type="image/png" href="uwillno第三版.png" />
+    <link rel="icon" type="image/png" href="uwlogo.png" />
     <title>UWillno's blog</title>
     <style>
       :root {
@@ -152,6 +152,8 @@
         font-weight: 500;
         margin: 0.5rem 0;
         color: var(--primary-text);
+        display: flex;
+        align-items: center;
       }
 
       .spinner {
@@ -163,13 +165,17 @@
         border-top-color: var(--loading-color);
         animation: spin 1s ease-in-out infinite;
         margin-right: 8px;
-        vertical-align: middle;
+        flex-shrink: 0;
       }
 
       @keyframes spin {
         to {
           transform: rotate(360deg);
         }
+      }
+
+      .status-text {
+        flex-grow: 1;
       }
 
       .network-tip {
@@ -244,13 +250,14 @@
   <body>
     <!-- 加载界面 -->
     <div id="loading-container">
-      <img src="uwillno第二版.svg" alt="UWillno Logo" class="logo" />
+      <img src="uwlogo.png" alt="UWillno Logo" class="logo"/>
       <h1>UWillno's Blog</h1>
       <p class="subtitle">Qt for WebAssembly</p>
 
       <div class="loading-card">
         <div class="status" id="qtstatus">
-          <span class="spinner"></span>Initializing application...
+          <span class="spinner"></span>
+          <span class="status-text">Initializing application...</span>
         </div>
         <div class="progress-container">
           <div class="progress-bar" id="progress"></div>
@@ -280,7 +287,8 @@
       var maxAutoProgress = 90; // 自动进度最大到90%
 
       async function init() {
-        const status = document.getElementById("qtstatus");
+        const statusText = document.querySelector("#qtstatus .status-text");
+        const spinner = document.querySelector("#qtstatus .spinner");
         const progress = document.getElementById("progress");
         const loadingContainer = document.getElementById("loading-container");
         const loadingFooter = document.getElementById("loading-footer");
@@ -296,7 +304,10 @@
                 // 完成加载，进度到100%
                 stopAutoProgress();
                 updateProgress(100, "Finalizing...");
-                status.innerHTML = '<span class="success-message">✓ Application ready</span>';
+                
+                // 隐藏spinner并显示完成状态
+                spinner.style.display = "none";
+                statusText.innerHTML = '<span class="success-message">✓ Application ready</span>';
 
                 // 延迟隐藏加载界面以确保过渡平滑
                 setTimeout(() => {
@@ -313,7 +324,10 @@
                 let message = "Application exited";
                 message += exitData.code !== undefined ? ` with code ${exitData.code}` : "";
                 message += exitData.text !== undefined ? ` (${exitData.text})` : "";
-                status.innerHTML = `<span class="error-message">✗ ${message}</span>`;
+                
+                // 隐藏spinner并显示错误状态
+                spinner.style.display = "none";
+                statusText.innerHTML = `<span class="error-message">✗ ${message}</span>`;
                 progress.style.backgroundColor = "var(--error-color)";
 
                 // 显示加载界面以便用户看到错误信息
@@ -328,7 +342,10 @@
         } catch (e) {
           console.error(e);
           stopAutoProgress();
-          status.innerHTML = `<span class="error-message">✗ Failed to load: ${e.message}</span>`;
+          
+          // 隐藏spinner并显示错误状态
+          spinner.style.display = "none";
+          statusText.innerHTML = `<span class="error-message">✗ Failed to load: ${e.message}</span>`;
           progress.style.backgroundColor = "var(--error-color)";
         }
       }
@@ -359,16 +376,18 @@
         percent = Math.min(Math.max(percent, 0), 100);
         document.getElementById("progress").style.width = `${percent}%`;
         if (message) {
-          document.getElementById("qtstatus").innerHTML = `<span class="spinner"></span>${message}`;
+          document.querySelector("#qtstatus .status-text").textContent = message;
         }
       }
 
       // 启动初始化
       window.addEventListener("DOMContentLoaded", init);
-      fetch(window.location.origin+"/blogres/ttf/MiSans-Regular.ttf", {
-              mode: "cors", 
-              cache: "force-cache"  // 尽量使用缓存（避免重复下载）
-      });
+      
+      // 预加载字体
+      fetch(window.location.origin + "/blogres/ttf/MiSans-Regular.ttf", {
+        mode: "cors", 
+        cache: "force-cache"
+      }).catch(() => {});
     </script>
 
     <script src="blog.min.js"></script>
@@ -376,7 +395,8 @@
 
     <!-- 隐藏的SEO内容 -->
     <h1 style="visibility: hidden; user-select: none">
-      {UWrss}
-      {UWrss_en}</h1>
+      {UWrss} 
+      {UWrss_en}
+    </h1>
   </body>
 </html>
