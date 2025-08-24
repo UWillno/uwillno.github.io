@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's blog</description>
 <item>
+<title>Qt6.10Beta3 for wasm first experience</title>
+<link>https://uwillno.com?blog=47</link>
+<pubDate>Sun, 24 Aug 2025 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
 <title>Large file (wasm) static hosting</title>
 <link>https://uwillno.com?blog=46</link>
 <pubDate>Mon, 04 Aug 2025 00:00:00 GMT</pubDate>
@@ -59,14 +65,14 @@
 <category>Technology</category>
 </item>
 <item>
-<title>Record&lt;&gt; causes markdown and xml to exceptions</title>
-<link>https://uwillno.com?blog=37</link>
+<title>Record processing std::unique_ptr&lt;QWebSocket&gt;</title>
+<link>https://uwillno.com?blog=36</link>
 <pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
 <category>Technology</category>
 </item>
 <item>
-<title>Record processing std::unique_ptr&lt;QWebSocket&gt;</title>
-<link>https://uwillno.com?blog=36</link>
+<title>Record&lt;&gt; causes markdown and xml to exceptions</title>
+<link>https://uwillno.com?blog=37</link>
 <pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
 <category>Technology</category>
 </item>
@@ -113,16 +119,16 @@
 <category>Technology</category>
 </item>
 <item>
-<title>Qt/C++ interacts with Java and uses JNI</title>
-<link>https://uwillno.com?blog=28</link>
-<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
 <title>AR glasses Thunderbird Air2 toss record</title>
 <link>https://uwillno.com?blog=27</link>
 <pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
 <category>Moved on</category>
+</item>
+<item>
+<title>Qt/C++ interacts with Java and uses JNI</title>
+<link>https://uwillno.com?blog=28</link>
+<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+<category>Technology</category>
 </item>
 <item>
 <title>Blog issue record (WASM platform)</title>

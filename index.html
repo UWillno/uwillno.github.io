@@ -1,1180 +1,427 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <meta name="keywords" content="UWillno,博客,Blog,Qt,WebAssembly" />
-    <meta name="author" content="UWillno" />
-    <meta name="description" content="UWillno的博客,UWillno's blog" />
-    <meta name="copyright" content="UWillno" />
-    <meta name="robots" content="all" />
-    <meta name="location" content="province=湖北;city=武汉" />
-    <link rel="icon" type="image/png" href="uwlogo.png" />
-    <title>UWillno's blog</title>
-    <style>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="icon" type="image/png" href="uwlogo.png" />
+  <title>UWillno's blog</title>
+  <style>
+    :root {
+      --primary-bg: #ffffff;
+      --primary-text: #222222;
+      --secondary-text: #555555;
+      --accent-color: #4285f4;
+      --border-color: #e0e0e0;
+      --card-bg: #f8f9fa;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --loading-color: #4285f4;
+      --error-color: #ea4335;
+      --success-color: #34a853;
+    }
+
+    /* 默认链接颜色 */
+    a {
+      color: #088572;
+      text-decoration: none;
+      /* 去掉默认下划线 */
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+
+    /* 访问过的链接 */
+    a:visited {
+      color: #066a5a;
+      /* 稍微深一点，区分已访问 */
+    }
+
+    /* 鼠标悬停时 */
+    a:hover {
+      color: #0aa684;
+      /* 亮一点，显得有反馈 */
+      text-decoration: underline;
+      text-decoration-color: #0aa684;
+    }
+
+    /* 点击时（激活状态） */
+    a:active {
+      color: #044d41;
+      /* 更深，表示点击 */
+    }
+
+    @media (prefers-color-scheme: dark) {
       :root {
-        --primary-bg: #ffffff;
-        --primary-text: #222222;
-        --secondary-text: #555555;
-        --accent-color: #4285f4;
-        --border-color: #e0e0e0;
-        --card-bg: #f8f9fa;
-        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        --loading-color: #4285f4;
-        --error-color: #ea4335;
-        --success-color: #34a853;
+        --primary-bg: #121212;
+        --primary-text: #f0f0f0;
+        --secondary-text: #aaaaaa;
+        --accent-color: #8ab4f8;
+        --border-color: #333333;
+        --card-bg: #1e1e1e;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        --loading-color: #8ab4f8;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--primary-text);
+    }
+
+    #loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      background-color: var(--primary-bg);
+      padding: 20px;
+    }
+
+    .logo {
+      width: 180px;
+      height: 180px;
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
       }
 
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --primary-bg: #121212;
-          --primary-text: #f0f0f0;
-          --secondary-text: #aaaaaa;
-          --accent-color: #8ab4f8;
-          --border-color: #333333;
-          --card-bg: #1e1e1e;
-          --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-          --loading-color: #8ab4f8;
-        }
+      50% {
+        transform: translateY(-10px);
       }
+    }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--primary-text);
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--secondary-text);
+      margin-bottom: 2rem;
+      max-width: 80%;
+      text-align: center;
+    }
+
+    .loading-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      margin-bottom: 2rem;
+    }
+
+    @media (orientation: portrait) {
+      .loading-card {
+        margin-left: 16px;
+        margin-right: 16px;
+        width: calc(100% - 32px);
       }
+    }
 
-      html,
-      body {
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, sans-serif;
-        background-color: var(--primary-bg);
-        color: var(--primary-text);
+    .progress-container {
+      width: 100%;
+      height: 6px;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .progress-container {
+        background-color: rgba(255, 255, 255, 0.1);
       }
+    }
 
-      #loading-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        background-color: var(--primary-bg);
-        padding: 20px;
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background-color: var(--loading-color);
+      transition: width 0.3s ease;
+    }
+
+    .status {
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0.5rem 0;
+      color: var(--primary-text);
+      display: flex;
+      align-items: center;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top-color: var(--loading-color);
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
       }
+    }
 
+    .status-text {
+      flex-grow: 1;
+    }
+
+    .network-tip {
+      font-size: 0.9rem;
+      color: var(--secondary-text);
+      margin-top: 1rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    #loading-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--secondary-text);
+      padding: 1rem;
+      z-index: 1001;
+    }
+
+    #loading-footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    #loading-footer a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    #qt-container {
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    .error-message {
+      color: var(--error-color);
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+
+    .success-message {
+      color: var(--success-color);
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
       .logo {
-        width: 180px;
-        height: 180px;
-        margin-bottom: 1.5rem;
-        animation: float 3s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
+        width: 140px;
+        height: 140px;
       }
 
       h1 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-        color: var(--primary-text);
+        font-size: 1.5rem;
       }
 
       .subtitle {
-        font-size: 1rem;
-        color: var(--secondary-text);
-        margin-bottom: 2rem;
-        max-width: 80%;
-        text-align: center;
+        font-size: 0.9rem;
       }
 
       .loading-card {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        padding: 1.5rem;
-        width: 100%;
-        max-width: 500px;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--border-color);
-        margin-bottom: 2rem;
-      }
-
-      @media (orientation: portrait) {
-        .loading-card {
-          margin-left: 16px;
-          margin-right: 16px;
-          width: calc(100% - 32px);
-        }
-      }
-
-      .progress-container {
-        width: 100%;
-        height: 6px;
-        background-color: rgba(0, 0, 0, 0.1);
-        border-radius: 3px;
-        overflow: hidden;
-        margin: 1rem 0;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        .progress-container {
-          background-color: rgba(255, 255, 255, 0.1);
-        }
-      }
-
-      .progress-bar {
-        height: 100%;
-        width: 0;
-        background-color: var(--loading-color);
-        transition: width 0.3s ease;
-      }
-
-      .status {
-        font-size: 1rem;
-        font-weight: 500;
-        margin: 0.5rem 0;
-        color: var(--primary-text);
-        display: flex;
-        align-items: center;
-      }
-
-      .spinner {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border: 3px solid rgba(0, 0, 0, 0.1);
-        border-radius: 50%;
-        border-top-color: var(--loading-color);
-        animation: spin 1s ease-in-out infinite;
-        margin-right: 8px;
-        flex-shrink: 0;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .status-text {
-        flex-grow: 1;
-      }
-
-      .network-tip {
-        font-size: 0.9rem;
-        color: var(--secondary-text);
-        margin-top: 1rem;
-        line-height: 1.5;
-        text-align: center;
-      }
-
-      #loading-footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        font-size: 0.85rem;
-        color: var(--secondary-text);
         padding: 1rem;
-        z-index: 1001;
       }
+    }
+  </style>
+</head>
 
-      #loading-footer a {
-        color: var(--accent-color);
-        text-decoration: none;
-        transition: opacity 0.2s ease;
-      }
+<body>
+  <!-- 加载界面 -->
+  <div id="loading-container">
+    <img src="uwlogo.png" alt="UWillno Logo" class="logo" />
+    <h1>UWillno's Blog</h1>
+    <p class="subtitle">Qt for WebAssembly</p>
 
-      #loading-footer a:hover {
-        opacity: 0.8;
-        text-decoration: underline;
-      }
-
-      #qt-container {
-        width: 100%;
-        height: 100%;
-        display: none;
-      }
-
-      .error-message {
-        color: var(--error-color);
-        font-weight: 500;
-        margin-top: 1rem;
-      }
-
-      .success-message {
-        color: var(--success-color);
-        font-weight: 500;
-        margin-top: 1rem;
-      }
-
-      @media (max-width: 600px) {
-        .logo {
-          width: 140px;
-          height: 140px;
-        }
-
-        h1 {
-          font-size: 1.5rem;
-        }
-
-        .subtitle {
-          font-size: 0.9rem;
-        }
-
-        .loading-card {
-          padding: 1rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- 加载界面 -->
-    <div id="loading-container">
-      <img src="uwlogo.png" alt="UWillno Logo" class="logo"/>
-      <h1>UWillno's Blog</h1>
-      <p class="subtitle">Qt for WebAssembly</p>
-
-      <div class="loading-card">
-        <div class="status" id="qtstatus">
-          <span class="spinner"></span>
-          <span class="status-text">Initializing application...</span>
-        </div>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress"></div>
-        </div>
-        <p class="network-tip">
-          部分功能依靠Cloudflare Workers，请确保网络能与Cloudflare连通！<br />
-          Some features rely on Cloudflare Workers, please make sure the network
-          can be connected to Cloudflare!
-        </p>
+    <div class="loading-card">
+      <div class="status" id="qtstatus">
+        <span class="spinner"></span>
+        <span class="status-text">Initializing application...</span>
       </div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progress"></div>
+      </div>
+     <p class="network-tip">
+  需可连通 <b>Cloudflare Workers</b>。<br />
+  使用多线程，<a
+    href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"
+    target="_blank">浏览器需支持 SharedArrayBuffer</a>。<br />
+  wasm 文件较大，注意流量。<br /><br />
+
+  Requires access to <b>Cloudflare Workers</b>.<br />
+  Uses multi-threading, <a
+    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"
+    target="_blank">browser must support SharedArrayBuffer</a>.<br />
+  wasm files are large, mind traffic.
+</p>
+
+
     </div>
+  </div>
 
-    <!-- 页脚（仅加载时显示） -->
-    <div id="loading-footer">
-      <a href="https://icp.gov.moe/?keyword=20249102" target="_blank"
-        >萌ICP备20249102号</a
-      >
-    </div>
+  <!-- 页脚（仅加载时显示） -->
+  <div id="loading-footer">
+    <a href="https://icp.gov.moe/?keyword=20249102" target="_blank">萌ICP备20249102号</a>
+  </div>
 
-    <!-- WASM 容器（全屏） -->
-    <div id="qt-container"></div>
+  <!-- WASM 容器（全屏） -->
+  <div id="qt-container"></div>
+  <script src="coi-serviceworker.min.js"></script>
+  <script type="text/javascript">
+    var instance = null;
+    var progressInterval = null;
+    var currentProgress = 0;
+    var maxAutoProgress = 90; // 自动进度最大到90%
 
-    <script type="text/javascript">
-      var instance = null;
-      var progressInterval = null;
-      var currentProgress = 0;
-      var maxAutoProgress = 90; // 自动进度最大到90%
+    async function init() {
+      const statusText = document.querySelector("#qtstatus .status-text");
+      const spinner = document.querySelector("#qtstatus .spinner");
+      const progress = document.getElementById("progress");
+      const loadingContainer = document.getElementById("loading-container");
+      const loadingFooter = document.getElementById("loading-footer");
 
-      async function init() {
-        const statusText = document.querySelector("#qtstatus .status-text");
-        const spinner = document.querySelector("#qtstatus .spinner");
-        const progress = document.getElementById("progress");
-        const loadingContainer = document.getElementById("loading-container");
-        const loadingFooter = document.getElementById("loading-footer");
+      try {
+        // 启动自动进度条
+        startAutoProgress();
 
-        try {
-          // 启动自动进度条
-          startAutoProgress();
-          
-          // 加载Qt应用
-          instance = await qtLoad({
-            qt: {
-              onLoaded: () => {
-                // 完成加载，进度到100%
-                stopAutoProgress();
-                updateProgress(100, "Finalizing...");
-                
-                // 隐藏spinner并显示完成状态
-                spinner.style.display = "none";
-                statusText.innerHTML = '<span class="success-message">✓ Application ready</span>';
+        // 加载Qt应用
+        instance = await qtLoad({
+          qt: {
+            onLoaded: () => {
+              // 完成加载，进度到100%
+              stopAutoProgress();
+              updateProgress(100, "Finalizing...");
 
-                // 延迟隐藏加载界面以确保过渡平滑
-                setTimeout(() => {
-                  loadingContainer.style.display = "none";
-                  loadingFooter.style.display = "none";
-                  document.getElementById("qt-container").style.display = "block";
-                  
-                  // 确保布局正确
-                  setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
-                }, 500);
-              },
-              onExit: (exitData) => {
-                stopAutoProgress();
-                let message = "Application exited";
-                message += exitData.code !== undefined ? ` with code ${exitData.code}` : "";
-                message += exitData.text !== undefined ? ` (${exitData.text})` : "";
-                
-                // 隐藏spinner并显示错误状态
-                spinner.style.display = "none";
-                statusText.innerHTML = `<span class="error-message">✗ ${message}</span>`;
-                progress.style.backgroundColor = "var(--error-color)";
+              // 隐藏spinner并显示完成状态
+              spinner.style.display = "none";
+              statusText.innerHTML = '<span class="success-message">✓ Application ready</span>';
 
-                // 显示加载界面以便用户看到错误信息
-                loadingContainer.style.display = "flex";
-                loadingFooter.style.display = "block";
-                document.getElementById("qt-container").style.display = "none";
-              },
-              entryFunction: window.blog_entry,
-              containerElements: [document.getElementById("qt-container")],
+              // 延迟隐藏加载界面以确保过渡平滑
+              setTimeout(() => {
+                loadingContainer.style.display = "none";
+                loadingFooter.style.display = "none";
+                document.getElementById("qt-container").style.display = "block";
+
+                // 确保布局正确
+                setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+              }, 500);
             },
-          });
-        } catch (e) {
-          console.error(e);
-          stopAutoProgress();
-          
-          // 隐藏spinner并显示错误状态
-          spinner.style.display = "none";
-          statusText.innerHTML = `<span class="error-message">✗ Failed to load: ${e.message}</span>`;
-          progress.style.backgroundColor = "var(--error-color)";
+            onExit: (exitData) => {
+              stopAutoProgress();
+              let message = "Application exited";
+              message += exitData.code !== undefined ? ` with code ${exitData.code}` : "";
+              message += exitData.text !== undefined ? ` (${exitData.text})` : "";
+
+              // 隐藏spinner并显示错误状态
+              spinner.style.display = "none";
+              statusText.innerHTML = `<span class="error-message">✗ ${message}</span>`;
+              progress.style.backgroundColor = "var(--error-color)";
+
+              // 显示加载界面以便用户看到错误信息
+              loadingContainer.style.display = "flex";
+              loadingFooter.style.display = "block";
+              document.getElementById("qt-container").style.display = "none";
+            },
+            entryFunction: window.blog_entry,
+            containerElements: [document.getElementById("qt-container")],
+          },
+        });
+      } catch (e) {
+        console.error(e);
+        stopAutoProgress();
+
+        // 隐藏spinner并显示错误状态
+        spinner.style.display = "none";
+        statusText.innerHTML = `<span class="error-message">✗ Failed to load: ${e.message}</span>`;
+        progress.style.backgroundColor = "var(--error-color)";
+      }
+    }
+
+    // 自动进度条功能
+    function startAutoProgress() {
+      currentProgress = 0;
+      updateProgress(0, "Starting application...");
+
+      // 每300ms增加1-3%的进度，直到达到maxAutoProgress
+      progressInterval = setInterval(() => {
+        if (currentProgress < maxAutoProgress) {
+          const increment = 1 + Math.random() * 2; // 随机增量
+          currentProgress = Math.min(currentProgress + increment, maxAutoProgress);
+          updateProgress(currentProgress, "Loading application...");
         }
+      }, 300);
+    }
+
+    function stopAutoProgress() {
+      if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
       }
+    }
 
-      // 自动进度条功能
-      function startAutoProgress() {
-        currentProgress = 0;
-        updateProgress(0, "Starting application...");
-        
-        // 每300ms增加1-3%的进度，直到达到maxAutoProgress
-        progressInterval = setInterval(() => {
-          if (currentProgress < maxAutoProgress) {
-            const increment = 1 + Math.random() * 2; // 随机增量
-            currentProgress = Math.min(currentProgress + increment, maxAutoProgress);
-            updateProgress(currentProgress, "Loading application...");
-          }
-        }, 300);
+    function updateProgress(percent, message) {
+      percent = Math.min(Math.max(percent, 0), 100);
+      document.getElementById("progress").style.width = `${percent}%`;
+      if (message) {
+        document.querySelector("#qtstatus .status-text").textContent = message;
       }
+    }
 
-      function stopAutoProgress() {
-        if (progressInterval) {
-          clearInterval(progressInterval);
-          progressInterval = null;
-        }
-      }
+    // 启动初始化
+    window.addEventListener("DOMContentLoaded", init);
 
-      function updateProgress(percent, message) {
-        percent = Math.min(Math.max(percent, 0), 100);
-        document.getElementById("progress").style.width = `${percent}%`;
-        if (message) {
-          document.querySelector("#qtstatus .status-text").textContent = message;
-        }
-      }
+    // 预加载字体
+    fetch(window.location.origin + "/blogres/ttf/MiSans-Regular.ttf", {
+      mode: "cors",
+      cache: "force-cache"
+    }).catch(() => { });
+  </script>
+  <script src="blog.min.js"></script>
+  <script type="text/javascript" src="qtloader.js"></script>
+</body>
 
-      // 启动初始化
-      window.addEventListener("DOMContentLoaded", init);
-      
-      // 预加载字体
-      fetch(window.location.origin + "/blogres/ttf/MiSans-Regular.ttf", {
-        mode: "cors", 
-        cache: "force-cache"
-      }).catch(() => {});
-    </script>
-
-    <script src="blog.min.js"></script>
-    <script type="text/javascript" src="qtloader.js"></script>
-
-    <!-- 隐藏的SEO内容 -->
-    <h1 style="visibility: hidden; user-select: none">
-      <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
-<channel>
-<title>UWillno's blog</title>
-<link>https://uwillno.com</link>
-<description>UWillno's blog</description>
-<item>
-<title>大文件（wasm）静态托管</title>
-<link>https://uwillno.com?blog=46</link>
-<pubDate>Mon, 04 Aug 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>瓶氧记录/管理系统开发记录</title>
-<link>https://uwillno.com?blog=45</link>
-<pubDate>Fri, 01 Aug 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>域名邮箱折腾记录</title>
-<link>https://uwillno.com?blog=44</link>
-<pubDate>Wed, 30 Jul 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>误启火绒USB控制导致WIN TO GO异常解决方案</title>
-<link>https://uwillno.com?blog=43</link>
-<pubDate>Tue, 08 Jul 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Moto G75体验记录</title>
-<link>https://uwillno.com?blog=42</link>
-<pubDate>Wed, 02 Jul 2025 00:00:00 GMT</pubDate>
-<category>杂谈</category>
-</item>
-<item>
-<title>Uww2开发记录2</title>
-<link>https://uwillno.com?blog=41</link>
-<pubDate>Sun, 01 Jun 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>武汉移动光猫H60G改桥接 公网IPV6折腾</title>
-<link>https://uwillno.com?blog=40</link>
-<pubDate>Sun, 04 May 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Uww2开发记录</title>
-<link>https://uwillno.com?blog=39</link>
-<pubDate>Thu, 01 May 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Qt for Android 存储权限申请 2</title>
-<link>https://uwillno.com?blog=38</link>
-<pubDate>Thu, 10 Apr 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>记录&lt;&gt;导致markdown、xml异常处理</title>
-<link>https://uwillno.com?blog=37</link>
-<pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>记录处理std::unique_ptr&lt;QWebSocket&gt;</title>
-<link>https://uwillno.com?blog=36</link>
-<pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Qt for Android 存储权限申请</title>
-<link>https://uwillno.com?blog=35</link>
-<pubDate>Tue, 04 Mar 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Android/QT/QML WebView折腾</title>
-<link>https://uwillno.com?blog=34</link>
-<pubDate>Fri, 28 Feb 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>AX200蓝牙异常排查</title>
-<link>https://uwillno.com?blog=33</link>
-<pubDate>Tue, 14 Jan 2025 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>快开门压力容器（蒸压釜）实操题</title>
-<link>https://uwillno.com?blog=32</link>
-<pubDate>Mon, 30 Dec 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>计划报废产品记录</title>
-<link>https://uwillno.com?blog=31</link>
-<pubDate>Fri, 06 Dec 2024 00:00:00 GMT</pubDate>
-<category>吐槽</category>
-</item>
-<item>
-<title>安卓锁机软件破解</title>
-<link>https://uwillno.com?blog=30</link>
-<pubDate>Tue, 19 Nov 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>视频批量添加字幕</title>
-<link>https://uwillno.com?blog=29</link>
-<pubDate>Fri, 01 Nov 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Qt/C++与Java交互、JNI使用</title>
-<link>https://uwillno.com?blog=28</link>
-<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>AR眼镜雷鸟Air2折腾记录</title>
-<link>https://uwillno.com?blog=27</link>
-<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
-<category>拔草</category>
-</item>
-<item>
-<title>博客问题记录（WASM平台）</title>
-<link>https://uwillno.com?blog=logs</link>
-<pubDate>Sun, 20 Oct 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Qt for WebAssembly中使用Qt/C++调用JavaScript实现路由</title>
-<link>https://uwillno.com?blog=26</link>
-<pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>AR眼镜/头戴显示器平替产品</title>
-<link>https://uwillno.com?blog=25</link>
-<pubDate>Wed, 09 Oct 2024 00:00:00 GMT</pubDate>
-<category>拔草</category>
-</item>
-<item>
-<title>我才23，谈什么恋爱与婚姻</title>
-<link>https://uwillno.com?blog=24</link>
-<pubDate>Mon, 07 Oct 2024 00:00:00 GMT</pubDate>
-<category>杂谈</category>
-</item>
-<item>
-<title>上年纪了，不再搞机了</title>
-<link>https://uwillno.com?blog=23</link>
-<pubDate>Fri, 04 Oct 2024 00:00:00 GMT</pubDate>
-<category>杂谈</category>
-</item>
-<item>
-<title>Cloudflare Workers + R2实现简易评论系统</title>
-<link>https://uwillno.com?blog=22</link>
-<pubDate>Mon, 23 Sep 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>谈谈我为什么近期弃坑了很多游戏</title>
-<link>https://uwillno.com?blog=21</link>
-<pubDate>Thu, 19 Sep 2024 00:00:00 GMT</pubDate>
-<category>杂谈</category>
-</item>
-<item>
-<title>Qt for WebAssembly中使用MediaPlayer的问题记录</title>
-<link>https://uwillno.com?blog=17</link>
-<pubDate>Mon, 16 Sep 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>节日吐槽</title>
-<link>https://uwillno.com?blog=20</link>
-<pubDate>Sat, 14 Sep 2024 00:00:00 GMT</pubDate>
-<category>吐槽</category>
-</item>
-<item>
-<title>大理游记</title>
-<link>https://uwillno.com?blog=16</link>
-<pubDate>Wed, 11 Sep 2024 00:00:00 GMT</pubDate>
-<category>游记</category>
-</item>
-<item>
-<title>Vlog功能说明</title>
-<link>https://uwillno.com?blog=15</link>
-<pubDate>Tue, 27 Aug 2024 00:00:00 GMT</pubDate>
-<category>功能说明</category>
-</item>
-<item>
-<title>弃坑功能说明</title>
-<link>https://uwillno.com?blog=14</link>
-<pubDate>Mon, 29 Jul 2024 00:00:00 GMT</pubDate>
-<category>功能说明</category>
-</item>
-<item>
-<title>CMake/QMake着色器文件自动生成</title>
-<link>https://uwillno.com?blog=13</link>
-<pubDate>Fri, 05 Jul 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Qt压缩资源文件，远程加载资源文件、翻译</title>
-<link>https://uwillno.com?blog=12</link>
-<pubDate>Fri, 17 May 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>折腾QSettings::WebIndexedDBFormat/JSPI记录</title>
-<link>https://uwillno.com?blog=11</link>
-<pubDate>Thu, 16 May 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>皇极经世的功能说明</title>
-<link>https://uwillno.com?blog=10</link>
-<pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate>
-<category>功能说明</category>
-</item>
-<item>
-<title>Qt for Webassembly QML文本选中、复制</title>
-<link>https://uwillno.com?blog=9</link>
-<pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>QML Image加载远程图片- server replied: Forbidden</title>
-<link>https://uwillno.com?blog=8</link>
-<pubDate>Mon, 08 Jan 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>QHttpServer设置允许跨域请求</title>
-<link>https://uwillno.com?blog=7</link>
-<pubDate>Tue, 31 Oct 2023 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>关于写的一些垃圾课设/毕设</title>
-<link>https://uwillno.com?blog=6</link>
-<pubDate>Fri, 22 Sep 2023 00:00:00 GMT</pubDate>
-<category>杂谈</category>
-</item>
-<item>
-<title>六爻功能说明</title>
-<link>https://uwillno.com?blog=5</link>
-<pubDate>Sat, 12 Aug 2023 00:00:00 GMT</pubDate>
-<category>功能说明</category>
-</item>
-<item>
-<title>软考经历吐槽</title>
-<link>https://uwillno.com?blog=19</link>
-<pubDate>Wed, 21 Jun 2023 00:00:00 GMT</pubDate>
-<category>吐槽</category>
-</item>
-<item>
-<title>教育经历吐槽</title>
-<link>https://uwillno.com?blog=18</link>
-<pubDate>Tue, 20 Jun 2023 00:00:00 GMT</pubDate>
-<category>吐槽</category>
-</item>
-<item>
-<title>ReferenceError: SharedArrayBuffer is not defined</title>
-<link>https://uwillno.com?blog=4</link>
-<pubDate>Tue, 23 May 2023 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Uwzz原理补全</title>
-<link>https://uwillno.com?blog=2</link>
-<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Linux下Qt creator中文输入问题</title>
-<link>https://uwillno.com?blog=3</link>
-<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>Arch Linux系统迁移</title>
-<link>https://uwillno.com?blog=1</link>
-<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
-<title>农历</title>
-<link>https://uwillno.com?func=lunar</link>
-</item>
-<item>
-<title>六爻</title>
-<link>https://uwillno.com?func=6yao</link>
-</item>
-<item>
-<title>六壬</title>
-<link>https://uwillno.com?func=6ren</link>
-</item>
-<item>
-<title>皇极经世</title>
-<link>https://uwillno.com?func=hjjs</link>
-</item>
-<item>
-<title>AES</title>
-<link>https://uwillno.com?func=aes</link>
-</item>
-<item>
-<title>HTML编辑</title>
-<link>https://uwillno.com?func=htmleditor</link>
-</item>
-<item>
-<title>图片拼接</title>
-<link>https://uwillno.com?func=imagestitching</link>
-</item>
-<item>
-<title>文本编辑</title>
-<link>https://uwillno.com?func=texteditor</link>
-</item>
-<item>
-<title>天纪笔记</title>
-<link>https://uwillno.com?func=tj</link>
-</item>
-<item>
-<title>卡巴斯基密码管理器：txt转csv</title>
-<link>https://uwillno.com?func=kpm</link>
-</item>
-<item>
-<title>身份验证器</title>
-<link>https://uwillno.com?func=otp</link>
-</item>
-<item>
-<title>二维码</title>
-<link>https://uwillno.com?func=qr</link>
-</item>
-<item>
-<title>WebSocket</title>
-<link>https://uwillno.com?func=ws</link>
-</item>
-<item>
-<title>水印相机</title>
-<link>https://uwillno.com?func=watermark</link>
-</item>
-<item>
-<title>周期排班推理</title>
-<link>https://uwillno.com?func=pba</link>
-</item>
-<item>
-<title>个人排班查询</title>
-<link>https://uwillno.com?func=pb</link>
-</item>
-<item>
-<title>本程序</title>
-<link>https://uwillno.com?about=program</link>
-</item>
-<item>
-<title>本站</title>
-<link>https://uwillno.com?about=website</link>
-</item>
-<item>
-<title>本人</title>
-<link>https://uwillno.com?about=me</link>
-</item>
-<item>
-<title>rss</title>
-<link>https://uwillno.com?rss</link>
-</item>
-<item>
-<title>记录</title>
-<link>https://uwillno.com?blog</link>
-</item>
-<item>
-<title>时刻</title>
-<link>https://uwillno.com?moment</link>
-</item>
-<item>
-<title>功能</title>
-<link>https://uwillno.com?func</link>
-</item>
-<item>
-<title>关于</title>
-<link>https://uwillno.com?about</link>
-</item>
-<item>
-<title>友链</title>
-<link>https://uwillno.com?links</link>
-</item>
-</channel>
-</rss> 
-      <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
-<channel>
-<title>UWillno's blog</title>
-<link>https://uwillno.com</link>
-<description>UWillno's blog</description>
-<item>
-<title>Large file (wasm) static hosting</title>
-<link>https://uwillno.com?blog=46</link>
-<pubDate>Mon, 04 Aug 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Oxygen recording/management system development record</title>
-<link>https://uwillno.com?blog=45</link>
-<pubDate>Fri, 01 Aug 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Domain name mailbox toss record</title>
-<link>https://uwillno.com?blog=44</link>
-<pubDate>Wed, 30 Jul 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Solution to WIN TO GO exception caused by mistake by turning on the Huorong USB control</title>
-<link>https://uwillno.com?blog=43</link>
-<pubDate>Tue, 08 Jul 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Moto G75 experience record</title>
-<link>https://uwillno.com?blog=42</link>
-<pubDate>Wed, 02 Jul 2025 00:00:00 GMT</pubDate>
-<category>Miscellaneous talk</category>
-</item>
-<item>
-<title>Uww2 Development Record2</title>
-<link>https://uwillno.com?blog=41</link>
-<pubDate>Sun, 01 Jun 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Wuhan mobile optical cat H60G change bridge public network IPV6 tossing</title>
-<link>https://uwillno.com?blog=40</link>
-<pubDate>Sun, 04 May 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Uww2 Development Record</title>
-<link>https://uwillno.com?blog=39</link>
-<pubDate>Thu, 01 May 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Qt for Android Storage Permission Application 2</title>
-<link>https://uwillno.com?blog=38</link>
-<pubDate>Thu, 10 Apr 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Record&lt;&gt; causes markdown and xml to exceptions</title>
-<link>https://uwillno.com?blog=37</link>
-<pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Record processing std::unique_ptr&lt;QWebSocket&gt;</title>
-<link>https://uwillno.com?blog=36</link>
-<pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Qt for Android Storage Permission Application</title>
-<link>https://uwillno.com?blog=35</link>
-<pubDate>Tue, 04 Mar 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Some issues with Android/QT/QML WebView</title>
-<link>https://uwillno.com?blog=34</link>
-<pubDate>Fri, 28 Feb 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Troubleshooting AX200 Bluetooth anomalies</title>
-<link>https://uwillno.com?blog=33</link>
-<pubDate>Tue, 14 Jan 2025 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Quick opening pressure vessel (autoclave) practical questions</title>
-<link>https://uwillno.com?blog=32</link>
-<pubDate>Mon, 30 Dec 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Planned obsolescence product records</title>
-<link>https://uwillno.com?blog=31</link>
-<pubDate>Fri, 06 Dec 2024 00:00:00 GMT</pubDate>
-<category>Complaints</category>
-</item>
-<item>
-<title>Android lock software crack</title>
-<link>https://uwillno.com?blog=30</link>
-<pubDate>Tue, 19 Nov 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Add subtitles to videos in batches</title>
-<link>https://uwillno.com?blog=29</link>
-<pubDate>Fri, 01 Nov 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Qt/C++ interacts with Java and uses JNI</title>
-<link>https://uwillno.com?blog=28</link>
-<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>AR glasses Thunderbird Air2 toss record</title>
-<link>https://uwillno.com?blog=27</link>
-<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
-<category>Moved on</category>
-</item>
-<item>
-<title>Blog issue record (WASM platform)</title>
-<link>https://uwillno.com?blog=logs</link>
-<pubDate>Sun, 20 Oct 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Using Qt/C++ to call JavaScript to implement routing in Qt for WebAssembly</title>
-<link>https://uwillno.com?blog=26</link>
-<pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>AR glasses/head-mounted display replacement products</title>
-<link>https://uwillno.com?blog=25</link>
-<pubDate>Wed, 09 Oct 2024 00:00:00 GMT</pubDate>
-<category>Moved on</category>
-</item>
-<item>
-<title>I’m only 23, so I’m not qualified to talk about love and marriage.</title>
-<link>https://uwillno.com?blog=24</link>
-<pubDate>Mon, 07 Oct 2024 00:00:00 GMT</pubDate>
-<category>Miscellaneous talk</category>
-</item>
-<item>
-<title>As I get older, I no longer mess with devices.</title>
-<link>https://uwillno.com?blog=23</link>
-<pubDate>Fri, 04 Oct 2024 00:00:00 GMT</pubDate>
-<category>Miscellaneous talk</category>
-</item>
-<item>
-<title>Cloudflare Workers + R2 implements a simple comment system</title>
-<link>https://uwillno.com?blog=22</link>
-<pubDate>Mon, 23 Sep 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Let’s talk about why I’ve given up on so many games recently.</title>
-<link>https://uwillno.com?blog=21</link>
-<pubDate>Thu, 19 Sep 2024 00:00:00 GMT</pubDate>
-<category>Miscellaneous talk</category>
-</item>
-<item>
-<title>Problem records using MediaPlayer in Qt for WebAssembly</title>
-<link>https://uwillno.com?blog=17</link>
-<pubDate>Mon, 16 Sep 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Holiday complaints</title>
-<link>https://uwillno.com?blog=20</link>
-<pubDate>Sat, 14 Sep 2024 00:00:00 GMT</pubDate>
-<category>Complaints</category>
-</item>
-<item>
-<title>Dali Travel Notes</title>
-<link>https://uwillno.com?blog=16</link>
-<pubDate>Wed, 11 Sep 2024 00:00:00 GMT</pubDate>
-<category>Travel notes</category>
-</item>
-<item>
-<title>Vlog function description</title>
-<link>https://uwillno.com?blog=15</link>
-<pubDate>Tue, 27 Aug 2024 00:00:00 GMT</pubDate>
-<category>Function Description</category>
-</item>
-<item>
-<title>Abandonment function description</title>
-<link>https://uwillno.com?blog=14</link>
-<pubDate>Mon, 29 Jul 2024 00:00:00 GMT</pubDate>
-<category>Function Description</category>
-</item>
-<item>
-<title>CMake/QMake shader files are automatically generated</title>
-<link>https://uwillno.com?blog=13</link>
-<pubDate>Fri, 05 Jul 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Qt compresses resource files, remotely loads resource files, and translates</title>
-<link>https://uwillno.com?blog=12</link>
-<pubDate>Fri, 17 May 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Fiddle with QSettings::WebIndexedDBFormat/JSPI records</title>
-<link>https://uwillno.com?blog=11</link>
-<pubDate>Thu, 16 May 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Function description of Huangji Jingshi</title>
-<link>https://uwillno.com?blog=10</link>
-<pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate>
-<category>Function Description</category>
-</item>
-<item>
-<title>Qt for Webassembly QML text selection and copy</title>
-<link>https://uwillno.com?blog=9</link>
-<pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>QML Image loads remote images - server replied: Forbidden</title>
-<link>https://uwillno.com?blog=8</link>
-<pubDate>Mon, 08 Jan 2024 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>QHttpServer settings allow cross-domain requests</title>
-<link>https://uwillno.com?blog=7</link>
-<pubDate>Tue, 31 Oct 2023 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>About writing some rubbish course plans/graduation plans</title>
-<link>https://uwillno.com?blog=6</link>
-<pubDate>Fri, 22 Sep 2023 00:00:00 GMT</pubDate>
-<category>Miscellaneous talk</category>
-</item>
-<item>
-<title>Six Yao function description</title>
-<link>https://uwillno.com?blog=5</link>
-<pubDate>Sat, 12 Aug 2023 00:00:00 GMT</pubDate>
-<category>Function Description</category>
-</item>
-<item>
-<title>Complaints about soft exam experience</title>
-<link>https://uwillno.com?blog=19</link>
-<pubDate>Wed, 21 Jun 2023 00:00:00 GMT</pubDate>
-<category>Complaints</category>
-</item>
-<item>
-<title>Complaints about Educational Experience</title>
-<link>https://uwillno.com?blog=18</link>
-<pubDate>Tue, 20 Jun 2023 00:00:00 GMT</pubDate>
-<category>Complaints</category>
-</item>
-<item>
-<title>ReferenceError: SharedArrayBuffer is not defined</title>
-<link>https://uwillno.com?blog=4</link>
-<pubDate>Tue, 23 May 2023 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Uwzz principle completion</title>
-<link>https://uwillno.com?blog=2</link>
-<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Qt creator Chinese input problem under Linux</title>
-<link>https://uwillno.com?blog=3</link>
-<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Arch Linux system migration</title>
-<link>https://uwillno.com?blog=1</link>
-<pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
-<category>Technology</category>
-</item>
-<item>
-<title>Lunar</title>
-<link>https://uwillno.com?func=lunar</link>
-</item>
-<item>
-<title>6yao</title>
-<link>https://uwillno.com?func=6yao</link>
-</item>
-<item>
-<title>6ren</title>
-<link>https://uwillno.com?func=6ren</link>
-</item>
-<item>
-<title>HJJS</title>
-<link>https://uwillno.com?func=hjjs</link>
-</item>
-<item>
-<title>AES</title>
-<link>https://uwillno.com?func=aes</link>
-</item>
-<item>
-<title>HTML Editor</title>
-<link>https://uwillno.com?func=htmleditor</link>
-</item>
-<item>
-<title>Image stitching</title>
-<link>https://uwillno.com?func=imagestitching</link>
-</item>
-<item>
-<title>Text Editor</title>
-<link>https://uwillno.com?func=texteditor</link>
-</item>
-<item>
-<title>Tianji Notes</title>
-<link>https://uwillno.com?func=tj</link>
-</item>
-<item>
-<title>KPM: txt to csv</title>
-<link>https://uwillno.com?func=kpm</link>
-</item>
-<item>
-<title>Authenticator</title>
-<link>https://uwillno.com?func=otp</link>
-</item>
-<item>
-<title>QR code</title>
-<link>https://uwillno.com?func=qr</link>
-</item>
-<item>
-<title>WebSocket</title>
-<link>https://uwillno.com?func=ws</link>
-</item>
-<item>
-<title>Watermark Camera</title>
-<link>https://uwillno.com?func=watermark</link>
-</item>
-<item>
-<title>Periodic shift reasoning</title>
-<link>https://uwillno.com?func=pba</link>
-</item>
-<item>
-<title>Personal shift inquiry</title>
-<link>https://uwillno.com?func=pb</link>
-</item>
-<item>
-<title>Program</title>
-<link>https://uwillno.com?about=program</link>
-</item>
-<item>
-<title>Website</title>
-<link>https://uwillno.com?about=website</link>
-</item>
-<item>
-<title>Myself</title>
-<link>https://uwillno.com?about=me</link>
-</item>
-<item>
-<title>rss</title>
-<link>https://uwillno.com?rss</link>
-</item>
-<item>
-<title>Logs</title>
-<link>https://uwillno.com?blog</link>
-</item>
-<item>
-<title>Moment</title>
-<link>https://uwillno.com?moment</link>
-</item>
-<item>
-<title>Functions</title>
-<link>https://uwillno.com?func</link>
-</item>
-<item>
-<title>About</title>
-<link>https://uwillno.com?about</link>
-</item>
-<item>
-<title>Links</title>
-<link>https://uwillno.com?links</link>
-</item>
-</channel>
-</rss>
-    </h1>
-  </body>
 </html>
