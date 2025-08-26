@@ -285,19 +285,11 @@
       <div class="progress-container">
         <div class="progress-bar" id="progress"></div>
       </div>
-     <p class="network-tip">
-  需可连通 <b>Cloudflare Workers</b>。<br />
-  使用多线程，<a
-    href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"
-    target="_blank">浏览器需支持 SharedArrayBuffer</a>。<br />
-  wasm 文件较大，注意流量。<br /><br />
-
-  Requires access to <b>Cloudflare Workers</b>.<br />
-  Uses multi-threading, <a
-    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"
-    target="_blank">browser must support SharedArrayBuffer</a>.<br />
-  wasm files are large, mind traffic.
-</p>
+      <p class="network-tip">
+        部分功能依赖Cloudflare，请确保可以连通！
+        <br>
+        Some features rely on Cloudflare to ensure connectivity!
+      </p>
 
 
     </div>
@@ -310,7 +302,6 @@
 
   <!-- WASM 容器（全屏） -->
   <div id="qt-container"></div>
-  <script src="coi-serviceworker.min.js"></script>
   <script type="text/javascript">
     var instance = null;
     var progressInterval = null;
