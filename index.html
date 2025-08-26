@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link rel="icon" type="image/png" href="uwlogo.png" />
-  <title>UWillno's blog</title>
+  <title>UWillno's Blog</title>
   <style>
     :root {
       --primary-bg: #ffffff;
@@ -303,6 +303,12 @@
   <!-- WASM 容器（全屏） -->
   <div id="qt-container"></div>
   <script type="text/javascript">
+        // 预加载字体
+    fetch(window.location.origin + "/blogres/ttf/MiSans-Regular.ttf", {
+      mode: "cors",
+      cache: "force-cache"
+    }).catch(() => { });
+    
     var instance = null;
     var progressInterval = null;
     var currentProgress = 0;
@@ -405,11 +411,7 @@
     // 启动初始化
     window.addEventListener("DOMContentLoaded", init);
 
-    // 预加载字体
-    fetch(window.location.origin + "/blogres/ttf/MiSans-Regular.ttf", {
-      mode: "cors",
-      cache: "force-cache"
-    }).catch(() => { });
+
   </script>
   <script src="blog.min.js"></script>
   <script type="text/javascript" src="qtloader.js"></script>
