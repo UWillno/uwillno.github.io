@@ -12,11 +12,11 @@
       --primary-bg: #ffffff;
       --primary-text: #222222;
       --secondary-text: #555555;
-      --accent-color: #4285f4;
+      --accent-color: #088572;
       --border-color: #e0e0e0;
       --card-bg: #f8f9fa;
       --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      --loading-color: #4285f4;
+      --loading-color: #23D1AE;
       --error-color: #ea4335;
       --success-color: #34a853;
     }
@@ -54,11 +54,11 @@
         --primary-bg: #121212;
         --primary-text: #f0f0f0;
         --secondary-text: #aaaaaa;
-        --accent-color: #8ab4f8;
+        --accent-color: #088572;
         --border-color: #333333;
         --card-bg: #1e1e1e;
         --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        --loading-color: #8ab4f8;
+        --loading-color: #23D1AE;
       }
     }
 
@@ -285,11 +285,11 @@
       <div class="progress-container">
         <div class="progress-bar" id="progress"></div>
       </div>
-      <p class="network-tip">
+      <!-- <p class="network-tip">
         部分功能依赖Cloudflare，请确保可以连通！
         <br>
         Some features rely on Cloudflare to ensure connectivity!
-      </p>
+      </p> -->
 
 
     </div>
@@ -308,11 +308,12 @@
       mode: "cors",
       cache: "force-cache"
     }).catch(() => { });
-    
+    var finishedCount = 0;
+    var totalCount = 8;
     var instance = null;
     var progressInterval = null;
     var currentProgress = 0;
-    var maxAutoProgress = 90; // 自动进度最大到90%
+    var maxAutoProgress = 0;
 
     async function init() {
       const statusText = document.querySelector("#qtstatus .status-text");
@@ -385,12 +386,14 @@
 
       // 每300ms增加1-3%的进度，直到达到maxAutoProgress
       progressInterval = setInterval(() => {
-        if (currentProgress < maxAutoProgress) {
-          const increment = 1 + Math.random() * 2; // 随机增量
-          currentProgress = Math.min(currentProgress + increment, maxAutoProgress);
+        currentProgress = 100 / totalCount * finishedCount;
+        // maxAutoProgress = 100 / totalCount * (finishedCount +1 ) > 100 ? 100 :  100 / totalCount * (finishedCount +1 );
+        // if (currentProgress <= maxAutoProgress) {
+        //   const increment = 1 + Math.random() * 2; // 随机增量
+        //   currentProgress = Math.min(currentProgress + increment, maxAutoProgress);
           updateProgress(currentProgress, "Loading application...");
-        }
-      }, 300);
+        // }
+      }, 100);
     }
 
     function stopAutoProgress() {
