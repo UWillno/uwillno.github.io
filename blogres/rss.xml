@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
-<title>UWillno's blog</title>
+<title>UWillno's Blog</title>
 <link>https://uwillno.com</link>
-<description>UWillno's blog</description>
+<description>UWillno's Blog</description>
 <item>
 <title>Qt6.10Beta3 for wasm初体验</title>
 <link>https://uwillno.com?blog=47</link>
