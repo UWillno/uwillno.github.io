@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>卡巴斯基JS误报分析</title>
+<link>https://uwillno.com?blog=48</link>
+<pubDate>Mon, 01 Sep 2025 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
 <title>Qt6.10Beta3 for wasm初体验</title>
 <link>https://uwillno.com?blog=47</link>
 <pubDate>Sun, 24 Aug 2025 00:00:00 GMT</pubDate>
