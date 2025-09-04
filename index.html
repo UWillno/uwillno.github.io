@@ -303,7 +303,7 @@
   <!-- WASM 容器（全屏） -->
   <div id="qt-container"></div>
   <script type="text/javascript">
-        // 预加载字体
+    // 预加载字体
     fetch(window.location.origin + "/blogres/ttf/MiSans-Regular.ttf", {
       mode: "cors",
       cache: "force-cache"
@@ -391,7 +391,7 @@
         // if (currentProgress <= maxAutoProgress) {
         //   const increment = 1 + Math.random() * 2; // 随机增量
         //   currentProgress = Math.min(currentProgress + increment, maxAutoProgress);
-          updateProgress(currentProgress, "Loading application...");
+        updateProgress(currentProgress, "Loading application...");
         // }
       }, 100);
     }
@@ -413,6 +413,15 @@
 
     // 启动初始化
     window.addEventListener("DOMContentLoaded", init);
+
+    window.addEventListener("error", function (event) {
+      if (event.message.includes("out of memory") ||
+        event.message.includes("memory access out of bounds")) {
+        console.warn("检测到WASM内存错误，自动刷新页面...");
+        location.reload();
+      }
+    });
+
 
 
   </script>
