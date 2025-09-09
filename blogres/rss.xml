@@ -155,12 +155,6 @@
 <category>拔草</category>
 </item>
 <item>
-<title>我才23，谈什么恋爱与婚姻</title>
-<link>https://uwillno.com?blog=24</link>
-<pubDate>Mon, 07 Oct 2024 00:00:00 GMT</pubDate>
-<category>杂谈</category>
-</item>
-<item>
 <title>上年纪了，不再搞机了</title>
 <link>https://uwillno.com?blog=23</link>
 <pubDate>Fri, 04 Oct 2024 00:00:00 GMT</pubDate>
@@ -361,6 +355,10 @@
 <item>
 <title>个人排班查询</title>
 <link>https://uwillno.com?func=pb</link>
+</item>
+<item>
+<title>紫微斗数</title>
+<link>https://uwillno.com?func=zwds</link>
 </item>
 <item>
 <title>本程序</title>
