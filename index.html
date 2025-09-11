@@ -303,13 +303,67 @@
   <!-- WASM 容器（全屏） -->
   <div id="qt-container"></div>
   <script type="text/javascript">
-    // 预加载字体
-    fetch(window.location.origin + "/blogres/ttf/MiSans-Regular.ttf", {
-      mode: "cors",
-      cache: "force-cache"
-    }).catch(() => { });
+    const wasmParts = [
+      "blog01.wasm",
+      "blog02.wasm",
+      "blog03.wasm",
+      "blog04.wasm",
+      "blog05.wasm",
+      "blog06.wasm",
+      "blog07.wasm",
+      "blog08.wasm",
+      "blog09.wasm",
+      "blog10.wasm",
+    ];
+
+    // 带重试 + 指数退避的 fetch
+    async function fetchWithRetry(
+      url,
+      retries = 3,
+      delay = 1000,
+      maxDelay = 10000
+    ) {
+      for (let attempt = 1; attempt <= retries; attempt++) {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return await res.arrayBuffer();
+        } catch (err) {
+          console.warn(`请求失败 [${url}] 第 ${attempt} 次:`, err);
+          if (attempt < retries) {
+            const waitTime = Math.min(delay * Math.pow(2, attempt - 1), maxDelay);
+            console.log(`等待 ${waitTime} ms 后重试`);
+            await new Promise((r) => setTimeout(r, waitTime));
+          } else {
+            throw err;
+          }
+        }
+      }
+    }
+
+    // 生成临时 URL 理论上可以直接读buffer，但是我不确定qt后续是否需要用到
+    async function loadAndMergeWasm(parts) {
+      // const buffers = await Promise.all(
+      //   parts.map((url) => fetch(url).then((res) => res.arrayBuffer()))
+      // );
+      const buffers = await Promise.all(
+        parts.map((url) => fetchWithRetry(url, 5, 1000, 5000))
+      );
+      const totalLength = buffers.reduce((sum, b) => sum + b.byteLength, 0);
+      const merged = new Uint8Array(totalLength);
+      let offset = 0;
+      for (const buf of buffers) {
+        merged.set(new Uint8Array(buf), offset);
+        offset += buf.byteLength;
+      }
+      const blob = new Blob([merged], { type: "application/wasm" });
+      const tempUrl = URL.createObjectURL(blob);
+      return tempUrl;
+    }
+
+
     var finishedCount = 0;
-    var totalCount = 8;
+    var totalCount = wasmParts.length;
     var instance = null;
     var progressInterval = null;
     var currentProgress = 0;
@@ -414,13 +468,13 @@
     // 启动初始化
     window.addEventListener("DOMContentLoaded", init);
 
-    window.addEventListener("error", function (event) {
-      if (event.message.includes("out of memory") ||
-        event.message.includes("memory access out of bounds")) {
-        console.warn("检测到WASM内存错误，自动刷新页面...");
-        location.reload();
-      }
-    });
+    // 部分模块内存问题又不影响使用……不适合用这个，wasm内部来处理……
+    // window.addEventListener("error", function (event) {
+    //   if (event.message.includes("Uncaught RuntimeError: memory access out of bounds")) {
+    //     console.warn("检测到WASM内存错误，自动刷新页面...");
+    //     location.reload();
+    //   }
+    // });
 
 
 
