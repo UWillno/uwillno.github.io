@@ -18,7 +18,7 @@
 
 内部使用的可随时发布编辑的短文。支持所有类型文件及媒体预览。
 
-![image-20250704160158263](assets/image-20250704160158263.png)
+![image-20250925163447838](assets/image-20250925163447838.png)
 
 ## [功能页](https://uwillno.com/?func)
 
@@ -57,6 +57,10 @@
 ![image-20250704160502737](assets/image-20250704160502737.png)
 
 ![image-20250704173701749](assets/image-20250704173701749.png)
+
+### [紫微斗数](https://uwillno.com?func=zwds)
+
+![image-20250925163256046](assets/image-20250925163256046.png)
 
 ### [卡巴斯基密码管理器：txt转csv](https://uwillno.com?func=kpm)
 
@@ -128,15 +132,17 @@
 
 ## [链接页](https://uwillno.com?links)
 
-![image-20250704192746618](assets/image-20250704192746618.png)
+![image-20250925163127610](assets/image-20250925163127610.png)
 
 ## 其它
 
 ### [RSS](https://uwillno.com?rss)
 
-### 设置（粒子系统、效果、语言）
+### 设置（粒子系统、效果、语言、主题、帧率显示、音乐播放器开关）
 
 ![image-20250704194050755](assets/image-20250704194050755.png)
+
+![image-20250925163602110](assets/image-20250925163602110.png)
 
 ### 明亮/黑暗模式
 
