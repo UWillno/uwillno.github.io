@@ -285,16 +285,6 @@
       <div class="progress-container">
         <div class="progress-bar" id="progress"></div>
       </div>
-      <p class="network-tip">
-        使用多线程，浏览器需支持<a
-          href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"
-          target="_blank">SharedArrayBuffer</a>。<br />
-        Uses multi-threading, browser must support <a
-          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"
-          target="_blank">SharedArrayBuffer</a>.
-      </p>
-
-
     </div>
   </div>
 
@@ -303,6 +293,67 @@
     <a href="https://icp.gov.moe/?keyword=20249102" target="_blank">萌ICP备20249102号</a>
   </div>
   <script src="coi-serviceworker.min.js"></script>
+<script>
+  const forceTest = false; //仅调试
+
+  if (forceTest || typeof SharedArrayBuffer === "undefined") {
+    const mainContent = document.createElement("div");
+    mainContent.style.cssText = `
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: calc(100% - 60px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--primary-bg);
+      color: var(--primary-text);
+      text-align: center;
+      padding: 2rem;
+      z-index: 9999;
+    `;
+    mainContent.innerHTML = `
+      <img src="uwlogo.png" alt="Logo"
+           style="width: 120px; height: 120px; margin-bottom: 1.5rem; animation: float 3s ease-in-out infinite;">
+      <h1 style="font-size: 1.8rem; margin-bottom: 1rem;">
+        浏览器不支持 SharedArrayBuffer / SharedArrayBuffer Unsupported
+      </h1>
+      <p style="max-width: 480px; color: var(--secondary-text); font-size: 1rem; line-height: 1.6;">
+        本页面需要 SharedArrayBuffer 支持以启用多线程功能。<br>
+        This site requires SharedArrayBuffer to enable multi-threading.<br><br>
+
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7"
+           target="_blank"
+           style="color: var(--accent-color); text-decoration: none;">
+           浏览器兼容性/Browser Compatibility
+        </a>
+      </p>
+    `;
+
+    document.body.innerHTML = "";
+    document.body.appendChild(mainContent);
+
+
+    const footer = document.createElement("footer");
+    footer.style.cssText = `
+      position: fixed;
+      bottom: 0; left: 0;
+      width: 100%; height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--footer-bg, #111);
+      color: var(--secondary-text);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--divider-color, #333);
+    `;
+    footer.innerHTML = `© UWillno 2025`;
+    document.body.appendChild(footer);
+
+    // 停止后续脚本加载
+    throw new Error("Unsupported browser: SharedArrayBuffer not available");
+  }
+</script>
   <!-- WASM 容器（全屏） -->
   <div id="qt-container"></div>
   <script type="text/javascript">
