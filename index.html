@@ -293,12 +293,12 @@
     <a href="https://icp.gov.moe/?keyword=20249102" target="_blank">萌ICP备20249102号</a>
   </div>
   <script src="coi-serviceworker.min.js"></script>
-<script>
-  const forceTest = false; //仅调试
+  <script>
+    const forceTest = false; //仅调试
 
-  if (forceTest || typeof SharedArrayBuffer === "undefined") {
-    const mainContent = document.createElement("div");
-    mainContent.style.cssText = `
+    if (forceTest || typeof SharedArrayBuffer === "undefined") {
+      const mainContent = document.createElement("div");
+      mainContent.style.cssText = `
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: calc(100% - 60px);
@@ -312,7 +312,7 @@
       padding: 2rem;
       z-index: 9999;
     `;
-    mainContent.innerHTML = `
+      mainContent.innerHTML = `
       <img src="uwlogo.png" alt="Logo"
            style="width: 120px; height: 120px; margin-bottom: 1.5rem; animation: float 3s ease-in-out infinite;">
       <h1 style="font-size: 1.8rem; margin-bottom: 1rem;">
@@ -330,12 +330,12 @@
       </p>
     `;
 
-    document.body.innerHTML = "";
-    document.body.appendChild(mainContent);
+      document.body.innerHTML = "";
+      document.body.appendChild(mainContent);
 
 
-    const footer = document.createElement("footer");
-    footer.style.cssText = `
+      const footer = document.createElement("footer");
+      footer.style.cssText = `
       position: fixed;
       bottom: 0; left: 0;
       width: 100%; height: 60px;
@@ -347,13 +347,13 @@
       font-size: 0.9rem;
       border-top: 1px solid var(--divider-color, #333);
     `;
-    footer.innerHTML = `© UWillno 2025`;
-    document.body.appendChild(footer);
+      footer.innerHTML = `© UWillno 2025`;
+      document.body.appendChild(footer);
 
-    // 停止后续脚本加载
-    throw new Error("Unsupported browser: SharedArrayBuffer not available");
-  }
-</script>
+      // 停止后续脚本加载
+      throw new Error("Unsupported browser: SharedArrayBuffer not available");
+    }
+  </script>
   <!-- WASM 容器（全屏） -->
   <div id="qt-container"></div>
   <script type="text/javascript">
@@ -459,8 +459,8 @@
             onExit: (exitData) => {
               stopAutoProgress();
               let message = "Application exited";
-              message += exitData.code !== undefined ? ` with code ${exitData.code}` : "";
-              message += exitData.text !== undefined ? ` (${exitData.text})` : "";
+              // message += exitData.code !== undefined ? ` with code ${exitData.code}` : "";
+              // message += exitData.text !== undefined ? ` (${exitData.text})` : "";
 
               // 隐藏spinner并显示错误状态
               spinner.style.display = "none";
@@ -471,6 +471,9 @@
               loadingContainer.style.display = "flex";
               loadingFooter.style.display = "block";
               document.getElementById("qt-container").style.display = "none";
+              setTimeout(() => {
+                location.reload();
+              }, 2000); // 2 秒后刷新，用户看到错误信息
             },
             entryFunction: window.blog_entry,
             containerElements: [document.getElementById("qt-container")],
