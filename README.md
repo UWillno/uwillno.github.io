@@ -1,5 +1,9 @@
 # uwillno.github.io / uwillno.com
 
+## 语言
+
+[🇨🇳 中文](README.md) | [🇬🇧 English](README_en.md)
+
 ## 介绍
 
 - 一个基于Qt for WebAssembly开发的静态博客系统，内置一些奇怪的功能
