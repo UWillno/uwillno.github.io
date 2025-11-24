@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>Markdown parsing test</title>
+<link>https://uwillno.com?blog=test</link>
+<pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
+<category>Test</category>
+</item>
+<item>
 <title>Moto G100 experience record</title>
 <link>https://uwillno.com?blog=52</link>
 <pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
@@ -371,6 +377,10 @@
 <item>
 <title>Predict fate through stars</title>
 <link>https://uwillno.com?func=zwds</link>
+</item>
+<item>
+<title>Spine viewer</title>
+<link>https://uwillno.com?func=spine</link>
 </item>
 <item>
 <title>Program</title>
