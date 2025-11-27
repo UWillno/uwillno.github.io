@@ -200,8 +200,18 @@ Some content is not updated in a timely manner because the developers are partic
 - [Kaspersky](https://www.kaspersky.com)
 - [Azur Lane](https://game.bilibili.com/blhx/)
 - [Esterv.Utils.QrCode](https://github.com/EddyTheCo/Esterv.Utils.QrCode)
+-  [spine-runtimes](https://github.com/EsotericSoftware/spine-runtimes/tree/4.2/spine-cpp)
 - ……
 - Including but not limited to the above content, which may no longer exist in the current version, but has been used or referenced.
+
+## source
+
+- [rccloader](https://github.com/UWillno/rccloader)
+- [spine-qt](https://github.com/UWillno/spine-qt)
+- [QWMC_template](https://github.com/UWillno/QWMC_template)
+- [QmlRoundedImage](https://github.com/UWillno/QmlRoundedImage)
+- [QmlCardRow](https://github.com/UWillno/QmlCardRow)
+- ……
 
 ## Historical version
 

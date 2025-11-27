@@ -183,7 +183,7 @@
 
 ## 引用
 
-<hr/>
+---
 
 - [Qt](https://www.qt.io/)
 - [emscripten](https://emscripten.org/)
@@ -200,8 +200,20 @@
 - [卡巴斯基](https://www.kaspersky.com)
 - [碧蓝航线](https://game.bilibili.com/blhx/)
 - [Esterv.Utils.QrCode](https://github.com/EddyTheCo/Esterv.Utils.QrCode)
+- [spine-runtimes](https://github.com/EsotericSoftware/spine-runtimes/tree/4.2/spine-cpp)
 - ……
 - 包括但不限于以上内容，可能已经不存在于当前版本，但曾经使用或参考过。
+
+## 源码
+
+---
+
+- [rccloader](https://github.com/UWillno/rccloader)
+- [spine-qt](https://github.com/UWillno/spine-qt)
+- [QWMC_template](https://github.com/UWillno/QWMC_template)
+- [QmlRoundedImage](https://github.com/UWillno/QmlRoundedImage)
+- [QmlCardRow](https://github.com/UWillno/QmlCardRow)
+- ……
 
 ## 历史版本
 
