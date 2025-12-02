@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>长沙游记</title>
+<link>https://uwillno.com?blog=54</link>
+<pubDate>Tue, 02 Dec 2025 00:00:00 GMT</pubDate>
+<category>游记</category>
+</item>
+<item>
 <title>Cloudflare Workers AI零成本实现AI摘要/功能</title>
 <link>https://uwillno.com?blog=53</link>
 <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
