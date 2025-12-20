@@ -2,6 +2,11 @@
 
 ---
 
+## 语言
+
+**readme_en.md机翻效果太差已经移除，请使用浏览器翻译。**  
+**The machine translation of readme_en.md is too poor and has been removed. Please use a browser to translate it.**
+
 ## 介绍
 
 - 一个基于Qt for WebAssembly开发的静态博客系统，内置一些奇怪的功能
@@ -12,7 +17,13 @@
 
 ### [文章](https://uwillno.com/?blog)
 
-纯静态，文章（markdown、html）
+纯静态，文章（markdown~~、html~~）、AI摘要
+
+![image-20251220154329087](assets/image-20251220154329087.png)
+
+![image-20251220154152670](assets/image-20251220154152670.png)
+
+旧版
 
 ![](assets/image-20250704142701094.png)
 
@@ -124,17 +135,25 @@
 
 部分内容更新不及时，因为开发者特别懒。
 
+![image-20251220154914101](assets/image-20251220154914101.png)
+
+### 代码统计
+
+![image-20251220154953755](assets/image-20251220154953755.png)
+
+路由地址已变，建议查阅[RSS](https://uwillno.com?rss)
+
+## 旧版
+
 ![image-20250704192548096](assets/image-20250704192548096.png)
 
-### [本程序](https://uwillno.com?about=program)
+### 本程序![image-20250704192623476](assets/image-20250704192623476.png)
 
-![image-20250704192623476](assets/image-20250704192623476.png)
-
-### [本站历史/留言](https://uwillno.com?about=website)
+### 本站历史/留言
 
 ![image-20250704192526733](assets/image-20250704192526733.png)
 
-### [本人](https://uwillno.com?about=me)
+### 本人
 
 ![image-20250704192658563](assets/image-20250704192658563.png)
 
@@ -160,6 +179,14 @@
 
 ![image-20250704194157886](assets/image-20250704194157886.png)
 
+### 主题设置
+
+![image-20251220154814688](assets/image-20251220154814688.png)
+
+### 液态玻璃效果
+
+![image-20251220154612726](assets/image-20251220154612726.png)
+
 ### 竖屏
 
 ![image-20250704194447724](assets/image-20250704194447724.png)
@@ -175,6 +202,7 @@
 - .wasm文件比较大，注意流量消耗，部分地区需要代理访问
 - 很多BUG是Qt框架自身的，部分模块处于技术预览阶段，偶尔会折腾升级Qt版本导致不稳定
 - 已放弃兼容Android WebView，改用多线程构建以提高运行效率
+- 上面内容可能失效或改变。
 
 ## 引用
 
@@ -211,6 +239,15 @@
 - [commentSystem](https://github.com/UWillno/commentSystem)
 - [moment](https://github.com/UWillno/myWorkers/blob/main/momentD1.js)
 - ……
+
+## 额外
+
+---
+
+域名对于我已经是不小的开销了，而且对于Qt for WASM应用能实现静态托管已经是很不容易了，最好的选择是克隆仓库本地部署运行（仅仅需要一个`mkcert`和`python http.server `）。  
+由于静态托管与前端的特性，任何防护几乎无用，逆向是非常容易的，而且我的关键代码和无服务器的动态逻辑已经开源。  
+我的隐私倒不在意，但是请大佬不要对API进行攻击，我很穷的，没能力支付任何付费计划的账单。  
+若发现严重的安全漏洞请及时与我联系，十分感谢。
 
 ## 历史版本
 
