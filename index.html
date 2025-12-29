@@ -527,44 +527,44 @@
 
     // var uncaughtCount = 0;
 
-    (function () {
-      let uncaughtCount = 0;
-      let errorWindowMs = 5000; // 统计周期：5秒
-      let lastReset = Date.now();
+    // (function () {
+    //   let uncaughtCount = 0;
+    //   let errorWindowMs = 5000; // 统计周期：5秒
+    //   let lastReset = Date.now();
 
-      window.addEventListener("error", function (event) {
-        const msg = event.message || "";
+    //   window.addEventListener("error", function (event) {
+    //     const msg = event.message || "";
 
-        // 致命错误：立即刷新 其实根本刷新不了
-        // if (msg.includes("Aborted(native code called abort())")) {
-        //   console.error("检测到 abort()，立即刷新页面");
-        //   location.reload();
-        //   return;
-        // }
+    //     // 致命错误：立即刷新 其实根本刷新不了
+    //     // if (msg.includes("Aborted(native code called abort())")) {
+    //     //   console.error("检测到 abort()，立即刷新页面");
+    //     //   location.reload();
+    //     //   return;
+    //     // }
 
-        // 非致命错误计数
-        if (msg.includes("Uncaught")) {
-          console.warn("捕获到未处理异常：", msg);
+    //     // 非致命错误计数
+    //     if (msg.includes("Uncaught")) {
+    //       console.warn("捕获到未处理异常：", msg);
 
-          const now = Date.now();
-          // 周期性重置计数
-          if (now - lastReset > errorWindowMs) {
-            uncaughtCount = 0;
-            lastReset = now;
-          }
+    //       const now = Date.now();
+    //       // 周期性重置计数
+    //       if (now - lastReset > errorWindowMs) {
+    //         uncaughtCount = 0;
+    //         lastReset = now;
+    //       }
 
-          if (++uncaughtCount > 10) {
-            console.error("短时间内错误过多，刷新页面以恢复");
-            location.reload();
-          }
-        }
-      });
+    //       if (++uncaughtCount > 10) {
+    //         console.error("短时间内错误过多，刷新页面以恢复");
+    //         location.reload();
+    //       }
+    //     }
+    //   });
 
-      // === 兜底：捕获未处理的 Promise 错误 ===
-      window.addEventListener("unhandledrejection", function (event) {
-        console.warn("未处理的 Promise 异常：", event.reason);
-      });
-    })();
+    //   // === 兜底：捕获未处理的 Promise 错误 ===
+    //   window.addEventListener("unhandledrejection", function (event) {
+    //     console.warn("未处理的 Promise 异常：", event.reason);
+    //   });
+    // })();
 
 
 
