@@ -381,6 +381,7 @@
         try {
           const res = await fetch(url);
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          finishedCount++;
           return await res.arrayBuffer();
         } catch (err) {
           console.warn(`请求失败 [${url}] 第 ${attempt} 次:`, err);
