@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>Qt for WebAssembly多线程异常处理（worker: onmessage() captured an uncaught exception: TypeError: Module.getRandomValue is not a function）</title>
+<link>https://uwillno.com?blog=62</link>
+<pubDate>Fri, 09 Jan 2026 00:00:00 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
 <title>Cloudflare Workers实现访客统计功能</title>
 <link>https://uwillno.com?blog=61</link>
 <pubDate>Sat, 03 Jan 2026 00:00:00 GMT</pubDate>
@@ -35,14 +41,14 @@
 <category>测试</category>
 </item>
 <item>
-<title>Xml异常处理记录</title>
-<link>https://uwillno.com?blog=56</link>
+<title>Qt Markdown预览增强记录</title>
+<link>https://uwillno.com?blog=55</link>
 <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
 <item>
-<title>Qt Markdown预览增强记录</title>
-<link>https://uwillno.com?blog=55</link>
+<title>Xml异常处理记录</title>
+<link>https://uwillno.com?blog=56</link>
 <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
