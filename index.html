@@ -526,56 +526,54 @@
 
     // 启动初始化
     window.addEventListener("DOMContentLoaded", init);
+    // 用于实现WASM的返回功能
+    (function () {
+      // 节流标记，防止重复触发 popstate
+      let isHandlingPop = false;
 
-    // var uncaughtCount = 0;
+      function initHistory() {
+        // Firefox 需要至少有一个历史条目
+        if (window.history.state === null) {
+          history.replaceState({ page: 1 }, "", document.URL);
+        }
 
-    // (function () {
-    //   let uncaughtCount = 0;
-    //   let errorWindowMs = 5000; // 统计周期：5秒
-    //   let lastReset = Date.now();
+        // 再 push 一个条目，作为可拦截返回点
+        history.pushState({ page: 2 }, "", document.URL);
+      }
 
-    //   window.addEventListener("error", function (event) {
-    //     const msg = event.message || "";
+      // popstate 处理
+      function onPopState(event) {
+        if (isHandlingPop) return;
+        isHandlingPop = true;
 
-    //     // 致命错误：立即刷新 其实根本刷新不了
-    //     // if (msg.includes("Aborted(native code called abort())")) {
-    //     //   console.error("检测到 abort()，立即刷新页面");
-    //     //   location.reload();
-    //     //   return;
-    //     // }
+        // 回滚地址栏，保证不会跳出页面
+        setTimeout(() => {
+          history.pushState({ page: 2 }, "", document.URL);
+          isHandlingPop = false;
+        }, 0);
 
-    //     // 非致命错误计数
-    //     if (msg.includes("Uncaught")) {
-    //       console.warn("捕获到未处理异常：", msg);
+        // 调用 wasm 内部方法
+        if (window.instance && typeof instance.back === 'function') {
+          instance.back();
+        }
+      }
 
-    //       const now = Date.now();
-    //       // 周期性重置计数
-    //       if (now - lastReset > errorWindowMs) {
-    //         uncaughtCount = 0;
-    //         lastReset = now;
-    //       }
+      // 初始化历史状态等
+      if (document.readyState === "loading") {
+        document.addEventListener('DOMContentLoaded', initHistory);
+      } else {
+        initHistory();
+      }
 
-    //       if (++uncaughtCount > 10) {
-    //         console.error("短时间内错误过多，刷新页面以恢复");
-    //         location.reload();
-    //       }
-    //     }
-    //   });
-
-    //   // === 兜底：捕获未处理的 Promise 错误 ===
-    //   window.addEventListener("unhandledrejection", function (event) {
-    //     console.warn("未处理的 Promise 异常：", event.reason);
-    //   });
-    // })();
-
-
+      window.addEventListener('popstate', onPopState);
+    })();
 
 
   </script>
   <script src="blog.min.js"></script>
   <script type="text/javascript" src="qtloader.js"></script>
   <!-- 给大佬娱乐一下，用devtool太没有仪式感了，防小白，没什么用 -->
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>.
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
   <script src="https://cdn.jsdelivr.net/gh/bm-hien/jscript@main/anti-iframe.js"></script>
 
 </body>
