@@ -424,7 +424,7 @@
     var progressInterval = null;
     var currentProgress = 0;
     var maxAutoProgress = 0;
-
+    var wasmUrl = null;
     async function init() {
       const statusText = document.querySelector("#qtstatus .status-text");
       const spinner = document.querySelector("#qtstatus .spinner");
@@ -435,7 +435,7 @@
       try {
         // 启动自动进度条
         startAutoProgress();
-
+        wasmUrl = await loadAndMergeWasm(wasmParts);
         // 加载Qt应用
         instance = await qtLoad({
           qt: {
@@ -496,16 +496,9 @@
     function startAutoProgress() {
       currentProgress = 0;
       updateProgress(0, "Starting application...");
-
-      // 每300ms增加1-3%的进度，直到达到maxAutoProgress
       progressInterval = setInterval(() => {
         currentProgress = 100 / totalCount * finishedCount;
-        // maxAutoProgress = 100 / totalCount * (finishedCount +1 ) > 100 ? 100 :  100 / totalCount * (finishedCount +1 );
-        // if (currentProgress <= maxAutoProgress) {
-        //   const increment = 1 + Math.random() * 2; // 随机增量
-        //   currentProgress = Math.min(currentProgress + increment, maxAutoProgress);
         updateProgress(currentProgress, "Loading application...");
-        // }
       }, 100);
     }
 
@@ -526,47 +519,20 @@
 
     // 启动初始化
     window.addEventListener("DOMContentLoaded", init);
-    // 用于实现WASM的返回功能
-    (function () {
-      // 节流标记，防止重复触发 popstate
-      let isHandlingPop = false;
 
-      function initHistory() {
-        // Firefox 需要至少有一个历史条目
-        if (window.history.state === null) {
-          history.replaceState({ page: 1 }, "", document.URL);
-        }
+    // 用于实现WASM的返回功能 尝试push次数，FireFox的push需要用户交互触发，qml信号太乱需要多次尝试，成功一次即可
+    let pushCount = 0;
+    // wasm里交互后调用
+    function pushHistoryOnce() {
+      if (pushCount > 10) return;
+      history.replaceState({ wasm: pushCount }, '', location.href);
+      history.pushState({ wasm: pushCount + 1 }, '', location.href);
+      pushCount++;
+    }
 
-        // 再 push 一个条目，作为可拦截返回点
-        history.pushState({ page: 2 }, "", document.URL);
-      }
-
-      // popstate 处理
-      function onPopState(event) {
-        if (isHandlingPop) return;
-        isHandlingPop = true;
-
-        // 回滚地址栏，保证不会跳出页面
-        setTimeout(() => {
-          history.pushState({ page: 2 }, "", document.URL);
-          isHandlingPop = false;
-        }, 0);
-
-        // 调用 wasm 内部方法
-        if (window.instance && typeof instance.back === 'function') {
-          instance.back();
-        }
-      }
-
-      // 初始化历史状态等
-      if (document.readyState === "loading") {
-        document.addEventListener('DOMContentLoaded', initHistory);
-      } else {
-        initHistory();
-      }
-
-      window.addEventListener('popstate', onPopState);
-    })();
+    window.addEventListener('popstate', () => {
+      instance?.back?.();
+    });
 
 
   </script>
