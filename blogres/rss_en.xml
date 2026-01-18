@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>Browser back interception and C++/QML interaction, behavior/bug differences Qt for WebAssembly</title>
+<link>https://uwillno.com?blog=64</link>
+<pubDate>Sun, 18 Jan 2026 00:00:00 GMT</pubDate>
+<category>Technology</category>
+</item>
+<item>
 <title>Qt for WebAssembly memory optimization management</title>
 <link>https://uwillno.com?blog=63</link>
 <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
@@ -47,14 +53,14 @@
 <category>Test</category>
 </item>
 <item>
-<title>Qt Markdown preview enhancement record</title>
-<link>https://uwillno.com?blog=55</link>
+<title>XML Exception Handling Log</title>
+<link>https://uwillno.com?blog=56</link>
 <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 <category>Technology</category>
 </item>
 <item>
-<title>XML Exception Handling Log</title>
-<link>https://uwillno.com?blog=56</link>
+<title>Qt Markdown preview enhancement record</title>
+<link>https://uwillno.com?blog=55</link>
 <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 <category>Technology</category>
 </item>
@@ -167,14 +173,14 @@
 <category>Technology</category>
 </item>
 <item>
-<title>Record processing std::unique_ptr&lt;QWebSocket&gt;</title>
-<link>https://uwillno.com?blog=36</link>
+<title>Record&lt;&gt; causes markdown and xml to exceptions</title>
+<link>https://uwillno.com?blog=37</link>
 <pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
 <category>Technology</category>
 </item>
 <item>
-<title>Record&lt;&gt; causes markdown and xml to exceptions</title>
-<link>https://uwillno.com?blog=37</link>
+<title>Record processing std::unique_ptr&lt;QWebSocket&gt;</title>
+<link>https://uwillno.com?blog=36</link>
 <pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
 <category>Technology</category>
 </item>
