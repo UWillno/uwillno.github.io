@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>文件安全功能开发记录与说明</title>
+<link>https://uwillno.com?blog=65</link>
+<pubDate>Thu, 22 Jan 2026 00:00:00 GMT</pubDate>
+<category>功能说明</category>
+</item>
+<item>
 <title>浏览器后退拦截与C++/QML交互、行为/bug差异 Qt for WebAssembly</title>
 <link>https://uwillno.com?blog=64</link>
 <pubDate>Sun, 18 Jan 2026 00:00:00 GMT</pubDate>
@@ -239,12 +245,6 @@
 <category>技术</category>
 </item>
 <item>
-<title>博客问题记录（WASM平台）</title>
-<link>https://uwillno.com?blog=logs</link>
-<pubDate>Sun, 20 Oct 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
 <title>Qt for WebAssembly中使用Qt/C++调用JavaScript实现路由</title>
 <link>https://uwillno.com?blog=26</link>
 <pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate>
@@ -457,10 +457,6 @@
 <item>
 <title>文件安全</title>
 <link>https://uwillno.com?func=na</link>
-</item>
-<item>
-<title>代码统计</title>
-<link>https://uwillno.com?about=cloc</link>
 </item>
 <item>
 <title>变更日志</title>
