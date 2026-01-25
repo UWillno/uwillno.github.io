@@ -532,5 +532,9 @@
 <title>友链</title>
 <link>https://uwillno.com?links</link>
 </item>
+<item>
+<title>设置</title>
+<link>https://uwillno.com?settings</link>
+</item>
 </channel>
 </rss>
