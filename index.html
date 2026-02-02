@@ -50,8 +50,8 @@
 
     html,
     body {
-      height: 100%;
-      width: 100%;
+      block-size: 100%;
+      inline-size: 100%;
       overflow: hidden;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -83,10 +83,10 @@
 
     #loading-container {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      inline-size: 100%;
+      block-size: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -103,25 +103,32 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-block-end: 1.5rem;
       flex-shrink: 0;
     }
 
     .logo {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 0.8rem;
+      inline-size: 120px;
+      block-size: 120px;
+      margin-block-end: 0.8rem;
       animation: float 3s ease-in-out infinite;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
     }
 
     h1 {
       font-size: 1.8rem;
-      margin-bottom: 0.5rem;
+      margin-block-end: 0.5rem;
       font-weight: 600;
       color: var(--primary-text);
       text-align: center;
@@ -129,8 +136,8 @@
 
     /* 主内容容器 */
     .main-content {
-      width: 100%;
-      max-width: 500px;
+      inline-size: 100%;
+      max-inline-size: 500px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -141,16 +148,16 @@
       background-color: var(--card-bg);
       border-radius: 12px;
       padding: 1.5rem;
-      width: 100%;
+      inline-size: 100%;
       box-shadow: var(--shadow);
       border: 1px solid var(--border-color);
-      margin-bottom: 1rem;
+      margin-block-end: 1rem;
       flex-shrink: 0;
     }
 
     .progress-container {
-      width: 100%;
-      height: 6px;
+      inline-size: 100%;
+      block-size: 6px;
       background-color: rgba(0, 0, 0, 0.1);
       border-radius: 3px;
       overflow: hidden;
@@ -164,8 +171,8 @@
     }
 
     .progress-bar {
-      height: 100%;
-      width: 0;
+      block-size: 100%;
+      inline-size: 0;
       background-color: var(--loading-color);
       transition: width 0.3s ease;
     }
@@ -181,13 +188,13 @@
 
     .spinner {
       display: inline-block;
-      width: 20px;
-      height: 20px;
+      inline-size: 20px;
+      block-size: 20px;
       border: 3px solid rgba(0, 0, 0, 0.1);
       border-radius: 50%;
-      border-top-color: var(--loading-color);
+      border-block-start-color: var(--loading-color);
       animation: spin 1s ease-in-out infinite;
-      margin-right: 8px;
+      margin-inline-end: 8px;
       flex-shrink: 0;
     }
 
@@ -206,7 +213,7 @@
       background-color: var(--card-bg);
       border-radius: 12px;
       padding: 1.5rem;
-      width: 100%;
+      inline-size: 100%;
       box-shadow: var(--shadow);
       border: 1px solid var(--border-color);
       flex-shrink: 0;
@@ -219,26 +226,26 @@
     }
 
     .panel-section {
-      margin-bottom: 1rem;
+      margin-block-end: 1rem;
     }
 
     .panel-section:last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     .panel-section h3 {
       font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-block-end: 0.5rem;
       color: var(--primary-text);
     }
 
     .panel-section p {
-      margin-bottom: 0.5rem;
+      margin-block-end: 0.5rem;
     }
 
     .panel-section p:last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     /* 镜像站列表 - 紧凑排列 */
@@ -246,7 +253,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem 1rem;
-      margin-top: 0.5rem;
+      margin-block-start: 0.5rem;
     }
 
     .mirror-link {
@@ -273,19 +280,20 @@
     }
 
     @media (orientation: portrait) {
+
       .loading-card,
       .info-panel {
-        margin-left: 16px;
-        margin-right: 16px;
-        width: calc(100% - 32px);
+        margin-inline-start: 16px;
+        margin-inline-end: 16px;
+        inline-size: calc(100% - 32px);
       }
     }
 
     #loading-footer {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      inline-size: 100%;
       text-align: center;
       font-size: 0.85rem;
       color: var(--secondary-text);
@@ -306,28 +314,28 @@
     }
 
     #qt-container {
-      width: 100%;
-      height: 100%;
+      inline-size: 100%;
+      block-size: 100%;
       display: none;
     }
 
     .error-message {
       color: var(--error-color);
       font-weight: 500;
-      margin-top: 1rem;
+      margin-block-start: 1rem;
     }
 
     .success-message {
       color: var(--success-color);
       font-weight: 500;
-      margin-top: 1rem;
+      margin-block-start: 1rem;
     }
 
     /* 小屏幕设备优化 */
-    @media (max-width: 600px) {
+    @media (max-inline-size: 600px) {
       .logo {
-        width: 100px;
-        height: 100px;
+        inline-size: 100px;
+        block-size: 100px;
       }
 
       h1 {
@@ -342,69 +350,69 @@
       .mirrors-list {
         gap: 0.4rem 0.8rem;
       }
-      
+
       .mirror-link {
         font-size: 0.85rem;
       }
-      
+
       .panel-content {
         font-size: 0.85rem;
       }
     }
 
     /* 小高度设备优化 */
-    @media (max-height: 600px) {
+    @media (max-block-size: 600px) {
       #loading-container {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-block-start: 10px;
+        padding-block-end: 10px;
       }
-      
+
       .header {
-        margin-bottom: 1rem;
+        margin-block-end: 1rem;
       }
-      
+
       .logo {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 0.5rem;
+        inline-size: 80px;
+        block-size: 80px;
+        margin-block-end: 0.5rem;
       }
-      
+
       h1 {
         font-size: 1.4rem;
-        margin-bottom: 0.3rem;
+        margin-block-end: 0.3rem;
       }
-      
+
       .loading-card {
         padding: 1rem;
-        margin-bottom: 0.8rem;
+        margin-block-end: 0.8rem;
       }
-      
+
       .info-panel {
         padding: 1rem;
       }
-      
+
       .panel-section {
-        margin-bottom: 0.8rem;
+        margin-block-end: 0.8rem;
       }
-      
+
       .panel-section h3 {
         font-size: 0.9rem;
-        margin-bottom: 0.4rem;
+        margin-block-end: 0.4rem;
       }
-      
+
       .panel-content {
         font-size: 0.8rem;
       }
-      
+
       .mirrors-list {
         gap: 0.3rem 0.6rem;
-        margin-top: 0.3rem;
+        margin-block-start: 0.3rem;
       }
-      
+
       .mirror-link {
         font-size: 0.8rem;
       }
-      
+
       #loading-footer {
         padding: 0.8rem;
         font-size: 0.8rem;
@@ -412,55 +420,55 @@
     }
 
     /* 超小高度设备优化 */
-    @media (max-height: 400px) {
+    @media (max-block-size: 400px) {
       #loading-container {
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-block-start: 5px;
+        padding-block-end: 5px;
       }
-      
+
       .header {
-        margin-bottom: 0.5rem;
+        margin-block-end: 0.5rem;
       }
-      
+
       .logo {
-        width: 60px;
-        height: 60px;
-        margin-bottom: 0.3rem;
+        inline-size: 60px;
+        block-size: 60px;
+        margin-block-end: 0.3rem;
       }
-      
+
       h1 {
         font-size: 1.2rem;
-        margin-bottom: 0.2rem;
+        margin-block-end: 0.2rem;
       }
-      
+
       .loading-card {
         padding: 0.8rem;
-        margin-bottom: 0.6rem;
+        margin-block-end: 0.6rem;
       }
-      
+
       .info-panel {
         padding: 0.8rem;
       }
-      
+
       .panel-section {
-        margin-bottom: 0.6rem;
+        margin-block-end: 0.6rem;
       }
-      
+
       .panel-section h3 {
         font-size: 0.85rem;
-        margin-bottom: 0.3rem;
+        margin-block-end: 0.3rem;
       }
-      
+
       .panel-content {
         font-size: 0.75rem;
         line-height: 1.4;
       }
-      
+
       .mirrors-list {
         gap: 0.2rem 0.4rem;
-        margin-top: 0.2rem;
+        margin-block-start: 0.2rem;
       }
-      
+
       .mirror-link {
         font-size: 0.75rem;
       }
@@ -475,7 +483,7 @@
       <img src="uwlogo.png" alt="UWillno Logo" class="logo" />
       <h1>UWillno's Blog</h1>
     </div>
-    
+
     <div class="main-content">
       <!-- 进度条卡片 -->
       <div class="loading-card">
@@ -493,13 +501,13 @@
         <div class="panel-content">
           <div class="panel-section">
             <h3>技术说明</h3>
-            <p>采用Qt/C++开发，WASM源文件近40MB（通常服务器会进行压缩），注意数据用量，延迟低不代表高速率，尽量开启代理工具。</p>
+            <p>采用Qt/C++开发，WASM压缩后约15MB，注意数据用量，低延迟不代表高速率，尽量开启代理工具。</p>
           </div>
           <div class="panel-section">
             <h3>浏览器建议</h3>
             <p>FireFox >> Edge/Chorme(Chromium) >> Safari >> Others</p>
           </div>
-          
+
           <div class="panel-section">
             <h3>镜像站点</h3>
             <div class="mirrors-list" id="mirrorsList"></div>
@@ -521,8 +529,8 @@
       const mainContent = document.createElement("div");
       mainContent.style.cssText = `
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: calc(100% - 60px);
+      inset-block-start: 0; inset-inline-start: 0;
+      inline-size: 100%; block-size: calc(100% - 60px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -535,11 +543,11 @@
     `;
       mainContent.innerHTML = `
       <img src="uwlogo.png" alt="Logo"
-           style="width: 120px; height: 120px; margin-bottom: 1.5rem; animation: float 3s ease-in-out infinite;">
-      <h1 style="font-size: 1.8rem; margin-bottom: 1rem;">
+           style="inline-size: 120px; block-size: 120px; margin-block-end: 1.5rem; animation: float 3s ease-in-out infinite;">
+      <h1 style="font-size: 1.8rem; margin-block-end: 1rem;">
         浏览器不支持 SharedArrayBuffer / SharedArrayBuffer Unsupported
       </h1>
-      <p style="max-width: 480px; color: var(--secondary-text); font-size: 1rem; line-height: 1.6;">
+      <p style="max-inline-size: 480px; color: var(--secondary-text); font-size: 1rem; line-height: 1.6;">
         本页面需要 SharedArrayBuffer 支持以启用多线程功能。<br>
         This site requires SharedArrayBuffer to enable multi-threading.<br><br>
 
@@ -558,6 +566,7 @@
       throw new Error("Unsupported browser: SharedArrayBuffer not available");
     }
   </script>
+  <script src="fzstd.js"></script>
   <!-- WASM 容器（全屏） -->
   <div id="qt-container"></div>
   <script type="text/javascript">
@@ -626,11 +635,14 @@
       }
     }
 
-    // 生成临时 URL
+    // 下载分块 → 合并 → 解压 → 生成临时 URL
     async function loadAndMergeWasm(parts) {
+      // 1. 并行下载所有分块
       const buffers = await Promise.all(
         parts.map((url) => fetchWithRetry(url, 5, 1000, 5000))
       );
+
+      // 2. 合并所有分块
       const totalLength = buffers.reduce((sum, b) => sum + b.byteLength, 0);
       const merged = new Uint8Array(totalLength);
       let offset = 0;
@@ -638,12 +650,16 @@
         merged.set(new Uint8Array(buf), offset);
         offset += buf.byteLength;
       }
-      const blob = new Blob([merged], { type: "application/wasm" });
+
+      // 3. 解压合并后的完整数据
+      const decompressed = fzstd.decompress(merged); // Uint8Array
+
+      // 4. 生成临时 URL
+      const blob = new Blob([decompressed], { type: "application/wasm" });
       const tempUrl = URL.createObjectURL(blob);
+
       return tempUrl;
     }
-
-
     var finishedCount = 0;
     var totalCount = wasmParts.length;
     var instance = null;
@@ -651,7 +667,7 @@
     var currentProgress = 0;
     var maxAutoProgress = 0;
     var wasmUrl = null;
-    
+
     async function init() {
       const statusText = document.querySelector("#qtstatus .status-text");
       const spinner = document.querySelector("#qtstatus .spinner");
