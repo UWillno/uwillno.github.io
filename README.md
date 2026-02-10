@@ -25,6 +25,10 @@
 
 ---
 
+## 监视器
+
+![monitor](assets/monitor.jpg)
+
 ## 统计可视化
 
 ![统计功能](assets/统计功能.png)
