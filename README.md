@@ -29,6 +29,10 @@
 
 ![monitor](assets/monitor.jpg)
 
+## 文件压缩/解压
+
+![zstd](assets/zstd.jpg)
+
 ## 统计可视化
 
 ![统计功能](assets/统计功能.png)
