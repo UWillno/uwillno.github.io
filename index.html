@@ -505,7 +505,9 @@
           </div>
           <div class="panel-section">
             <h3>浏览器建议</h3>
-            <p>多线程构建，浏览器需支持<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7" target="_blank">SharedArrayBuffer</a><br>FireFox >> Edge/Chorme(Chromium) >> Others</p>
+            <p>多线程构建，浏览器需支持<a
+                href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7"
+                target="_blank">SharedArrayBuffer</a><br>FireFox >> Edge/Chorme(Chromium) >> Others</p>
           </div>
 
           <div class="panel-section">
@@ -722,7 +724,8 @@
         document.querySelector("#qtstatus .status-text").textContent = message;
       }
     }
-
+    // 提速
+    window.showOpenFilePicker = undefined;
     // 启动初始化
     window.addEventListener("DOMContentLoaded", init);
 
@@ -734,6 +737,39 @@
       history.pushState({ wasm: pushCount + 1 }, '', location.href);
       pushCount++;
     }
+    // // 降级showSaveFilePicker，直接下载以提高效率 
+    // window.showSaveFilePicker = async function (options = {}) {
+    //   const suggestedName = options.suggestedName || 'download';
+
+    //   return {
+    //     async createWritable() {
+    //       let chunks = [];
+
+    //       return {
+    //         async write(data) {
+    //           if (data instanceof Blob) {
+    //             chunks.push(data);
+    //           } else {
+    //             chunks.push(new Blob([data]));
+    //           }
+    //         },
+
+    //         async close() {
+    //           const blob = new Blob(chunks);
+
+    //           const a = document.createElement('a');
+    //           const url = URL.createObjectURL(blob);
+
+    //           a.href = url;
+    //           a.download = suggestedName;
+    //           a.click();
+
+    //           setTimeout(() => URL.revokeObjectURL(url), 1000);
+    //         }
+    //       };
+    //     }
+    //   };
+    // };
 
     window.addEventListener('popstate', () => {
       instance?.back?.();
