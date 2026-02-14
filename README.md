@@ -21,6 +21,8 @@
 
 ![monitor](assets/monitor.jpg)
 
+开关开启为60s变化图，关闭为占用图，线程块长按可展开/收缩。
+
 ## 文件压缩/解压
 
 ![zstd](assets/zstd.jpg)
