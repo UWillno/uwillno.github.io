@@ -1,8 +1,2 @@
-*.wasm linguist-language=C++
+*.wasm linguist-language=WebAssembly
 *.wasm linguist-vendored=false
-*.rcc linguist-language=QML
-*.rcc linguist-vendored=false
-*.html linguist-language=HTML
-*.html linguist-detectable=true
-*.js linguist-language=JavaScript
-*.js linguist-detectable=true
