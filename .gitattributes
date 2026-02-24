@@ -1,2 +1,10 @@
 *.wasm linguist-language=WebAssembly
 *.wasm linguist-vendored=false
+
+*.js   linguist-generated=false
+*.js   linguist-vendored=false
+*.js   linguist-detectable=true
+
+*.html linguist-generated=false
+*.html linguist-vendored=false
+*.html linguist-detectable=true
