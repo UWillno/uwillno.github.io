@@ -19,6 +19,10 @@
 
 ## 监视器
 
+新增安卓监视器，手机性能太差，非长连接实现，不监视性能。
+
+![monitor](assets/安卓监视器.jpg)
+
 ![monitor](assets/monitor.jpg)
 
 长按可展开/收缩。
