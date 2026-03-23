@@ -505,7 +505,7 @@
                 href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7"
                 target="_blank">SharedArrayBuffer</a></p>
           </div>
-      
+
           <div class="panel-section">
             <h3>推荐配置</h3>
             <p>
@@ -513,21 +513,21 @@
               Android：搭载骁龙8 Gen1/天玑9000同等级及以上芯片、8GB运行内存及以上的手机设备
             </p>
           </div>
-      
+
           <div class="panel-section">
             <h3>其它</h3>
             <p>
               动态功能依赖Cloudflare实现，部分地区需要使用代理工具，若不需要可以载入后直接断网。
             </p>
-        </div>
-        
-        <div class="panel-section">
-          <h3>镜像站点</h3>
-          <div class="mirrors-list" id="mirrorsList"></div>
+          </div>
+
+          <div class="panel-section">
+            <h3>镜像站点</h3>
+            <div class="mirrors-list" id="mirrorsList"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 
   <!-- 页脚 -->
@@ -539,7 +539,9 @@
   <!-- WASM 容器（全屏） -->
   <div id="qt-container"></div>
   <script type="text/javascript">
-
+    // wasm内文件导出提速
+    window.showOpenFilePicker = undefined;
+    // 镜像站点列表
     const mirrors = [
       ["GitHub", "https://github.uwillno.com"],
       ["Vercel", "https://vercel.uwillno.com"],
@@ -577,6 +579,99 @@
       "blog09.wasm",
       "blog10.wasm",
     ];
+
+    var finishedCount = 0;
+    var totalCount = wasmParts.length;
+    var instance = null;
+    var progressInterval = null;
+    var currentProgress = 0;
+    var maxAutoProgress = 0;
+    var wasmUrl = null;
+
+
+    const statusText = document.querySelector("#qtstatus .status-text");
+    const spinner = document.querySelector("#qtstatus .spinner");
+    const progress = document.getElementById("progress");
+    const loadingContainer = document.getElementById("loading-container");
+    const loadingFooter = document.getElementById("loading-footer");
+    // coi-serviceworker.js 为异步加载，需要在其他脚本之前加载以确保 COI 能正确设置
+    /**
+     * 启动入口
+     */
+    window.addEventListener("DOMContentLoaded", boot);
+
+    async function boot() {
+      try {
+        // 等待 Service Worker 接管页面
+        await waitForSWController();
+
+        // 确保 COI 生效（不满足则刷新一次）
+        if (!ensureCOIReady()) return;
+
+        // COI ready 后再启动应用
+        await initApp();
+      } catch (e) {
+        console.error(e);
+        displayError(e.message);
+      }
+    }
+
+    /**
+     * 等待 SW controller
+     */
+    async function waitForSWController() {
+      if (!navigator.serviceWorker) return;
+
+      if (navigator.serviceWorker.controller) return;
+
+      await new Promise((resolve) => {
+        const timeout = setTimeout(resolve, 2000); // 防卡死兜底
+
+        navigator.serviceWorker.addEventListener(
+          "controllerchange",
+          () => {
+            clearTimeout(timeout);
+            resolve();
+          },
+          { once: true }
+        );
+      });
+    }
+    function displayError(message) {
+      stopAutoProgress();
+      // 隐藏spinner并显示错误状态
+      spinner.style.display = "none";
+      statusText.innerHTML = `<span class="error-message">✗ Failed to load: ${message}</span>`;
+      progress.style.backgroundColor = "var(--error-color)";
+    }
+    /**
+     * 检查 COI 是否就绪，不就绪则 reload 一次
+     */
+    function ensureCOIReady() {
+      const isCOI = window.crossOriginIsolated;
+      const hasSAB = typeof SharedArrayBuffer !== "undefined";
+
+      if (isCOI && hasSAB) {
+        sessionStorage.removeItem("coi_reloaded");
+        return true;
+      }
+
+      // 触发一次 reload（只一次）
+      if (!sessionStorage.getItem("coi_reloaded")) {
+        sessionStorage.setItem("coi_reloaded", "1");
+        location.reload();
+        return false;
+      }
+
+      throw new Error("COI / SharedArrayBuffer not available");
+    }
+
+    async function initApp() {
+      console.log("COI ready, starting app...");
+      init()
+    }
+
+
 
     // 带重试 + 指数退避的 fetch
     async function fetchWithRetry(
@@ -630,31 +725,14 @@
 
       return tempUrl;
     }
-    var finishedCount = 0;
-    var totalCount = wasmParts.length;
-    var instance = null;
-    var progressInterval = null;
-    var currentProgress = 0;
-    var maxAutoProgress = 0;
-    var wasmUrl = null;
+
 
     async function init() {
-      const statusText = document.querySelector("#qtstatus .status-text");
-      const spinner = document.querySelector("#qtstatus .spinner");
-      const progress = document.getElementById("progress");
-      const loadingContainer = document.getElementById("loading-container");
-      const loadingFooter = document.getElementById("loading-footer");
-      const forceTest = false; //仅调试
+
       try {
 
         // 启动自动进度条
         startAutoProgress();
-
-        if (forceTest || typeof SharedArrayBuffer === "undefined") {
-          stopAutoProgress();
-          // 停止后续脚本加载
-          throw new Error("SharedArrayBuffer not available");
-        }
 
         wasmUrl = await loadAndMergeWasm(wasmParts);
         // 加载Qt应用
@@ -702,12 +780,7 @@
         });
       } catch (e) {
         console.error(e);
-        stopAutoProgress();
-
-        // 隐藏spinner并显示错误状态
-        spinner.style.display = "none";
-        statusText.innerHTML = `<span class="error-message">✗ Failed to load: ${e.message}</span>`;
-        progress.style.backgroundColor = "var(--error-color)";
+        displayError(e.message);
       }
     }
 
@@ -735,11 +808,6 @@
         document.querySelector("#qtstatus .status-text").textContent = message;
       }
     }
-    // 提速
-    window.showOpenFilePicker = undefined;
-    // 启动初始化
-    window.addEventListener("DOMContentLoaded", init);
-
     // 用于实现WASM的返回功能
     let pushCount = 0;
     function pushHistoryOnce() {
