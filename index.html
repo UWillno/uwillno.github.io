@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <link rel="icon" type="image/png" href="uwlogo.png" />
   <title>UWillno's Blog</title>
   <style>
@@ -24,7 +24,9 @@
       --mirror-color: #2563eb;
       --mirror-hover: #1d4ed8;
       --wave-fill: rgba(45, 212, 191, 0.8);
+      --wave-fill-light: rgba(45, 212, 191, 0.4);
       --error-color: #b91c1c;
+      --loading-overlay: rgba(249, 250, 251, 0.6);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -37,22 +39,29 @@
         --link-hover: #99f6e4;
         --mirror-color: #93c5fd;
         --mirror-hover: #bfdbfe;
-        --wave-fill: rgba(45, 212, 191, 0.2);
+        --wave-fill: rgba(45, 212, 191, 0.25);
+        --wave-fill-light: rgba(45, 212, 191, 0.15);
+        --loading-overlay: rgba(3, 7, 18, 0.5);
       }
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      background: var(--primary-bg);
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', system-ui, sans-serif;
-      background: var(--primary-bg);
       color: var(--primary-text);
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-      position: relative;
       font-size: 1.1rem;
+      position: relative;
     }
 
-    /* 液体水位层：背景色直接填充，波浪仅作装饰 */
+    /* 液体水位层 —— 始终在底层，加载时可见，应用启动后淡出 */
     .water-level {
       position: fixed;
       bottom: 0;
@@ -60,10 +69,15 @@
       width: 100%;
       height: 0%;
       background: var(--wave-fill);
-      z-index: 1;
-      transition: height 0.1s linear;
+      z-index: 0;
+      transition: height 0.1s linear, opacity 0.3s ease;
       pointer-events: none;
       overflow: hidden;
+      opacity: 1;
+    }
+
+    .water-level.hidden-waves {
+      opacity: 0;
     }
 
     .liquid-layer {
@@ -78,18 +92,30 @@
       display: block;
     }
 
-    /* 加载界面 */
+    /* 加载界面 — 使用半透明背景，让波浪透出，同时保证文字可读 */
     .loading-interface {
-      position: relative;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      width: 100%;
       padding: 2rem 1.8rem;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background: var(--loading-overlay);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      transition: opacity 0.3s ease;
+    }
+
+    .loading-interface.fade-out-ui {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .hero {
@@ -110,17 +136,9 @@
     }
 
     @keyframes gradientFlow {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .info-section {
@@ -137,6 +155,7 @@
       color: var(--primary-text);
       margin-bottom: 1.5rem;
       transition: opacity 0.25s ease-in-out;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
 
     .status-message.fade-out {
@@ -153,6 +172,7 @@
       margin-bottom: 1.2rem;
       flex-wrap: wrap;
       font-weight: 500;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
 
     .mirror-strip {
@@ -168,6 +188,7 @@
       text-decoration: none;
       font-size: 1rem;
       font-weight: 500;
+      text-shadow: 0 0 6px var(--primary-bg);
     }
 
     .mirror-link.current {
@@ -187,6 +208,7 @@
       z-index: 20;
       pointer-events: none;
       font-weight: 500;
+      text-shadow: 0 0 8px var(--primary-bg);
     }
 
     .footer-note a {
@@ -196,10 +218,15 @@
       font-weight: 600;
     }
 
+    /* Qt 容器 — 官方风格，完全覆盖，不透明 */
     #qt-container {
       width: 100%;
       height: 100%;
       display: none;
+      background: var(--primary-bg);
+      overflow: hidden;
+      position: relative;
+      z-index: 30;
     }
 
     .error-message a {
@@ -212,20 +239,18 @@
 
 <body>
 
-  <!-- 液体水位容器：背景色直接填充 -->
+  <!-- 液体水位容器：始终在底层，动画持续运行 -->
   <div class="water-level" id="waterLevel">
     <div class="liquid-layer">
       <svg viewBox="0 0 1200 600" preserveAspectRatio="none">
-        <!-- 固定波浪形状，起点 Y=0，振幅约30，自然起伏 -->
-        <path fill="var(--wave-fill)" opacity="0.7"
+        <path fill="var(--wave-fill)" opacity="0.8"
           d="M0,0 C150,30 350,-30 600,0 C850,30 1050,-30 1200,0 L1200,600 L0,600 Z">
           <animateTransform attributeName="transform" type="translate" from="0 0" to="-600 0" dur="6s"
             repeatCount="indefinite" />
           <animateTransform attributeName="transform" additive="sum" type="translate" values="0 0; 0 -6; 0 0" dur="4s"
             repeatCount="indefinite" />
         </path>
-        <!-- 第二层波浪（更浅，叠加层次感） -->
-        <path fill="var(--wave-fill)" opacity="0.4"
+        <path fill="var(--wave-fill-light)" opacity="0.5"
           d="M0,0 C180,20 380,-20 600,0 C820,20 1020,-20 1200,0 L1200,600 L0,600 Z">
           <animateTransform attributeName="transform" type="translate" from="0 0" to="-600 0" dur="8s"
             repeatCount="indefinite" />
@@ -236,7 +261,7 @@
     </div>
   </div>
 
-  <!-- 加载UI -->
+  <!-- 加载UI (半透明，可见波浪) -->
   <div class="loading-interface" id="modernLoadingContainer">
     <div class="hero">
       <h1>UWillno's Blog</h1>
@@ -296,7 +321,6 @@
       "blog06.wasm", "blog07.wasm", "blog08.wasm", "blog09.wasm", "blog10.wasm"
     ];
 
-    // 进度变量
     let finishedCount = 0;
     const totalCount = wasmParts.length;
     let bytesLoaded = 0;
@@ -307,7 +331,6 @@
     let instance = null;
     let wasmUrl = null;
 
-    // UI元素
     const waterLevelDiv = document.getElementById("waterLevel");
     const statusMessageSpan = document.getElementById("statusMessage");
     const smoothPercentBadge = document.getElementById("smoothPercentBadge");
@@ -467,19 +490,22 @@
       if (carouselInterval) clearInterval(carouselInterval);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
 
+      // 水位升至100%
       waterLevelDiv.style.height = "100%";
       smoothPercentBadge.innerText = "100%";
       updateStatusMessageText("应用已就绪 · 启动交互界面");
       chunkDetailSpan.innerText = `完成 · ${useByteProgress ? (totalBytesExpected / (1024 * 1024)).toFixed(2) + ' MB' : '全部模块'}`;
 
+      // 优雅过渡：加载界面淡出，波浪淡出，然后显示Qt容器
+      modernContainer.classList.add('fade-out-ui');
+      waterLevelDiv.classList.add('hidden-waves');
+      
       setTimeout(() => {
-        setTimeout(() => {
-          modernContainer.style.display = "none";
-          waterLevelDiv.style.display = "none";
-          qtContainerDiv.style.display = "block";
-          window.dispatchEvent(new Event('resize'));
-        }, 300);
-      }, 800);
+        modernContainer.style.display = "none";
+        waterLevelDiv.style.display = "none";   // 完全隐藏波浪，避免占用资源
+        qtContainerDiv.style.display = "block";
+        window.dispatchEvent(new Event('resize'));
+      }, 300);
     }
 
     window.showOpenFilePicker = undefined;
@@ -547,9 +573,8 @@
         refreshRealProgress();
 
         wasmUrl = await loadAndMergeWasm(wasmParts);
-        fetch("/blogres/uw.rcc", {
-          priority: "low"
-        });
+        fetch("/blogres/uw.rcc", { priority: "low" });
+        
         // 实际部署时取消注释以下 qtLoad 代码
         instance = await qtLoad({
           qt: {
@@ -562,7 +587,7 @@
             containerElements: [qtContainerDiv],
           },
         });
-        onAppReadyComplete();
+        // onAppReadyComplete();
 
       } catch (e) {
         console.error(e);
@@ -623,5 +648,4 @@
   <script src="blog.js"></script>
   <script src="qtloader.js"></script>
 </body>
-
 </html>
