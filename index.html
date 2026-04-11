@@ -55,8 +55,8 @@
 
     html,
     body {
-      width: 100%;
-      height: 100%;
+      inline-size: 100%;
+      block-size: 100%;
       overflow: hidden;
       margin: 0;
       padding: 0;
@@ -75,10 +75,10 @@
 
     .water-level {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 0%;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      inline-size: 100%;
+      block-size: 0%;
       background: var(--wave-fill);
       z-index: 0;
       transition: height 0.1s linear, opacity 0.3s ease;
@@ -92,23 +92,23 @@
     }
 
     .liquid-layer {
-      width: 100%;
-      height: 100%;
+      inline-size: 100%;
+      block-size: 100%;
       overflow: hidden;
     }
 
     .liquid-layer svg {
-      width: 200%;
-      height: 100%;
+      inline-size: 200%;
+      block-size: 100%;
       display: block;
     }
 
     .loading-interface {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      inline-size: 100%;
+      block-size: 100%;
       z-index: 10;
       display: flex;
       flex-direction: column;
@@ -130,7 +130,7 @@
 
     .hero {
       text-align: center;
-      margin-bottom: 2.2rem;
+      margin-block-end: 2.2rem;
     }
 
     h1 {
@@ -160,8 +160,8 @@
     }
 
     .info-section {
-      max-width: 560px;
-      width: 100%;
+      max-inline-size: 560px;
+      inline-size: 100%;
       text-align: center;
       margin: 0 auto;
     }
@@ -171,7 +171,7 @@
       line-height: 1.5;
       font-weight: 500;
       color: var(--primary-text);
-      margin-bottom: 1.5rem;
+      margin-block-end: 1.5rem;
       transition: opacity 0.25s ease-in-out;
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     }
@@ -187,7 +187,7 @@
       font-size: 1rem;
       font-family: ui-monospace, 'SF Mono', monospace;
       color: var(--secondary-text);
-      margin-bottom: 1.2rem;
+      margin-block-end: 1.2rem;
       flex-wrap: wrap;
       font-weight: 500;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -198,7 +198,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem 1.8rem;
-      margin-top: 1.8rem;
+      margin-block-start: 1.8rem;
     }
 
     .mirror-link {
@@ -217,9 +217,9 @@
 
     .footer-note {
       position: fixed;
-      bottom: 16px;
-      left: 0;
-      right: 0;
+      inset-block-end: 16px;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
       text-align: center;
       font-size: 0.8rem;
       color: var(--secondary-text);
@@ -237,8 +237,8 @@
     }
 
     #qt-container {
-      width: 100%;
-      height: 100%;
+      inline-size: 100%;
+      block-size: 100%;
       display: none;
       background: var(--primary-bg);
       overflow: hidden;
@@ -248,7 +248,7 @@
 
     .error-message a {
       color: var(--error-color);
-      margin-left: 6px;
+      margin-inline-start: 6px;
       text-decoration: underline;
     }
   </style>
@@ -373,16 +373,31 @@
     let currentTipIdx = 0;
     let isTransitioning = false;
     const techMessages = [
-      "由 Qt 与 WebAssembly 驱动的原生级渲染体验 · 在浏览器中重新定义执行边界",
-      "压缩后约 15MB 的 WASM 载荷 · 通过 fzstd 在 Worker 中进行实时解构",
-      "建议运行环境：i7-10700 / GTX1060 / 16GB 内存 · 以获得一致性性能表现",
-      "移动设备推荐：骁龙 8 Gen1 / 天玑 9000 · 面向高性能场景优化",
+      "Qt 开发 · 同时支持桌面端、移动端和 Web 端",
+
+      "针对 WebAssembly 平台额外适配 · 无需安装即可拥有原生级体验",
+
+      "底层 Qt / C++ 驱动 · 启用多线程，提高任务执行效率",
+
+      "界面 Qt Quick / QML 驱动 · 支持不同渲染后端，实现高效渲染",
+
+      "底层与界面分离架构 · 实现免编译更新",
+
+      "Cloudflare 服务 · 实现静态系统的动态化",
+
+      "Qt / C++ 开发的轻量服务器 · 实时监控多台设备状态",
+
       "全球镜像网络分发 · 动态选择最优路径以最小化延迟",
-      "基于 SharedArrayBuffer 的并发模型 · 提供跨线程的数据一致性能力",
-      "Cloudflare 边缘调度 · 初始化后进入离线可用状态",
-      "界面主题随系统上下文自动协调 · 无需额外配置",
+
+      "WASM 压缩与分块 · 实现大文件静态托管与数据高效传输",
+
       "分块传输与并行处理协同执行 · 避免主线程参与关键路径",
-      "字节级进度感知 · 提供更接近真实的加载可视化反馈"
+
+      "字节级进度感知 · 提供更接近真实的加载可视化反馈",
+
+      "桌面设备推荐 i7-10700 / GTX1060 / 16GB 内存 · 以获得一致性性能表现",
+
+      "移动设备推荐 骁龙 8+ Gen1 / 天玑 9000 · 面向高性能场景优化"
     ];
 
     // ---------- UI 动画与进度 (完全不变) ----------
@@ -484,7 +499,7 @@
         }
         updateStatusMessageText(newMsg);
         currentTipIdx++;
-      }, 5200);
+      }, 2000);
     }
 
     function showError(errMsg) {
