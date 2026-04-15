@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,11 +10,10 @@
   <link rel="preload" href="fzstd.js" as="script">
   <link rel="preload" href="qtloader.js" as="script">
   <link rel="preload" href="blog.js" as="script">
-  <!-- 如果 uw.rcc 是必须的，也可预加载 -->
   <link rel="preload" href="/blogres/uw.rcc" as="fetch" crossorigin="anonymous">
   <title>UWillno's Blog</title>
   <style>
-    /* 样式保持完全不变 */
+    /* ----- 基础重置 + 水波动画 (保留原版视觉) ----- */
     * {
       margin: 0;
       padding: 0;
@@ -53,8 +51,7 @@
       }
     }
 
-    html,
-    body {
+    html, body {
       inline-size: 100%;
       block-size: 100%;
       overflow: hidden;
@@ -63,7 +60,6 @@
       background: var(--primary-bg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
     }
 
     body {
@@ -73,6 +69,7 @@
       position: relative;
     }
 
+    /* 水波层 (进度填充) */
     .water-level {
       position: fixed;
       inset-block-end: 0;
@@ -103,24 +100,21 @@
       display: block;
     }
 
+    /* ========== 全新三明治布局：标题贴顶 | 核心信息居中 | 底部区域 (镜像+百分比+备案) ========== */
     .loading-interface {
       position: fixed;
-      inset-block-start: 0;
-      inset-inline-start: 0;
-      inline-size: 100%;
-      block-size: 100%;
+      inset: 0;
       z-index: 10;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.8rem;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
       background: var(--loading-overlay);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
       transition: opacity 0.3s ease;
+      opacity: 1;
+      padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .loading-interface.fade-out-ui {
@@ -128,14 +122,45 @@
       pointer-events: none;
     }
 
+    /* 顶部区域：标题紧贴顶部 */
+    .loading-header {
+      flex-shrink: 0;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 中央区域：垂直水平居中，承载主要状态信息 */
+    .loading-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 1rem 1rem;
+    }
+
+    /* 底部区域：所有底部内容 (镜像、进度百分比、备案) 贴底 */
+    .loading-footer {
+      flex-shrink: 0;
+      text-align: center;
+      inline-size: 100%;
+      margin-block-start: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    /* 标题样式：更大更醒目 */
     .hero {
       text-align: center;
-      margin-block-end: 2.2rem;
+      margin: 0;
+      padding: 0;
     }
 
     h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
+      font-size: 3.4rem;
+      font-weight: 800;
       letter-spacing: -0.02em;
       background: linear-gradient(135deg, #0b5e56, #14b8a6, #2dd4bf, #14b8a6, #0b5e56);
       background-size: 300% 300%;
@@ -143,62 +168,100 @@
       -webkit-background-clip: text;
       color: transparent;
       animation: gradientFlow 5s ease infinite;
+      line-height: 1.2;
+      margin-block: 0;
     }
 
     @keyframes gradientFlow {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
+    /* 主要状态消息：大号字体居中 */
     .info-section {
-      max-inline-size: 560px;
+      max-inline-size: 720px;
       inline-size: 100%;
       text-align: center;
       margin: 0 auto;
     }
 
     .status-message {
-      font-size: 1.2rem;
-      line-height: 1.5;
-      font-weight: 500;
+      font-size: 1.9rem;
+      line-height: 1.4;
+      font-weight: 600;
       color: var(--primary-text);
-      margin-block-end: 1.5rem;
+      margin-block-end: 0.5rem;
       transition: opacity 0.25s ease-in-out;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      letter-spacing: -0.01em;
     }
 
-    .status-message.fade-out {
-      opacity: 0.5;
+    @media (max-inline-size: 560px) {
+      .status-message {
+        font-size: 1.5rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
     }
 
-    .progress-meta {
+    /* ========== 底部区域组件样式 ========== */
+    /* 进度整体容器（百分比大数字 + 详细大小/状态） */
+    .progress-bottom-area {
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 2rem;
-      font-size: 1rem;
-      font-family: ui-monospace, 'SF Mono', monospace;
-      color: var(--secondary-text);
-      margin-block-end: 1.2rem;
-      flex-wrap: wrap;
-      font-weight: 500;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      gap: 0.35rem;
+      margin-block-end: 0.2rem;
     }
 
+    /* 大号百分比数字（底部醒目） */
+    .progress-badge {
+      font-size: 3rem;
+      font-weight: 800;
+      font-family: ui-monospace, 'SF Mono', monospace;
+      color: var(--accent-color);
+      background: rgba(45, 212, 191, 0.12);
+      padding: 0.2rem 1rem;
+      border-radius: 80px;
+      letter-spacing: 2px;
+      backdrop-filter: blur(2px);
+      line-height: 1.2;
+      display: inline-block;
+    }
+
+    /* 详细大小信息（仅在具有 Content-Length 时显示） */
+    .size-detail {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--secondary-text);
+      background: rgba(0, 0, 0, 0.05);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+      display: inline-block;
+      max-inline-size: 90%;
+      white-space: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    @media (max-inline-size: 500px) {
+      .size-detail {
+        white-space: normal;
+        word-break: keep-all;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* 镜像链接区域 */
     .mirror-strip {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem 1.8rem;
-      margin-block-start: 1.8rem;
+      gap: 1rem 1.5rem;
+      margin: 0.25rem 0 0.2rem;
     }
 
     .mirror-link {
@@ -206,36 +269,44 @@
       text-decoration: none;
       font-size: 1rem;
       font-weight: 500;
-      text-shadow: 0 0 6px var(--primary-bg);
+      transition: all 0.2s ease;
+      border-block-end: 1px solid transparent;
+    }
+
+    .mirror-link:hover {
+      color: var(--link-hover);
+      border-block-end-color: currentColor;
     }
 
     .mirror-link.current {
       font-weight: 700;
       text-decoration: underline;
-      text-underline-offset: 4px;
+      text-underline-offset: 6px;
+      color: var(--accent-color);
     }
 
+    /* 备案信息 */
     .footer-note {
-      position: fixed;
-      inset-block-end: 16px;
-      inset-inline-start: 0;
-      inset-inline-end: 0;
       text-align: center;
       font-size: 0.8rem;
       color: var(--secondary-text);
-      z-index: 20;
-      pointer-events: none;
       font-weight: 500;
-      text-shadow: 0 0 8px var(--primary-bg);
+      letter-spacing: 0.3px;
+      margin-block-start: 0.1rem;
+      padding-block-end: 0.2rem;
     }
 
     .footer-note a {
-      pointer-events: auto;
       color: var(--accent-color);
       text-decoration: none;
       font-weight: 600;
     }
 
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* Qt 容器 */
     #qt-container {
       inline-size: 100%;
       block-size: 100%;
@@ -251,539 +322,530 @@
       margin-inline-start: 6px;
       text-decoration: underline;
     }
+
+    /* 隐藏旧版冗余元素 */
+    .hidden-legacy, #chunkDetail {
+      display: none;
+    }
   </style>
 </head>
-
 <body>
 
-  <div class="water-level" id="waterLevel">
-    <div class="liquid-layer">
-      <svg viewBox="0 0 1200 600" preserveAspectRatio="none">
-        <path fill="var(--wave-fill)" opacity="0.8"
-          d="M0,0 C150,30 350,-30 600,0 C850,30 1050,-30 1200,0 L1200,600 L0,600 Z">
-          <animateTransform attributeName="transform" type="translate" from="0 0" to="-600 0" dur="6s"
-            repeatCount="indefinite" />
-          <animateTransform attributeName="transform" additive="sum" type="translate" values="0 0; 0 -6; 0 0" dur="4s"
-            repeatCount="indefinite" />
-        </path>
-        <path fill="var(--wave-fill-light)" opacity="0.5"
-          d="M0,0 C180,20 380,-20 600,0 C820,20 1020,-20 1200,0 L1200,600 L0,600 Z">
-          <animateTransform attributeName="transform" type="translate" from="0 0" to="-600 0" dur="8s"
-            repeatCount="indefinite" />
-          <animateTransform attributeName="transform" additive="sum" type="translate" values="0 0; 0 4; 0 0" dur="5s"
-            repeatCount="indefinite" />
-        </path>
-      </svg>
-    </div>
+<div class="water-level" id="waterLevel">
+  <div class="liquid-layer">
+    <svg viewBox="0 0 1200 600" preserveAspectRatio="none">
+      <path fill="var(--wave-fill)" opacity="0.8"
+        d="M0,0 C150,30 350,-30 600,0 C850,30 1050,-30 1200,0 L1200,600 L0,600 Z">
+        <animateTransform attributeName="transform" type="translate" from="0 0" to="-600 0" dur="6s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" additive="sum" type="translate" values="0 0; 0 -6; 0 0" dur="4s" repeatCount="indefinite" />
+      </path>
+      <path fill="var(--wave-fill-light)" opacity="0.5"
+        d="M0,0 C180,20 380,-20 600,0 C820,20 1020,-20 1200,0 L1200,600 L0,600 Z">
+        <animateTransform attributeName="transform" type="translate" from="0 0" to="-600 0" dur="8s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" additive="sum" type="translate" values="0 0; 0 4; 0 0" dur="5s" repeatCount="indefinite" />
+      </path>
+    </svg>
   </div>
+</div>
 
-  <div class="loading-interface" id="modernLoadingContainer">
+<!-- 全新三层布局：标题贴顶 | 主要信息居中 | 底部贴底（镜像+百分比+备案） -->
+<div class="loading-interface" id="modernLoadingContainer">
+  <!-- 顶部: 标题贴顶 -->
+  <div class="loading-header">
     <div class="hero">
       <h1>UWillno's Blog</h1>
     </div>
+  </div>
 
+  <!-- 中央: 状态信息 (大字居中) -->
+  <div class="loading-main">
     <div class="info-section">
       <div class="status-message" id="statusMessage">验证运行环境 · 准备加载</div>
-      <div class="progress-meta">
-        <span class="progress-badge" id="smoothPercentBadge">0%</span>
-        <span class="chunk-info" id="chunkDetail">等待模块</span>
-      </div>
     </div>
+  </div>
 
+  <!-- 底部区域: 百分比大数字 + 详细大小(若有) + 镜像链接 + 备案 -->
+  <div class="loading-footer">
+    <div class="progress-bottom-area">
+      <span class="progress-badge" id="smoothPercentBadge">0%</span>
+      <span class="size-detail" id="sizeDetailSpan"></span>
+    </div>
     <div class="mirror-strip" id="mirrorStrip"></div>
-
     <div class="footer-note">
       <a href="https://icp.gov.moe/?keyword=20249102" target="_blank">萌ICP备20249102号</a>
     </div>
   </div>
+</div>
 
-  <!-- 隐藏兼容元素，保持DOM结构一致 -->
-  <div style="display:none;">
-    <div id="loading-container"></div>
-    <div id="qtstatus"></div>
-    <div id="progress"></div>
-    <div id="loading-footer"></div>
-  </div>
+<!-- 遗留兼容元素 -->
+<div style="display:none;">
+  <div id="loading-container"></div>
+  <div id="qtstatus"></div>
+  <div id="progress"></div>
+  <div id="loading-footer"></div>
+  <span id="chunkDetail"></span>
+</div>
 
-  <div id="qt-container"></div>
+<div id="qt-container"></div>
 
-  <script src="coi-serviceworker.min.js"></script>
-  <script src="fzstd.js"></script>
-  <script type="text/javascript">
-    // ========== 镜像配置 (完全不变) ==========
-    const mirrors = [
-      ["GitHub", "https://github.uwillno.com"],
-      ["Vercel", "https://vercel.uwillno.com"],
-      ["Cloudflare", "https://cloudflare.uwillno.com"],
-      ["EdgeOne", "https://edgeone.uwillno.com"],
-      ["Netlify", "https://netlify.uwillno.com"],
-      ["Azure", "https://azure.uwillno.com"],
-      ["GitLab", "https://gitlab.uwillno.com"],
-      ["Render", "https://render.uwillno.com"],
-      ["IPv6", "https://ipv6.uwillno.com:9102"],
-      ["Tunnel", "https://tunnel.uwillno.com"]
-    ];
-    const currentHost = window.location.hostname;
-    let mirrorHtml = "";
-    mirrors.forEach(m => {
-      const isCurrent = currentHost.includes(m[1].replace(/https?:\/\//, '').split('.')[0]);
-      mirrorHtml += `<a href="${m[1]}${location.search}" class="mirror-link ${isCurrent ? 'current' : ''}" target="_self">${m[0]}</a>`;
-    });
-    document.getElementById("mirrorStrip").innerHTML = mirrorHtml;
+<script src="coi-serviceworker.min.js"></script>
+<script src="fzstd.js"></script>
+<script type="text/javascript">
+  // ========== 镜像配置 (完全保留) ==========
+  const mirrors = [
+    ["GitHub", "https://github.uwillno.com"],
+    ["Vercel", "https://vercel.uwillno.com"],
+    ["Cloudflare", "https://cloudflare.uwillno.com"],
+    ["EdgeOne", "https://edgeone.uwillno.com"],
+    ["Netlify", "https://netlify.uwillno.com"],
+    ["Azure", "https://azure.uwillno.com"],
+    ["GitLab", "https://gitlab.uwillno.com"],
+    ["Render", "https://render.uwillno.com"],
+    ["IPv6", "https://ipv6.uwillno.com:9102"],
+    ["Tunnel", "https://tunnel.uwillno.com"]
+  ];
+  const currentHost = window.location.hostname;
+  let mirrorHtml = "";
+  mirrors.forEach(m => {
+    const isCurrent = currentHost.includes(m[1].replace(/https?:\/\//, '').split('.')[0]);
+    mirrorHtml += `<a href="${m[1]}${location.search}" class="mirror-link ${isCurrent ? 'current' : ''}" target="_self">${m[0]}</a>`;
+  });
+  document.getElementById("mirrorStrip").innerHTML = mirrorHtml;
 
-    document.querySelectorAll('.mirror-link').forEach(link => {
-      link.addEventListener('click', () => {
-        if (activeWorker) activeWorker.terminate();
-      });
-    });
-    window.addEventListener('beforeunload', () => {
+  document.querySelectorAll('.mirror-link').forEach(link => {
+    link.addEventListener('click', () => {
       if (activeWorker) activeWorker.terminate();
     });
-    // WASM分块名称 (不变)
-    const wasmParts = [
-      "blog01.wasm", "blog02.wasm", "blog03.wasm", "blog04.wasm", "blog05.wasm",
-      "blog06.wasm", "blog07.wasm", "blog08.wasm", "blog09.wasm", "blog10.wasm"
-    ];
+  });
+  window.addEventListener('beforeunload', () => {
+    if (activeWorker) activeWorker.terminate();
+  });
 
-    // ===== 主线程状态变量 (保持对外暴露可能需要的引用) =====
-    let finishedCount = 0;
-    const totalCount = wasmParts.length;
-    let bytesLoaded = 0;
-    let totalBytesExpected = 0;
-    let useByteProgress = true;
-    const sizeMap = new Map();  // 主线程可能不需要，但保留
+  // WASM分块名称 (保持不变)
+  const wasmParts = [
+    "blog01.wasm", "blog02.wasm", "blog03.wasm", "blog04.wasm", "blog05.wasm",
+    "blog06.wasm", "blog07.wasm", "blog08.wasm", "blog09.wasm", "blog10.wasm"
+  ];
 
-    let instance = null;
-    let wasmUrl = null;   // 将由 worker 回传
+  // ========== 全局加载状态 ==========
+  let finishedCount = 0;
+  const totalCount = wasmParts.length;
+  let bytesLoaded = 0;
+  let totalBytesExpected = 0;
+  let useByteProgress = true;       // 是否可用字节进度 (Content-Length 齐全)
+  const sizeMap = new Map();
 
-    const waterLevelDiv = document.getElementById("waterLevel");
-    const statusMessageSpan = document.getElementById("statusMessage");
-    const smoothPercentBadge = document.getElementById("smoothPercentBadge");
-    const chunkDetailSpan = document.getElementById("chunkDetail");
-    const modernContainer = document.getElementById("modernLoadingContainer");
-    const qtContainerDiv = document.getElementById("qt-container");
+  let instance = null;
+  let wasmUrl = null;
 
-    let currentDisplayPercent = 0;
-    let targetPercent = 0;
-    let animationFrameId = null;
-    let isAppReady = false;
-    let isError = false;
+  const waterLevelDiv = document.getElementById("waterLevel");
+  const statusMessageSpan = document.getElementById("statusMessage");
+  const smoothPercentBadge = document.getElementById("smoothPercentBadge");
+  const sizeDetailSpan = document.getElementById("sizeDetailSpan");
+  const modernContainer = document.getElementById("modernLoadingContainer");
+  const qtContainerDiv = document.getElementById("qt-container");
 
-    let carouselInterval = null;
-    let currentTipIdx = 0;
-    let isTransitioning = false;
-    const techMessages = [
-      "Qt 开发 · 同时支持桌面端、移动端和 Web 端",
+  let currentDisplayPercent = 0;
+  let targetPercent = 0;
+  let animationFrameId = null;
+  let isAppReady = false;
+  let isError = false;
 
-      "针对 WebAssembly 平台额外适配 · 无需安装即可拥有原生级体验",
+  let carouselInterval = null;
+  let currentTipIdx = 0;
+  let isTransitioning = false;
 
-      "底层 Qt / C++ 驱动 · 启用多线程，提高任务执行效率",
+  // 提示语轮播池 (保留)
+  const techMessages = [
+    "Qt 开发 · 同时支持桌面端、移动端和 Web 端",
+    "针对 WebAssembly 平台额外适配 · 无需安装即可拥有原生级体验",
+    "底层 Qt / C++ 驱动 · 启用多线程，提高任务执行效率",
+    "界面 Qt Quick / QML 驱动 · 支持不同渲染后端，实现高效渲染",
+    "底层与界面分离架构 · 实现免编译更新",
+    "Cloudflare 服务 · 实现静态系统的动态化",
+    "Qt / C++ 开发的轻量服务器 · 实时监控多台设备状态",
+    "全球镜像网络分发 · 动态选择最优路径以最小化延迟",
+    "WASM 压缩与分块 · 实现大文件静态托管与数据高效传输",
+    "分块传输与并行处理协同执行 · 避免主线程参与关键路径",
+    "字节级进度感知 · 提供更接近真实的加载可视化反馈",
+    "桌面设备推荐 i7-10700 / GTX1060 / 16GB 内存 · 以获得一致性性能表现",
+    "移动设备推荐 骁龙 8+ Gen1 / 天玑 9000 · 面向高性能场景优化"
+  ];
 
-      "界面 Qt Quick / QML 驱动 · 支持不同渲染后端，实现高效渲染",
+  // ---------- 动画与进度核心 (水波 + 百分比平滑) ----------
+  function smoothProgressLoop() {
+    if (isAppReady || isError) return;
+    const diff = targetPercent - currentDisplayPercent;
+    if (Math.abs(diff) < 0.06) {
+      currentDisplayPercent = targetPercent;
+    } else {
+      currentDisplayPercent += diff * 0.1;
+    }
+    currentDisplayPercent = Math.min(100, Math.max(0, currentDisplayPercent));
+    const intPercent = Math.floor(currentDisplayPercent);
+    if (smoothPercentBadge) smoothPercentBadge.innerText = `${intPercent}%`;
+    if (waterLevelDiv) waterLevelDiv.style.height = `${currentDisplayPercent}%`;
+    animationFrameId = requestAnimationFrame(smoothProgressLoop);
+  }
 
-      "底层与界面分离架构 · 实现免编译更新",
+  function computeRealPercent() {
+    if (finishedCount >= totalCount) return 100;
+    if (useByteProgress && totalBytesExpected > 0) {
+      const bytePercent = (bytesLoaded / totalBytesExpected) * 100;
+      return Math.min(99.9, bytePercent);
+    } else {
+      return (finishedCount / totalCount) * 100;
+    }
+  }
 
-      "Cloudflare 服务 · 实现静态系统的动态化",
+  function setTargetProgress(percent) {
+    if (isAppReady || isError) return;
+    targetPercent = Math.min(100, Math.max(0, percent));
+  }
 
-      "Qt / C++ 开发的轻量服务器 · 实时监控多台设备状态",
-
-      "全球镜像网络分发 · 动态选择最优路径以最小化延迟",
-
-      "WASM 压缩与分块 · 实现大文件静态托管与数据高效传输",
-
-      "分块传输与并行处理协同执行 · 避免主线程参与关键路径",
-
-      "字节级进度感知 · 提供更接近真实的加载可视化反馈",
-
-      "桌面设备推荐 i7-10700 / GTX1060 / 16GB 内存 · 以获得一致性性能表现",
-
-      "移动设备推荐 骁龙 8+ Gen1 / 天玑 9000 · 面向高性能场景优化"
-    ];
-
-    // ---------- UI 动画与进度 (完全不变) ----------
-    function smoothProgressLoop() {
-      if (isAppReady || isError) return;
-      const diff = targetPercent - currentDisplayPercent;
-      if (Math.abs(diff) < 0.06) {
-        currentDisplayPercent = targetPercent;
+  // 核心: 根据是否有字节信息更新底部详细信息 (有Content-Length则显示具体大小+百分比，否则留空/仅百分比)
+  function updateSizeDetail() {
+    if (!sizeDetailSpan) return;
+    if (useByteProgress && totalBytesExpected > 0 && bytesLoaded > 0) {
+      const loadedMB = (bytesLoaded / (1024 * 1024)).toFixed(2);
+      const totalMB = (totalBytesExpected / (1024 * 1024)).toFixed(2);
+      const percentVal = Math.min(100, Math.floor((bytesLoaded / totalBytesExpected) * 100));
+      sizeDetailSpan.innerText = `📦 ${loadedMB} MB / ${totalMB} MB  ·  ${percentVal}%`;
+      sizeDetailSpan.style.opacity = "1";
+    } else {
+      // 没有 Content-Length 或字节信息不全时，只显示百分比（大数字已展示），详情区域留空或显示简单提示
+      if (!useByteProgress || totalBytesExpected === 0) {
+        sizeDetailSpan.innerText = "";
       } else {
-        currentDisplayPercent += diff * 0.1;
-      }
-      currentDisplayPercent = Math.min(100, Math.max(0, currentDisplayPercent));
-      const intPercent = Math.floor(currentDisplayPercent);
-      if (smoothPercentBadge) smoothPercentBadge.innerText = `${intPercent}%`;
-      if (waterLevelDiv) waterLevelDiv.style.height = `${currentDisplayPercent}%`;
-      animationFrameId = requestAnimationFrame(smoothProgressLoop);
-    }
-
-    function computeRealPercent() {
-      if (finishedCount >= totalCount) return 100;
-      if (useByteProgress && totalBytesExpected > 0) {
-        const bytePercent = (bytesLoaded / totalBytesExpected) * 100;
-        return Math.min(99.9, bytePercent);
-      } else {
-        return (finishedCount / totalCount) * 100;
+        // 降级但理论上不会进这里
+        sizeDetailSpan.innerText = "";
       }
     }
-
-    function setTargetProgress(percent) {
-      if (isAppReady || isError) return;
-      targetPercent = Math.min(100, Math.max(0, percent));
-      updateChunkDetailText();
+    // 极端情况: 模块完成但尚未显示最终总大小，也尝试更新一下
+    if (finishedCount === totalCount && totalBytesExpected > 0 && useByteProgress) {
+      const totalMB = (totalBytesExpected / (1024 * 1024)).toFixed(2);
+      sizeDetailSpan.innerText = `✅ 总计 ${totalMB} MB · 加载完成`;
     }
+  }
 
-    function updateChunkDetailText() {
-      if (!chunkDetailSpan) return;
-      let detail = '';
-      if (useByteProgress && totalBytesExpected > 0) {
-        const loadedMB = (bytesLoaded / (1024 * 1024)).toFixed(2);
-        const totalMB = (totalBytesExpected / (1024 * 1024)).toFixed(2);
-        detail = `模块 ${finishedCount}/${totalCount} · ${loadedMB}/${totalMB} MB`;
-      } else {
-        detail = `模块 ${finishedCount}/${totalCount} · ${Math.floor(computeRealPercent())}%`;
-      }
-      if (finishedCount === totalCount && !isAppReady) {
-        detail = `所有模块就绪 · 解压启动中`;
-      }
-      chunkDetailSpan.innerText = detail;
+  function refreshRealProgress() {
+    const realPercent = computeRealPercent();
+    setTargetProgress(realPercent);
+    updateSizeDetail();  // 每次刷新进度同步更新详细信息
+
+    if (!isAppReady && !isError) {
+      if (finishedCount === 0) updateStatusMessageText("建立连接 · 请求资源");
+      else if (finishedCount < totalCount) {
+        const mode = useByteProgress && totalBytesExpected > 0 ? '字节加载' : '分块加载';
+        updateStatusMessageText(`${mode} ${finishedCount}/${totalCount}`);
+      } else if (finishedCount === totalCount) updateStatusMessageText("模块合并完成 · 解压缩启动");
     }
+  }
 
-    function refreshRealProgress() {
-      const realPercent = computeRealPercent();
-      setTargetProgress(realPercent);
-
-      if (!isAppReady && !isError) {
-        if (finishedCount === 0) updateStatusMessageText("建立连接 · 请求资源 (精确字节进度)");
-        else if (finishedCount < totalCount) {
-          const mode = useByteProgress ? '字节进度' : '分块进度';
-          updateStatusMessageText(`加载模块 ${finishedCount}/${totalCount} · ${mode}`);
+  let pendingText = null;
+  function updateStatusMessageText(newText) {
+    if (statusMessageSpan.textContent === newText) return;
+    if (isTransitioning) {
+      pendingText = newText;
+      return;
+    }
+    isTransitioning = true;
+    statusMessageSpan.classList.add('fade-out');
+    setTimeout(() => {
+      statusMessageSpan.textContent = newText;
+      statusMessageSpan.classList.remove('fade-out');
+      setTimeout(() => {
+        isTransitioning = false;
+        if (pendingText) {
+          const t = pendingText;
+          pendingText = null;
+          updateStatusMessageText(t);
         }
-        else if (finishedCount === totalCount) updateStatusMessageText("模块合并完成 · 解压缩启动");
-      }
-    }
+      }, 50);
+    }, 200);
+  }
 
-    let pendingText = null;
-    function updateStatusMessageText(newText) {
-      if (statusMessageSpan.textContent === newText) return;
-      if (isTransitioning) {
-        pendingText = newText;
+  function startTechCarousel() {
+    if (carouselInterval) clearInterval(carouselInterval);
+    carouselInterval = setInterval(() => {
+      if (isAppReady || isError) return;
+      let newMsg;
+      if (finishedCount < totalCount) {
+        newMsg = techMessages[currentTipIdx % techMessages.length];
+      } else if (finishedCount === totalCount && !isAppReady) {
+        newMsg = "所有模块就绪 · 正在启动应用";
+      } else {
         return;
       }
-      isTransitioning = true;
-      statusMessageSpan.classList.add('fade-out');
-      setTimeout(() => {
-        statusMessageSpan.textContent = newText;
-        statusMessageSpan.classList.remove('fade-out');
-        setTimeout(() => {
-          isTransitioning = false;
-          if (pendingText) {
-            const t = pendingText;
-            pendingText = null;
-            updateStatusMessageText(t);
-          }
-        }, 50);
-      }, 200);
+      updateStatusMessageText(newMsg);
+      currentTipIdx++;
+    }, 2200);
+  }
+
+  function showError(errMsg) {
+    if (isError) return;
+    isError = true;
+    if (carouselInterval) clearInterval(carouselInterval);
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    let displayMsg = errMsg;
+    let useLink = false;
+    if (errMsg && (errMsg.includes("SharedArrayBuffer") || errMsg.includes("COI") || errMsg.includes("not supported"))) {
+      useLink = true;
+      displayMsg = "当前浏览器不支持 SharedArrayBuffer，请查看 ";
     }
-
-    function startTechCarousel() {
-      if (carouselInterval) clearInterval(carouselInterval);
-      carouselInterval = setInterval(() => {
-        if (isAppReady || isError) return;
-        let newMsg;
-        if (finishedCount < totalCount) {
-          newMsg = techMessages[currentTipIdx % techMessages.length];
-        } else if (finishedCount === totalCount && !isAppReady) {
-          newMsg = "所有模块就绪 · 正在启动应用";
-        } else {
-          return;
-        }
-        updateStatusMessageText(newMsg);
-        currentTipIdx++;
-      }, 2000);
+    if (useLink) {
+      const linkUrl = "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7";
+      statusMessageSpan.innerHTML = `<span class="error-message">加载失败: ${displayMsg}<a href="${linkUrl}" target="_blank" rel="noopener noreferrer">浏览器兼容性说明</a></span>`;
+    } else {
+      statusMessageSpan.innerHTML = `<span class="error-message">加载失败: ${displayMsg}</span>`;
     }
+    smoothPercentBadge.style.color = "var(--error-color)";
+    if (sizeDetailSpan) sizeDetailSpan.style.color = "var(--error-color)";
+    waterLevelDiv.style.background = 'rgba(220,38,38,0.7)';
+  }
 
-    function showError(errMsg) {
-      if (isError) return;
-      isError = true;
-      if (carouselInterval) clearInterval(carouselInterval);
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
-
-      let displayMsg = errMsg;
-      let useLink = false;
-      if (errMsg && (errMsg.includes("SharedArrayBuffer") || errMsg.includes("COI") || errMsg.includes("not supported"))) {
-        useLink = true;
-        displayMsg = "当前浏览器不支持 SharedArrayBuffer，请查看 ";
-      }
-      if (useLink) {
-        const linkUrl = "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7";
-        statusMessageSpan.innerHTML = `<span class="error-message">加载失败: ${displayMsg}<a href="${linkUrl}" target="_blank" rel="noopener noreferrer">浏览器兼容性说明</a></span>`;
-      } else {
-        statusMessageSpan.innerHTML = `<span class="error-message">加载失败: ${displayMsg}</span>`;
-      }
-      chunkDetailSpan.innerText = "请检查网络或镜像站点";
-      smoothPercentBadge.style.color = "var(--error-color)";
-      waterLevelDiv.style.background = 'rgba(220,38,38,0.7)';
+  function onAppReadyComplete() {
+    if (isAppReady) return;
+    isAppReady = true;
+    if (carouselInterval) clearInterval(carouselInterval);
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    waterLevelDiv.style.height = "100%";
+    if (smoothPercentBadge) smoothPercentBadge.innerText = "100%";
+    updateStatusMessageText("应用已就绪 · 启动交互界面");
+    // 最终详细大小展示完整信息
+    if (useByteProgress && totalBytesExpected > 0) {
+      const totalMB = (totalBytesExpected / (1024 * 1024)).toFixed(2);
+      if (sizeDetailSpan) sizeDetailSpan.innerText = `🎉 总计 ${totalMB} MB · 加载完成`;
+    } else if (sizeDetailSpan) {
+      sizeDetailSpan.innerText = `✨ 加载完毕`;
     }
+    modernContainer.classList.add('fade-out-ui');
+    waterLevelDiv.classList.add('hidden-waves');
 
-    function onAppReadyComplete() {
-      if (isAppReady) return;
-      isAppReady = true;
-      if (carouselInterval) clearInterval(carouselInterval);
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      waterLevelDiv.style.height = "100%";
-      smoothPercentBadge.innerText = "100%";
-      updateStatusMessageText("应用已就绪 · 启动交互界面");
-      chunkDetailSpan.innerText = `完成 · ${useByteProgress ? (totalBytesExpected / (1024 * 1024)).toFixed(2) + ' MB' : '全部模块'}`;
+    setTimeout(() => {
+      modernContainer.style.display = "none";
+      waterLevelDiv.style.display = "none";
+      qtContainerDiv.style.display = "block";
+      window.dispatchEvent(new Event('resize'));
+    }, 300);
+  }
 
-      modernContainer.classList.add('fade-out-ui');
-      waterLevelDiv.classList.add('hidden-waves');
+  window.showOpenFilePicker = undefined;
 
-      setTimeout(() => {
-        modernContainer.style.display = "none";
-        waterLevelDiv.style.display = "none";
-        qtContainerDiv.style.display = "block";
-        window.dispatchEvent(new Event('resize'));
-      }, 300);
-    }
+  // ========== Web Worker 负责分块下载、合并、解压 (逻辑完全沿用，确保字节信息正确) ==========
+  let activeWorker = null;
 
-    window.showOpenFilePicker = undefined;
+  function createWasmWorker() {
+    const baseUrl = location.origin;
+    const fzstdUrl = new URL('fzstd.js', baseUrl).href;
+    const fullWasmParts = wasmParts.map(part => new URL(part, baseUrl).href);
 
-    // ========== 全局变量：用于持有 Worker 实例 ==========
-    let activeWorker = null;
-
-    // ========== Web Worker 逻辑: 负责分块下载、合并、解压 ==========
-    function createWasmWorker() {
-      const baseUrl = location.origin;
-      const fzstdUrl = new URL('fzstd.js', baseUrl).href;
-      const fullWasmParts = wasmParts.map(part => new URL(part, baseUrl).href);
-
-      const workerCode = `
-        importScripts('${fzstdUrl}');
-
-        const wasmParts = ${JSON.stringify(fullWasmParts)};
-        const totalCount = wasmParts.length;
-
-        let finishedCount = 0;
-        let bytesLoaded = 0;
-        let totalBytesExpected = 0;
-        let useByteProgress = true;
-        const sizeMap = new Map();
-
-        async function fetchWithRetry(url, retries = 5, baseDelay = 1000, maxDelay = 5000) {
-          for (let attempt = 1; attempt <= retries; attempt++) {
-            try {
-              const res = await fetch(url);
-              if (!res.ok) throw new Error(\`HTTP \${res.status}\`);
-
-              const contentLength = res.headers.get('Content-Length');
-              if (contentLength) {
-                const size = parseInt(contentLength, 10);
-                if (!sizeMap.has(url)) {
-                  sizeMap.set(url, size);
-                  totalBytesExpected += size;
-                }
-              } else {
-                if (useByteProgress) {
-                  console.warn(\`[Worker] \${url} 缺少 Content-Length，回退计数模式\`);
-                  useByteProgress = false;
-                }
+    const workerCode = `
+      importScripts('${fzstdUrl}');
+      const wasmParts = ${JSON.stringify(fullWasmParts)};
+      const totalCount = wasmParts.length;
+      let finishedCount = 0;
+      let bytesLoaded = 0;
+      let totalBytesExpected = 0;
+      let useByteProgress = true;
+      const sizeMap = new Map();
+      
+      async function fetchWithRetry(url, retries = 5, baseDelay = 1000, maxDelay = 5000) {
+        for (let attempt = 1; attempt <= retries; attempt++) {
+          try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(\`HTTP \${res.status}\`);
+            const contentLength = res.headers.get('Content-Length');
+            if (contentLength) {
+              const size = parseInt(contentLength, 10);
+              if (!sizeMap.has(url)) {
+                sizeMap.set(url, size);
+                totalBytesExpected += size;
               }
-
-              const buf = await res.arrayBuffer();
-              bytesLoaded += buf.byteLength;
-              finishedCount++;
-
-              self.postMessage({
-                type: 'progress',
-                finishedCount,
-                bytesLoaded,
-                totalBytesExpected,
-                useByteProgress
-              });
-
-              return buf;
-            } catch (err) {
-              console.warn(\`[Worker] 请求失败 [\${url}] 第 \${attempt} 次:\`, err);
-              if (attempt < retries) {
-                const waitTime = Math.min(baseDelay * Math.pow(2, attempt - 1), maxDelay);
-                await new Promise(r => setTimeout(r, waitTime));
-              } else {
-                throw err;
+            } else {
+              if (useByteProgress) {
+                console.warn(\`[Worker] \${url} 缺少 Content-Length，回退计数模式\`);
+                useByteProgress = false;
               }
             }
-          }
-        }
-
-        async function loadAndMergeWasm(parts) {
-          const buffers = await Promise.all(parts.map(url => fetchWithRetry(url)));
-          const totalLength = buffers.reduce((sum, b) => sum + b.byteLength, 0);
-          const merged = new Uint8Array(totalLength);
-          let offset = 0;
-          for (const buf of buffers) {
-            merged.set(new Uint8Array(buf), offset);
-            offset += buf.byteLength;
-          }
-
-          self.postMessage({ type: 'status', text: '合并完成，开始解压 (fzstd) ...' });
-
-          const decompressed = self.fzstd.decompress(merged);
-          const blob = new Blob([decompressed], { type: "application/wasm" });
-          const url = URL.createObjectURL(blob);
-
-          self.postMessage({
-            type: 'complete',
-            wasmUrl: url,
-            finalBytes: bytesLoaded,
-            finalTotal: totalBytesExpected
-          });
-        }
-
-        self.onmessage = async function(e) {
-          if (e.data.type === 'start') {
-            try {
-              await loadAndMergeWasm(wasmParts);
-            } catch (err) {
-              self.postMessage({ type: 'error', error: err.message || 'Worker 加载失败' });
-            }
-          }
-        };
-    `;
-
-      const blob = new Blob([workerCode], { type: 'application/javascript' });
-      return new Worker(URL.createObjectURL(blob));
-    }
-
-    // ========== 修改 init() 函数，使用 activeWorker 并调整 terminate 时机 ==========
-    async function init() {
-      try {
-        finishedCount = 0;
-        bytesLoaded = 0;
-        totalBytesExpected = 0;
-        useByteProgress = true;
-        sizeMap.clear();
-
-        startTechCarousel();
-        refreshRealProgress();
-
-        activeWorker = createWasmWorker();
-
-        activeWorker.onmessage = (e) => {
-          const { type } = e.data;
-          if (type === 'progress') {
-            finishedCount = e.data.finishedCount;
-            bytesLoaded = e.data.bytesLoaded;
-            totalBytesExpected = e.data.totalBytesExpected;
-            useByteProgress = e.data.useByteProgress;
-            refreshRealProgress();
-          } else if (type === 'status') {
-            updateStatusMessageText(e.data.text);
-          } else if (type === 'complete') {
-            wasmUrl = e.data.wasmUrl;
-            finishedCount = totalCount;
-            bytesLoaded = e.data.finalBytes || totalBytesExpected;
-            totalBytesExpected = e.data.finalTotal || totalBytesExpected;
-            refreshRealProgress();
-
-            updateStatusMessageText("WASM 解压完成，启动 Qt 引擎...");
-
-            qtLoad({
-              qt: {
-                onLoaded: () => {
-                  onAppReadyComplete();
-                  // 在应用完全就绪后安全终止 Worker
-                  if (activeWorker) {
-                    activeWorker.terminate();
-                    activeWorker = null;
-                  }
-                },
-                onExit: () => {
-                  showError("Application exited unexpectedly");
-                  setTimeout(() => location.reload(), 2500);
-                },
-                entryFunction: window.blog_entry,
-                containerElements: [qtContainerDiv],
-              },
-            }).then(inst => {
-              instance = inst;
-            }).catch(err => {
-              showError(err.message || "Qt 引擎启动失败");
+            const buf = await res.arrayBuffer();
+            bytesLoaded += buf.byteLength;
+            finishedCount++;
+            self.postMessage({
+              type: 'progress',
+              finishedCount,
+              bytesLoaded,
+              totalBytesExpected,
+              useByteProgress
             });
-          } else if (type === 'error') {
-            showError(e.data.error);
-            if (activeWorker) {
-              activeWorker.terminate();
-              activeWorker = null;
+            return buf;
+          } catch (err) {
+            console.warn(\`[Worker] 请求失败 [\${url}] 第 \${attempt} 次:\`, err);
+            if (attempt < retries) {
+              const waitTime = Math.min(baseDelay * Math.pow(2, attempt - 1), maxDelay);
+              await new Promise(r => setTimeout(r, waitTime));
+            } else {
+              throw err;
             }
           }
-        };
-
-        activeWorker.onerror = (err) => {
-          showError('Worker 线程错误: ' + err.message);
-        };
-
-        activeWorker.postMessage({ type: 'start' });
-
-      } catch (e) {
-        console.error(e);
-        showError(e.message || "初始化错误");
+        }
       }
-    }
-
-    // ========== COI / Service Worker 准备 (完全不变) ==========
-    async function waitForSWController() {
-      if (!navigator.serviceWorker) return;
-      if (navigator.serviceWorker.controller) return;
-      await new Promise(resolve => {
-        const timeout = setTimeout(resolve, 2000);
-        navigator.serviceWorker.addEventListener("controllerchange", () => {
-          clearTimeout(timeout);
-          resolve();
-        }, { once: true });
-      });
-    }
-
-    function ensureCOIReady() {
-      const isCOI = window.crossOriginIsolated;
-      const hasSAB = typeof SharedArrayBuffer !== "undefined";
-      if (isCOI && hasSAB) {
-        sessionStorage.removeItem("coi_reloaded");
-        return true;
+      
+      async function loadAndMergeWasm(parts) {
+        const buffers = await Promise.all(parts.map(url => fetchWithRetry(url)));
+        const totalLength = buffers.reduce((sum, b) => sum + b.byteLength, 0);
+        const merged = new Uint8Array(totalLength);
+        let offset = 0;
+        for (const buf of buffers) {
+          merged.set(new Uint8Array(buf), offset);
+          offset += buf.byteLength;
+        }
+        self.postMessage({ type: 'status', text: '合并完成，开始解压 (fzstd) ...' });
+        const decompressed = self.fzstd.decompress(merged);
+        const blob = new Blob([decompressed], { type: "application/wasm" });
+        const url = URL.createObjectURL(blob);
+        self.postMessage({
+          type: 'complete',
+          wasmUrl: url,
+          finalBytes: bytesLoaded,
+          finalTotal: totalBytesExpected,
+          useByteProgress
+        });
       }
-      if (!sessionStorage.getItem("coi_reloaded")) {
-        sessionStorage.setItem("coi_reloaded", "1");
-        location.reload();
-        return false;
-      }
-      throw new Error("SharedArrayBuffer not supported");
-    }
+      
+      self.onmessage = async function(e) {
+        if (e.data.type === 'start') {
+          try {
+            await loadAndMergeWasm(wasmParts);
+          } catch (err) {
+            self.postMessage({ type: 'error', error: err.message || 'Worker 加载失败' });
+          }
+        }
+      };
+    `;
+    const blob = new Blob([workerCode], { type: 'application/javascript' });
+    return new Worker(URL.createObjectURL(blob));
+  }
 
-    async function boot() {
-      try {
-        await waitForSWController();
-        if (!ensureCOIReady()) return;
-        animationFrameId = requestAnimationFrame(smoothProgressLoop);
-        await init();
-      } catch (e) {
-        console.error(e);
-        showError(e.message);
-      }
-    }
+  async function init() {
+    try {
+      finishedCount = 0;
+      bytesLoaded = 0;
+      totalBytesExpected = 0;
+      useByteProgress = true;
+      sizeMap.clear();
+      startTechCarousel();
+      refreshRealProgress();
 
-    // 历史记录管理 (不变)
-    let pushCount = 0;
-    function pushHistoryOnce() {
-      if (pushCount > 10) return;
-      history.replaceState({ wasm: pushCount }, '', location.href);
-      history.pushState({ wasm: pushCount + 1 }, '', location.href);
-      pushCount++;
-    }
-    window.addEventListener('popstate', () => { instance?.back?.(); });
+      activeWorker = createWasmWorker();
 
-    window.addEventListener("DOMContentLoaded", boot);
-  </script>
-  <!-- 保持原有脚本顺序，blog.js 和 qtloader.js 依然在底部 -->
-  <script src="blog.js"></script>
-  <script src="qtloader.js"></script>
+      activeWorker.onmessage = (e) => {
+        const { type } = e.data;
+        if (type === 'progress') {
+          finishedCount = e.data.finishedCount;
+          bytesLoaded = e.data.bytesLoaded;
+          totalBytesExpected = e.data.totalBytesExpected;
+          useByteProgress = e.data.useByteProgress;
+          refreshRealProgress();
+        } else if (type === 'status') {
+          updateStatusMessageText(e.data.text);
+        } else if (type === 'complete') {
+          wasmUrl = e.data.wasmUrl;
+          finishedCount = totalCount;
+          bytesLoaded = e.data.finalBytes || bytesLoaded;
+          totalBytesExpected = e.data.finalTotal || totalBytesExpected;
+          useByteProgress = e.data.useByteProgress !== undefined ? e.data.useByteProgress : useByteProgress;
+          refreshRealProgress();
+          updateStatusMessageText("WASM 解压完成，启动 Qt 引擎...");
+          qtLoad({
+            qt: {
+              onLoaded: () => {
+                onAppReadyComplete();
+                if (activeWorker) {
+                  activeWorker.terminate();
+                  activeWorker = null;
+                }
+              },
+              onExit: () => {
+                showError("Application exited unexpectedly");
+                setTimeout(() => location.reload(), 2500);
+              },
+              entryFunction: window.blog_entry,
+              containerElements: [qtContainerDiv],
+            },
+          }).then(inst => {
+            instance = inst;
+          }).catch(err => {
+            showError(err.message || "Qt 引擎启动失败");
+          });
+        } else if (type === 'error') {
+          showError(e.data.error);
+          if (activeWorker) {
+            activeWorker.terminate();
+            activeWorker = null;
+          }
+        }
+      };
+      activeWorker.onerror = (err) => {
+        showError('Worker 线程错误: ' + err.message);
+      };
+      activeWorker.postMessage({ type: 'start' });
+    } catch (e) {
+      console.error(e);
+      showError(e.message || "初始化错误");
+    }
+  }
+
+  async function waitForSWController() {
+    if (!navigator.serviceWorker) return;
+    if (navigator.serviceWorker.controller) return;
+    await new Promise(resolve => {
+      const timeout = setTimeout(resolve, 2000);
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        clearTimeout(timeout);
+        resolve();
+      }, { once: true });
+    });
+  }
+
+  function ensureCOIReady() {
+    const isCOI = window.crossOriginIsolated;
+    const hasSAB = typeof SharedArrayBuffer !== "undefined";
+    if (isCOI && hasSAB) {
+      sessionStorage.removeItem("coi_reloaded");
+      return true;
+    }
+    if (!sessionStorage.getItem("coi_reloaded")) {
+      sessionStorage.setItem("coi_reloaded", "1");
+      location.reload();
+      return false;
+    }
+    throw new Error("SharedArrayBuffer not supported");
+  }
+
+  async function boot() {
+    try {
+      await waitForSWController();
+      if (!ensureCOIReady()) return;
+      animationFrameId = requestAnimationFrame(smoothProgressLoop);
+      await init();
+    } catch (e) {
+      console.error(e);
+      showError(e.message);
+    }
+  }
+
+  let pushCount = 0;
+  function pushHistoryOnce() {
+    if (pushCount > 10) return;
+    history.replaceState({ wasm: pushCount }, '', location.href);
+    history.pushState({ wasm: pushCount + 1 }, '', location.href);
+    pushCount++;
+  }
+  window.addEventListener('popstate', () => { instance?.back?.(); });
+  window.addEventListener("DOMContentLoaded", boot);
+</script>
+<script src="blog.js"></script>
+<script src="qtloader.js"></script>
 </body>
-
 </html>
