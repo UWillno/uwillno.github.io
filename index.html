@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="h-svh overflow-hidden">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="runtime.css">
+  <title>UWillno's Blog</title>
+  <script>
+    const saved = localStorage.theme;
+    const dark =
+      saved === 'dark' ||
+      (!saved && matchMedia('(prefers-color-scheme: dark)').matches);
+
+    document.documentElement.classList.toggle('dark', dark);
+
+    if (location.hostname === 'uwillno.com') {
+      const link = document.createElement('link')
+      link.rel = 'prefetch'
+      link.as = 'image'
+      link.href = 'https://www.blogsclub.org/badge/uwillno.com'
+      document.head.appendChild(link)
+    }
+
+  </script>
+  <link rel="icon" type="image/png" href="logo.svg" />
+  <link rel="preload" href="alpine.js" as="script">
+  <link rel="preload" href="coi-serviceworker.min.js" as="script">
+  <link rel="preload" href="fzstd.js" as="script">
+  <link rel="preload" href="qtloader.js" as="script">
+  <link rel="preload" href="blog.js" as="script">
+  <link rel="preload" href="/blogres/uw.rcc" as="fetch" crossorigin="anonymous">
+  
+  <script defer src="alpine.js"></script>
+  
+  <script src="coi-serviceworker.min.js"></script>
+  <script src="fzstd.js"></script>
+  <script src="qtloader.js"></script>
+  <script src="blog.js"></script>
+</head>
+
+<body x-data="{ ...app(), dark: true }" x-init="init()" :class="dark ? 'dark' : ''" class="h-svh overflow-hidden">
+
+  <div x-show="!ready" class="
+  flex flex-col h-full overflow-hidden p-5
+  bg-white text-gray-800
+  dark:bg-[#0b0f19] dark:text-gray-200">
+
+    <div class="flex items-center justify-between">
+      <h1 class="text-3xl font-bold text-brand">
+        UWillno's Blog
+      </h1>
+    </div>
+
+    
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
+      加载太慢就科学上网，不行就直接退出吧，别浪费彼此流量了。
+      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+        rel="noopener noreferrer">仓库地址</a>，不是看文章又没有所需功能直接退出吧，只需要静态功能直接克隆启动即可。
+      不再提供非常规优化（主页测速跳转镜像站、分块并发请求合并），仅保留 WASM 加解压，个人博客没必要过好的用户体验，自己切适合自己的镜像。
+      本来就是不想写前端才用的 Qt / C++ , 结果加载页面还是得自己写，Ai写得实在看不下去了，问题不大别要我改，谁没事一直呆在加载页面。
+      WASM 端和其它端是一套代码，功能基本一致，只是框架bug多一些（关键的已经修得差不多了），发现我会及时提交并跟进的，不对外提供非 WASM 客户端。
+      针对 WebAssembly 平台额外适配 · 无需安装即可拥有原生级体验。
+      底层 Qt / C++ 驱动 · 启用多线程，提高任务执行效率（安卓 WebView 和一些系统自带浏览器始终不支持）。
+      界面 Qt Quick / QML 驱动 · 支持不同渲染后端，实现高效渲染（可惜 WebAssembly 里还是用的 WebGL ， <a
+        href="https://qt-project.atlassian.net/browse/QTBUG-75040" target="_blank" class="text-brand hover:underline"
+        rel="noopener noreferrer">据报告 6.13 中可能会支持 WebGPU </a>）。
+      底层与界面分离架构 · 实现免编译更新（别指望彻底动态化，谁知道 Cloudflare 服务还能持续多久，不想买服务器）。
+      Cloudflare 服务（Workers、R2、D1、Tunnel） · 实现静态系统的动态化。
+      Qt / C++ 开发的轻量服务器 · 实时监控多台设备状态。
+      全球镜像网络分发 · <del class="line-through decoration-gray-400 text-gray-400/70">动态选择最优路径以最小化延迟。</del>
+      不会用别怪我写得卡，自己开那么高预设，功能预留又不是给你用的，我的老爷机7sgen2，10400f都用得好好的。
+      桌面设备推荐 i7-10700 / GTX1060 / 16GB 内存。
+      移动设备推荐 骁龙 8+ Gen1 / 天玑 9000。
+    </div>
+
+    
+    <div class="text-center">
+      <div class="text-5xl font-bold text-brand" x-text="Math.floor(percent) + '%'"></div>
+      <div x-text="sizeText"></div>
+      <div x-text="status" x-show="!error" class="font-bold text-brand"></div>
+      
+      <div x-show="error && !coiError" x-text="errorMsg" class="mt-4">
+        <div class="text-red-400 font-medium">
+          当前浏览器不支持运行环境
+        </div>
+      </div>
+      
+      <div x-show="coiError" class="mt-4">
+        <div class="text-red-400 font-medium">
+          当前浏览器不支持运行环境
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"
+            target="_blank" class="text-brand hover:underline" rel="noopener noreferrer">
+            查看浏览器兼容性说明
+          </a>
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+    
+    
+
+    <div class="flex flex-wrap items-center justify-center gap-3 mt-4 text-sm">
+
+      <a href="https://icp.gov.moe/?keyword=20249102" target="_blank" rel="noopener noreferrer"
+        class="text-brand hover:underline">
+        萌ICP备20249102号
+      </a>
+
+      <span class="text-gray-400">·</span>
+
+      
+      <div class="relative" x-data="{ open: false }">
+
+        <button @click="open = !open" class="
+        inline-flex items-center gap-1
+        text-gray-500 hover:text-brand
+        transition
+      ">
+          站点：
+          <span x-text="mirrors.find(m => isCurrent(m[1]))?.[0] || '其它'">
+          </span>
+
+          <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+
+        </button>
+
+        
+        <div x-cloak x-show="open" @click.outside="open = false" x-transition class="
+        absolute bottom-full left-1/2 -translate-x-1/2 mb-2
+        w-44 overflow-hidden
+        rounded-xl
+        border border-gray-200 dark:border-white/10
+        bg-white/95 dark:bg-[#111827]/95
+        backdrop-blur
+        shadow-xl
+        z-50
+      ">
+
+          <template x-for="m in mirrors">
+            <a :href="m[1] + location.search" @click="open = false" class="
+            block px-4 py-2 text-sm
+            transition
+          " :class="isCurrent(m[1])
+            ? 'bg-brand/10 text-brand font-medium'
+            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5'">
+
+              <span x-text="m[0]"></span>
+            </a>
+          </template>
+
+        </div>
+      </div>
+      <button @click="toggleTheme()" class="
+      px-3 py-1 rounded-md text-sm font-medium
+      bg-brand/20 text-brand
+      hover:bg-brand/30
+      transition">
+        切换主题
+      </button>
+    </div>
+
+  </div>
+
+  <div id="qt-container" class="h-full"></div>
+
+  <script>
+    window.showOpenFilePicker = undefined;
+    var instance = null;
+    function app() {
+      return {
+        status: '验证运行环境 · 准备加载',
+        percent: 0,
+        target: 0,
+        sizeText: '',
+        ready: false,
+        error: false,
+        coiError: false,
+        errorMsg: "",
+        
+        zstSize: "13764037",
+
+        mirrors: [
+          ['GitHub', 'https://github.uwillno.com'],
+          ['Vercel', 'https://vercel.uwillno.com'],
+          ['Cloudflare', 'https://uwillno.com'],
+          ['EdgeOne', 'https://edgeone.uwillno.com'],
+          ['Netlify', 'https://netlify.uwillno.com'],
+          ['Azure', 'https://azure.uwillno.com'],
+          ['GitLab', 'https://gitlab.uwillno.com'],
+          ['Render', 'https://render.uwillno.com'],
+          ['IPv6', 'https://ipv6.uwillno.com:9102'],
+          ['Tunnel', 'https://tunnel.uwillno.com']
+        ],
+
+        init() {
+          window.app = this;
+          this.smoothLoop();
+          boot(); 
+        },
+        toggleTheme() {
+          this.dark = !this.dark;
+          document.documentElement.classList.toggle('dark', this.dark);
+          localStorage.theme = this.dark ? 'dark' : 'light';
+        },
+        smoothLoop() {
+          if (this.ready || this.error) return;
+          const diff = this.target - this.percent;
+          this.percent += Math.abs(diff) < 0.06 ? diff : diff * 0.1;
+          requestAnimationFrame(() => this.smoothLoop());
+        },
+
+        updateProgress(d) {
+          if (d.useByteProgress && d.totalBytesExpected > 0) {
+            this.target = (d.bytesLoaded / d.totalBytesExpected) * 100;
+            const mb1 = (d.bytesLoaded / 1048576).toFixed(2);
+            const mb2 = (d.totalBytesExpected / 1048576).toFixed(2);
+            this.sizeText = `📦 ${mb1} / ${mb2} MB`;
+            
+            if (d.bytesLoaded >= d.totalBytesExpected) {
+              this.status = '下载完成 · 正在解压';
+            } else {
+              this.status = '正在下载 Blog 资源';
+            }
+          } else {
+            
+            this.target = (d.finishedCount / 10) * 100;
+            this.sizeText = '';
+            if (d.finishedCount === 0) this.status = '建立连接 · 请求资源';
+            else if (d.finishedCount < 10) this.status = `加载 ${d.finishedCount}/10`;
+            else this.status = '模块合并完成 · 解压缩';
+          }
+        },
+
+        onWasmReady(url) {
+          this.percent = 100;
+          this.target = 100;
+          this.status = 'WASM 完成 · 启动 Qt';
+
+          startQtApplication(url);
+        },
+
+        onAppReady() {
+          this.ready = true;
+
+          const qt = document.getElementById('qt-container');
+          qt.style.display = 'block';
+        },
+
+        onError(msg) {
+          this.error = true;
+          
+          this.errorMsg = '加载失败: ' + (msg.message || msg);
+        },
+
+        isCurrent(url) {
+          try {
+            return location.hostname === new URL(url).hostname;
+          } catch {
+            return location.hostname.includes(url.replace('https://', '').split('.')[0]);
+          }
+        }
+      }
+    }
+
+    
+
+    async function waitForSWController() {
+      if (!navigator.serviceWorker) return;
+      if (navigator.serviceWorker.controller) return;
+
+      await new Promise(resolve => {
+        const t = setTimeout(resolve, 2000);
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          clearTimeout(t);
+          resolve();
+        }, { once: true });
+      });
+    }
+
+    function ensureCOIReady() {
+      if (crossOriginIsolated && typeof SharedArrayBuffer !== "undefined") {
+        sessionStorage.removeItem("coi_reload");
+        return true;
+      }
+
+      if (!sessionStorage.getItem("coi_reload")) {
+        sessionStorage.setItem("coi_reload", "1");
+        window.stop();
+        location.reload();
+        return false;
+      }
+
+      throw new Error("SharedArrayBuffer 不可用");
+    }
+
+    
+
+    
+    function createWorker(zstSize) {
+      const fzstdUrl = new URL('fzstd.js', location.origin).href;
+      const blogZstUrl = new URL('blog.zst', location.origin).href;
+
+      const code = `
+    importScripts('${fzstdUrl}');
+    const blogZstUrl = '${blogZstUrl}';
+    const totalSize = ${zstSize};          
+
+    self.onmessage = async () => {
+      try {
+        const response = await fetch(blogZstUrl);
+        if (!response.ok) {
+          self.postMessage({ type: 'error', error: '下载失败，状态码: ' + response.status });
+          return;
+        }
+
+        
+        const contentLength = response.headers.get('content-length');
+        const estimatedTotal = contentLength ? parseInt(contentLength, 10) : totalSize;
+
+        const reader = response.body.getReader();
+        const chunks = [];
+        let loaded = 0;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          chunks.push(value);
+          loaded += value.length;
+
+          
+          self.postMessage({
+            type: 'progress',
+            bytesLoaded: loaded,
+            totalBytesExpected: estimatedTotal,
+            useByteProgress: true
+          });
+        }
+
+        
+        const compressed = new Uint8Array(loaded);
+        let offset = 0;
+        for (const chunk of chunks) {
+          compressed.set(chunk, offset);
+          offset += chunk.length;
+        }
+
+        
+        const decompressed = self.fzstd.decompress(compressed);
+        const blob = new Blob([decompressed], { type: 'application/wasm' });
+        const url = URL.createObjectURL(blob);
+        self.postMessage({ type: 'wasmReady', wasmUrl: url });
+      } catch (e) {
+        self.postMessage({ type: 'error', error: '下载或解压失败: ' + e.message });
+      }
+    };
+  `;
+
+      return new Worker(URL.createObjectURL(new Blob([code])));
+    }
+
+    
+
+    let worker = null;
+
+    function startLoading(zstSize) {
+      if (worker) return;
+      worker = createWorker(zstSize);
+
+      worker.onmessage = e => {
+        const d = e.data;
+        if (d.type === 'progress') app.updateProgress(d);
+        else if (d.type === 'wasmReady') app.onWasmReady(d.wasmUrl);
+        else if (d.type === 'error') app.onError(d.error);
+      };
+
+      worker.postMessage({});
+    }
+
+    let started = false;
+
+    async function boot() {
+      if (started) return;
+      started = true;
+
+      try {
+        await waitForSWController();
+        if (!ensureCOIReady()) {
+          return;
+        }
+        
+        const zstSize = parseInt(window.app.zstSize, 10);
+        if (isNaN(zstSize) || zstSize <= 0) {
+          throw new Error('无效的压缩包大小');
+        }
+        startLoading(zstSize);
+      } catch (e) {
+        console.error(e);
+        window.app.coiError = true;
+        app.onError(e.message);
+      }
+    }
+
+    
+
+    async function startQtApplication(wasmUrl) {
+      window.wasmUrl = wasmUrl;
+
+      instance = await qtLoad({
+        qt: {
+          onLoaded: () => {
+            app.onAppReady();
+            worker?.terminate();
+          },
+          onExit: () => setTimeout(() => location.reload(), 2500),
+          entryFunction: window.blog_entry,
+          containerElements: [document.getElementById('qt-container')],
+        }
+      }).catch(err => {
+        app.onError(err.message);
+      });
+    }
+
+    let pushCount = 0;
+    function pushHistoryOnce() {
+      if (pushCount > 10) return;
+      history.replaceState({ wasm: pushCount }, '', location.href);
+      history.pushState({ wasm: pushCount + 1 }, '', location.href);
+      pushCount++;
+    }
+    window.addEventListener('popstate', () => { instance?.back?.(); });
+  </script>
+
+</body>
+
+</html>
