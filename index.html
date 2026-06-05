@@ -54,24 +54,9 @@
 
     
     <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      加载太慢就科学上网，不行就直接退出吧，别浪费彼此流量了。
       <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
-        rel="noopener noreferrer">仓库地址</a>，不是看文章又没有所需功能直接退出吧，只需要静态功能直接克隆启动即可。
-      不再提供非常规优化（主页测速跳转镜像站、分块并发请求合并），仅保留 WASM 加解压，个人博客没必要过好的用户体验，自己切适合自己的镜像。
-      本来就是不想写前端才用的 Qt / C++ , 结果加载页面还是得自己写，Ai写得实在看不下去了，问题不大别要我改，谁没事一直呆在加载页面。
-      WASM 端和其它端是一套代码，功能基本一致，只是框架bug多一些（关键的已经修得差不多了），发现我会及时提交并跟进的，不对外提供非 WASM 客户端。
-      针对 WebAssembly 平台额外适配 · 无需安装即可拥有原生级体验。
-      底层 Qt / C++ 驱动 · 启用多线程，提高任务执行效率（安卓 WebView 和一些系统自带浏览器始终不支持）。
-      界面 Qt Quick / QML 驱动 · 支持不同渲染后端，实现高效渲染（可惜 WebAssembly 里还是用的 WebGL ， <a
-        href="https://qt-project.atlassian.net/browse/QTBUG-75040" target="_blank" class="text-brand hover:underline"
-        rel="noopener noreferrer">据报告 6.13 中可能会支持 WebGPU </a>）。
-      底层与界面分离架构 · 实现免编译更新（别指望彻底动态化，谁知道 Cloudflare 服务还能持续多久，不想买服务器）。
-      Cloudflare 服务（Workers、R2、D1、Tunnel） · 实现静态系统的动态化。
-      Qt / C++ 开发的轻量服务器 · 实时监控多台设备状态。
-      全球镜像网络分发 · <del class="line-through decoration-gray-400 text-gray-400/70">动态选择最优路径以最小化延迟。</del>
-      不会用别怪我写得卡，自己开那么高预设，功能预留又不是给你用的，我的老爷机7sgen2，10400f都用得好好的。
-      桌面设备推荐 i7-10700 / GTX1060 / 16GB 内存。
-      移动设备推荐 骁龙 8+ Gen1 / 天玑 9000。
+        rel="noopener noreferrer">仓库地址</a>
+      加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
     </div>
 
     
@@ -89,7 +74,7 @@
       <div x-show="coiError" class="mt-4">
         <div class="text-red-400 font-medium">
           当前浏览器不支持运行环境
-          <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#浏览器兼容性"
             target="_blank" class="text-brand hover:underline" rel="noopener noreferrer">
             查看浏览器兼容性说明
           </a>
