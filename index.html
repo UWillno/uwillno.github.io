@@ -37,6 +37,7 @@
   <script src="fzstd.js"></script>
   <script src="qtloader.js"></script>
   <script src="blog.js"></script>
+  <script src="tex-svg-full.js" defer></script>
 </head>
 
 <body x-data="{ ...app(), dark: true }" x-init="init()" :class="dark ? 'dark' : ''" class="h-svh overflow-hidden">
@@ -57,6 +58,10 @@
       <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
+      浏览器可能需要支持以下特性：
+      <a href="https://caniuse.com/wasm-simd" target="_blank" class="text-brand hover:underline"
+        rel="noopener noreferrer">WebAssembly SIMD</a>、<a href="https://caniuse.com/sharedarraybuffer" target="_blank" class="text-brand hover:underline"
+        rel="noopener noreferrer">Shared Array Buffer</a> 
     </div>
 
     
@@ -160,6 +165,14 @@
   <script>
     window.showOpenFilePicker = undefined;
     var instance = null;
+    window.MathJax = {
+      svg: {
+        fontCache: 'none'
+      },
+      startup: {
+        typeset: false
+      }
+    };
     function app() {
       return {
         status: '验证运行环境 · 准备加载',
@@ -171,7 +184,7 @@
         coiError: false,
         errorMsg: "",
         
-        zstSize: "13764037",
+        zstSize: "13996438",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],
