@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>博客系统更新至4.4</title>
+<link>https://uwillno.com?blog=chlg4.4</link>
+<pubDate>Sat, 27 Jun 2026 07:44:44 GMT</pubDate>
+<category>变更</category>
+</item>
+<item>
 <title>Markdown Latex 支持开发记录及测试</title>
 <link>https://uwillno.com?blog=chlg6</link>
 <pubDate>Thu, 11 Jun 2026 03:14:44 GMT</pubDate>
@@ -257,14 +263,14 @@
 <category>测试</category>
 </item>
 <item>
-<title>Qt Markdown预览增强记录</title>
-<link>https://uwillno.com?blog=55</link>
+<title>Xml异常处理记录</title>
+<link>https://uwillno.com?blog=56</link>
 <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
 <item>
-<title>Xml异常处理记录</title>
-<link>https://uwillno.com?blog=56</link>
+<title>Qt Markdown预览增强记录</title>
+<link>https://uwillno.com?blog=55</link>
 <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
@@ -377,14 +383,14 @@
 <category>技术</category>
 </item>
 <item>
-<title>记录&lt;&gt;导致markdown、xml异常处理</title>
-<link>https://uwillno.com?blog=37</link>
+<title>记录处理std::unique_ptr&lt;QWebSocket&gt;</title>
+<link>https://uwillno.com?blog=36</link>
 <pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
 <item>
-<title>记录处理std::unique_ptr&lt;QWebSocket&gt;</title>
-<link>https://uwillno.com?blog=36</link>
+<title>记录&lt;&gt;导致markdown、xml异常处理</title>
+<link>https://uwillno.com?blog=37</link>
 <pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
@@ -431,16 +437,16 @@
 <category>技术</category>
 </item>
 <item>
-<title>Qt/C++与Java交互、JNI使用</title>
-<link>https://uwillno.com?blog=28</link>
-<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
-<category>技术</category>
-</item>
-<item>
 <title>AR眼镜雷鸟Air2折腾记录</title>
 <link>https://uwillno.com?blog=27</link>
 <pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
 <category>拔草</category>
+</item>
+<item>
+<title>Qt/C++与Java交互、JNI使用</title>
+<link>https://uwillno.com?blog=28</link>
+<pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+<category>技术</category>
 </item>
 <item>
 <title>Qt for WebAssembly中使用Qt/C++调用JavaScript实现路由</title>
