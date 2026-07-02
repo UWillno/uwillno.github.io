@@ -65,10 +65,15 @@ Qt开发，采用Cloudflare Tunnel穿透，内置3个服务器，聊天服务器
 - 水印相机因安全问题被调整为仅内部使用，若需要可以拉出来单独整个webassembly版本，个人感觉没必要了，安卓版更好用。
 - 表情/图片插入在留言和朋友圈仅内部使用，避免滥用，MD编辑里可用，其它文本编辑里未实现。
 - 中文字体再次改为进入wasm后再加载，可选SarasaMono、NotoSans、MiSans。
+- 不再更新WASM里的程序版本号，如果某次编译的dev分支很稳定，可能会一段时间不更新WASM了。
+
+## 控件重写
+
+4.4之后，对已使用的控件进行调整了重写，基于Template与Basic，配色与回退依旧采用Material Style，可能存在问题？
 
 ## 本站markdown语法扩展
 
-见[这篇文章](https://uwillno.com?blog=87)。
+见[这篇文章](https://uwillno.com?blog=87)。Latex适配差异：webassembly为同步，其它端为异步。
 
 ## 功能路由表
 
