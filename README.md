@@ -73,7 +73,7 @@ Qt开发，采用Cloudflare Tunnel穿透，内置3个服务器，聊天服务器
 
 ## 本站markdown语法扩展
 
-见[这篇文章](https://uwillno.com?blog=87)。Latex适配差异：webassembly为同步，其它端为异步。
+见[这篇文章](https://uwillno.com?blog=87)。Latex适配差异：webassembly为同步，其它端为异步。防剧透域/加密域见[这篇变更记录](https://uwillno.com/?blog=chlg5)，内联级别目前只支持隐藏，点击后不可恢复，直接用`||隐藏内容||`即可，字符串首尾不可有空格，若要直接表示`||`后面接一个空格即可。
 
 ## 功能路由表
 
