@@ -17,8 +17,8 @@
 本质也算是图片，所以算作多媒体了。内联算表情高度默认为字体高度2倍，块级算图片高度为默认字体的4倍。所以块级Latex可以点开缩放。
 
 ## 图片
-`![](https://iwmiu.dpdns.org/2024/04/07/profile/lzh1.jpg)`
-![](https://iwmiu.dpdns.org/2024/04/07/profile/lzh1.jpg)
+`![](https://iwmiu.github.io/2024/04/07/profile/lzh1.jpg)`
+![](https://iwmiu.github.io/2024/04/07/profile/lzh1.jpg)
 ## 视频
 > 不算稳定，技术预览中，慎用。
 >> 浏览器中交互后才可以播放，通常播放时才能拿到视频尺寸，所以固定死，不提供任何扩展。
@@ -27,8 +27,8 @@
 ![](https://github.uwillno.com/blogres/media/felgo.mp4)
 
 ## 动图
-`![动图样例](https://iwmiu.dpdns.org/2024/04/07/profile/test.gif)`
-![动图样例](https://iwmiu.dpdns.org/2024/04/07/profile/test.gif)
+`![动图样例](https://iwmiu.github.io/2024/04/07/profile/test.gif)`
+![动图样例](https://iwmiu.github.io/2024/04/07/profile/test.gif)
 
 ## 音频
 > 支持传入歌词和图片链接
@@ -69,7 +69,7 @@
 ## 多媒体滑动视图
 `![](["URL1","URL2"])`
 > 注意链接要带双引号
-`![](<["https://iwmiu.dpdns.org/2024/04/07/profile/lzh1.jpg","https://github.uwillno.com/blogres/media/felgo.mp4","https://iwmiu.dpdns.org/2024/04/07/profile/test.gif","https://github.uwillno.com/blogres/media/陈奕迅 - 于心有愧/陈奕迅 - 于心有愧.mp3|lrc=https://github.uwillno.com/blogres/media/陈奕迅 - 于心有愧/陈奕迅 - 于心有愧.lrc|cover=https://github.uwillno.com/blogres/media/cover/H3M.jpg","https://44910244.xyz/%E5%88%98%E5%8F%AC%E8%BE%89/assets/image-20251106181303795.png|pane|pad|left"]>)`
-![](<["https://iwmiu.dpdns.org/2024/04/07/profile/lzh1.jpg","https://github.uwillno.com/blogres/media/felgo.mp4","https://iwmiu.dpdns.org/2024/04/07/profile/test.gif","https://github.uwillno.com/blogres/media/陈奕迅 - 于心有愧/陈奕迅 - 于心有愧.mp3|lrc=https://github.uwillno.com/blogres/media/陈奕迅 - 于心有愧/陈奕迅 - 于心有愧.lrc|cover=https://github.uwillno.com/blogres/media/cover/H3M.jpg","https://44910244.xyz/%E5%88%98%E5%8F%AC%E8%BE%89/assets/image-20251106181303795.png|pane|pad|left"]>)
+`![](<["https://iwmiu.github.io/2024/04/07/profile/lzh1.jpg","https://github.uwillno.com/blogres/media/felgo.mp4","https://iwmiu.github.io/2024/04/07/profile/test.gif","https://github.uwillno.com/blogres/media/陈奕迅 - 于心有愧/陈奕迅 - 于心有愧.mp3|lrc=https://github.uwillno.com/blogres/media/陈奕迅 - 于心有愧/陈奕迅 - 于心有愧.lrc|cover=https://github.uwillno.com/blogres/media/cover/H3M.jpg","https://44910244.xyz/%E5%88%98%E5%8F%AC%E8%BE%89/assets/image-20251106181303795.png|pane|pad|left"]>)`
+![](<["https://iwmiu.github.io/2024/04/07/profile/lzh1.jpg","https://github.uwillno.com/blogres/media/felgo.mp4","https://iwmiu.github.io/2024/04/07/profile/test.gif","https://github.uwillno.com/blogres/media/陈奕迅 - 于心有愧/陈奕迅 - 于心有愧.mp3|lrc=https://github.uwillno.com/blogres/media/陈奕迅 - 于心有愧/陈奕迅 - 于心有愧.lrc|cover=https://github.uwillno.com/blogres/media/cover/H3M.jpg","https://44910244.xyz/%E5%88%98%E5%8F%AC%E8%BE%89/assets/image-20251106181303795.png|pane|pad|left"]>)
 
 有问题的话可能会调整。
