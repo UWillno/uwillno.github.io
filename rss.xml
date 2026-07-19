@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>新增备用更新方案</title>
+<link>https://uwillno.com?blog=uwrss</link>
+<pubDate>Sun, 19 Jul 2026 13:10:44 GMT</pubDate>
+<category>变更</category>
+</item>
+<item>
 <title>Moto Signature 体验记录</title>
 <link>https://uwillno.com?blog=90</link>
 <pubDate>Wed, 15 Jul 2026 09:24:44 GMT</pubDate>
@@ -293,14 +299,14 @@
 <category>测试</category>
 </item>
 <item>
-<title>Qt Markdown预览增强记录</title>
-<link>https://uwillno.com?blog=55</link>
+<title>Xml异常处理记录</title>
+<link>https://uwillno.com?blog=56</link>
 <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
 <item>
-<title>Xml异常处理记录</title>
-<link>https://uwillno.com?blog=56</link>
+<title>Qt Markdown预览增强记录</title>
+<link>https://uwillno.com?blog=55</link>
 <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
