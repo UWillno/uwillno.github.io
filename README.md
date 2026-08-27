@@ -71,7 +71,7 @@ Qt开发，采用Cloudflare Tunnel穿透，内置3个服务器，聊天服务器
 
 ## [盲水印](https://uwillno.com?func=blindwatermark)
 
-可能兼容[blind_watermark](https://github.com/guofei9987/blind_watermark)默认参数？
+可能兼容[blind_watermark](https://github.com/guofei9987/blind_watermark)
 
 ## [xml编辑](https://uwillno.com?func=xmltree)
 
