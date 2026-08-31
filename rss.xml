@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>加入空间域图像处理功能</title>
+<link>https://uwillno.com?blog=2dfilter</link>
+<pubDate>Tue, 01 Sep 2026 00:00:44 GMT</pubDate>
+<category>变更</category>
+</item>
+<item>
 <title>加入盲水印功能</title>
 <link>https://uwillno.com?blog=blindwatermark</link>
 <pubDate>Fri, 21 Aug 2026 11:14:44 GMT</pubDate>
@@ -767,6 +773,10 @@
 <item>
 <title>盲水印</title>
 <link>https://uwillno.com?func=blindwatermark</link>
+</item>
+<item>
+<title>图像处理</title>
+<link>https://uwillno.com?func=2dfilter</link>
 </item>
 <item>
 <title>变更日志</title>
