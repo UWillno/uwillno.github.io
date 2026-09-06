@@ -69,6 +69,12 @@ Qt开发，采用Cloudflare Tunnel穿透，内置3个服务器，聊天服务器
 - 移除rss_en.xml
 - wasm启用JSPI，改用IndexedDB作为默认格式
 
+## [着色器](https://uwillno.com?func=shader)
+
+![image-20260906124724176](assets/image-20260906124724176_quality80.webp)
+
+片段着色器实时预览。
+
 ## [图像处理](https://uwillno.com?func=2dfilter)
 
 空间图像处理
