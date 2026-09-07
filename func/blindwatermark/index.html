@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/runtime.css">
-  <title>UWillno's Blog</title>
+  <title>盲水印 - UWillno's Blog</title>
   <script>
     const saved = localStorage.theme;
     const dark =
@@ -38,6 +38,11 @@
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
   <script src="/tex-svg-full.js" defer></script>
+
+    <meta name="description" content="基于频域的数字盲水印">
+    <meta property="og:title" content="盲水印 - UWillno's Blog">
+    <meta property="og:url" content="https://uwillno.com/func/blindwatermark">
+    <link rel="canonical" href="https://uwillno.com/func/blindwatermark">
 </head>
 
 <body x-data="{ ...app(), dark: true }" x-init="init()" :class="dark ? 'dark' : ''" class="h-svh overflow-hidden">

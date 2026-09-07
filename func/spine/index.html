@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/runtime.css">
-  <title>UWillno's Blog</title>
+  <title>Spine查看器 - UWillno's Blog</title>
   <script>
     const saved = localStorage.theme;
     const dark =
@@ -38,6 +38,11 @@
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
   <script src="/tex-svg-full.js" defer></script>
+
+    <meta name="description" content="Spine动画预览，支持多骨架、多轨道，仅支持二进制文件，支持Spine版本3.8、4.2">
+    <meta property="og:title" content="Spine查看器 - UWillno's Blog">
+    <meta property="og:url" content="https://uwillno.com/func/spine">
+    <link rel="canonical" href="https://uwillno.com/func/spine">
 </head>
 
 <body x-data="{ ...app(), dark: true }" x-init="init()" :class="dark ? 'dark' : ''" class="h-svh overflow-hidden">
