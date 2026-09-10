@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>戒咖啡测试</title>
+<link>https://uwillno.com/blog/戒咖啡测试</link>
+<pubDate>Fri, 11 Sep 2026 00:00:44 GMT</pubDate>
+<category>测试</category>
+</item>
+<item>
 <title>加入着色器预览（图像处理、滤镜）功能</title>
 <link>https://uwillno.com/blog/shader</link>
 <pubDate>Sun, 06 Sep 2026 04:30:44 GMT</pubDate>

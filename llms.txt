@@ -13,6 +13,7 @@
 
 ## Articles
 
+- [戒咖啡测试](https://uwillno.com/blog/戒咖啡测试)
 - [加入着色器预览（图像处理、滤镜）功能](https://uwillno.com/blog/shader)
 - [加入空间域图像处理功能](https://uwillno.com/blog/2dfilter)
 - [加入盲水印功能](https://uwillno.com/blog/blindwatermark)
