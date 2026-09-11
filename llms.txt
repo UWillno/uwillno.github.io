@@ -13,6 +13,8 @@
 
 ## Articles
 
+- [WASM网站SEO探索与路由增强](https://uwillno.com/blog/WASM网站SEO探索与路由增强)
+- [Cloudflare Workers、R2评论启用邮件通知功能](https://uwillno.com/blog/Cloudflare Workers、R2评论启用邮件通知功能)
 - [戒咖啡测试](https://uwillno.com/blog/戒咖啡测试)
 - [加入着色器预览（图像处理、滤镜）功能](https://uwillno.com/blog/shader)
 - [加入空间域图像处理功能](https://uwillno.com/blog/2dfilter)
@@ -71,8 +73,8 @@
 - [博客安卓版开发记录](https://uwillno.com/blog/59)
 - [RCC/QML在线加载器开发记录](https://uwillno.com/blog/58)
 - [Bilibili必火推广测试](https://uwillno.com/blog/57)
-- [Xml异常处理记录](https://uwillno.com/blog/56)
 - [Qt Markdown预览增强记录](https://uwillno.com/blog/55)
+- [Xml异常处理记录](https://uwillno.com/blog/56)
 - [长沙游记](https://uwillno.com/blog/54)
 - [Cloudflare Workers AI零成本实现AI摘要/功能](https://uwillno.com/blog/53)
 - [Markdown解析测试](https://uwillno.com/blog/markdown-parsing-test)
@@ -91,8 +93,8 @@
 - [武汉移动光猫H60G改桥接 公网IPV6折腾](https://uwillno.com/blog/40)
 - [Uww2开发记录](https://uwillno.com/blog/39)
 - [Qt for Android 存储权限申请 2](https://uwillno.com/blog/38)
-- [记录处理std::unique_ptr<QWebSocket>](https://uwillno.com/blog/36)
 - [记录<>导致markdown、xml异常处理](https://uwillno.com/blog/37)
+- [记录处理std::unique_ptr<QWebSocket>](https://uwillno.com/blog/36)
 - [Qt for Android 存储权限申请](https://uwillno.com/blog/35)
 - [Android/QT/QML WebView折腾](https://uwillno.com/blog/34)
 - [AX200蓝牙异常排查](https://uwillno.com/blog/33)

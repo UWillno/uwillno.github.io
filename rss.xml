@@ -5,6 +5,18 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>WASM网站SEO探索与路由增强</title>
+<link>https://uwillno.com/blog/WASM网站SEO探索与路由增强</link>
+<pubDate>Sat, 12 Sep 2026 00:00:44 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
+<title>Cloudflare Workers、R2评论启用邮件通知功能</title>
+<link>https://uwillno.com/blog/Cloudflare Workers、R2评论启用邮件通知功能</link>
+<pubDate>Sat, 12 Sep 2026 00:00:44 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
 <title>戒咖啡测试</title>
 <link>https://uwillno.com/blog/戒咖啡测试</link>
 <pubDate>Fri, 11 Sep 2026 00:00:44 GMT</pubDate>
@@ -353,14 +365,14 @@
 <category>测试</category>
 </item>
 <item>
-<title>Xml异常处理记录</title>
-<link>https://uwillno.com/blog/56</link>
+<title>Qt Markdown预览增强记录</title>
+<link>https://uwillno.com/blog/55</link>
 <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
 <item>
-<title>Qt Markdown预览增强记录</title>
-<link>https://uwillno.com/blog/55</link>
+<title>Xml异常处理记录</title>
+<link>https://uwillno.com/blog/56</link>
 <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
@@ -473,14 +485,14 @@
 <category>技术</category>
 </item>
 <item>
-<title>记录处理std::unique_ptr&lt;QWebSocket&gt;</title>
-<link>https://uwillno.com/blog/36</link>
+<title>记录&lt;&gt;导致markdown、xml异常处理</title>
+<link>https://uwillno.com/blog/37</link>
 <pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
 <item>
-<title>记录&lt;&gt;导致markdown、xml异常处理</title>
-<link>https://uwillno.com/blog/37</link>
+<title>记录处理std::unique_ptr&lt;QWebSocket&gt;</title>
+<link>https://uwillno.com/blog/36</link>
 <pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
 <category>技术</category>
 </item>
