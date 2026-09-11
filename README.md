@@ -39,7 +39,7 @@ Cloudflare Pages上托管，~~仅并发请求不同静态托管站点的文件�
 
 ### AI摘要、评论/留言、朋友圈……
 
-采用Cloudflare Workers、R2、D1实现，Workers内用到Resend服务给管理人员发邮件，因为没存储用户明文邮箱，用户不会收到邮件，也不用担心暴露。
+采用Cloudflare Workers、R2、D1实现，Workers内用到Resend服务给管理人员发邮件。加入回复邮件通知，需新版本下发一次评论来更新存储，依旧无校验，这个功能若被滥用可能会考虑关掉。
 
 ### 服务器程序
 
