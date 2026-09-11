@@ -75,7 +75,7 @@
 - [Qt Markdown预览增强记录](https://uwillno.com/blog/55)
 - [长沙游记](https://uwillno.com/blog/54)
 - [Cloudflare Workers AI零成本实现AI摘要/功能](https://uwillno.com/blog/53)
-- [Markdown解析测试](https://uwillno.com/blog/test)
+- [Markdown解析测试](https://uwillno.com/blog/markdown-parsing-test)
 - [Moto G100体验记录](https://uwillno.com/blog/52)
 - [Qt渲染Spine记录](https://uwillno.com/blog/51)
 - [10400f 4060降压记录](https://uwillno.com/blog/50)
