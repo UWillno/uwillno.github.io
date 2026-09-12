@@ -14,14 +14,16 @@
 
     document.documentElement.classList.toggle('dark', dark);
 
+    
+    
+    
+    
+    
+    
+    
     if (location.hostname === 'uwillno.com') {
-      const link = document.createElement('link')
-      link.rel = 'prefetch'
-      link.as = 'image'
-      link.href = 'https://www.blogsclub.org/badge/uwillno.com'
-      document.head.appendChild(link)
+      new Image().src = 'https://www.blogsclub.org/badge/uwillno.com';
     }
-
   </script>
   <link rel="icon" type="image/png" href="logo.svg" />
   <link rel="preload" href="/alpine.js" as="script">
