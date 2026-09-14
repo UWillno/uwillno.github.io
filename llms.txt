@@ -159,6 +159,7 @@
 - [图像处理](https://uwillno.com/func/2dfilter) — 基于空间域的图像处理（OpenCV）
 - [着色器](https://uwillno.com/func/shader) — 片段着色器的实时预览，图像处理、滤镜…
 - [变更日志](https://uwillno.com/about/changelog)
+- [Qt 版本快照](https://uwillno.com/about/Qt-Revision-Snapshot)
 - [统计](https://uwillno.com/about/statistics)
 - [监视器](https://uwillno.com/about/monitor)
 - [历史](https://uwillno.com/about/history)
