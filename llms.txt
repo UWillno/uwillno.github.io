@@ -13,6 +13,7 @@
 
 ## Articles
 
+- [性能预设调整，加入交互波纹效果](https://uwillno.com/blog/性能预设调整，加入交互波纹效果)
 - [某报警系统智能化的分析](https://uwillno.com/blog/某报警系统智能化的分析)
 - [微信支付防骗助手太好用了](https://uwillno.com/blog/微信支付防骗助手太好用了)
 - [Cloudflare Workers、R2评论启用邮件通知功能](https://uwillno.com/blog/Cloudflare Workers、R2评论启用邮件通知功能)
