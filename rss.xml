@@ -5,6 +5,12 @@
 <link>https://uwillno.com</link>
 <description>UWillno's Blog</description>
 <item>
+<title>QWasmVideoFrameGrabber 的 wasm64 兼容改造：从 stride 黑屏到同时支持 wasm32/wasm64</title>
+<link>https://uwillno.com/blog/qwasmvideoframegrabberforwasm64</link>
+<pubDate>Tue, 29 Sep 2026 05:34:44 GMT</pubDate>
+<category>技术</category>
+</item>
+<item>
 <title>Qt启用WASM64（memory64）和注意事项</title>
 <link>https://uwillno.com/blog/qt启用wasm64</link>
 <pubDate>Tue, 29 Sep 2026 00:00:44 GMT</pubDate>

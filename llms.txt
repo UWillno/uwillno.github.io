@@ -13,6 +13,7 @@
 
 ## Articles
 
+- [QWasmVideoFrameGrabber 的 wasm64 兼容改造：从 stride 黑屏到同时支持 wasm32/wasm64](https://uwillno.com/blog/qwasmvideoframegrabberforwasm64)
 - [Qt启用WASM64（memory64）和注意事项](https://uwillno.com/blog/qt启用wasm64)
 - [Qt WASM 配置遇到 Emscripten 6 的 emcc.bat 问题](https://uwillno.com/blog/emsdk6windows)
 - [QML水印相机安卓版0.0.2开发记录2](https://uwillno.com/blog/QML水印相机安卓版0.0.2开发记录2)
