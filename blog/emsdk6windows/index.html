@@ -70,9 +70,8 @@
         rel="noopener noreferrer">WebAssembly SIMD</a>、<a href="https://caniuse.com/sharedarraybuffer" target="_blank"
         class="text-brand hover:underline" rel="noopener noreferrer">Shared Array Buffer</a>、<a
         href="https://caniuse.com/mdn-webassembly_jspi" target="_blank" class="text-brand hover:underline"
-        rel="noopener noreferrer">JSPI</a>、<a
-        href="https://caniuse.com/mdn-webassembly_memory64" target="_blank" class="text-brand hover:underline"
-        rel="noopener noreferrer">Memory64</a>
+        rel="noopener noreferrer">JSPI</a>、<a href="https://caniuse.com/mdn-webassembly_memory64" target="_blank"
+        class="text-brand hover:underline" rel="noopener noreferrer">Memory64</a>
       默认以中低性能预设运行，高性能预设推荐配置（Chromium）：
       PC端 I5 10400f + RTX 4060 及以上
       移动端 骁龙 8 Gen 5 及以上
@@ -180,7 +179,7 @@
         error: false,
         errorMsg: "",
         
-        zstSize: "26470754",
+        zstSize: "26484317",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],
@@ -298,7 +297,19 @@
 
       throw new Error("SharedArrayBuffer 不可用");
     }
+    function isWasm64Supported() {
+      return WebAssembly.validate(new Uint8Array([
+        0x00, 0x61, 0x73, 0x6d, 
+        0x01, 0x00, 0x00, 0x00, 
 
+        
+        0x05,       
+        0x03,       
+        0x01,       
+        0x04,       
+        0x01        
+      ]));
+    }
     function createWorker(zstSize) {
       const fzstdUrl = new URL('fzstd.js', location.origin).href;
 
@@ -465,6 +476,10 @@
       try {
         if (!supportsJSPI()) {
           throw new Error('当前浏览器不支持 JSPI');
+          return;
+        }
+        if (!isWasm64Supported()) {
+          throw new Error('当前浏览器不支持 Memory64');
           return;
         }
         await waitForSWController();

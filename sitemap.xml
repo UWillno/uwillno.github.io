@@ -4,15 +4,19 @@
         <loc>https://uwillno.com/</loc>
     </url>
     <url>
+        <loc>https://uwillno.com/blog/CMAKE下Qt项目翻译提速折腾</loc>
+        <lastmod>2026-10-01</lastmod>
+    </url>
+    <url>
         <loc>https://uwillno.com/blog/qwasmvideoframegrabberforwasm64</loc>
         <lastmod>2026-09-29</lastmod>
     </url>
     <url>
-        <loc>https://uwillno.com/blog/qt启用wasm64</loc>
+        <loc>https://uwillno.com/blog/emsdk6windows</loc>
         <lastmod>2026-09-29</lastmod>
     </url>
     <url>
-        <loc>https://uwillno.com/blog/emsdk6windows</loc>
+        <loc>https://uwillno.com/blog/qt启用wasm64</loc>
         <lastmod>2026-09-29</lastmod>
     </url>
     <url>
@@ -40,11 +44,11 @@
         <lastmod>2026-09-13</lastmod>
     </url>
     <url>
-        <loc>https://uwillno.com/blog/WASM网站SEO探索与路由增强</loc>
+        <loc>https://uwillno.com/blog/Cloudflare Workers、R2评论启用邮件通知功能</loc>
         <lastmod>2026-09-12</lastmod>
     </url>
     <url>
-        <loc>https://uwillno.com/blog/Cloudflare Workers、R2评论启用邮件通知功能</loc>
+        <loc>https://uwillno.com/blog/WASM网站SEO探索与路由增强</loc>
         <lastmod>2026-09-12</lastmod>
     </url>
     <url>
@@ -280,11 +284,11 @@
         <lastmod>2025-12-13</lastmod>
     </url>
     <url>
-        <loc>https://uwillno.com/blog/55</loc>
+        <loc>https://uwillno.com/blog/56</loc>
         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
-        <loc>https://uwillno.com/blog/56</loc>
+        <loc>https://uwillno.com/blog/55</loc>
         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
@@ -360,11 +364,11 @@
         <lastmod>2025-04-10</lastmod>
     </url>
     <url>
-        <loc>https://uwillno.com/blog/36</loc>
+        <loc>https://uwillno.com/blog/37</loc>
         <lastmod>2025-03-11</lastmod>
     </url>
     <url>
-        <loc>https://uwillno.com/blog/37</loc>
+        <loc>https://uwillno.com/blog/36</loc>
         <lastmod>2025-03-11</lastmod>
     </url>
     <url>
