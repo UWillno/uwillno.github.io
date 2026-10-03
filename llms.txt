@@ -13,6 +13,7 @@
 
 ## Articles
 
+- [Qt/C++ 博客更新 UW4.4++++（WASM64 适配、Markdown 重构与性能优化）](https://uwillno.com/blog/uw4.4++++)
 - [CMAKE下Qt项目翻译提速折腾](https://uwillno.com/blog/CMAKE下Qt项目翻译提速折腾)
 - [QWasmVideoFrameGrabber 的 wasm64 兼容改造：从 stride 黑屏到同时支持 wasm32/wasm64](https://uwillno.com/blog/qwasmvideoframegrabberforwasm64)
 - [Qt WASM 配置遇到 Emscripten 6 的 emcc.bat 问题](https://uwillno.com/blog/emsdk6windows)

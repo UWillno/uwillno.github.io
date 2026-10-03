@@ -160,7 +160,7 @@
 
   <script>
     window.showOpenFilePicker = undefined;
-    var instance = null;
+    
     window.MathJax = {
       svg: {
         fontCache: 'none'
@@ -179,7 +179,7 @@
         error: false,
         errorMsg: "",
         
-        zstSize: "26486276",
+        zstSize: "26148371",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],
@@ -503,7 +503,7 @@
     async function startQtApplication(wasmUrl) {
       window.wasmUrl = wasmUrl;
 
-      instance = await qtLoad({
+      const instance = await qtLoad({
         qt: {
           onLoaded: () => {
             app.onAppReady();
@@ -518,14 +518,14 @@
       });
     }
 
-    let pushCount = 0;
-    function pushHistoryOnce() {
-      if (pushCount > 10) return;
-      history.replaceState({ wasm: pushCount }, '', location.href);
-      history.pushState({ wasm: pushCount + 1 }, '', location.href);
-      pushCount++;
-    }
-    window.addEventListener('popstate', () => { instance?.back?.(); });
+    
+    
+    
+    
+    
+    
+    
+    
   </script>
 
 </body>

@@ -23,13 +23,10 @@ Cloudflare Pages上托管，~~仅并发请求不同静态托管站点的文件�
 
 > IPV6/Tunnel站点本质为物理机上的一个Docker，也用于测试，如果访问时我正在测试，你可能体验到一些BUG。Tunnel站使用Cloudflare Tunnel穿透，IPV6站使用DDNS-GO。IPV6站点必须你具备IPV6才能访问，通常情况只适用于你用数据流量访问。
 >
-> **迁移至qt5#dev，停用IPV6 TUNNEL站**
+> **迁移至qt5#dev，停用IPV6 TUNNEL站，WASM构建不定期更新，可能还会快于当前dev分支。若bug严重影响使用，会进行源码改动；若有觉得比较好的变动，可能会提前合并未审查的提交。严重的bug可以跟我说一下，我可能没测试。**
 >
 > 由于WASM和一些资源很大，部分站点流量很容易被刷到上限，可以视情况切换站点访问。
 >
-> ~~HTML / CSS 由 [DeepSeek | 深度求索](https://www.deepseek.com/) 生成后微调的。（当初就是懒得写前端才用的Qt，别想让我手搓~~）
->
-> 被迫手搓了一大段。
 
 [测速跳转站（原主页）](https://blog.uwillno.com)
 
@@ -71,7 +68,7 @@ Qt开发，采用Cloudflare Tunnel穿透，内置3个服务器，聊天服务器
 - ~~中文字体再次改为进入wasm后再加载，可选SarasaMono、NotoSans、MiSans。~~
 - 不再更新WASM里的程序版本号，如果某次编译的dev分支很稳定，可能会一段时间不更新WASM了。
 - 移除rss_en.xml
-- wasm启用JSPI，改用IndexedDB作为默认格式
+- wasm启用JSPI，改用IndexedDB作为默认格式；启用WASM64(memory64)。
 - 网络请求效率过低，加载阶段的资源全部内置。
 
 ## [着色器](https://uwillno.com?func=shader)
