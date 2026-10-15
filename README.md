@@ -68,13 +68,12 @@ Qt开发，采用Cloudflare Tunnel穿透，内置3个服务器，聊天服务器
 - 不再更新WASM里的程序版本号，如果某次编译的dev分支很稳定，可能会一段时间不更新WASM了。
 - 移除rss_en.xml
 - wasm启用JSPI，改用IndexedDB作为默认格式；启用WASM64(memory64)。
-- 网络请求效率过低，加载阶段的资源全部内置。
 
 ## Markdown加入mermaid支持
 
 向量图片控件Qt还在开发中，得自己补很多，对齐、缩放逻辑也得变动，开销似乎也更大了，写完了但暂时没有使用。
 
-因此Latex块级小图会有锯齿，Mermaid是按宽度来的会稍微好点。
+因此Latex块级小图会有锯齿或模糊，Mermaid是按宽度来的会稍微好点。
 
 ![mermaid](assets/mermaid.webp)
 

@@ -173,14 +173,6 @@
   <script>
     window.showOpenFilePicker = undefined;
     
-    
-    
-    
-    
-    
-    
-    
-    
     function app() {
       return {
         status: '验证运行环境 · 准备加载',
@@ -189,9 +181,10 @@
         sizeText: '',
         ready: false,
         error: false,
-        errorMsg: "",
+        errorMsg: '',
+
         
-        zstSize: "26061962",
+        zstSize: "26068977",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],
@@ -206,48 +199,52 @@
           ['Tunnel', 'https://tunnel.uwillno.com']
         ],
 
+        dark: document.documentElement.classList.contains('dark'),
+
         init() {
           window.app = this;
           this.smoothLoop();
-          boot(); 
+          boot();
         },
+
         toggleTheme() {
           this.dark = !this.dark;
           document.documentElement.classList.toggle('dark', this.dark);
           localStorage.theme = this.dark ? 'dark' : 'light';
         },
+
         smoothLoop() {
           if (this.ready || this.error) return;
+
           const diff = this.target - this.percent;
-          this.percent += Math.abs(diff) < 0.06 ? diff : diff * 0.1;
+          this.percent += Math.abs(diff) < 0.06
+            ? diff
+            : diff * 0.1;
+
           requestAnimationFrame(() => this.smoothLoop());
         },
 
         updateProgress(d) {
-          if (d.useByteProgress && d.totalBytesExpected > 0) {
-            this.target = (d.bytesLoaded / d.totalBytesExpected) * 100;
-            const mb1 = (d.bytesLoaded / 1048576).toFixed(2);
-            const mb2 = (d.totalBytesExpected / 1048576).toFixed(2);
-            this.sizeText = `📦 ${mb1} / ${mb2} MB`;
-            
-            if (d.bytesLoaded >= d.totalBytesExpected) {
-              this.status = '下载完成 · 正在解压';
-            } else {
-              this.status = '正在下载 Blog 资源';
-            }
-          } else {
-            
-            this.target = (d.finishedCount / 10) * 100;
-            this.sizeText = '';
-            if (d.finishedCount === 0) this.status = '建立连接 · 请求资源';
-            else if (d.finishedCount < 10) this.status = `加载 ${d.finishedCount}/10`;
-            else this.status = '模块合并完成 · 解压缩';
-          }
+          if (!d.useByteProgress || d.totalBytesExpected <= 0) return;
+
+          const loaded = Math.max(0, d.bytesLoaded);
+          const total = d.totalBytesExpected;
+
+          this.target = Math.min(99, loaded / total * 100);
+
+          this.sizeText =
+            `📦 ${(loaded / 1048576).toFixed(2)} / ` +
+            `${(total / 1048576).toFixed(2)} MB`;
+
+          this.status = loaded >= total
+            ? '下载完成 · 正在解压'
+            : '正在下载 Blog 资源';
         },
 
         onWasmReady(url) {
           this.percent = 100;
           this.target = 100;
+          this.sizeText = '';
           this.status = 'WASM 完成 · 启动 Qt';
 
           startQtApplication(url);
@@ -255,26 +252,38 @@
 
         onAppReady() {
           this.ready = true;
+          this.percent = 100;
+          this.target = 100;
 
           const qt = document.getElementById('qt-container');
           qt.style.display = 'block';
+
+          stopWorker();
         },
 
         onError(msg) {
+          if (this.ready || this.error) return;
+
           this.error = true;
-          
-          this.errorMsg = '加载失败: ' + (msg.message || msg);
+          this.status = '加载失败';
+          this.errorMsg =
+            '加载失败: ' + (msg?.message || msg || '未知错误');
+
+          stopWorker();
         },
 
         isCurrent(url) {
           try {
             return location.hostname === new URL(url).hostname;
           } catch {
-            return location.hostname.includes(url.replace('https://', '').split('.')[0]);
+            return location.hostname.includes(
+              url.replace('https://', '').split('.')[0]
+            );
           }
         }
-      }
+      };
     }
+
 
     
 
@@ -283,47 +292,82 @@
       if (navigator.serviceWorker.controller) return;
 
       await new Promise(resolve => {
-        const t = setTimeout(resolve, 2000);
-        navigator.serviceWorker.addEventListener("controllerchange", () => {
-          clearTimeout(t);
-          resolve();
-        }, { once: true });
+        const timer = setTimeout(resolve, 2000);
+
+        navigator.serviceWorker.addEventListener(
+          'controllerchange',
+          () => {
+            clearTimeout(timer);
+            resolve();
+          },
+          { once: true }
+        );
       });
     }
+
+
     function supportsJSPI() {
-      return typeof WebAssembly.Suspending === "function" &&
-        typeof WebAssembly.promising === "function";
+      return typeof WebAssembly.Suspending === 'function' &&
+        typeof WebAssembly.promising === 'function';
     }
+
+
     function ensureCOIReady() {
-      if (crossOriginIsolated && typeof SharedArrayBuffer !== "undefined") {
-        sessionStorage.removeItem("coi_reload");
+      if (
+        crossOriginIsolated &&
+        typeof SharedArrayBuffer !== 'undefined'
+      ) {
+        sessionStorage.removeItem('coi_reload');
         return true;
       }
 
-      if (!sessionStorage.getItem("coi_reload")) {
-        sessionStorage.setItem("coi_reload", "1");
+      if (!sessionStorage.getItem('coi_reload')) {
+        sessionStorage.setItem('coi_reload', '1');
         window.stop();
         location.reload();
         return false;
       }
 
-      throw new Error("SharedArrayBuffer 不可用");
+      throw new Error('SharedArrayBuffer 不可用');
     }
+
+
     function isWasm64Supported() {
       return WebAssembly.validate(new Uint8Array([
         0x00, 0x61, 0x73, 0x6d, 
         0x01, 0x00, 0x00, 0x00, 
 
         
-        0x05,       
-        0x03,       
-        0x01,       
-        0x04,       
-        0x01        
+        0x05,
+        0x03,
+        0x01,
+        0x04, 
+        0x01  
       ]));
     }
+
+
+    
+
+    let worker = null;
+    let workerStarted = false;
+
+
+    function stopWorker() {
+      if (worker) {
+        worker.terminate();
+        worker = null;
+      }
+
+      workerStarted = false;
+    }
+
+
     function createWorker(zstSize) {
-      const fzstdUrl = new URL('fzstd.js', location.origin).href;
+      const fzstdUrl = new URL(
+        'fzstd.js',
+        location.origin
+      ).href;
 
       const code = `
     importScripts('${fzstdUrl}');
@@ -343,143 +387,268 @@
       'blog10.wasm'
     ];
 
-    self.onmessage = async () => {
-      try {
-        const buffers = new Array(wasmParts.length);
+    
+    const MAX_ATTEMPTS = 5;
+    const BASE_DELAY = 1000;
+    const MAX_DELAY = 5000;
 
-        let loadedTotal = 0;
+    
+    const partProgress = new Array(wasmParts.length).fill(0);
 
-        async function downloadPart(index) {
-          const url = new URL(
-            wasmParts[index],
-            location.origin
-          ).href;
+    function reportProgress() {
+      const bytesLoaded = partProgress.reduce(
+        (sum, size) => sum + size,
+        0
+      );
 
-          const response = await fetch(url);
+      self.postMessage({
+        type: 'progress',
+        bytesLoaded,
+        totalBytesExpected: totalSize,
+        useByteProgress: true
+      });
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function downloadPart(index) {
+      const partName = wasmParts[index];
+      const url = new URL(partName, location.origin).href;
+
+      for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+        let reader = null;
+
+        try {
+          
+          partProgress[index] = 0;
+          reportProgress();
+
+          const response = await fetch(url, {
+            cache: 'no-store'
+          });
 
           if (!response.ok) {
             throw new Error(
-              wasmParts[index] +
-              ' 下载失败，状态码: ' +
-              response.status
+              partName + ' HTTP ' + response.status
             );
           }
-
-          const reader = response.body.getReader();
 
           const chunks = [];
           let loaded = 0;
 
-          while (true) {
-            const { done, value } =
-              await reader.read();
+          if (response.body) {
+            reader = response.body.getReader();
 
-            if (done)
-              break;
+            while (true) {
+              const { done, value } = await reader.read();
 
-            chunks.push(value);
-            loaded += value.length;
-            loadedTotal += value.length;
+              if (done) break;
 
-            self.postMessage({
-              type: 'progress',
-              bytesLoaded: loadedTotal,
-              totalBytesExpected: totalSize,
-              useByteProgress: true
-            });
+              chunks.push(value);
+              loaded += value.byteLength;
+
+              partProgress[index] = loaded;
+              reportProgress();
+            }
+          } else {
+            const buffer = new Uint8Array(
+              await response.arrayBuffer()
+            );
+
+            chunks.push(buffer);
+            loaded = buffer.byteLength;
+
+            partProgress[index] = loaded;
+            reportProgress();
           }
 
-          const buffer = new Uint8Array(loaded);
-
+          
+          const result = new Uint8Array(loaded);
           let offset = 0;
 
           for (const chunk of chunks) {
-            buffer.set(chunk, offset);
-            offset += chunk.length;
+            result.set(chunk, offset);
+            offset += chunk.byteLength;
           }
 
-          buffers[index] = buffer;
-        }
+          return result;
 
-        
-        await Promise.all(
-          wasmParts.map((_, index) =>
-            downloadPart(index)
-          )
-        );
+        } catch (err) {
+          if (reader) {
+            try {
+              await reader.cancel();
+            } catch (_) {}
+          }
 
-        
-        const compressed =
-          new Uint8Array(loadedTotal);
+          
+          partProgress[index] = 0;
+          reportProgress();
 
-        let offset = 0;
+          if (attempt >= MAX_ATTEMPTS) {
+            throw new Error(
+              partName + ' 下载失败，已尝试 ' +
+              MAX_ATTEMPTS + ' 次：' +
+              (err.message || String(err))
+            );
+          }
 
-        for (const buffer of buffers) {
-          compressed.set(buffer, offset);
-          offset += buffer.length;
-        }
-
-        if (offset !== totalSize) {
-          throw new Error(
-            '合并大小异常: ' +
-            offset + ' / ' + totalSize
+          const delay = Math.min(
+            BASE_DELAY * Math.pow(2, attempt - 1),
+            MAX_DELAY
           );
+
+          self.postMessage({
+            type: 'status',
+            text: partName + ' 下载失败，' +
+              (delay / 1000) +
+              ' 秒后重试 (' +
+              attempt + '/' +
+              (MAX_ATTEMPTS - 1) + ')'
+          });
+
+          await sleep(delay);
         }
+      }
+    }
 
-        
-        const decompressed =
-          self.fzstd.decompress(compressed);
+    async function loadAndMergeWasm() {
+      self.postMessage({
+        type: 'status',
+        text: '正在下载 Blog 资源'
+      });
 
-        const blob = new Blob(
-          [decompressed],
-          { type: 'application/wasm' }
+      
+      
+      const buffers = await Promise.all(
+        wasmParts.map((_, index) => downloadPart(index))
+      );
+
+      const actualSize = buffers.reduce(
+        (sum, buffer) => sum + buffer.byteLength,
+        0
+      );
+
+      if (actualSize !== totalSize) {
+        throw new Error(
+          '合并大小异常：' +
+          actualSize + ' / ' + totalSize
         );
+      }
 
-        const url =
-          URL.createObjectURL(blob);
+      self.postMessage({
+        type: 'status',
+        text: '下载完成，正在合并并解压 zstd'
+      });
 
-        self.postMessage({
-          type: 'wasmReady',
-          wasmUrl: url
-        });
+      
+      const compressed = new Uint8Array(actualSize);
+      let offset = 0;
 
-      } catch (e) {
+      for (const buffer of buffers) {
+        compressed.set(buffer, offset);
+        offset += buffer.byteLength;
+      }
+
+      
+      const decompressed = self.fzstd.decompress(compressed);
+
+      const blob = new Blob(
+        [decompressed],
+        { type: 'application/wasm' }
+      );
+
+      const wasmUrl = URL.createObjectURL(blob);
+
+      self.postMessage({
+        type: 'wasmReady',
+        wasmUrl
+      });
+    }
+
+    let started = false;
+
+    self.onmessage = async function(e) {
+      if (e.data?.type !== 'start' || started) return;
+      started = true;
+
+      try {
+        await loadAndMergeWasm();
+      } catch (err) {
         self.postMessage({
           type: 'error',
-          error: '下载或解压失败: ' + e.message
+          error: '下载或解压失败：' +
+            (err.message || String(err))
         });
       }
     };
   `;
 
-      return new Worker(
-        URL.createObjectURL(
-          new Blob([code], {
-            type: 'application/javascript'
-          })
-        )
+      const workerUrl = URL.createObjectURL(
+        new Blob([code], {
+          type: 'application/javascript'
+        })
       );
+
+      try {
+        return new Worker(workerUrl);
+      } finally {
+        URL.revokeObjectURL(workerUrl);
+      }
     }
+
 
     
 
-    let worker = null;
-
     function startLoading(zstSize) {
       if (worker) return;
-      worker = createWorker(zstSize);
 
-      worker.onmessage = e => {
-        const d = e.data;
-        if (d.type === 'progress') app.updateProgress(d);
-        else if (d.type === 'wasmReady') app.onWasmReady(d.wasmUrl);
-        else if (d.type === 'error') app.onError(d.error);
-      };
+      try {
+        worker = createWorker(zstSize);
+        workerStarted = true;
 
-      worker.postMessage({});
+        worker.onmessage = e => {
+          const d = e.data;
+
+          switch (d.type) {
+            case 'progress':
+              app.updateProgress(d);
+              break;
+
+            case 'status':
+              app.status = d.text;
+              break;
+
+            case 'wasmReady':
+              app.onWasmReady(d.wasmUrl);
+              break;
+
+            case 'error':
+              app.onError(d.error);
+              break;
+          }
+        };
+
+        worker.onerror = e => {
+          e.preventDefault();
+          app.onError(e.message || 'Worker 执行异常');
+        };
+
+        worker.onmessageerror = () => {
+          app.onError('Worker 消息解析失败');
+        };
+
+        worker.postMessage({ type: 'start' });
+
+      } catch (err) {
+        app.onError(err.message || '无法创建 Worker');
+      }
     }
 
+
     let started = false;
+
 
     async function boot() {
       if (started) return;
@@ -488,47 +657,419 @@
       try {
         if (!supportsJSPI()) {
           throw new Error('当前浏览器不支持 JSPI');
-          return;
         }
+
         if (!isWasm64Supported()) {
           throw new Error('当前浏览器不支持 Memory64');
-          return;
         }
+
         await waitForSWController();
+
         if (!ensureCOIReady()) {
           return;
         }
-        
-        const zstSize = parseInt(window.app.zstSize, 10);
-        if (isNaN(zstSize) || zstSize <= 0) {
+
+        const zstSize = Number(window.app.zstSize);
+
+        if (!Number.isSafeInteger(zstSize) || zstSize <= 0) {
           throw new Error('无效的压缩包大小');
         }
+
         startLoading(zstSize);
-      } catch (e) {
-        console.error(e);
-        app.onError(e.message);
+
+      } catch (err) {
+        console.error(err);
+        app.onError(err);
       }
     }
+
 
     
 
     async function startQtApplication(wasmUrl) {
       window.wasmUrl = wasmUrl;
 
-      const instance = await qtLoad({
-        qt: {
-          onLoaded: () => {
-            app.onAppReady();
-            worker?.terminate();
-          },
-          onExit: () => setTimeout(() => location.reload(), 2500),
-          entryFunction: window.blog_entry,
-          containerElements: [document.getElementById('qt-container')],
-        }
-      }).catch(err => {
-        app.onError(err.message);
-      });
+      try {
+        await qtLoad({
+          qt: {
+            onLoaded: () => {
+              app.onAppReady();
+            },
+
+            onExit: () => {
+              setTimeout(() => location.reload(), 2500);
+            },
+
+            entryFunction: window.blog_entry,
+
+            containerElements: [
+              document.getElementById('qt-container')
+            ]
+          }
+        });
+      } catch (err) {
+        app.onError(err);
+      }
     }
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     
     
