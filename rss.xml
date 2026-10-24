@@ -5,6 +5,12 @@
         <link>https://uwillno.com</link>
         <description>UWillno's Blog</description>
         <item>
+            <title>QWasmLocalFileAccess wasm64适配</title>
+            <link>https://uwillno.com/blog/QWasmLocalFileAccess wasm64适配</link>
+            <pubDate>Sat, 24 Oct 2026 09:14:44 GMT</pubDate>
+            <category>技术</category>
+        </item>
+        <item>
             <title>Qt Markdown解析异常排查记录</title>
             <link>https://uwillno.com/blog/Qt Markdown解析异常排查记录</link>
             <pubDate>Sat, 17 Oct 2026 12:19:44 GMT</pubDate>

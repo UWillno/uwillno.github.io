@@ -4,6 +4,10 @@
         <loc>https://uwillno.com/</loc>
     </url>
     <url>
+        <loc>https://uwillno.com/blog/QWasmLocalFileAccess wasm64适配</loc>
+        <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
         <loc>https://uwillno.com/blog/Qt Markdown解析异常排查记录</loc>
         <lastmod>2026-10-17</lastmod>
     </url>

@@ -13,6 +13,7 @@
 
 ## Articles
 
+- [QWasmLocalFileAccess wasm64适配](https://uwillno.com/blog/QWasmLocalFileAccess wasm64适配)
 - [Qt Markdown解析异常排查记录](https://uwillno.com/blog/Qt Markdown解析异常排查记录)
 - [杭州游记](https://uwillno.com/blog/杭州游记)
 - [Markdown Mermaid 支持开发记录及测试](https://uwillno.com/blog/mermaid)
