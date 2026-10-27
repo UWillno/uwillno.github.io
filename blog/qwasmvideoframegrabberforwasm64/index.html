@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>QWasmVideoFrameGrabber 的 wasm64 兼容改造：从 stride 黑屏到同时支持 wasm32/wasm64 - UWillno's Blog</title>
 <meta property="og:title" content="QWasmVideoFrameGrabber 的 wasm64 兼容改造：从 stride 黑屏到同时支持 wasm32/wasm64 - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="本文记录了 QWasmVideoFrameGrabber 从仅支持 wasm32 到同时兼容 wasm64 的改造过程。针对 wasm64 架构下指针变长、对象生命周期及语法限制等新约束，文章详细分析了因硬编码像素格式导致的黑屏问题根源。最终方案摒弃了不稳定的跨帧 val 捕获与 EMASM 宏，确立了全用 EMJS、禁用危险比较运算符、通过 DOM ID 寻址及规范处理大整数指针等五条核心规则。该实现不仅解决了 stride 不匹配引发的纹理上传错误，还确保了在 wasm32 上的无痛运行，为 Qt WebAssembly 平台提供了更稳健的跨架构参考方案。">
 <meta property="og:url" content="https://uwillno.com/blog/qwasmvideoframegrabberforwasm64">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="本文记录了 QWasmVideoFrameGrabber 从仅支持 wasm32 到同时兼容 wasm64 的改造过程。针对 wasm64 架构下指针变长、对象生命周期及语法限制等新约束，文章详细分析了因硬编码像素格式导致的黑屏问题根源。最终方案摒弃了不稳定的跨帧 val 捕获与 EMASM 宏，确立了全用 EMJS、禁用危险比较运算符、通过 DOM ID 寻址及规范处理大整数指针等五条核心规则。该实现不仅解决了 stride 不匹配引发的纹理上传错误，还确保了在 wasm32 上的无痛运行，为 Qt WebAssembly 平台提供了更稳健的跨架构参考方案。">
 <link rel="canonical" href="https://uwillno.com/blog/qwasmvideoframegrabberforwasm64">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - QWasmVideoFrameGrabber 的 wasm64 兼容改造：从 stride 黑屏到同时支持 wasm32/wasm64
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      本文记录了 QWasmVideoFrameGrabber 从仅支持 wasm32 到同时兼容 wasm64 的改造过程。针对 wasm64 架构下指针变长、对象生命周期及语法限制等新约束，文章详细分析了因硬编码像素格式导致的黑屏问题根源。最终方案摒弃了不稳定的跨帧 val 捕获与 EMASM 宏，确立了全用 EMJS、禁用危险比较运算符、通过 DOM ID 寻址及规范处理大整数指针等五条核心规则。该实现不仅解决了 stride 不匹配引发的纹理上传错误，还确保了在 wasm32 上的无痛运行，为 Qt WebAssembly 平台提供了更稳健的跨架构参考方案。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>QML循环滑动实现记录 - UWillno's Blog</title>
 <meta property="og:title" content="QML循环滑动实现记录 - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="本文记录了 QML 中实现循环滑动的多种方案对比与踩坑经验。作者推荐优先使用 SwipeView，因其封装完善且能避免奇怪 bug，仅需通过 currentIndex 逻辑处理首尾跳转即可；StackLayout 虽可自定义动画但交互手感较差；PathView 因存在大量历史遗留 Bug、跨平台兼容性及事件冲突问题，不建议在复杂布局中使用。文章还指出 Flickable 系列控件在屏幕显示不全时易与 PathView 产生交互冲突，并分享了通过禁止交互开关等兜底代码解决反复折腾问题的最终实践方案。">
 <meta property="og:url" content="https://uwillno.com/blog/78">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="本文记录了 QML 中实现循环滑动的多种方案对比与踩坑经验。作者推荐优先使用 SwipeView，因其封装完善且能避免奇怪 bug，仅需通过 currentIndex 逻辑处理首尾跳转即可；StackLayout 虽可自定义动画但交互手感较差；PathView 因存在大量历史遗留 Bug、跨平台兼容性及事件冲突问题，不建议在复杂布局中使用。文章还指出 Flickable 系列控件在屏幕显示不全时易与 PathView 产生交互冲突，并分享了通过禁止交互开关等兜底代码解决反复折腾问题的最终实践方案。">
 <link rel="canonical" href="https://uwillno.com/blog/78">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - QML循环滑动实现记录
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      本文记录了 QML 中实现循环滑动的多种方案对比与踩坑经验。作者推荐优先使用 SwipeView，因其封装完善且能避免奇怪 bug，仅需通过 currentIndex 逻辑处理首尾跳转即可；StackLayout 虽可自定义动画但交互手感较差；PathView 因存在大量历史遗留 Bug、跨平台兼容性及事件冲突问题，不建议在复杂布局中使用。文章还指出 Flickable 系列控件在屏幕显示不全时易与 PathView 产生交互冲突，并分享了通过禁止交互开关等兜底代码解决反复折腾问题的最终实践方案。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

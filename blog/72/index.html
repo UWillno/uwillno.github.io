@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>解决Qt WASM应用文件保存过慢问题 - UWillno's Blog</title>
 <meta property="og:title" content="解决Qt WASM应用文件保存过慢问题 - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="针对 Qt WASM 应用文件保存过慢问题，文章分析了 Firefox 与 Chromium 浏览器的不同表现及原因：Firefox 直接下载效率高，而 Chromium 打开对话框涉及临时文件写入导致缓慢。尽管 showSaveFilePicker API 更合适但 Firefox 不兼容且大文件易中断，因此建议统一降级为直接下载方案。此外，还提及了通过设置 wasm 初始化前将 showOpenFilePicker 设为 undefined 来规避相关问题的方法，并指出该技巧应补充至官方文档。">
 <meta property="og:url" content="https://uwillno.com/blog/72">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="针对 Qt WASM 应用文件保存过慢问题，文章分析了 Firefox 与 Chromium 浏览器的不同表现及原因：Firefox 直接下载效率高，而 Chromium 打开对话框涉及临时文件写入导致缓慢。尽管 showSaveFilePicker API 更合适但 Firefox 不兼容且大文件易中断，因此建议统一降级为直接下载方案。此外，还提及了通过设置 wasm 初始化前将 showOpenFilePicker 设为 undefined 来规避相关问题的方法，并指出该技巧应补充至官方文档。">
 <link rel="canonical" href="https://uwillno.com/blog/72">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - 解决Qt WASM应用文件保存过慢问题
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      针对 Qt WASM 应用文件保存过慢问题，文章分析了 Firefox 与 Chromium 浏览器的不同表现及原因：Firefox 直接下载效率高，而 Chromium 打开对话框涉及临时文件写入导致缓慢。尽管 showSaveFilePicker API 更合适但 Firefox 不兼容且大文件易中断，因此建议统一降级为直接下载方案。此外，还提及了通过设置 wasm 初始化前将 showOpenFilePicker 设为 undefined 来规避相关问题的方法，并指出该技巧应补充至官方文档。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

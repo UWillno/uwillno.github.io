@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>Qt6.10Beta3 for wasm初体验 - UWillno's Blog</title>
 <meta property="og:title" content="Qt6.10Beta3 for wasm初体验 - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="Qt6.10Beta3 for wasm 在多媒体模块、内存管理及 OpenCV 集成方面存在显著问题。虽然改用多线程套件解决了部分单线程限制，但着色器未过审查导致播放器无画面；非标准启动易引发内存溢出及 QML 白屏。此外，OpenCV 编译需特定原子操作支持，QtQuick.Dialogs 亦出现越界错误。鉴于 RC 版本可能更稳定，作者暂时回退至 Qt6.9.2 使用。">
 <meta property="og:url" content="https://uwillno.com/blog/47">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="Qt6.10Beta3 for wasm 在多媒体模块、内存管理及 OpenCV 集成方面存在显著问题。虽然改用多线程套件解决了部分单线程限制，但着色器未过审查导致播放器无画面；非标准启动易引发内存溢出及 QML 白屏。此外，OpenCV 编译需特定原子操作支持，QtQuick.Dialogs 亦出现越界错误。鉴于 RC 版本可能更稳定，作者暂时回退至 Qt6.9.2 使用。">
 <link rel="canonical" href="https://uwillno.com/blog/47">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - Qt6.10Beta3 for wasm初体验
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      Qt6.10Beta3 for wasm 在多媒体模块、内存管理及 OpenCV 集成方面存在显著问题。虽然改用多线程套件解决了部分单线程限制，但着色器未过审查导致播放器无画面；非标准启动易引发内存溢出及 QML 白屏。此外，OpenCV 编译需特定原子操作支持，QtQuick.Dialogs 亦出现越界错误。鉴于 RC 版本可能更稳定，作者暂时回退至 Qt6.9.2 使用。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

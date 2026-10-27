@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>MD预览、功能路由表 - UWillno's Blog</title>
 <meta property="og:title" content="MD预览、功能路由表 - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="本文介绍了功能路由表的参数规范，区分了需指定具体值的参数和仅需带上的标志参数，并指出异常值可能导致功能异常及部分标志互斥。文章详细说明了农历、皇极经世等功能的调用示例，重点阐述了 MD 编辑与预览模式的区别：前者支持 Base64 或 URL 源且可开启预览，后者为专门的新功能，会将相对路径自动转换为绝对路径以适配博客文章预览逻辑。">
 <meta property="og:url" content="https://uwillno.com/blog/83">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="本文介绍了功能路由表的参数规范，区分了需指定具体值的参数和仅需带上的标志参数，并指出异常值可能导致功能异常及部分标志互斥。文章详细说明了农历、皇极经世等功能的调用示例，重点阐述了 MD 编辑与预览模式的区别：前者支持 Base64 或 URL 源且可开启预览，后者为专门的新功能，会将相对路径自动转换为绝对路径以适配博客文章预览逻辑。">
 <link rel="canonical" href="https://uwillno.com/blog/83">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - MD预览、功能路由表
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      本文介绍了功能路由表的参数规范，区分了需指定具体值的参数和仅需带上的标志参数，并指出异常值可能导致功能异常及部分标志互斥。文章详细说明了农历、皇极经世等功能的调用示例，重点阐述了 MD 编辑与预览模式的区别：前者支持 Base64 或 URL 源且可开启预览，后者为专门的新功能，会将相对路径自动转换为绝对路径以适配博客文章预览逻辑。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

@@ -13,136 +13,137 @@
 
 ## Articles
 
-- [QWasmLocalFileAccess wasm64适配](https://uwillno.com/blog/qwasmlocalfileaccessforwasm64)
-- [Qt Markdown解析异常排查记录](https://uwillno.com/blog/Qt Markdown解析异常排查记录)
-- [杭州游记](https://uwillno.com/blog/杭州游记)
-- [Markdown Mermaid 支持开发记录及测试](https://uwillno.com/blog/mermaid)
-- [Qt/C++ 博客 UW4.5：文章解耦、Markdown AST 序列化与构建自动化](https://uwillno.com/blog/uw4.5)
-- [Qt/C++ 博客更新 UW4.4++++（WASM64 适配、Markdown 重构与性能优化）](https://uwillno.com/blog/uw4.4++++)
-- [CMAKE下Qt项目翻译提速折腾](https://uwillno.com/blog/CMAKE下Qt项目翻译提速折腾)
-- [QWasmVideoFrameGrabber 的 wasm64 兼容改造：从 stride 黑屏到同时支持 wasm32/wasm64](https://uwillno.com/blog/qwasmvideoframegrabberforwasm64)
-- [Qt WASM 配置遇到 Emscripten 6 的 emcc.bat 问题](https://uwillno.com/blog/emsdk6windows)
-- [Qt启用WASM64（memory64）和注意事项](https://uwillno.com/blog/qt启用wasm64)
-- [QML水印相机安卓版0.0.2开发记录2](https://uwillno.com/blog/QML水印相机安卓版0.0.2开发记录2)
-- [Qt/C++ 博客架构调整 UW4.4+++](https://uwillno.com/blog/uw4.4+++)
-- [QML水印相机安卓版0.0.2开发记录](https://uwillno.com/blog/QML水印相机安卓版0.0.2开发记录)
-- [性能预设调整，加入交互波纹效果](https://uwillno.com/blog/性能预设调整，加入交互波纹效果)
-- [某报警系统智能化的分析](https://uwillno.com/blog/某报警系统智能化的分析)
-- [微信支付防骗助手太好用了](https://uwillno.com/blog/微信支付防骗助手太好用了)
-- [Cloudflare Workers、R2评论启用邮件通知功能](https://uwillno.com/blog/Cloudflare Workers、R2评论启用邮件通知功能)
-- [WASM网站SEO探索与路由增强](https://uwillno.com/blog/WASM网站SEO探索与路由增强)
-- [戒咖啡测试](https://uwillno.com/blog/戒咖啡测试)
-- [加入着色器预览（图像处理、滤镜）功能](https://uwillno.com/blog/shader)
-- [加入空间域图像处理功能](https://uwillno.com/blog/2dfilter)
-- [加入盲水印功能](https://uwillno.com/blog/blindwatermark)
-- [加入Spine4.2支持](https://uwillno.com/blog/spine4.2)
-- [SFPM的变化](https://uwillno.com/blog/sfpm)
-- [本站启用JSPI](https://uwillno.com/blog/jspi)
-- [XML功能开发记录](https://uwillno.com/blog/xml)
-- [换手机太难、Pura90Pro简单体验](https://uwillno.com/blog/pura90pro)
-- [新增备用更新方案](https://uwillno.com/blog/uwrss)
-- [Moto Signature 体验记录](https://uwillno.com/blog/90)
-- [复制ic卡折腾记录](https://uwillno.com/blog/89)
-- [MD内联防剧透实现](https://uwillno.com/blog/mdinlinespoiler)
-- [多平台 Latex 支持开发记录](https://uwillno.com/blog/chlg6+)
-- [618购物杂谈](https://uwillno.com/blog/88)
-- [博客系统更新至4.4](https://uwillno.com/blog/chlg4.4)
-- [Markdown Latex 支持开发记录及测试](https://uwillno.com/blog/chlg6)
-- [本站Markdown多媒体语法说明](https://uwillno.com/blog/87)
-- [代码高亮增强](https://uwillno.com/blog/86)
-- [近期调整（Qt6.12.0、md扩展加密、emoji字体）](https://uwillno.com/blog/chlg5)
-- [Qt源码编译WASM构建套件](https://uwillno.com/blog/85)
-- [编译修复Qt WASM输入异常](https://uwillno.com/blog/84)
-- [MD预览、功能路由表](https://uwillno.com/blog/83)
-- [通用加载器、Qt 6.11.1](https://uwillno.com/blog/chlg6.11.1)
-- [RDP换端口、配置CA证书](https://uwillno.com/blog/82)
-- [近期调整 4.0 -&gt; 4.1](https://uwillno.com/blog/chlg4)
-- [3D拖动在WASM上爆线程池回避方法](https://uwillno.com/blog/81)
-- [不再开放水印相机、留言插入图片/表情功能](https://uwillno.com/blog/chlg3)
-- [换手机太难、K90PROMAX简单体验](https://uwillno.com/blog/k90promax)
-- [新增图片格式转换功能](https://uwillno.com/blog/chlgimgfmt)
-- [Markdown再扩展](https://uwillno.com/blog/chlg2)
-- [拆分与历史](https://uwillno.com/blog/80)
-- [近期调整（Qt6.11.0、界面、功能、服务器）](https://uwillno.com/blog/chlg1)
-- [使用Gitlab Pages作为Github Pages镜像](https://uwillno.com/blog/79)
-- [QML循环滑动实现记录](https://uwillno.com/blog/78)
-- [刘召辉的简历](https://uwillno.com/blog/刘召辉的简历)
-- [记录近期服务器程序的异常](https://uwillno.com/blog/77)
-- [喝咖啡记录](https://uwillno.com/blog/uw1)
-- [记录评论功能被废弃的逻辑](https://uwillno.com/blog/76)
-- [性能问题及性能预设功能说明](https://uwillno.com/blog/75)
-- [监视器安卓版开发记录](https://uwillno.com/blog/74)
-- [博客迁移至Qt 6.11Beta3](https://uwillno.com/blog/73)
-- [解决Qt WASM应用文件保存过慢问题](https://uwillno.com/blog/72)
-- [Git保留当前跟踪文件并清空历史](https://uwillno.com/blog/71)
-- [性能监视器功能开发记录](https://uwillno.com/blog/70)
-- [WASM博客静态托管加速探索](https://uwillno.com/blog/69)
-- [修改QML文本控件的超链接颜色](https://uwillno.com/blog/68)
-- [公网IPV6部署WASM博客](https://uwillno.com/blog/67)
-- [Qt博客项目的人机交互发展与探索](https://uwillno.com/blog/66)
-- [文件安全功能开发记录与说明](https://uwillno.com/blog/65)
-- [浏览器后退拦截与C++/QML交互、行为/bug差异 Qt for WebAssembly](https://uwillno.com/blog/64)
-- [Qt for WebAssembly内存优化管理](https://uwillno.com/blog/63)
-- [Qt for WebAssembly多线程异常处理（worker: onmessage() captured an uncaught exception: TypeError: Module.getRandomValue is not a function）](https://uwillno.com/blog/62)
-- [Cloudflare Workers实现访客统计功能](https://uwillno.com/blog/61)
-- [博客评论系统“负”优化之前端校验与邮件发送](https://uwillno.com/blog/60)
-- [博客安卓版开发记录](https://uwillno.com/blog/59)
-- [RCC/QML在线加载器开发记录](https://uwillno.com/blog/58)
-- [Bilibili必火推广测试](https://uwillno.com/blog/57)
-- [Qt Markdown预览增强记录](https://uwillno.com/blog/55)
-- [Xml异常处理记录](https://uwillno.com/blog/56)
-- [长沙游记](https://uwillno.com/blog/54)
-- [Cloudflare Workers AI零成本实现AI摘要/功能](https://uwillno.com/blog/53)
-- [Markdown解析测试](https://uwillno.com/blog/markdown-parsing-test)
-- [Moto G100体验记录](https://uwillno.com/blog/52)
-- [Qt渲染Spine记录](https://uwillno.com/blog/51)
-- [10400f 4060降压记录](https://uwillno.com/blog/50)
-- [Qt for WebAssembly 错误处理记录](https://uwillno.com/blog/49)
-- [卡巴斯基JS误报分析](https://uwillno.com/blog/48)
-- [Qt6.10Beta3 for wasm初体验](https://uwillno.com/blog/47)
-- [大文件（wasm）静态托管](https://uwillno.com/blog/46)
-- [瓶氧记录/管理系统开发记录](https://uwillno.com/blog/45)
-- [域名邮箱折腾记录](https://uwillno.com/blog/44)
-- [误启火绒USB控制导致WIN TO GO异常解决方案](https://uwillno.com/blog/43)
-- [Moto G75体验记录](https://uwillno.com/blog/42)
-- [Uww2开发记录2](https://uwillno.com/blog/41)
-- [武汉移动光猫H60G改桥接 公网IPV6折腾](https://uwillno.com/blog/40)
-- [Uww2开发记录](https://uwillno.com/blog/39)
-- [Qt for Android 存储权限申请 2](https://uwillno.com/blog/38)
-- [记录处理std::unique_ptr&lt;QWebSocket&gt;](https://uwillno.com/blog/36)
-- [记录&lt;&gt;导致markdown、xml异常处理](https://uwillno.com/blog/37)
-- [Qt for Android 存储权限申请](https://uwillno.com/blog/35)
-- [Android/QT/QML WebView折腾](https://uwillno.com/blog/34)
-- [AX200蓝牙异常排查](https://uwillno.com/blog/33)
-- [快开门压力容器（蒸压釜）实操题](https://uwillno.com/blog/32)
-- [计划报废产品记录](https://uwillno.com/blog/31)
-- [安卓锁机软件破解](https://uwillno.com/blog/30)
-- [视频批量添加字幕](https://uwillno.com/blog/29)
-- [AR眼镜雷鸟Air2折腾记录](https://uwillno.com/blog/27)
-- [Qt/C++与Java交互、JNI使用](https://uwillno.com/blog/28)
-- [Qt for WebAssembly中使用Qt/C++调用JavaScript实现路由](https://uwillno.com/blog/26)
-- [AR眼镜/头戴显示器平替产品](https://uwillno.com/blog/25)
-- [上年纪了，不再搞机了](https://uwillno.com/blog/23)
-- [Cloudflare Workers + R2实现简易评论系统](https://uwillno.com/blog/22)
-- [Qt for WebAssembly中使用MediaPlayer的问题记录](https://uwillno.com/blog/17)
-- [大理游记](https://uwillno.com/blog/16)
-- [Vlog功能说明](https://uwillno.com/blog/15)
-- [弃坑功能说明](https://uwillno.com/blog/14)
-- [CMake/QMake着色器文件自动生成](https://uwillno.com/blog/13)
-- [Qt压缩资源文件，远程加载资源文件、翻译](https://uwillno.com/blog/12)
-- [折腾QSettings::WebIndexedDBFormat/JSPI记录](https://uwillno.com/blog/11)
-- [皇极经世的功能说明](https://uwillno.com/blog/10)
-- [Qt for Webassembly QML文本选中、复制](https://uwillno.com/blog/9)
-- [QML Image加载远程图片- server replied: Forbidden](https://uwillno.com/blog/8)
-- [QHttpServer设置允许跨域请求](https://uwillno.com/blog/7)
-- [关于写的一些垃圾课设/毕设](https://uwillno.com/blog/6)
-- [六爻功能说明](https://uwillno.com/blog/5)
-- [软考经历吐槽](https://uwillno.com/blog/19)
-- [教育经历吐槽](https://uwillno.com/blog/18)
-- [ReferenceError: SharedArrayBuffer is not defined](https://uwillno.com/blog/4)
-- [Arch Linux系统迁移](https://uwillno.com/blog/1)
-- [Uwzz原理补全](https://uwillno.com/blog/2)
-- [Linux下Qt creator中文输入问题](https://uwillno.com/blog/3)
+- [京剧观后：当故事很短，表演却很长](https://uwillno.com/blog/京剧观后感) — 作者首次观看京剧艺术节四出戏作，发现剧情简单却表演冗长，导致理解困难与审美疲劳。文章分析指出，传统戏曲侧重展现演员功底、气势及舞台调度，而非完整叙事；高难度动作易引发重复感，且伴奏需紧密配合维持节奏。作者反思自身因缺乏背景知识而难以持续投入，认为技巧本身不等于艺术价值，并探讨如何平衡传统形式与现代观赏体验，强调理解艺术表达与欣赏其趣味是不同层面的事。
+- [QWasmLocalFileAccess wasm64适配](https://uwillno.com/blog/qwasmlocalfileaccessforwasm64) — 本文针对 QWasmLocalFileAccess 在 wasm64 环境下适配 showOpenFilePicker() 时出现的崩溃问题。该问题源于 BigInt 与 Number 类型转换不匹配，导致 Uint8Array.subarray() 调用失败。文章分析了影响范围，提出通过禁用 showSaveFilePicker 作为临时规避方案，同时提供了修改 qtbase 源码的具体方法：将 chunkSize 收窄为 32 位整数以兼容 subarray 接口，确保在共享内存场景下的文件写入功能正常运行。
+- [Qt Markdown解析异常排查记录](https://uwillno.com/blog/Qt Markdown解析异常排查记录) — 更新 Qt Dev 分支后，博客项目中 Markdown 的下划线与删除线标记失效，而新建项目正常。排查发现博客项目 CSS 中 strike 样式丢失，且自行引入的 md4c 库版本（0.5.2）低于官方控件依赖的 0.6.0 版本。将本地库升级至 0.6.0 后解析恢复正常，推测为静态链接下的符号冲突或版本兼容问题，后续需跟进隔离处理。
+- [杭州游记](https://uwillno.com/blog/杭州游记) — 作者记录 10 月 8-11 日四天三夜杭州之旅，详述居意酒店住宿体验及西湖周边餐饮，涵盖东坡肉、片儿川等杭帮菜评价。行程包含灵隐寺祈福、雷峰塔游览及环湖游船，对比武汉交通与景点差异，指出部分景区维护中且景色易腻，建议错峰出行并关注免费开放资源。
+- [Markdown Mermaid 支持开发记录及测试](https://uwillno.com/blog/mermaid) — 本文记录了在 Qt QML/WASM 环境中开发 Markdown Mermaid 支持的过程，对比了异步的 Mermaid 与同步的 beautiful-mermaid，最终选用后者以简化轮询逻辑并提升性能。文章详细测试了流程图、时序图、类图等多种图表类型的渲染效果，验证了中文显示、特殊字符处理及长文本布局的兼容性。同时，针对 Qt 对 CSS 变量的不支持进行了 SVG 样式兼容化处理，并实现了基于缓存的渲染优化机制，确保在 Markdown 混排与异常输入场景下系统稳定运行。
+- [Qt/C++ 博客 UW4.5：文章解耦、Markdown AST 序列化与构建自动化](https://uwillno.com/blog/uw4.5) — Qt/C++ 博客 UW4.5 发布，核心优化在于文章解耦与构建自动化。通过将 Markdown AST 序列化为二进制数据，显著降低了 WASM64 环境下的解析耗时。同时，引入自动化脚本处理资源打包、WASM 增量压缩及 SEO 文件生成，实现了文章更新与程序构建的分离。此次更新在保留原有启动体验的基础上，有效改善了缓存复用与构建效率，为后续渲染性能优化预留空间。
+- [Qt/C++ 博客更新 UW4.4++++（WASM64 适配、Markdown 重构与性能优化）](https://uwillno.com/blog/uw4.4++++) — Qt/C++ 博客更新 UW4.4 主要涵盖 WASM64 适配、Markdown 重构及性能优化。针对 WASM64 指针变化导致的崩溃问题，通过禁用文件选择器规避保存对话框异常，并参考外部思路修复了媒体播放器的概率性崩溃。Markdown 解析移至并发模块以支持更新模型，同时重新实现跨平台文本选择交互，虽受限于节点独立性无法跨块连续选择。性能优化方面，尝试了防抖、延迟初始化等多种方案，最终采用延迟初始化配合集中处理缓冲的策略解决 WASM 掉帧问题，并将初始内存设为 1GB 及重构 Emscripten 调用以减少耦合。
+- [CMAKE下Qt项目翻译提速折腾](https://uwillno.com/blog/CMAKE下Qt项目翻译提速折腾) — 针对 CMake 下 Qt 项目编译慢的问题，作者排查发现翻译步骤耗时严重。鉴于架构调整后 QML 文件分布复杂，手动维护 qrc 效率低下，最终利用 CMake 构建目录特性，将 build 下的 QML 文件复制并清洗后加入资源文件，实现了翻译文件的快速生成与复用，有效提升了项目编译速度。
+- [QWasmVideoFrameGrabber 的 wasm64 兼容改造：从 stride 黑屏到同时支持 wasm32/wasm64](https://uwillno.com/blog/qwasmvideoframegrabberforwasm64) — 本文记录了 QWasmVideoFrameGrabber 从仅支持 wasm32 到同时兼容 wasm64 的改造过程。针对 wasm64 架构下指针变长、对象生命周期及语法限制等新约束，文章详细分析了因硬编码像素格式导致的黑屏问题根源。最终方案摒弃了不稳定的跨帧 val 捕获与 EMASM 宏，确立了全用 EMJS、禁用危险比较运算符、通过 DOM ID 寻址及规范处理大整数指针等五条核心规则。该实现不仅解决了 stride 不匹配引发的纹理上传错误，还确保了在 wasm32 上的无痛运行，为 Qt WebAssembly 平台提供了更稳健的跨架构参考方案。
+- [Qt WASM 配置遇到 Emscripten 6 的 emcc.bat 问题](https://uwillno.com/blog/emsdk6windows) — 文章指出 Qt 配置 Emscripten 6 时因 emcc.bat 缺失报错。经检查发现新版 Emscripten 已用 emcc.exe 替代 bat 文件，而 Qt 构建脚本仍硬编码调用 bat 路径。解决方法是删除 CMake 脚本中 emcc.bat 的扩展名后缀，即可正常完成配置与编译，不影响实际构建流程。
+- [Qt启用WASM64（memory64）和注意事项](https://uwillno.com/blog/qt启用wasm64) — 随着 emsdk 版本更新，Qt 现已支持 WASM64（memory64）特性。编译时需指定-xplatform wasm-emscripten-64 并重新构建所有依赖库，同时建议跳过未适配的 qtquick3dphysics 模块。代码层面需处理 JS 与 WASM 间的大整数转换问题，否则可能引发断言失败或类型错误。尽管该模式能支持超过 4GB 的线性内存以处理大文件，但性能损耗显著且存在多媒体视频输出导致崩溃等已知缺陷，目前建议仅在特定场景下启用。
+- [QML水印相机安卓版0.0.2开发记录2](https://uwillno.com/blog/QML水印相机安卓版0.0.2开发记录2) — 本文记录了 QML 水印相机安卓版 0.0.2 的开发进展与问题修复。文章详细阐述了移除分辨率设置菜单的原因、Qt 相机特性支持不足及 Vulkan 后端崩溃的解决过程。此外，还通过引入原子引用计数解决了图片命名冲突，新增源图片独立目录以优化数据管理，并修正了 SwipeView 内存占用与刷新逻辑。最后补充了音量键拍照功能实现及 Android 设备异常强制停止等已知问题的说明。
+- [Qt/C++ 博客架构调整 UW4.4+++](https://uwillno.com/blog/uw4.4+++) — Qt/C++ 博客架构完成调整，将 QML、字体及资源统一打包进 WASM 并采用并发下载与合并解压机制启动，替代原有的远程分步加载模式。新方案简化了 C++ 代码，移除了运行时脚本校验，显著提升了安卓等平台的启动效率，同时解决了旧版缓存导致的兼容性问题。尽管逆向难度降低且部分入口被隐藏，但整体架构趋于稳定，并提供了通用加载与备用更新方案以应对不同场景需求。
+- [QML水印相机安卓版0.0.2开发记录](https://uwillno.com/blog/QML水印相机安卓版0.0.2开发记录) — 本文记录了 QML 水印相机安卓版 0.0.2 的开发改进，针对安卓 16 设备后退手势失效问题，尝试了多种回调拦截方案并发现 QtBUG-149044 相关缺陷。文章还分析了 Qt.quit 异常退出及 Vulkan 渲染不稳定的情况。此外，优化了水印生成逻辑、调整相机缩放交互方式、重构属性对话框为页面结构，并新增振动反馈与画质调节功能，旨在提升应用稳定性与用户体验。
+- [性能预设调整，加入交互波纹效果](https://uwillno.com/blog/性能预设调整，加入交互波纹效果) — 本次更新调整了性能预设并新增交互波纹效果，支持节能、低、中、高及最高五种模式，涵盖静态或动态背景下的粒子系统、液态玻璃等视觉选项。交互触发仅限鼠标移动与点击，优化后最高预设下 D3D 可稳帧 130，但 WebGL 可能存在瓶颈，建议根据设备性能酌情降低预设以确保流畅运行。
+- [某报警系统智能化的分析](https://uwillno.com/blog/某报警系统智能化的分析) — 针对某报警系统仅依赖单台电脑、缺乏远程监控且需人工值守的缺陷，文章探讨了引入第三方软件过渡的方案。通过抓包分析发现底层通信协议为 Modbus TCP，进而利用开发模式下的组态配置获取设备点位信息，提出构建旁路服务器穿透方案以实现远程监控与预测分析。受限于预算及外包源码缺失，最终因市场环境因素搁置了本地部署计划。
+- [微信支付防骗助手太好用了](https://uwillno.com/blog/微信支付防骗助手太好用了) — 文章吐槽微信支付防骗助手机制僵化，频繁拦截正常交易。用户在进行话费充值、餐饮结账等日常支付时，常遭遇系统误判并强制要求提供交易背景或进行风险测评。即便通过机器人对话或等待客服复审，最终往往因订单超时或理由牵强而失败。作者指出该功能过度依赖用户账户资金量与使用频率，导致小额低频用户支付受阻，因此建议迁移至支付宝等替代平台。
+- [Cloudflare Workers、R2评论启用邮件通知功能](https://uwillno.com/blog/Cloudflare Workers、R2评论启用邮件通知功能) — Cloudflare Workers 与 R2 评论系统新增邮件通知功能，旨在应对博客访问门槛提升后的安全考量。该方案通过最小改动插入逻辑：评论时传递邮箱至 Workers 并存储于 R2 JSON 中；回复时若存在对应邮箱则触发通知。通知内容经 AI 美化生成 HTML 格式，同时利用 MD5 哈希保护邮箱隐私。尽管物理机曾受攻击导致仓库私有化，且当前架构因成本考虑暂未引入 D1 数据库，但系统已分离测试环境并预留了由 AI 辅助生成代码的扩展可能，需在新版本评论后更新数据方可生效。
+- [WASM网站SEO探索与路由增强](https://uwillno.com/blog/WASM网站SEO探索与路由增强) — 文章探讨 WASM 博客在 SEO 与路由方面的优化方案。针对 WASM 加载慢及不适合图形界面的特性，作者决定采用标准 URL 路径而非查询参数，并开发 Python 脚本自动生成 sitemap 等文件。方案支持外部直接访问、历史替换兼容以及内部路径转换等多种路由模式，同时兼顾多参数处理，旨在提升网站规范性与搜索引擎友好度。
+- [戒咖啡测试](https://uwillno.com/blog/戒咖啡测试) — 作者针对体检指标正常却长期精神萎靡、睡眠异常及频繁头疼的症状，在中医调理效果不佳后，通过自我排查排除了运动与饮食因素，最终将问题锁定于咖啡摄入。经过为期一个多月的戒断测试，发现症状显著改善，精神状态与身体机能恢复同步。结论认为长期饮用咖啡可能影响睡眠质量，且部分不适源于对咖啡因的生理依赖及心理层面，而非单纯的风味喜好，适度戒断有助于身心状态回归平衡。
+- [加入着色器预览（图像处理、滤镜）功能](https://uwillno.com/blog/shader) — 针对 OpenCV CPU 处理图像较慢的问题，本文介绍了在 Qt 中新增的着色器预览功能，利用片段着色器实现更灵活的图像处理与滤镜自定义。文章提供了标准的 GLSL 模板代码，并说明了长按编辑、重置预设及导入 JSON 格式配置的使用方式。同时指出了 GPU 处理存在显存复制开销大等注意事项，建议避免传入超大分辨率图片，且 WebAssembly 平台需支持 WebGL2。
+- [加入空间域图像处理功能](https://uwillno.com/blog/2dfilter) — 新增空间域图像处理功能，涵盖灰度化、多种噪声模拟（椒盐、高斯、泊松等）及滤波算法（中值、高斯、双边）。同时提供形态学操作如腐蚀与膨胀、二值化、颜色反转以及自定义卷积核支持。预设模板可长按调参，所有处理均基于当前显示图片实时执行，满足从基础转换到复杂自定义滤波的多样化需求。
+- [加入盲水印功能](https://uwillno.com/blog/blindwatermark) — 本文介绍了在项目中新增盲水印功能的实现细节与调整过程。文章阐述了基于现有库的原理，并针对 OpenCV 特性关闭导致的问题，改用 Qt 进行编码解码，同时处理了分量顺序及 Base64 等依赖。文中详细说明了嵌入文字和图片水印时的位深计算、灰度二值化要求及参数差异，对比了不同版本的实现逻辑。最终指出因大量兼容处理导致性能受限，建议追求稳定时优先使用 Python 版本。
+- [加入Spine4.2支持](https://uwillno.com/blog/spine4.2) — 为适配蔚蓝档案等使用 Spine 4.2 格式的游戏资源，本程序在原有支持碧蓝航线（Spine 3.8）的基础上新增了对 Spine 4.2 的渲染支持。虽然通用渲染接口基本兼容且效果一致，但 4.2 版本提供了预计算顶点数据的 renderer 机制以简化流程。针对静态编译导致的 Wasm 平台多版本共存冲突问题，作者通过 Shell 批量修改解决了命名空间与宏定义重复等难题，并指出在 Wasm 环境下 Qt 渲染后端仍依赖 WebGL，其相对于 JS 版本的性能优势有限。
+- [SFPM的变化](https://uwillno.com/blog/sfpm) — Qt 6.11.1 中 QML SortFilterProxyModel 的 FunctionFilter 用法发生变化，文档未同步更新导致文章检索失效。原需声明 RoleData 对象并传入 data 参数，新机制将 data 视为 roleName，改为直接传递 age 等具体属性值。dev 分支已修复此问题，不再需要显式定义 RoleData 组件，从而恢复了本站的文章检索功能。
+- [本站启用JSPI](https://uwillno.com/blog/jspi) — 本站已启用 JSPI 以解决 WebAssembly 环境下无法调用异步 JavaScript API 的问题，从而支持带返回值的对话框、拖放操作及嵌套事件循环等功能。相比早期体积庞大且编译耗时的 Asyncify 方案，JSPI 无需回退即可在主流浏览器中运行。启用需从源码编译并添加特定设备选项与链接参数，同时需注意 iOS 暂不支持该特性。
+- [XML功能开发记录](https://uwillno.com/blog/xml) — 本文记录了 XML 功能开发过程，对比 Qt 6 简化及砍掉 XPath 的趋势，探讨了 QML 中 XmlListModel 的局限性与命名空间支持问题。文章介绍了基于 QXmlStreamReader 构建文本、元素等节点树形模型的方法，并针对移动端展示需求，通过 query 属性简化为列表模型以提取特定层级数据。同时提及了当前实现仅支持字符串或正则查询，未完全兼容 XPath 及复杂属性检索的取舍情况。
+- [换手机太难、Pura90Pro简单体验](https://uwillno.com/blog/pura90pro) — 针对长辈频繁因通话问题要求换机且不愿学习新交互的痛点，作者为缓解自身压力购入华为 Pura90 Pro 进行体验。文章指出该机型虽外观稳重、长焦影像表现尚可，但存在质感一般、动画浮夸、OLED 屏幕伤眼、发热明显及充电功率低等不足。系统界面类 iOS 且负一屏难关闭，整体性价比与高端定位不符，仅作为无奈过渡之选。
+- [新增备用更新方案](https://uwillno.com/blog/uwrss) — 针对物理机频繁宕机且无法远程重启的困境，作者启用备用更新方案以保障内容发布。文章介绍了早期基于远程 JSON 模型的方案及当前将资源打包的策略。重点阐述了基于 rss.xml 扩展的 UWrss 功能，利用 Qt6 解析特定标签实现 RSS 列表加载与检索，虽受限于 Qt6 XmlListModel 功能缩减及富文本显示不足，但仍提供了比传统参数跳转更便捷的更新途径，同时避免了消耗 R2、D1 额度及繁琐迁移。
+- [Moto Signature 体验记录](https://uwillno.com/blog/90) — 作者记录了对大陆版 Moto Signature（X70 Air Pro）近一个月的主观体验。文章指出该机型首发价 4k，促销后约 2.5k 购入性价比高。性能方面，骁龙 8 Gen 5 虽强但日常感知不强，拍照速度和稳定性优于前代及部分国产定制系统。续航上 5200mAh 电池在户外高强度使用下存在电量焦虑，快充发热明显。屏幕为 1.5K OLED，HDR 观感佳且支持 PWM 调光。影像部分主摄与长焦尚可，色彩表现优于竞品。机身质感轻薄，但缺少红外、3.5mm 耳机孔等接口。此外还提及了无线充体验一般、系统偶发小故障及配件选择建议等内容。
+- [复制ic卡折腾记录](https://uwillno.com/blog/89) — 因原 IC 卡灵敏度差且换卡导致权限重置繁琐，作者尝试通过 NFC 复制至手机及购买 PN532 读卡器进行折腾。分析发现门禁联网校验卡号，无法律风险但需防范丢失。实测 PCR532 解卡后写入白卡正常，但写入手机因厂商信息不一致导致异常，且合规手段无法成功。作者认为可能需要逆向下钱包应用或获取 Root 权限才能解决，目前暂不深入研究，考虑购买 CUID 卡贴替代。
+- [MD内联防剧透实现](https://uwillno.com/blog/mdinlinespoiler) — 本文记录了 MD 内联防剧透功能的实现过程。作者因防剧透域与加密域已就绪，顺带补全了该功能。方案对比了重写 Qt 源码解析、文本处理及坐标计算等复杂路径，最终采用直接正则匹配策略：将标记内容替换为特殊字符并转为超链接，点击即可还原。该方法无需编译 Qt，虽在含 LaTeX 或图片时长度计算不精准，但整体简单高效。用户只需在需防剧透内容前后添加双竖线符号即可使用。
+- [多平台 Latex 支持开发记录](https://uwillno.com/blog/chlg6+) — 本文记录了多平台 LaTeX 支持的开发实践，核心方案是统一采用 MathJax 生成图片。针对 WASM 平台利用浏览器环境直接交互；对于非 WASM 平台，因 QJSEngine 不支持且 QtWebEngine 体积较大，建议统一使用 Qt WebView 模块以降低编码复杂度。文章详细对比了 C++ 与 QML 实现方式，指出 QML 存在控件重叠限制及生命周期管理注意事项，并提供了基于信号槽处理异步 JavaScript 调用的代码示例。此外，文中还提及 MicroTex 项目作为备选方案，分析了其潜在优势及自行渲染在文本内联方面的困难，为不同平台适配提供了参考路径。
+- [618购物杂谈](https://uwillno.com/blog/88) — 文章回顾了 618 购物节的实际体验与消费反思。作者分享了更换格力空调、购入 Moto Signature 手机及各类配件的经历，指出部分产品存在涨价或参数虚标问题。文中重点吐槽了 NFC-SIM 功能难用、和包软件频繁崩溃耗电严重，以及武汉通等虚拟卡服务的不便。此外，还提及了购买飞机杯遭遇工业垃圾质量、疑似买到假货迪卡侬商品等消费陷阱，最终回归实体卡与实用主义选择。
+- [博客系统更新至4.4](https://uwillno.com/blog/chlg4.4) — 博客系统更新至 4.4，版本号为 6.13.0。此次更新主要涉及控件风格重构，改用 Template 与 Basic 重写以替代 Material 风格，同时保留配色及回退方案；优化了边框进度与液态玻璃片段着色器性能；增强 Markdown 支持，新增 LaTeX、音频及标准语法，移除部分面板；调整主视图拆分宽度为固定 60%，编辑域滚动不同步，主菜单改为水平弹窗；并将文章模型从 JSON 调回 QML，恢复远程文章支持。
+- [Markdown Latex 支持开发记录及测试](https://uwillno.com/blog/chlg6) — 本文记录在 Markdown 中集成 LaTeX 渲染的开发过程与测试成果。因 C++ 库支持不足，最终选用 MathJax 将 LaTeX 转换为 SVG 或 PNG 图片进行渲染，并对比了不同格式在内联显示时的效果。文章详细展示了行内与块级公式、矩阵、积分、希腊字母及特殊符号等多种数学表达式的渲染测试，验证了在表格、列表等复杂场景下的兼容性，同时探讨了同步调用稳定性及换行对齐等技术细节，为相关开发提供参考。
+- [本站Markdown多媒体语法说明](https://uwillno.com/blog/87) — 本文详解本站 Markdown 多媒体的标准语法与扩展功能，涵盖图片、视频、动图及音频支持机制。文章介绍了基于 md4c 解析器的配置建议，规范了内联表情与图片尺寸参数（如宽高省略规则），并说明表格插入多媒体及 Latex 块级缩放的实现方式。同时指出视频播放依赖浏览器交互获取尺寸等限制，提供对齐、面板切换等扩展用法，旨在帮助用户构建纯 Markdown 博客时正确配置资源路由与防剧透加密功能。
+- [代码高亮增强](https://uwillno.com/blog/86) — 本文针对代码高亮功能进行了正则表达式的调整与测试。文章展示了包含 URL、路径、注释及宏定义的 C++ 代码，以及 QML 和 Python 语言的示例片段。虽然部分由 AI 生成的测试用例可能无法运行，但整体内容旨在验证不同语法结构下的高亮效果，为开发者提供相关参考。
+- [近期调整（Qt6.12.0、md扩展加密、emoji字体）](https://uwillno.com/blog/chlg5) — 本文记录了近期三项主要调整：一是 Qt6.12.0 版本在 WebAssembly 平台修复了中英输入及多媒体播放问题；二是新增 Markdown 扩展加密功能，支持通过点击交互查看包含 C++ 代码、登录验证、密码保护及 AES 对称加密的内容，同时指出该模块处于技术预览阶段且存在性能与安全性限制；三是将 Emoji 字体直接合并至 WebAssembly 构建中，以解决彩色字体体积过大问题并提升显示兼容性。
+- [Qt源码编译WASM构建套件](https://uwillno.com/blog/85) — 针对 Qt WASM 平台发行版更新滞后及 Bug 频发问题，本文介绍从源码编译构建套件的方法。文章详细说明了在 Windows 环境下使用 MSVC 或 Docker 进行交叉编译的步骤，包括初始化仓库、构建宿主机 Qt6.12 并跳过 qtwebengine 模块、配置多线程选项以兼容 Android WebView 等关键操作。同时提供了解决路径过长及模块冲突的 CMake 参数建议，并讲解了修改 qmake.bat 及在 Qt Creator 中添加构建套件的使用流程。文末结合个人经历探讨了技术折腾的意义与学习成本。
+- [编译修复Qt WASM输入异常](https://uwillno.com/blog/84) — 本文针对 Qt 在 WASM 环境下 Firefox 浏览器出现的复杂输入异常问题提供编译修复方案。该缺陷已持续多个版本，虽官方 dev 分支已修复但尚未合并至稳定版。文章介绍了获取补丁、下载源码、配置构建环境（含多线程套件）、替换文件及重新编译生成静态库以覆盖原套件的详细步骤，帮助用户自行解决此输入异常问题。
+- [MD预览、功能路由表](https://uwillno.com/blog/83) — 本文介绍了功能路由表的参数规范，区分了需指定具体值的参数和仅需带上的标志参数，并指出异常值可能导致功能异常及部分标志互斥。文章详细说明了农历、皇极经世等功能的调用示例，重点阐述了 MD 编辑与预览模式的区别：前者支持 Base64 或 URL 源且可开启预览，后者为专门的新功能，会将相对路径自动转换为绝对路径以适配博客文章预览逻辑。
+- [通用加载器、Qt 6.11.1](https://uwillno.com/blog/chlg6.11.1) — Qt 6.11.1 发布后修复了 3D 线程池崩溃等 Bug，博客将其作为通用加载器支持多种代码格式。用户可通过 URL 参数直接加载 QML、RCC 二进制文件或 Base64 代码，并配置入口点与 CORS 策略。该加载器涵盖 Core、Quick、Widgets 等核心模块，但需注意当前版本不支持中文内嵌字体且仅包含特定组件集，其他第三方模块调用可能失败。
+- [RDP换端口、配置CA证书](https://uwillno.com/blog/82) — 文章介绍在 IPv6 环境下通过 RDP 直连远程主机的配置方法，包括修改默认 3389 端口及重启服务、利用 Docker 容器内的 Let's Encrypt 证书自动更新并替换 Windows RDP 自签名证书的过程。文中提供了完整的 PowerShell 脚本实现证书提取、转换 PFX 格式、导入存储区及更新系统指纹，同时提醒用户更改端口仅能降低扫描概率，仍需配合 NLA 验证或 Cloudflare Tunnel 等方案提升安全性。
+- [近期调整 4.0 -&gt; 4.1](https://uwillno.com/blog/chlg4) — 近期 Qt 6.11.0 版本发布计划调整，在修复 Bug 的同时优化统计监视器、异步并发加载器及 JSON 读取效率。界面方面移除自带中文字体并引入 SarasaMono 和 Noto，提升首屏体验。新增 Quick3D 模块测试及动态背景切换，Spine 渲染方案调整为 QSG 以确保稳定。主导航移除存在性能问题的 PathView，模型改用 SortFilterProxyModel 增强可读性，服务器日志独立并加入通知系统，加载页由 AI 生成设计。
+- [3D拖动在WASM上爆线程池回避方法](https://uwillno.com/blog/81) — 在 Qt 6.11.0 的 WebAssembly 环境中使用 Quick3D 模块进行 3D 拖动时，常因 em-pthreads 线程池耗尽导致标签无响应并抛出错误。经排查发现单线程构建或仅用拖动手势不会触发此问题，但 onFrameSwapped 更新机制仍会导致爆线程。临时解决方案是将线程池大小设为 16，并结合 Qt.callLater 或将拖动后的更新放入间隔为 16 的 Timer 中触发，以此维持应用稳定运行。
+- [不再开放水印相机、留言插入图片/表情功能](https://uwillno.com/blog/chlg3) — 针对近期监测到的异常行为，平台决定限制水印相机及留言插入图片/表情功能，仅对内部人员开放。水印相机原为试验功能，因代码执行机制存在被轻易绕过的安全隐患，无法通过低成本校验保障安全；留言功能则因缺乏身份验证与审核机制，易被滥用。为规避潜在风险并防止问题升级，平台将移除面向公众的上述动态功能，仅保留基础静态能力，后续视情况进一步调整策略。
+- [换手机太难、K90PROMAX简单体验](https://uwillno.com/blog/k90promax) — 针对长辈换机难、旧设备故障频发及系统更新导致 Magisk 失效等痛点，作者排除了品控不稳的小米及其他高价机型，最终购入红米 K90PROMAX 16+512。文章详细记录了该机的入手契机、利用漏洞解 BL 锁保留原生体验的操作过程，并实测了其散热表现、三扬声器听感、LCD 屏幕特性及拍照能力，认为其配置均衡且上手无门槛，非常适合长辈日常使用。
+- [新增图片格式转换功能](https://uwillno.com/blog/chlgimgfmt) — 本次更新新增图片格式转换功能，主要适配 WebAssembly 环境。QImage 支持读取多种格式但仅部分可写入，WebP 因体积小巧成为首选，尽管编解码较耗 CPU。当前仅测试 WebP、JPEG 和 PNG 的质量参数设置，批量转换建议改用 Pillow 脚本。上传资源仍采用 JPEG 二分法压缩，未启用此功能。下载任务已加入后台队列以防页面关闭丢失，路由地址为 imgfmt。
+- [Markdown再扩展](https://uwillno.com/blog/chlg2) — 本次更新扩展了 Markdown 多媒体支持，新增图片语法以替代部分表情功能。支持设置图片对齐方式（左、中、右），并允许通过指定宽高或仅指定单一维度来调整网络图片尺寸，避免原图过大影响预览效果。留言与朋友圈组件同步实现该功能，无需重新解析即可使用，但布局细节仍有待完善。
+- [拆分与历史](https://uwillno.com/blog/80) — 本文探讨了 Qt Quick 框架在 WebAssembly 平台上的交互优化方案。文章分析了 SplitView 控件因误触和持久化问题被弃用的原因，并阐述了引入历史栈以兼容多端后退操作及避免重复推入页面的必要性。此外，文中讨论了 Popup 与 Drawer 的独立管理策略、防止用户反复推送同一页面的哈希校验机制，以及针对不同设备缩放逻辑的处理方式，最终指出该方案主要提升了带鱼屏体验。
+- [近期调整（Qt6.11.0、界面、功能、服务器）](https://uwillno.com/blog/chlg1) — 本文记录了博客系统的多项近期调整：框架升级至 Qt6.11.0 以完善 WebAssembly 支持及多媒体功能；界面优化包括引入边缘面板、改用 Repeater 生成文章列表以提升性能，并修复了特定平台下的坐标问题；友链页布局更紧凑且移除个人链接；主导航在收缩模式下可切换页面；新增 Markdown 编辑器及独立的咖啡记录功能；变更日志将内嵌于文章；服务器端增加了 Render 和 GitLab 镜像，并优化了鉴权逻辑与异常重连机制。
+- [使用Gitlab Pages作为Github Pages镜像](https://uwillno.com/blog/79) — 本文记录将 GitLab Pages 配置为 GitHub Pages 镜像站的过程。作者发现直接使用静态文件部署需依赖 CI/CD 流水线，并对比了 Alpine 镜像中手动复制文件与通过脚本克隆仓库两种方案。最终采用在构建阶段自动克隆 GitHub 仓库内容的方式，配合 Webhooks 触发机制实现自动化同步，解决了直接上传导致仓库体积冗余的问题。
+- [QML循环滑动实现记录](https://uwillno.com/blog/78) — 本文记录了 QML 中实现循环滑动的多种方案对比与踩坑经验。作者推荐优先使用 SwipeView，因其封装完善且能避免奇怪 bug，仅需通过 currentIndex 逻辑处理首尾跳转即可；StackLayout 虽可自定义动画但交互手感较差；PathView 因存在大量历史遗留 Bug、跨平台兼容性及事件冲突问题，不建议在复杂布局中使用。文章还指出 Flickable 系列控件在屏幕显示不全时易与 PathView 产生交互冲突，并分享了通过禁止交互开关等兜底代码解决反复折腾问题的最终实践方案。
+- [刘召辉的简历](https://uwillno.com/blog/刘召辉的简历) — 刘召辉，成都大学自动化专业本科在读，主攻嵌入式开发方向。具备扎实的 C/C++ 编程基础及 STM32 微控制器应用经验，熟练掌握 PID 控制算法、PT100 传感器信号调理电路设计及嘉立创 EDA 工具使用。曾独立完成基于 STM32F103 的烘箱温度闭环控制系统项目，实现±1℃稳态误差与声光报警功能。在校期间获全国大学生智能汽车竞赛二等奖等多项荣誉，并担任班级团支书及党员义务维修队队长，拥有良好的团队协作与硬件故障排查能力。
+- [记录近期服务器程序的异常](https://uwillno.com/blog/77) — 本文记录服务器程序自动退出原因系任务计划默认设置超时，并解决 Cloudflared 更新失败及证书路径错误问题。通过分析日志发现 Vercel 与 Github 站点存在异常高频连接行为，疑似禁用缓存后定期重连或刷新页面。由于采用 Cloudflare Tunnel 穿透无法获取真实 IP，且非 Web 端无 Origin 标识，难以完全排除直连风险。目前主要影响静态托管平台流量消耗，暂未对设备造成实质损害，后续将持续观察此类异常访问模式。
+- [喝咖啡记录](https://uwillno.com/blog/uw1) — 本文记录了作者从小学到工作期间对咖啡口味的变化历程及饮用习惯，涵盖了对三合一、速溶冻干咖啡及各类瓶装饮料的尝试与评价。文章详细梳理了不同价位咖啡豆的体验，并对比了砍豆机、手动磨豆机、陶瓷与不锈钢磨芯等器具的性能差异，分析了法压壶、手冲、摩卡壶及虹吸壶等冲泡方式的优缺点。此外，还介绍了便携式咖啡机的使用心得、粉碗规格研究以及冷萃咖啡的尝试结果，最后提及因担心咖啡因过量摄入而计划控制饮用量或转向低因咖啡的想法。
+- [记录评论功能被废弃的逻辑](https://uwillno.com/blog/76) — 本文记录了博主因外部整改要求而废弃评论功能的经过。原系统采用 Workers 与 R2 存储 JSON 数据，虽具备 WASM 防护且结构开源，但面临邮箱伪造、抓包篡改及内部人员乱发消息等风险。博主尝试通过前端校验、邮箱 MD5 验证及验证码机制进行防御，却因增加复杂度且实际效果有限（如前端校验可被绕过）而最终放弃。文章展示了评论数据结构及部分废弃的验证逻辑代码，并表达了在安全性提升不明显且维护成本过高时，选择简化系统甚至删除用户删除功能的无奈决定。
+- [性能问题及性能预设功能说明](https://uwillno.com/blog/75) — 本文针对 WebAssembly 在 Edge 浏览器中的性能表现进行了实测，分析了 GPU 与 CPU 负载差异及内存带宽对手机帧率的影响。文章介绍了为解决液态玻璃效果导致的卡顿而引入的局部渲染优化方案，并详细说明了基于设备性能的节能建议。此外，还阐述了新增的性能预设功能，通过分级开关圆角、粒子系统、动态背景等特效，帮助用户在不同硬件条件下平衡视觉效果与运行流畅度。
+- [监视器安卓版开发记录](https://uwillno.com/blog/74) — 本文记录了 Android 版性能监视器的开发历程。项目采用纯 Java 实现，利用无障碍服务与 TileService 获取前台应用数据，通过 HTTP 服务器周期性上传至后端。文章对比了 Java、Kotlin 及 Qt 的开发体验，解决了多线程下套接字引擎的退出报错问题。此外，针对经纬度精度控制及反向地理编码，最终选用 BigDataCloud API 替代易被封禁的 OpenStreetMap，实现了手机位置追踪功能。
+- [博客迁移至Qt 6.11Beta3](https://uwillno.com/blog/73) — 博客作者宣布将网站迁移至 Qt 6.11 Beta3，主要得益于关键稳定性问题的修复。QTBUG-136710 解决了 QML 图像对象在加载期间被删除导致崩溃的严重缺陷，QTBUG-141505 则修复了 Android 原生手势引发的触摸丢失问题。文章指出当前 Chromium 浏览器兼容性最佳，而 Firefox 多媒体模块仍受限。此外，作者分享了关于 MediaPlayer 组件属性覆盖警告的排查经验，并提供了避免设置 audioOutput 导致浏览器标签无响应的代码规避方案，强调技术预览版本在特定编码下可用。
+- [解决Qt WASM应用文件保存过慢问题](https://uwillno.com/blog/72) — 针对 Qt WASM 应用文件保存过慢问题，文章分析了 Firefox 与 Chromium 浏览器的不同表现及原因：Firefox 直接下载效率高，而 Chromium 打开对话框涉及临时文件写入导致缓慢。尽管 showSaveFilePicker API 更合适但 Firefox 不兼容且大文件易中断，因此建议统一降级为直接下载方案。此外，还提及了通过设置 wasm 初始化前将 showOpenFilePicker 设为 undefined 来规避相关问题的方法，并指出该技巧应补充至官方文档。
+- [Git保留当前跟踪文件并清空历史](https://uwillno.com/blog/71) — 针对 Qt for WASM 开发中因测试与自动化脚本导致仓库文件混乱且受限于静态托管平台容量的情况，本文介绍了一种清空 Git 历史并保留当前跟踪文件的解决方案。文章记录了使用 git bash 执行备份、重新初始化、恢复文件并提交的操作流程，解决了此前在 PowerShell 下遇到的中文编码问题，为需要快速重置仓库环境提供了实用参考。
+- [性能监视器功能开发记录](https://uwillno.com/blog/70) — 本文记录了 Windows 性能监视器功能的开发过程，主要基于 PDH、Windows.h 及 DXGI 等接口实现物理机监控数据通过 WebSocket 传输至前端。文章详细阐述了从打开查询、添加计数器到循环采样的核心流程，并指出部分 GPU 显存信息需依赖 PDH 而非 DXGI，同时分析了权限不足导致进程信息获取失败的问题。此外，还总结了 Qt 环境下 QML 模块导入及打包运行时配置的关键注意事项，为相关开发提供参考。
+- [WASM博客静态托管加速探索](https://uwillno.com/blog/69) — 文章探讨 WASM 博客静态托管加速方案，分析备案限制与多平台部署策略。针对大文件加载问题，提出分块处理、CMake 编译优化及采用 zstd 压缩等改进措施。为解决用户访问选择难题，摒弃延迟测试跳转，转而通过异步并发请求资源片段实现直接跳转，最终构建了一套兼顾连通率与加载速度的完整托管方案。
+- [修改QML文本控件的超链接颜色](https://uwillno.com/blog/68) — 文章探讨 QML 文本控件在浅色模式下超链接颜色过深难读的问题。指出 linkColor 属性仅适用于 StyledText，RichText 需依赖 CSS 标签。尝试 Palette 及官方调色板设置均无效，推测解析时已固化颜色。最终结论是修改全局 QPalette 可生效，但需在控件重建后（如改变 text 属性）才能更新渲染，且 C++ 方案涉及重新编译 WASM。
+- [公网IPV6部署WASM博客](https://uwillno.com/blog/67) — 针对注销备案后大陆访问慢的问题，本文介绍利用公网 IPv6 部署 WASM 博客镜像站的方案。通过动态获取源站地址解决编译效率低难题，支持静态托管站独立复制。教程涵盖 DDNS-GO 绑定、Cloudflare AAAA 记录配置及 Let's Encrypt SSL 申请步骤。提供基于 Docker 的物理机部署示例与通用 Nginx 安全配置，包括多线程 WASM 限制处理、COOP/COEP 策略设置及防火墙包规则，适合内部或个人使用。
+- [Qt博客项目的人机交互发展与探索](https://uwillno.com/blog/66) — 本文记录了 Qt 博客项目在人机交互设计上的演进历程，从早期模仿桌面应用的复杂布局，到尝试复刻卡巴斯基风格却因浏览器环境限制导致体验不佳，最终放弃多平台适配的纠结，转向“反平台化”的统一方案。文章详细阐述了如何通过悬浮球、抽屉式导航及手势操作等简洁交互，解决 WASM 应用中界面元素过多引发的误触与空间拥挤问题，实现了更优的全平台用户体验。
+- [文件安全功能开发记录与说明](https://uwillno.com/blog/65) — 本文记录了一个面向个人项目与资源校验的文件安全功能开发过程。针对早期 AES-CBC 实现安全性不足的问题，文章提出结合非对称加密签名验签与对称加密的混合方案，以保障文件完整性、防篡改及内容保密性。文中详细阐述了密钥拆分、异或合并及秘密共享等机制的原理与限制，强调所有密钥需自行保管且不提供仅解密路径，旨在为静态资源版本校验提供工程化参考。
+- [浏览器后退拦截与C++/QML交互、行为/bug差异 Qt for WebAssembly](https://uwillno.com/blog/64) — 本文探讨 Qt for WebAssembly 中浏览器后退拦截与 C++/QML 交互的实现难点。文章详细分析了利用 JavaScript 操作历史栈配合 popstate 事件触发 QML 栈视图回退的逻辑，并对比了 Chromium（Edge/Chrome）与 Gecko（Firefox）两类浏览器在历史推送时机、文件下载体验、手势还原及多媒体播放等方面的显著差异。此外，还指出了 Firefox 中请求对象销毁未触发 Abort 的已知 Bug、粒子系统渲染异常以及 Android 端布局缩放等具体问题，为开发者提供了宝贵的调试参考。
+- [Qt for WebAssembly内存优化管理](https://uwillno.com/blog/63) — 针对 Qt for WebAssembly 默认 32 位架构及线性内存只增不减的特性，文章分析了单线程与多线程处理文件读写、加密时的内存增长差异。虽多线程因沙盒机制需传递数据导致峰值占用较高，但结合及时释放资源、禁用 URL 缓存、避免使用 MEMFS 文件系统直接读入内存等策略，可有效管理内存。同时指出在 WASM 环境中过度优化引用或拷贝对提升稳定性意义有限，建议优先保障程序稳定运行。
+- [Qt for WebAssembly多线程异常处理（worker: onmessage() captured an uncaught exception: TypeError: Module.getRandomValue is not a function）](https://uwillno.com/blog/62) — 针对 Qt for WebAssembly 多线程环境下 worker 线程调用 Module.getRandomValue 报错的问题，文章分析了因默认模板缺失 Module 对象及 Worker 无法直接访问主线程 API 导致的异常。解决方案包括调整随机数生成逻辑：在主线程执行后再开启线程，或自行实现基于 QRandomGenerator 的随机字节生成方法，以规避跨线程调用限制并确保功能正常。
+- [Cloudflare Workers实现访客统计功能](https://uwillno.com/blog/61) — 针对 Cloudflare 原生分析功能在 IPv6 及多客户端环境下统计不准的问题，作者利用 Workers 结合 R2 对象存储实现了自定义访客统计方案。该方案通过解析 User-Agent 字段识别操作系统与浏览器类型，并记录 IP、地理位置等 Client 信息。代码完全由 AI 生成，采用异步写入机制避免锁竞争，仅在 WASM 成功加载时触发请求，确保数据准确性且无需持久化隐私敏感信息。
+- [博客评论系统“负”优化之前端校验与邮件发送](https://uwillno.com/blog/60) — 本文探讨博客评论系统的安全优化困境。作者基于 Cloudflare Workers 和 R2 构建的简易系统易受伪造，遂尝试多种方案：前端校验因静态可被逆向而无效；引入 C++、持久化动态校验或接入其他平台均因增加复杂度或违背初衷而被放弃；邮件发送功能虽已集成第三方 Worker 实现通知审核，但缺乏邮箱验证机制存在骚扰风险。作者最终认为在免费架构下过度优化徒劳无功，若遇攻击可能直接关闭动态功能。
+- [博客安卓版开发记录](https://uwillno.com/blog/59) — 为适配启用多线程构建的 WebAssembly 环境，作者编译了专用于安卓的内部版 Qt for Android。文章记录了从库编译、权限适配到平台兼容性调整的全过程，重点解决了因 SharedArrayBuffer 不支持导致的启动崩溃问题，并探讨了着色器版本差异及 EGL 上下文错误等调试细节，最终通过修改执行入口和分离编译着色器实现了基本运行，同时指出了文件选择失效等遗留问题。
+- [RCC/QML在线加载器开发记录](https://uwillno.com/blog/58) — 本文记录了 RCC/QML 在线加载器的开发过程。作者将 QML 与 C++ 分离以提升编译效率，并开源了相关代码以推广 Qt for WebAssembly。针对原版本复用性不足的问题，作者开发了增强版支持远程或本地加载 RCC、QML 及纯代码。该工具利用查询参数实现多种加载方式，核心逻辑仅依赖基础 C++ 模块，其余功能均在 QML 中实现，旨在为不会 C++ 的用户提供便捷的 Qt 开发思路。
+- [Bilibili必火推广测试](https://uwillno.com/blog/57) — 作者测试 B 站限时挑战推广活动，对比免费赠送与自费充值两种推广金的效果。数据显示第三次自费推广（花费约 100 元）播放量显著高于免费时段，表明免费推广效果有限。文章指出竖屏视频因可下滑浏览理论上更易获得流量，且付费推广会引来大量诱导私信。作者认为该活动对后续自然推流无影响，并吐槽主流平台商业化严重，建议谨慎对待此类推广机制。
+- [Qt Markdown预览增强记录](https://uwillno.com/blog/55) — 文章记录了 Qt 中 Markdown 预览功能的增强方案。针对旧版控件图片尺寸固定、超出可视范围的问题，提出通过正则匹配动态替换宽高百分比的字符串处理法。新版方案采用 md4c 库解析为树形结构，建议利用 ListView 或 Repeater 扁平化展示以提升性能，避免深层嵌套开销。同时指出 Qt Creator 预览机制差异及代码域字体不跟随等已知问题，并探讨了直接文本处理与混合控件展示的取舍策略。
+- [Xml异常处理记录](https://uwillno.com/blog/56) — 文章记录了自动生成 rss.xml 程序因 XML 转义问题导致异常的处理过程。文中指出需优先处理符号"&"以避免解析错误，并列举了空格、双引号等符号的替换方法。此外，还提及 Qt 控制台提示控件文本中不能包含多个"&"字符，以免被误识别为助记符，建议更换此类文本内容以确保程序稳定运行。
+- [长沙游记](https://uwillno.com/blog/54) — 本文记录了一次与母亲前往长沙的四日旅行经历。行程涵盖高铁抵达、五一广场及IFS 逛街、橘子洲观雕像、岳麓山爬山、湖南博物馆参观等景点，并详细描述了当地餐饮如紫苏牛蛙、臭豆腐及湘菜外卖的口味与性价比。作者对比了长沙与武汉在物价、交通、景点特色及美食方面的异同，指出部分网红打卡点体验一般，认为若为品尝美食或纯散心前往值得考虑，但单纯游玩则需斟酌，整体花费控制在两千元以内。
+- [Cloudflare Workers AI零成本实现AI摘要/功能](https://uwillno.com/blog/53) — 本文介绍如何利用 Cloudflare Workers AI 在零成本前提下为静态博客实现 AI 摘要功能。文章阐述了因 Qt 开发限制无法直接引入插件，且市面 API 多需付费或存在安全隐患，故选择结合 Workers 与 AI 服务的方案。文中提供了完整的 Workers 代码示例，演示了设置 CORS 头、处理 POST 请求、截断长文本、调用 Llama 3.2 模型及解析响应结果的逻辑。同时讨论了免费额度限制、恶意访问防护策略及大陆网络连通性等实际部署问题，展示了低成本构建动态功能的可行性。
+- [Markdown解析测试](https://uwillno.com/blog/markdown-parsing-test) — 本文对 Markdown 解析能力进行全面测试，涵盖基础文本格式、各类列表嵌套结构及引用块组合。文章演示了图片、动图与视频等多媒体元素的渲染效果，并验证了代码块在 Python、C++ 等语言中的语法高亮显示。此外，还通过表格数据展示了复杂排版功能，确认了解析器对混合内容处理的稳定性。
+- [Moto G100体验记录](https://uwillno.com/blog/52) — 作者因前代 Moto G75 进水报废而购入 Moto G100 进行对比体验。文章指出 G100 屏幕偏色改善、电池容量提升至 7000mAh 显著缓解续航焦虑，12GB 内存优化了后台留存，且保留 3.5mm 耳机孔与弧形后盖提升了握持感。然而其 Soc 性能提升有限疑似清库存，缺失 TF 卡槽、降级为 WiFi 5 及取消光学防抖等配置被诟病。文章建议刚需用户当前价格入手，或等待降价及政府补贴后再购。
+- [Qt渲染Spine记录](https://uwillno.com/blog/51) — 本文记录了在 Qt 平台实现 Spine 动画渲染的探索过程。文章指出由于缺乏官方支持且旧版 API 已过时，作者决定基于 QQuickItem 和 QSG 自行开发预览功能。内容涵盖纹理创建流程、通用渲染节点选择及顶点处理等关键技术细节，特别强调了 QSGTexture 内存管理、着色器编译标记、纹理提交操作以及预乘 Alpha 混合模式调整等重要注意事项，旨在为开发者提供实用的实现参考。
+- [10400f 4060降压记录](https://uwillno.com/blog/50) — 针对七彩虹 B460i 平台搭配 i5-10400F 与 RTX 4060 的 ITX 主机，文章记录了通过软件层面降低电压以延长硬件寿命的实践。文中指出 BIOS 节能模式无法有效降压，需开启性能模式并配合软件调整 CPU 核心电压至约 125mV 以维持稳定；显卡方面则利用 MSI Afterburner 将电压控制在 0.87V 左右，实现显存与核心的超频运行。最终在最高功耗 52W（CPU）和 98W（GPU）下均无降频，为同类丐版硬件的长期稳定使用提供了参考方案。
+- [Qt for WebAssembly 错误处理记录](https://uwillno.com/blog/49) — 文章记录了 Qt for WebAssembly 在 6.7.2 至 6.10.0 版本间频繁出现的内存泄漏、对话框崩溃及输入设备失效等 Bug。针对 Aborted 和 Uncaught RuntimeError 导致的页面卡死，作者尝试了 JS 重载与 Wasm 刷新方案但效果有限。最终提出通过检测帧率归零或统计未捕获错误数量来触发页面刷新，虽存在误判风险，但在缺乏官方修复时提供了可行的容错策略。
+- [卡巴斯基JS误报分析](https://uwillno.com/blog/48) — 文章分析了卡巴斯基安全浏览组件将混淆加密的 JavaScript 代码误报为木马的事件。作者指出，尽管网站采用了变量名混淆、密钥加密及动态加载外部 CryptoJS 库等防护手段，仍因启发式分析被拦截。文中详细展示了包含 AES 加密逻辑的混淆代码结构，并提供了利用 Python 进行解密还原源码的脚本方案。最终结论认为此类静态页面的主动防御效果有限，且当前网络环境下针对纯静态页面的攻击已较少见。
+- [Qt6.10Beta3 for wasm初体验](https://uwillno.com/blog/47) — Qt6.10Beta3 for wasm 在多媒体模块、内存管理及 OpenCV 集成方面存在显著问题。虽然改用多线程套件解决了部分单线程限制，但着色器未过审查导致播放器无画面；非标准启动易引发内存溢出及 QML 白屏。此外，OpenCV 编译需特定原子操作支持，QtQuick.Dialogs 亦出现越界错误。鉴于 RC 版本可能更稳定，作者暂时回退至 Qt6.9.2 使用。
+- [大文件（wasm）静态托管](https://uwillno.com/blog/46) — 针对静态托管大文件（WASM）超过 25MB 的难题，文章探讨了压缩与分块加载方案。由于 Cloudflare 自带压缩导致 zstd 失效且浏览器兼容性存疑，作者尝试将 WASM 编译后拆分为四块，前端通过 JS 合并读取以优化加载性能。测试发现关闭 Cloudflare 代理后，Github Pages 的连通性与速度优于其他平台，因此决定暂不迁移，并计划修复相关 bug 及探索异步加载。
+- [瓶氧记录/管理系统开发记录](https://uwillno.com/blog/45) — 本文记录了一个瓶氧记录管理系统的开发过程，采用 SQLite 存储数据并设计为名称表与记录表结构。界面基于 Qt6.8 的 FluentWinUI3 构建，业务逻辑全用 C++ 实现，利用 QSqlQueryModel 处理数据展示。系统支持按科室和日期范围导出统计结果，提供 CSV 导入导出及中文编码设置方案。项目最终部署于 WebAssembly 平台以兼容老旧设备，适合课程设计与小型 CRUD 应用参考。
+- [域名邮箱折腾记录](https://uwillno.com/blog/44) — 文章记录了作者解决域名邮箱接收失败问题的过程：因 Outlook 疑似拉黑 Cloudflare IP 导致转发失效，尝试部署 Cloudflare TempEmail 服务后，又发现其依赖 Workers 和 Pages 存在环境限制及流量上限问题，可靠性不足。最终作者决定将邮件全量转发至 QQ 邮箱，并记录此次折腾经历以避免未来重复尝试。
+- [误启火绒USB控制导致WIN TO GO异常解决方案](https://uwillno.com/blog/43) — 因误开启火绒 USB 控制导致 WIN TO GO 出现 PIN 登录失败及用户配置文件服务错误等异常。解决步骤为进入高级启动选项选择安全模式（非网络安全模式），随后卸载火绒软件即可恢复系统。文章建议同时使用火绒与 WIN TO GO 的用户应设置密码，以防止因误操作引发类似故障。
+- [Moto G75体验记录](https://uwillno.com/blog/42) — 因 Redmi Note 11T Pro+ 过保后相机疑似主板故障，作者入手 Moto G75 作为替代。该机搭载骁龙 6 Gen3 处理器与三星 4nm 工艺，配备 LCD 屏幕、IP68 防尘防水及 5000mAh 大电池，虽能效一般但硬件配置合格。系统基于类原生 Android，无广告推送且 NFC-SIM 灵敏度优于竞品。其超级互联功能稳定易用，拍照响应快但存在轻微延迟。续航表现波动较大，全亮度 DC 调光虽护眼但有偏色问题。作者认为千元内带四年质保的 LCD 机型值得入手，适合非重度游戏用户长期使用。
+- [Uww2开发记录2](https://uwillno.com/blog/41) — 本文记录了 Uww2 开发的优化尝试与遇到的各类问题。文章探讨了启动顺序对跨线程警告的影响、Android 13+ 的通知权限要求以及保活机制在部分系统上的失效情况。针对文件丢失、无响应及自定义选择器效率等实际问题，提出了相应的临时解决方案或放弃处理的决定。此外，还分析了 C++ JNI 与 Java 实现的性能差异、功能冲突下的状态判断逻辑，并最终因实现过于复杂且难以回滚而考虑弃坑，转而寻求 Magisk 模块方案。
+- [武汉移动光猫H60G改桥接 公网IPV6折腾](https://uwillno.com/blog/40) — 本文记录将武汉移动光猫 H60G 改桥接并获取公网 IPv6 的折腾过程。作者指出需使用特定账号密码并将桥接类型设为 PPPOEBRIDGED，同时强调不可克隆 MAC 地址。针对网络环境中的 Nader 面板性能不足及机顶盒无法上网问题，文章分析了因面板采用 OTT 模式导致无需 IPTV 配置的原因，并解决了动态 IP 网关异常及 DNS 解析故障，最终通过修改 DNS 使机顶盒恢复正常联网。
+- [Uww2开发记录](https://uwillno.com/blog/39) — 本文记录了 Uww2 使用 Qt 框架重写的开发历程与踩坑经验。文章对比了 Kotlin 与 Java 的开发体验，指出后者更稳定；详细分析了安卓权限机制、生命周期管理及硬编码路径对应用行为的影响。此外，文中探讨了 Native 库加载策略、APK 体积异常排查、CMake 编译配置、上下文获取时机及签名失败等具体问题，并提及后续可能通过无障碍服务优化进程检测的方案。
+- [Qt for Android 存储权限申请 2](https://uwillno.com/blog/38) — 本文针对 Android 10 移除 MANAGE_EXTERNAL_STORAGE 权限后的存储访问问题，提供 Qt for Android 的解决方案。文章介绍了判断安卓版本的方法，并详细对比了不同版本下检查及申请 READEXTERNALSTORAGE 和 WRITEEXTERNALSTORAGE 权限的代码实现。内容涵盖直接使用核心命名空间、调用 ContextCompat 检查权限以及通过 ActivityCompat 请求权限的具体 C++ 代码示例，同时提及 QtJniTypes 简化开发的相关思路。
+- [记录处理std::unique_ptr&lt;QWebSocket&gt;](https://uwillno.com/blog/36) — 在 Qt6.8.2 迁移测试中，作者针对 QHttpServer 的 nextPendingWebSocketConnection 返回 std::unique_ptr 且作用域内自动释放的问题，探讨了标准库智能指针与 Qt 父子机制的取舍。文章演示了如何通过将 socket 设为 server 的子对象并利用 QObject::connect 转发信号，结合 deleteLater 连接来优雅管理生命周期，既避免了手动 move 操作，又实现了简单的 WebSocket 功能测试与消息转发。
+- [记录&lt;&gt;导致markdown、xml异常处理](https://uwillno.com/blog/37) — 文章记录了在 TextArea 中显示内容时遇到的异常问题：由于 Markdown 标题和 XML 文件中使用了<>符号，分别导致了渲染失败和 RSS 报错。排查发现 XML 需将>转义为>，而 Markdown 直接转义会导致字体大小不一致。最终采用反斜杠\对符号进行转义处理，成功解决了这两类异常问题。
+- [Qt for Android 存储权限申请](https://uwillno.com/blog/35) — 本文介绍 Qt for Android 在 Android SDK 30+ 环境下处理存储权限申请的方法。文章指出需在 AndroidManifest.xml 中添加 MANAGE_EXTERNAL_STORAGE 权限，并演示了通过 JNI 调用 Environment.isExternalStorageManager() 判断权限状态。若未授权，需构建 Intent 跳转系统设置页面获取权限。同时提供了 Qt 6.2 与 6.8 版本对应的 C++ 代码示例，展示如何利用 QJniObject 及 QtJniTypes 简化 JNI 调用逻辑，并提及可直接使用 Java 实现更简洁的方案。
+- [Android/QT/QML WebView折腾](https://uwillno.com/blog/34) — 本文探讨在 Android 平台使用 QML WebView 时遇到的权限与功能限制问题。文章指出直接套用 Qt for WebAssembly 方案会导致本地文件读取、相机调用等功能失效，因原生 API 未提供设置 WebChromeClient 的方法。作者尝试了修改 webkit 包、反射及 Xposed 等方案均未成功，最终转向原生开发结合 JNI。文中详细展示了通过重写 onShowFileChooser 实现文件选择，以及处理 onPermissionRequest 以获取相机权限的代码实现。此外，文章还记录了关于文件保存功能（showSaveFilePicker）的未解决难题，包括 blob URL 请求失败及不同浏览器行为差异等现状。
+- [AX200蓝牙异常排查](https://uwillno.com/blog/33) — AX200 蓝牙设备曾出现视频录制杂音、录音导致蓝屏及描述符请求失败等异常。经排查，软件层面的诊断工具、服务重启、系统休眠设置调整、驱动重装及降级均无效。硬件方面，尝试通过机箱接触导体排静电效果不稳定。最终采用关机断电后，将数据线一端接天线金属处、另一端接地柜子的方案，持续使用一周后蓝牙恢复正常且无杂音，若问题复发则计划更换外置模块。
+- [快开门压力容器（蒸压釜）实操题](https://uwillno.com/blog/32) — 本文整理了湖北武汉地区快开门压力容器（蒸压釜）实操考试的高分值题目，涵盖关闭、加压、卸压及开启等基本操作步骤。内容还包括接受余气节能操作、安全阀与压力表更换程序，以及处理安全阀失灵、底部泄漏、超压和密封圈泄漏等异常情况的应急流程。文章仅记录关键阀门动作顺序，供考生参考记忆。
+- [计划报废产品记录](https://uwillno.com/blog/31) — 本文记录了多款电子产品在保修期结束后不久即出现故障的现象。作者列举了小米系列手机、手表及手环的电池损坏或功能失效，华擎显卡不支持个人送保，以及 Eimio 显示器无征兆报废等具体案例。文章指出部分产品存在虚焊、防水问题及软件维护滞后等情况，并对比了过去旧设备耐用性强的现状，批评当前电子产品质量下降，建议消费者优先选择质保时间较长的设备以规避风险。
+- [安卓锁机软件破解](https://uwillno.com/blog/30) — 文章分析了安卓锁机软件通常依赖无障碍服务或设备管理器而非 Root 权限的实现机制，并指出部分劣质软件甚至可通过语音助手关闭。作者通过逆向工程发现某款锁机软件逻辑简单，仅利用随机数生成序号再固定偏移计算密码，三层验证纯属多余，可直接在线求解。同时提醒用户随意安装软件及授予权限存在安全隐患，过度依赖 Magisk 等模块也可能引入隐私风险。
+- [视频批量添加字幕](https://uwillno.com/blog/29) — 针对头戴设备默认播放器不支持外挂字幕的问题，本文介绍利用 ffmpeg 批量处理 mp4 视频与 vtt 字幕文件的方法。文章提供了生成硬字幕和软字幕的 Shell 脚本示例，分别对应使用默认播放器和第三方播放器。同时讨论了 Windows 环境下脚本逻辑及字体判断等注意事项，并指出硬字幕需重新编码可跑满 CPU，而软字幕速度较快，无需过度优化。
+- [AR眼镜雷鸟Air2折腾记录](https://uwillno.com/blog/27) — 本文记录雷鸟 Air2 AR 眼镜的入手动机、配件折腾及实际体验。作者为将其作为显示器使用，尝试了多种 HDMI/DP 转接方案以解决供电与兼容性难题，最终组合出可行连接方式。体验方面，文章分析了其低延迟优势、OLED 画质特点、佩戴舒适度局限及瞳距不可调等缺点，并给出购买建议：因 Air3 即将发布，当前版本可能过时且会降价，建议等待新款或观望价格后再入手。
+- [Qt/C++与Java交互、JNI使用](https://uwillno.com/blog/28) — 本文记录 Qt/C++与 Java 交互及 JNI 使用的实践细节。文章指出 QDECLAREJNICLASS 类虽便捷但稳定性存疑，建议关注其生命周期管理。同时演示了利用 QJniObject 构建 Intent 并启动 Activity 的方法，以及通过 JNI 实现 Java 调用 C++ 函数的代码示例，强调了签名匹配与对象创建的重要性。
+- [Qt for WebAssembly中使用Qt/C++调用JavaScript实现路由](https://uwillno.com/blog/26) — 针对 Qt for WebAssembly 缺乏原生路由机制的问题，本文介绍了一种通过查询参数配合 C++ 调用 JavaScript 获取 `window.location.search` 实现页面跳转的简易方案。文章提供了完整的 C++ 与 QML 代码示例，演示了如何注册上下文属性并解析 URL 参数。同时指出该方法虽能凑合使用，但受限于 WASM 特性难以支持 RSS 和 SEO，且框架在 Web 端存在维护困难及潜在 Bug，仅供探索参考。
+- [AR眼镜/头戴显示器平替产品](https://uwillno.com/blog/25) — 作者因追求便携与护眼而关注 AR 眼镜平替，但嫌弃小米方案接口落后、OLED 屏幕存疑且溢价高，最终放弃购买。转而推荐二手“小米头戴影院”及升级版“临奇头号影院”，指出二者均支持投屏，前者性价比高，后者支持 5G WiFi 与陀螺仪。实测显示两者清晰度可接受代码，适合看番或隐蔽摸鱼，但大尺寸导致办公需频繁调整视线，且遥控器略显累赘，作者认为稳定路由器下 2.4G WiFi 已足够，玩腻后仍会回归传统显示器。
+- [上年纪了，不再搞机了](https://uwillno.com/blog/23) — 作者回顾从小学至工作期间的“搞机”历程，涵盖塞班、iOS 越狱降级、安卓 Root 刷机及模块开发等经历。文章详细描述了因运营商计费陷阱、设备黑砖变砖、系统负优化及厂商品控问题导致的多次折腾。随着对软件开发认知的加深及对手机质量下降的担忧，作者最终决定停止深度折腾，回归稳定使用，并反思了盲目修改系统带来的风险与局限。
+- [Cloudflare Workers + R2实现简易评论系统](https://uwillno.com/blog/22) — 针对难以集成到 Qt for WebAssembly 的博客评论需求，本文介绍了一个基于 Cloudflare Workers 和 R2 构建的简易系统。该方案利用 Workers 处理请求逻辑并绑定 R2 存储桶作为 JSON 数据库，以替代复杂的 SQL 架构。每个博客对应一个存储 JSON 数组文件的 R2 对象，支持包含回复关系的多级评论结构。虽然存在分页困难及数据一致性等局限，但凭借免费额度与低维护成本，该方案可作为轻量级集成选择。
+- [Qt for WebAssembly中使用MediaPlayer的问题记录](https://uwillno.com/blog/17) — 本文记录了 Qt for WebAssembly (Qt6.7.2) 中使用 MediaPlayer 遇到的平台限制与已知问题。文章指出媒体播放需用户交互触发，建议通过计时器延迟设置 source 或 autoPlay；同时提醒避免过高帧率、码率及分辨率，并需处理 CORS 跨域问题。此外，MediaPlayer.Infinite 循环模式当前不可用，多 VideoOutput 实例会导致异常，需在 Qt 6.7.3 中已修复。
+- [大理游记](https://uwillno.com/blog/16) — 本文记录了一次三人自由行的大理之旅，行程涵盖古城漫步、生态廊道骑行、洱海游船及喜洲古镇游览。文章详细分享了苍山感通线登山体验、当地饮食特色如米线与火锅的避坑指南，以及鲜花饼等特产购买建议。此外，还针对共享单车使用限制、电动车调度费、民宿住宿选择及天气防晒等实用细节提供了具体经验，最后指出旅游开销较高且个人兴趣有限，供读者参考规划行程。
+- [Vlog功能说明](https://uwillno.com/blog/15) — 作者因发现 Bilibili 上 Qt/Felgo 教学资源匮乏且旧版视频质量低，决定录制免费教程作为副业，但受限于流量激励微薄、反爬机制干扰及视频学习效率低下等问题，最终将内容转为 Vlog 形式记录。为解决观看体验问题，作者将高清课程资料上传至 OneDrive 并提供直链转换方案，同时宣布降低更新频率以兼顾个人兴趣与教学观感。
+- [弃坑功能说明](https://uwillno.com/blog/14) — 本文说明了作者因资源体积过大、跨域隔离限制及 Qt6 歌词字体兼容性问题，导致音乐与媒体播放器功能无法在 WASM 环境下稳定运行。此外，QML 在线编辑缺乏沙盒机制且 Felgo 云编辑器更具优势，加之版本更新引发旧 Bug 重现，作者决定停止开发并转向其他工作。
+- [CMake/QMake着色器文件自动生成](https://uwillno.com/blog/13) — Qt6 中着色器需编译为 qsb 文件，官方 CMake 方案支持隐式生成但 QMake 难以直接集成。文章对比了两种构建配置：QMake 通过自定义命令循环编译，每次修改需重载；CMake 利用 GLOB 自动收集源文件并添加自定义命令与目标，实现依赖追踪和批量处理，有效解决了手动编译效率低及资源管理不便的问题。
+- [Qt压缩资源文件，远程加载资源文件、翻译](https://uwillno.com/blog/12) — 为提升 WebAssembly 加载速度，本文探讨将 Qt 资源文件（qrc）编译为压缩的 rcc 格式，默认采用 zstd 算法并支持自定义阈值与等级。文章详细分析了翻译文件加载顺序对应用启动的影响，提出使用 QNetworkAccessManager 远程加载资源并在成功后动态启动窗体的方案，同时对比了无需翻译文件的 QML 远程导入写法及其局限性，为优化 Qt 应用性能提供实践参考。
+- [折腾QSettings::WebIndexedDBFormat/JSPI记录](https://uwillno.com/blog/11) — 作者在 Qt WebAssembly 项目中为提升加载速度，尝试利用 QSettings 的 IndexedDB 格式远程存储大于 5MB 的资源文件。由于浏览器默认使用 LocalStorage 导致报错，需启用实验性 JSPI 功能。经测试，JSPI 目前仅 Chrome 可手动开启且配置复杂，实际可用性极低，作者最终放弃该方案并决定后续不再折腾此功能。
+- [皇极经世的功能说明](https://uwillno.com/blog/10) — 本文介绍皇极经世程序的功能复刻情况。作者因原天纪程式存在 Bug 且年份限制较多，遂使用 C++ 自主编写算法进行功能复刻，未逆向原程序。文中说明解卦部分采用爬虫技术获取数据，阴历数据库源自开源项目，因此当前版本仅支持 1900 至 2099 年。作者强调该程序仅供娱乐参考，可能存在误差，并欢迎反馈以便后续修正与扩展功能。
+- [Qt for Webassembly QML文本选中、复制](https://uwillno.com/blog/9) — Qt for WebAssembly 在 QML 文本选中与复制功能上存在适配不足问题，手机端常出现"NotAllowedError"错误且 Ctrl+C 无效。文章演示了通过 MouseArea 监听手势实现文本选区计算，并在释放时显示自定义按钮调用 copy() 方法完成复制。同时指出需自行处理 Markdown 代码块溢出、图片宽度调整及超链接点击等交互缺陷，建议等待官方后续完善。
+- [QML Image加载远程图片- server replied: Forbidden](https://uwillno.com/blog/8) — 文章探讨 QML Image 加载远程图片时因服务器拒绝请求（Forbidden）导致报错的问题。由于浏览器安全限制无法直接添加请求头，需采用特定方案解决。文中对比了 Felgo 使用 DownloadableResource 类型、Qt/C++ 重写 ImageProvider 以及 QML 结合 XMLHttpRequest 获取 ArrayBuffer 并转为 Base64 等多种方法，分析了各方案的实现细节与局限性，为开发者提供了在跨域限制下加载带请求头图片的可行路径。
+- [QHttpServer设置允许跨域请求](https://uwillno.com/blog/7) — 在 Qt for Webassembly 中使用 XMLHttpRequest 请求 QHttpServer 时，若出现跨域访问限制，可通过配置 Access-Control-Allow-Origin 解决。示例代码展示了在 QHttpServer 的 afterRequest 回调中设置该响应头为空字符串的方法，从而允许跨域请求通过，解决了文档不完善导致的配置难题。
+- [关于写的一些垃圾课设/毕设](https://uwillno.com/blog/6) — 作者分享撰写低质量课程设计与毕业设计的心得，指出应付任务书时老师更关注论文格式而非功能实现，答辩通常不会为难学生。文章建议通过克隆现有项目并修改样式、布局及细节来快速完成验收，避免重复劳动。作者因主业繁忙暂无精力开发新项目，但可提供旧报告供参考，认为实习或学习技术比空耗时间写此类文档更有价值。
+- [六爻功能说明](https://uwillno.com/blog/5) — 本文介绍了六爻排盘程序的功能说明与实现细节。作者坦言代码尚不完善，部分元素未完全实现，主要依据地支五行关系进行判断，而非依赖象辞或复杂系数计算吉凶率。变卦仅分析动爻，六亲按原卦属性排列。文中指出 AI 在识别天干地支时易出错，建议结合使用。界面五行颜色仅为区分标识，非真实色彩。程序仅供娱乐，作者强调其安全性但不对准确性负责，未来可能继续完善。
+- [软考经历吐槽](https://uwillno.com/blog/19) — 作者因疫情被困校园且课程空闲，决定报考软件设计师以应对招聘对计算机等级证书的要求。备考过程无需教材，主要依靠刷题和观看 B 站视频，认为上午题偏常识、下午题除算法外难度较低。考试时上下午均提前交卷，整体通过率极低。最终虽通过考试并获创新学分，但作者认为该证书对实际找工作和技术提升帮助有限，仅在特定体制内岗位或职称聘任时才发挥作用，自嘲可能白考了。
+- [教育经历吐槽](https://uwillno.com/blog/18) — 文章以主观视角回顾从小学到大学的完整教育经历，指出各阶段普遍存在学费高昂、教学效率低及资源浪费等问题。作者批评小学外教班无效且加重负担，初中培优对提分帮助有限，高中快班暗箱操作且高三合卷改革导致复习策略失效，大学课程水课泛滥、师资技术过时且评分机制不合理。结论认为教育本质多为“水”，建议学生重视自学与合理规划，而非过度依赖校内资源或盲目投入金钱。
+- [ReferenceError: SharedArrayBuffer is not defined](https://uwillno.com/blog/4) — 源码丢失后改用 Qt6.5 复原时，在 Windows 和 Linux 环境下调试正常，但部署到服务器即报错 SharedArrayBuffer 未定义。文章指出最简单方案是改用 single-threaded 构建套件；若坚持使用 multi-threaded 套件，则需导入 coi-serviceworker.js 并在支持该特性的浏览器中访问，同时建议清理缓存或开启无痕模式以排除干扰。
+- [Arch Linux系统迁移](https://uwillno.com/blog/1) — 本文记录了将 Arch Linux 从 512GB SSD 迁移至 1TB NVMe SSD 的完整过程。作者利用 dd 命令克隆原分区，并通过 arch-chroot 环境重新安装 GRUB 引导程序。文章特别指出，若未执行 resize2fs 调整新分区大小，重启后虽能进入系统但可用空间仍保留原值，最终展示了如何通过扩展文件系统释放新增容量。
+- [Uwzz原理补全](https://uwillno.com/blog/2) — 本文整理了超星学习通平台的多种接口调用方法，涵盖登录注册、静态与预签到、位置及二维码签到、作业答案提取、测验统计、照片上传、拍照签到、课程积分与作业统计以及查看签到情况等功能。文中提供了各功能对应的具体 API 地址及部分参数说明，并提示了部分接口因平台更新已失效的情况，仅供学习参考。
+- [Linux下Qt creator中文输入问题](https://uwillno.com/blog/3) — Linux 下 Qt Creator 在使用 Fcitx 或 Fcitx 5 时可能出现中文输入问题，可尝试换用 iBus 解决，但需注意其开机自启在 4K 分辨率下的显示异常及手动重启需求。若坚持使用 Fcitx 5，可通过安装 fcitx5-qt 并建立软链接至 Qt Creator 及 Felgo 插件路径来修复输入功能；针对新版本 fcitx5-qt 失效的情况，建议降级至 5.0.16-1 版本以恢复中文输入支持。
 - [农历](https://uwillno.com/func/lunar) — 农历相关功能
 - [六爻](https://uwillno.com/func/6yao) — 古人观察大自然运行规律总结出来的一项法则
 - [六壬](https://uwillno.com/func/6ren) — 计算事情的吉凶祸福

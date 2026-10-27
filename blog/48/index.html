@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>卡巴斯基JS误报分析 - UWillno's Blog</title>
 <meta property="og:title" content="卡巴斯基JS误报分析 - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="文章分析了卡巴斯基安全浏览组件将混淆加密的 JavaScript 代码误报为木马的事件。作者指出，尽管网站采用了变量名混淆、密钥加密及动态加载外部 CryptoJS 库等防护手段，仍因启发式分析被拦截。文中详细展示了包含 AES 加密逻辑的混淆代码结构，并提供了利用 Python 进行解密还原源码的脚本方案。最终结论认为此类静态页面的主动防御效果有限，且当前网络环境下针对纯静态页面的攻击已较少见。">
 <meta property="og:url" content="https://uwillno.com/blog/48">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="文章分析了卡巴斯基安全浏览组件将混淆加密的 JavaScript 代码误报为木马的事件。作者指出，尽管网站采用了变量名混淆、密钥加密及动态加载外部 CryptoJS 库等防护手段，仍因启发式分析被拦截。文中详细展示了包含 AES 加密逻辑的混淆代码结构，并提供了利用 Python 进行解密还原源码的脚本方案。最终结论认为此类静态页面的主动防御效果有限，且当前网络环境下针对纯静态页面的攻击已较少见。">
 <link rel="canonical" href="https://uwillno.com/blog/48">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - 卡巴斯基JS误报分析
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      文章分析了卡巴斯基安全浏览组件将混淆加密的 JavaScript 代码误报为木马的事件。作者指出，尽管网站采用了变量名混淆、密钥加密及动态加载外部 CryptoJS 库等防护手段，仍因启发式分析被拦截。文中详细展示了包含 AES 加密逻辑的混淆代码结构，并提供了利用 Python 进行解密还原源码的脚本方案。最终结论认为此类静态页面的主动防御效果有限，且当前网络环境下针对纯静态页面的攻击已较少见。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

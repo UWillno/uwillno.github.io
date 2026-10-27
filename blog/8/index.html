@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>QML Image加载远程图片- server replied: Forbidden - UWillno's Blog</title>
 <meta property="og:title" content="QML Image加载远程图片- server replied: Forbidden - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="文章探讨 QML Image 加载远程图片时因服务器拒绝请求（Forbidden）导致报错的问题。由于浏览器安全限制无法直接添加请求头，需采用特定方案解决。文中对比了 Felgo 使用 DownloadableResource 类型、Qt/C++ 重写 ImageProvider 以及 QML 结合 XMLHttpRequest 获取 ArrayBuffer 并转为 Base64 等多种方法，分析了各方案的实现细节与局限性，为开发者提供了在跨域限制下加载带请求头图片的可行路径。">
 <meta property="og:url" content="https://uwillno.com/blog/8">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="文章探讨 QML Image 加载远程图片时因服务器拒绝请求（Forbidden）导致报错的问题。由于浏览器安全限制无法直接添加请求头，需采用特定方案解决。文中对比了 Felgo 使用 DownloadableResource 类型、Qt/C++ 重写 ImageProvider 以及 QML 结合 XMLHttpRequest 获取 ArrayBuffer 并转为 Base64 等多种方法，分析了各方案的实现细节与局限性，为开发者提供了在跨域限制下加载带请求头图片的可行路径。">
 <link rel="canonical" href="https://uwillno.com/blog/8">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - QML Image加载远程图片- server replied: Forbidden
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      文章探讨 QML Image 加载远程图片时因服务器拒绝请求（Forbidden）导致报错的问题。由于浏览器安全限制无法直接添加请求头，需采用特定方案解决。文中对比了 Felgo 使用 DownloadableResource 类型、Qt/C++ 重写 ImageProvider 以及 QML 结合 XMLHttpRequest 获取 ArrayBuffer 并转为 Base64 等多种方法，分析了各方案的实现细节与局限性，为开发者提供了在跨域限制下加载带请求头图片的可行路径。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>近期调整 4.0 -&gt; 4.1 - UWillno's Blog</title>
 <meta property="og:title" content="近期调整 4.0 -&gt; 4.1 - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="近期 Qt 6.11.0 版本发布计划调整，在修复 Bug 的同时优化统计监视器、异步并发加载器及 JSON 读取效率。界面方面移除自带中文字体并引入 SarasaMono 和 Noto，提升首屏体验。新增 Quick3D 模块测试及动态背景切换，Spine 渲染方案调整为 QSG 以确保稳定。主导航移除存在性能问题的 PathView，模型改用 SortFilterProxyModel 增强可读性，服务器日志独立并加入通知系统，加载页由 AI 生成设计。">
 <meta property="og:url" content="https://uwillno.com/blog/chlg4">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="近期 Qt 6.11.0 版本发布计划调整，在修复 Bug 的同时优化统计监视器、异步并发加载器及 JSON 读取效率。界面方面移除自带中文字体并引入 SarasaMono 和 Noto，提升首屏体验。新增 Quick3D 模块测试及动态背景切换，Spine 渲染方案调整为 QSG 以确保稳定。主导航移除存在性能问题的 PathView，模型改用 SortFilterProxyModel 增强可读性，服务器日志独立并加入通知系统，加载页由 AI 生成设计。">
 <link rel="canonical" href="https://uwillno.com/blog/chlg4">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - 近期调整 4.0 -&gt; 4.1
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      近期 Qt 6.11.0 版本发布计划调整，在修复 Bug 的同时优化统计监视器、异步并发加载器及 JSON 读取效率。界面方面移除自带中文字体并引入 SarasaMono 和 Noto，提升首屏体验。新增 Quick3D 模块测试及动态背景切换，Spine 渲染方案调整为 QSG 以确保稳定。主导航移除存在性能问题的 PathView，模型改用 SortFilterProxyModel 增强可读性，服务器日志独立并加入通知系统，加载页由 AI 生成设计。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

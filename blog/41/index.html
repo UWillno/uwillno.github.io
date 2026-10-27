@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>Uww2开发记录2 - UWillno's Blog</title>
 <meta property="og:title" content="Uww2开发记录2 - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="本文记录了 Uww2 开发的优化尝试与遇到的各类问题。文章探讨了启动顺序对跨线程警告的影响、Android 13+ 的通知权限要求以及保活机制在部分系统上的失效情况。针对文件丢失、无响应及自定义选择器效率等实际问题，提出了相应的临时解决方案或放弃处理的决定。此外，还分析了 C++ JNI 与 Java 实现的性能差异、功能冲突下的状态判断逻辑，并最终因实现过于复杂且难以回滚而考虑弃坑，转而寻求 Magisk 模块方案。">
 <meta property="og:url" content="https://uwillno.com/blog/41">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="本文记录了 Uww2 开发的优化尝试与遇到的各类问题。文章探讨了启动顺序对跨线程警告的影响、Android 13+ 的通知权限要求以及保活机制在部分系统上的失效情况。针对文件丢失、无响应及自定义选择器效率等实际问题，提出了相应的临时解决方案或放弃处理的决定。此外，还分析了 C++ JNI 与 Java 实现的性能差异、功能冲突下的状态判断逻辑，并最终因实现过于复杂且难以回滚而考虑弃坑，转而寻求 Magisk 模块方案。">
 <link rel="canonical" href="https://uwillno.com/blog/41">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - Uww2开发记录2
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      本文记录了 Uww2 开发的优化尝试与遇到的各类问题。文章探讨了启动顺序对跨线程警告的影响、Android 13+ 的通知权限要求以及保活机制在部分系统上的失效情况。针对文件丢失、无响应及自定义选择器效率等实际问题，提出了相应的临时解决方案或放弃处理的决定。此外，还分析了 C++ JNI 与 Java 实现的性能差异、功能冲突下的状态判断逻辑，并最终因实现过于复杂且难以回滚而考虑弃坑，转而寻求 Magisk 模块方案。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

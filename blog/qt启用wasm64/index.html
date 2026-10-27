@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>Qt启用WASM64（memory64）和注意事项 - UWillno's Blog</title>
 <meta property="og:title" content="Qt启用WASM64（memory64）和注意事项 - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="随着 emsdk 版本更新，Qt 现已支持 WASM64（memory64）特性。编译时需指定-xplatform wasm-emscripten-64 并重新构建所有依赖库，同时建议跳过未适配的 qtquick3dphysics 模块。代码层面需处理 JS 与 WASM 间的大整数转换问题，否则可能引发断言失败或类型错误。尽管该模式能支持超过 4GB 的线性内存以处理大文件，但性能损耗显著且存在多媒体视频输出导致崩溃等已知缺陷，目前建议仅在特定场景下启用。">
 <meta property="og:url" content="https://uwillno.com/blog/qt启用wasm64">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="随着 emsdk 版本更新，Qt 现已支持 WASM64（memory64）特性。编译时需指定-xplatform wasm-emscripten-64 并重新构建所有依赖库，同时建议跳过未适配的 qtquick3dphysics 模块。代码层面需处理 JS 与 WASM 间的大整数转换问题，否则可能引发断言失败或类型错误。尽管该模式能支持超过 4GB 的线性内存以处理大文件，但性能损耗显著且存在多媒体视频输出导致崩溃等已知缺陷，目前建议仅在特定场景下启用。">
 <link rel="canonical" href="https://uwillno.com/blog/qt启用wasm64">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - Qt启用WASM64（memory64）和注意事项
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      随着 emsdk 版本更新，Qt 现已支持 WASM64（memory64）特性。编译时需指定-xplatform wasm-emscripten-64 并重新构建所有依赖库，同时建议跳过未适配的 qtquick3dphysics 模块。代码层面需处理 JS 与 WASM 间的大整数转换问题，否则可能引发断言失败或类型错误。尽管该模式能支持超过 4GB 的线性内存以处理大文件，但性能损耗显著且存在多媒体视频输出导致崩溃等已知缺陷，目前建议仅在特定场景下启用。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

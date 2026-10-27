@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>性能问题及性能预设功能说明 - UWillno's Blog</title>
 <meta property="og:title" content="性能问题及性能预设功能说明 - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="本文针对 WebAssembly 在 Edge 浏览器中的性能表现进行了实测，分析了 GPU 与 CPU 负载差异及内存带宽对手机帧率的影响。文章介绍了为解决液态玻璃效果导致的卡顿而引入的局部渲染优化方案，并详细说明了基于设备性能的节能建议。此外，还阐述了新增的性能预设功能，通过分级开关圆角、粒子系统、动态背景等特效，帮助用户在不同硬件条件下平衡视觉效果与运行流畅度。">
 <meta property="og:url" content="https://uwillno.com/blog/75">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="本文针对 WebAssembly 在 Edge 浏览器中的性能表现进行了实测，分析了 GPU 与 CPU 负载差异及内存带宽对手机帧率的影响。文章介绍了为解决液态玻璃效果导致的卡顿而引入的局部渲染优化方案，并详细说明了基于设备性能的节能建议。此外，还阐述了新增的性能预设功能，通过分级开关圆角、粒子系统、动态背景等特效，帮助用户在不同硬件条件下平衡视觉效果与运行流畅度。">
 <link rel="canonical" href="https://uwillno.com/blog/75">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - 性能问题及性能预设功能说明
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      本文针对 WebAssembly 在 Edge 浏览器中的性能表现进行了实测，分析了 GPU 与 CPU 负载差异及内存带宽对手机帧率的影响。文章介绍了为解决液态玻璃效果导致的卡顿而引入的局部渲染优化方案，并详细说明了基于设备性能的节能建议。此外，还阐述了新增的性能预设功能，通过分级开关圆角、粒子系统、动态背景等特效，帮助用户在不同硬件条件下平衡视觉效果与运行流畅度。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],

@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/runtime.css">
-  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
   <title>浏览器后退拦截与C++/QML交互、行为/bug差异 Qt for WebAssembly - UWillno's Blog</title>
 <meta property="og:title" content="浏览器后退拦截与C++/QML交互、行为/bug差异 Qt for WebAssembly - UWillno's Blog">
-<meta property="og:description" content="">
+<meta property="og:description" content="本文探讨 Qt for WebAssembly 中浏览器后退拦截与 C++/QML 交互的实现难点。文章详细分析了利用 JavaScript 操作历史栈配合 popstate 事件触发 QML 栈视图回退的逻辑，并对比了 Chromium（Edge/Chrome）与 Gecko（Firefox）两类浏览器在历史推送时机、文件下载体验、手势还原及多媒体播放等方面的显著差异。此外，还指出了 Firefox 中请求对象销毁未触发 Abort 的已知 Bug、粒子系统渲染异常以及 Android 端布局缩放等具体问题，为开发者提供了宝贵的调试参考。">
 <meta property="og:url" content="https://uwillno.com/blog/64">
 <meta property="og:type" content="website">
-<meta name="description" content="">
+<meta name="description" content="本文探讨 Qt for WebAssembly 中浏览器后退拦截与 C++/QML 交互的实现难点。文章详细分析了利用 JavaScript 操作历史栈配合 popstate 事件触发 QML 栈视图回退的逻辑，并对比了 Chromium（Edge/Chrome）与 Gecko（Firefox）两类浏览器在历史推送时机、文件下载体验、手势还原及多媒体播放等方面的显著差异。此外，还指出了 Firefox 中请求对象销毁未触发 Abort 的已知 Bug、粒子系统渲染异常以及 Android 端布局缩放等具体问题，为开发者提供了宝贵的调试参考。">
 <link rel="canonical" href="https://uwillno.com/blog/64">
 <link rel="alternate"
       type="application/rss+xml"
@@ -36,17 +34,18 @@
     
     
   </script>
-  <link rel="icon" type="image/png" href="logo.svg" />
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="stylesheet" href="/runtime.css">
+  <link rel="preload" href="/alpine.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
   <link rel="preload" href="/blog.js" as="script">
-  
-  
-  <script defer src="/alpine.js"></script>
-  
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
   <script src="/coi-serviceworker.min.js"></script>
+  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
@@ -66,13 +65,13 @@
 
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog
+        UWillno's Blog - 浏览器后退拦截与C++/QML交互、行为/bug差异 Qt for WebAssembly
       </h1>
     </div>
-
     
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl">
-      <a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
+    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+      本文探讨 Qt for WebAssembly 中浏览器后退拦截与 C++/QML 交互的实现难点。文章详细分析了利用 JavaScript 操作历史栈配合 popstate 事件触发 QML 栈视图回退的逻辑，并对比了 Chromium（Edge/Chrome）与 Gecko（Firefox）两类浏览器在历史推送时机、文件下载体验、手势还原及多媒体播放等方面的显著差异。此外，还指出了 Firefox 中请求对象销毁未触发 Abort 的已知 Bug、粒子系统渲染异常以及 Android 端布局缩放等具体问题，为开发者提供了宝贵的调试参考。
+<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
         rel="noopener noreferrer">仓库地址</a>
       加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
       当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
@@ -184,7 +183,7 @@
         errorMsg: '',
 
         
-        zstSize: "26926846",
+        zstSize: "26928304",
 
         mirrors: [
           ['GitHub', 'https://github.uwillno.com'],
