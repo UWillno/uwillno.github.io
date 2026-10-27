@@ -5,6 +5,13 @@
         <link>https://uwillno.com</link>
         <description>UWillno's Blog</description>
         <item>
+            <title>AI 摘要持久化、RSS / SEO 改进</title>
+            <link>https://uwillno.com/blog/ai摘要持久化</link>
+            <pubDate>Wed, 28 Oct 2026 00:00:44 GMT</pubDate>
+            <category>变更</category>
+            <description>文章介绍了将博客的 AI 摘要生成从 Cloudflare Workers AI 迁移至本地 Ollama 模型的过程。通过持久化存储摘要数据，避免了重复调用 API 产生的资源浪费与延迟。改进后的构建流程在生成 RSS 描述及 SEO 页面时直接复用已缓存的摘要内容。此举不仅优化了 WASM 加载期间的用户体验，减少了重复 HTML 展示，还显著降低了运行成本，实现了技术架构的轻量化与高效化。</description>
+        </item>
+        <item>
             <title>京剧观后：当故事很短，表演却很长</title>
             <link>https://uwillno.com/blog/京剧观后感</link>
             <pubDate>Tue, 27 Oct 2026 04:00:44 GMT</pubDate>

@@ -13,6 +13,7 @@
 
 ## Articles
 
+- [AI 摘要持久化、RSS / SEO 改进](https://uwillno.com/blog/ai摘要持久化) — 文章介绍了将博客的 AI 摘要生成从 Cloudflare Workers AI 迁移至本地 Ollama 模型的过程。通过持久化存储摘要数据，避免了重复调用 API 产生的资源浪费与延迟。改进后的构建流程在生成 RSS 描述及 SEO 页面时直接复用已缓存的摘要内容。此举不仅优化了 WASM 加载期间的用户体验，减少了重复 HTML 展示，还显著降低了运行成本，实现了技术架构的轻量化与高效化。
 - [京剧观后：当故事很短，表演却很长](https://uwillno.com/blog/京剧观后感) — 作者首次观看京剧艺术节四出戏作，发现剧情简单却表演冗长，导致理解困难与审美疲劳。文章分析指出，传统戏曲侧重展现演员功底、气势及舞台调度，而非完整叙事；高难度动作易引发重复感，且伴奏需紧密配合维持节奏。作者反思自身因缺乏背景知识而难以持续投入，认为技巧本身不等于艺术价值，并探讨如何平衡传统形式与现代观赏体验，强调理解艺术表达与欣赏其趣味是不同层面的事。
 - [QWasmLocalFileAccess wasm64适配](https://uwillno.com/blog/qwasmlocalfileaccessforwasm64) — 本文针对 QWasmLocalFileAccess 在 wasm64 环境下适配 showOpenFilePicker() 时出现的崩溃问题。该问题源于 BigInt 与 Number 类型转换不匹配，导致 Uint8Array.subarray() 调用失败。文章分析了影响范围，提出通过禁用 showSaveFilePicker 作为临时规避方案，同时提供了修改 qtbase 源码的具体方法：将 chunkSize 收窄为 32 位整数以兼容 subarray 接口，确保在共享内存场景下的文件写入功能正常运行。
 - [Qt Markdown解析异常排查记录](https://uwillno.com/blog/Qt Markdown解析异常排查记录) — 更新 Qt Dev 分支后，博客项目中 Markdown 的下划线与删除线标记失效，而新建项目正常。排查发现博客项目 CSS 中 strike 样式丢失，且自行引入的 md4c 库版本（0.5.2）低于官方控件依赖的 0.6.0 版本。将本地库升级至 0.6.0 后解析恢复正常，推测为静态链接下的符号冲突或版本兼容问题，后续需跟进隔离处理。
