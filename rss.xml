@@ -5,6 +5,13 @@
         <link>https://uwillno.com</link>
         <description>UWillno's Blog</description>
         <item>
+            <title>Markdown 增强：UWCharts 轻量图表支持</title>
+            <link>https://uwillno.com/blog/uwcharts</link>
+            <pubDate>Sun, 01 Nov 2026 00:00:44 GMT</pubDate>
+            <category>变更</category>
+            <description>本次更新标准化了内部轻量图表模块 UWCharts，使其可直接嵌入 Markdown 且无需外部库依赖。该模块基于 QtQuick 与 UWStyle，支持雷达图、折线图、环形图等多种类型，适用于趋势表达及中等数据量场景。文章介绍了其 JSON 配置语法、属性缺省规则及跨平台特性，并提供了各类图表的完整代码示例与测试方法。</description>
+        </item>
+        <item>
             <title>AI 摘要持久化、RSS / SEO 改进</title>
             <link>https://uwillno.com/blog/ai摘要持久化</link>
             <pubDate>Wed, 28 Oct 2026 00:00:44 GMT</pubDate>
