@@ -5,6 +5,13 @@
         <link>https://uwillno.com</link>
         <description>UWillno's Blog</description>
         <item>
+            <title>某报警系统智能化开发记录：实现到放弃</title>
+            <link>https://uwillno.com/blog/某报警系统智能化开发记录</link>
+            <pubDate>Wed, 04 Nov 2026 00:00:44 GMT</pubDate>
+            <category>杂谈</category>
+            <description>作者记录了一次报警系统的智能化开发尝试：初期通过 npcap 旁路抓包、Websocket 及独立线程实现了数据转发与展示；但在测试中发现传感器数值存在异常衰减、高位偏差甚至完全不可读等问题。经核实，该系统多数点位仅为凑工程量的虚假数据，缺乏可靠性，最终导致项目从实现转向放弃。</description>
+        </item>
+        <item>
             <title>Qt for WebAssembly 应用全屏适配</title>
             <link>https://uwillno.com/blog/qtforwasmfullscreen</link>
             <pubDate>Sun, 01 Nov 2026 07:44:44 GMT</pubDate>
