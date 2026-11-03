@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="bwt bwd">
+  <title id="bwt">博客汇动态方形标记</title>
+  <desc id="bwd">白色声波从圆点向外扩散的动态博客汇标记。</desc>
+  <style>
+    /* 兼容 Qt 6.12 的 CSS 动画写法，三条硬性约束：
+       1) 关键帧选择器必须单值，不能写 0%,10%{...}，否则整个动画被判为不存在
+       2) scale() 必须写两个参数，scale(0.5) 会被解析但不生效
+       3) transform-origin 会被忽略，所以缩放中心靠外层 translate 做进几何
+       另外 Qt 只动画 fill/stroke/opacity/transform 这几类属性 */
+
+    .wave {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 24;
+      stroke-linecap: round;
+      opacity: .85;
+      animation-name: bwpulse;
+      animation-duration: 6s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    .w2 { opacity: 0; animation-delay: 2s; }
+    .w3 { opacity: 0; animation-delay: 4s; }
+
+    .dot {
+      fill: #fff;
+      animation-name: bwbeat;
+      animation-duration: 2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes bwpulse {
+      0%   { opacity: 0;   transform: scale(0.50, 0.50); }
+      8%   { opacity: .9;  transform: scale(0.62, 0.62); }
+      24%  { opacity: .55; transform: scale(0.98, 0.98); }
+      33%  { opacity: 0;   transform: scale(1.16, 1.16); }
+      100% { opacity: 0;   transform: scale(1.16, 1.16); }
+    }
+    @keyframes bwbeat {
+      0%   { opacity: .74; transform: scale(0.88, 0.88); }
+      50%  { opacity: 1;   transform: scale(1.08, 1.08); }
+      100% { opacity: .74; transform: scale(0.88, 0.88); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wave { animation-name: none; }
+      .dot  { animation-name: none; }
+    }
+  </style>
+
+  <rect width="256" height="256" rx="64" fill="#2563eb"/>
+
+  <!-- 外圈 translate 把坐标原点搬到圆心 (32,224)，内层缩放就天然绕圆心 -->
+  <g transform="translate(32 224)">
+    <g class="wave">
+      <path d="M0 -96A96 96 0 0 1 96 0"/>
+      <path d="M0 -176A176 176 0 0 1 176 0"/>
+    </g>
+    <g class="wave w2">
+      <path d="M0 -96A96 96 0 0 1 96 0"/>
+      <path d="M0 -176A176 176 0 0 1 176 0"/>
+    </g>
+    <g class="wave w3">
+      <path d="M0 -96A96 96 0 0 1 96 0"/>
+      <path d="M0 -176A176 176 0 0 1 176 0"/>
+    </g>
+  </g>
+
+  <g transform="translate(44 216)">
+    <circle class="dot" r="14"/>
+  </g>
+</svg>
