@@ -5,6 +5,13 @@
         <link>https://uwillno.com</link>
         <description>UWillno's Blog</description>
         <item>
+            <title>AI分析博客作者与WASM爬虫、逆向测试</title>
+            <link>https://uwillno.com/blog/aicrawlswasm</link>
+            <pubDate>Thu, 05 Nov 2026 21:44:44 GMT</pubDate>
+            <category>测试</category>
+            <description>文章记录了使用 DeepSeek-v4.1-flash 模型分析博客作者背景的过程，重点复盘了 WASM 爬虫在逆向测试中的效率差异。作者通过对比耗时路径与正确路径，揭示了因直觉误判、样本量不足及认知偏差导致的资源浪费问题。文中详细拆解了从侦察、解压到内存扫描的决策树，强调应优先检查运行时明文而非盲目渲染或 OCR。最终指出 AI 能高效处理加密内容，但需明确信息源位置以避免无效尝试，并反思了将用户提示视为质疑而非情报的思维误区。</description>
+        </item>
+        <item>
             <title>某报警系统智能化开发记录：实现到放弃</title>
             <link>https://uwillno.com/blog/某报警系统智能化开发记录</link>
             <pubDate>Wed, 04 Nov 2026 00:00:44 GMT</pubDate>
