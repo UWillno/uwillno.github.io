@@ -1,8 +1,12 @@
 # UWillno's Blog
 
-> A technical blog covering Qt, QML, WebAssembly, graphics and other development topics.
+> 一个 Qt for WebAssembly 开发的博客：各类记录与Qt for WebAssembly技术测试
 
-## Pages
+## 文档
+
+- [AI阅读指南](ai-reading-guide.md) 
+
+## 基础页面
 
 - [settings](https://uwillno.com/settings/)
 - [blog](https://uwillno.com/blog/)
@@ -11,8 +15,12 @@
 - [links](https://uwillno.com/links/)
 - [moment](https://uwillno.com/moment/)
 
-## Articles
+## 路由
 
+> 可能表示交互式应用页面，而不仅仅是单个博客文章。
+
+- [QWasmAccessibility/A11y WASM64适配](https://uwillno.com/blog/qwasma11yforwasm64) — 为适配 Qt 更新及改善 AI 阅读体验，作者在 QWasmAccessibility/A11y 项目中解决了 WASM64 环境下的崩溃问题。针对 BigInt 老问题，直接在 qwasmaccessibility.cpp 中通过条件编译区分处理：在 WASM64 架构下将 activeElement 转换为 BigInt 返回，而在其他架构保持原有逻辑，从而避免了因动态判断导致的运行时错误，实现了简单有效的修复。
+- [AI 阅读指南](https://uwillno.com/blog/ai-reading-guide) — 本文针对 Qt/QML + WebAssembly 架构的博客应用，探讨 AI 阅读与分析的可行策略。文章指出 RSS 仅作为发现入口，建议优先分析 RSS 和仓库 README 以获取经济方案；同时评估了无障碍（A11y）、视觉分析、逆向工程等技术路径的优劣与成本。作者强调需区分技术实现细节与实际内容，避免单一信息源误读，并提醒注意扩展 Markdown 及 WASM 中隐藏数据的复杂性，最终推荐结合多种公开途径进行综合理解。
 - [友链路由增强与功能整合](https://uwillno.com/blog/blogrollenhanced) — 针对原有友链功能在技术栈上的局限性，本文提出了内部路由增强方案。通过支持超链接或查询参数（如?links=名称）直接打开对应弹窗，解决了跨站访问问题。同时，将 uwrss 功能整合进主程序，允许用户直接阅读部分已配置 CORS 的站点 RSS 内容，并针对 WASM 端及多端统一进行了编码处理与逻辑判断优化，实现了友链展示与 RSS 聚合的功能融合。
 - [AI分析博客作者与WASM爬虫、逆向测试](https://uwillno.com/blog/aicrawlswasm) — 文章记录了使用 DeepSeek-v4.1-flash 模型分析博客作者背景的过程，重点复盘了 WASM 爬虫在逆向测试中的效率差异。作者通过对比耗时路径与正确路径，揭示了因直觉误判、样本量不足及认知偏差导致的资源浪费问题。文中详细拆解了从侦察、解压到内存扫描的决策树，强调应优先检查运行时明文而非盲目渲染或 OCR。最终指出 AI 能高效处理加密内容，但需明确信息源位置以避免无效尝试，并反思了将用户提示视为质疑而非情报的思维误区。
 - [某报警系统智能化开发记录：实现到放弃](https://uwillno.com/blog/某报警系统智能化开发记录) — 作者记录了一次报警系统的智能化开发尝试：初期通过 npcap 旁路抓包、Websocket 及独立线程实现了数据转发与展示；但在测试中发现传感器数值存在异常衰减、高位偏差甚至完全不可读等问题。经核实，该系统多数点位仅为凑工程量的虚假数据，缺乏可靠性，最终导致项目从实现转向放弃。

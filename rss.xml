@@ -5,6 +5,20 @@
         <link>https://uwillno.com</link>
         <description>UWillno's Blog</description>
         <item>
+            <title>QWasmAccessibility/A11y WASM64适配</title>
+            <link>https://uwillno.com/blog/qwasma11yforwasm64</link>
+            <pubDate>Wed, 11 Nov 2026 09:44:44 GMT</pubDate>
+            <category>技术</category>
+            <description>为适配 Qt 更新及改善 AI 阅读体验，作者在 QWasmAccessibility/A11y 项目中解决了 WASM64 环境下的崩溃问题。针对 BigInt 老问题，直接在 qwasmaccessibility.cpp 中通过条件编译区分处理：在 WASM64 架构下将 activeElement 转换为 BigInt 返回，而在其他架构保持原有逻辑，从而避免了因动态判断导致的运行时错误，实现了简单有效的修复。</description>
+        </item>
+        <item>
+            <title>AI 阅读指南</title>
+            <link>https://uwillno.com/blog/ai-reading-guide</link>
+            <pubDate>Wed, 11 Nov 2026 09:44:40 GMT</pubDate>
+            <category>说明</category>
+            <description>本文针对 Qt/QML + WebAssembly 架构的博客应用，探讨 AI 阅读与分析的可行策略。文章指出 RSS 仅作为发现入口，建议优先分析 RSS 和仓库 README 以获取经济方案；同时评估了无障碍（A11y）、视觉分析、逆向工程等技术路径的优劣与成本。作者强调需区分技术实现细节与实际内容，避免单一信息源误读，并提醒注意扩展 Markdown 及 WASM 中隐藏数据的复杂性，最终推荐结合多种公开途径进行综合理解。</description>
+        </item>
+        <item>
             <title>友链路由增强与功能整合</title>
             <link>https://uwillno.com/blog/blogrollenhanced</link>
             <pubDate>Mon, 09 Nov 2026 13:02:44 GMT</pubDate>
