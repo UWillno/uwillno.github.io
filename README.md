@@ -119,16 +119,17 @@ xml列表预览，uwrss可以指定query的版本。
 
 wasm平台特性，通过查询参数路由，常规路由见[rss.xml](rss.xml)，额外参数如下，只是方便自用或调试，故不对所有功能实现。
 
-| 功能     | 值参数                                                 | 标志参数                | 示例                                                         | 备注                                     |
-| -------- | ------------------------------------------------------ | ----------------------- | ------------------------------------------------------------ | ---------------------------------------- |
-| 农历     | datetime=年-月-日-时                                   | 无                      | [?func=lunar&datetime=2026-05-13-10](https://uwillno.com?func=lunar&datetime=2026-05-13-10) | 无                                       |
-| 皇极经世 | datetime=年-月-日-时                                   | male female             | [?func=hjjs&datetime=2026-05-13-10&male](https://uwillno.com?func=hjjs&datetime=2026-05-13-10&male) | 标志不要同时使用                         |
-| 紫微斗数 | datetime=年-月-日-时                                   | male female             | [?func=zwds&datetime=2026-05-13-10&male](https://uwillno.com?func=zwds&datetime=2026-05-13-10&male) | 标志不要同时使用                         |
-| 文件安全 | publicKey=公钥 secretKey=私钥 encKey=密钥              | 无                      | [?func=na&publicKey=hex&secretKey=hex&encKey=hex](https://uwillno.com?func=na&publicKey=d42a31e5cd755a330a141042d0c9614a310dcc158508ca445b650da5487c57ec&secretKey=b8957b22af024594cc1cbf6fa62ed8bddb98e6ea4061b9eaf4032ceb18d4d00ed42a31e5cd755a330a141042d0c9614a310dcc158508ca445b650da5487c57ec&encKey=68f26ee52032c8996647294cfa9bbf3cf3be11a5b6b2d2b8db5ce5add27d9784) | 无                                       |
-| MD编辑   | content=md字符串 content_b64=md的base64 source=md的url | preview（直接进入预览） | [?func=mdeditor&source=https://uwillno.com/README.md&preview](https://uwillno.com/?func=mdeditor&source=https://uwillno.com/README.md&preview) | 值不建议同时使用，不处理相对路径，cors   |
-| MD预览   | content=md字符串 content_b64=md的base64 source=md的url | 无                      | [?func=md&source=https://uwillno.com/README.md](https://uwillno.com/?func=md&source=https://uwillno.com/README.md) | 会根据source处理部分相对路径，cors       |
-| UWrss    | source=rss链接                                         | 无                      | [?func=uwrss&source=https://uwillno.com/uwrss.xml](https://uwillno.com/?func=uwrss&source=https://uwillno.com/uwrss.xml) | cors                                     |
-| 纯净模式 | 无                                                     | PURE                    | [?func=md&source=https://uwillno.com/README.md&PURE](https://uwillno.com/?func=md&source=https://uwillno.com/README.md&PURE) | 务必同时使用其他路由。部分功能可能不工作 |
+| 功能       | 值参数                                                 | 标志参数                | 示例                                                         | 备注                                     |
+| ---------- | ------------------------------------------------------ | ----------------------- | ------------------------------------------------------------ | ---------------------------------------- |
+| 农历       | datetime=年-月-日-时                                   | 无                      | [?func=lunar&datetime=2026-05-13-10](https://uwillno.com?func=lunar&datetime=2026-05-13-10) | 无                                       |
+| 皇极经世   | datetime=年-月-日-时                                   | male female             | [?func=hjjs&datetime=2026-05-13-10&male](https://uwillno.com?func=hjjs&datetime=2026-05-13-10&male) | 标志不要同时使用                         |
+| 紫微斗数   | datetime=年-月-日-时                                   | male female             | [?func=zwds&datetime=2026-05-13-10&male](https://uwillno.com?func=zwds&datetime=2026-05-13-10&male) | 标志不要同时使用                         |
+| 文件安全   | publicKey=公钥 secretKey=私钥 encKey=密钥              | 无                      | [?func=na&publicKey=hex&secretKey=hex&encKey=hex](https://uwillno.com?func=na&publicKey=d42a31e5cd755a330a141042d0c9614a310dcc158508ca445b650da5487c57ec&secretKey=b8957b22af024594cc1cbf6fa62ed8bddb98e6ea4061b9eaf4032ceb18d4d00ed42a31e5cd755a330a141042d0c9614a310dcc158508ca445b650da5487c57ec&encKey=68f26ee52032c8996647294cfa9bbf3cf3be11a5b6b2d2b8db5ce5add27d9784) | 无                                       |
+| MD编辑     | content=md字符串 content_b64=md的base64 source=md的url | preview（直接进入预览） | [?func=mdeditor&source=https://uwillno.com/README.md&preview](https://uwillno.com/?func=mdeditor&source=https://uwillno.com/README.md&preview) | 值不建议同时使用，不处理相对路径，cors   |
+| MD预览     | content=md字符串 content_b64=md的base64 source=md的url | 无                      | [?func=md&source=https://uwillno.com/README.md](https://uwillno.com/?func=md&source=https://uwillno.com/README.md) | 会根据source处理部分相对路径，cors       |
+| UWrss      | source=rss链接                                         | 无                      | [?func=uwrss&source=https://uwillno.com/uwrss.xml](https://uwillno.com/?func=uwrss&source=https://uwillno.com/uwrss.xml) | cors                                     |
+| 无障碍模式 | 无                                                     | a11y                    | [?func=md&source=https://uwillno.com/README.md&a11y](https://uwillno.com/?func=md&source=https://uwillno.com/README.md&a11y) | 可能有开销，影响输入……                   |
+| 纯净模式   | 无                                                     | PURE                    | [?func=md&source=https://uwillno.com/README.md&PURE](https://uwillno.com/?func=md&source=https://uwillno.com/README.md&PURE) | 务必同时使用其他路由。部分功能可能不工作 |
 
 
 
