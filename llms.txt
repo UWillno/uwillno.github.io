@@ -4,7 +4,7 @@
 
 ## 文档
 
-[AI阅读指南](https://uwillno.com/ai-reading-guide.md) 
+- [AI阅读指南](https://uwillno.com/ai-reading-guide.md) 
 
 ## 基础页面
 
