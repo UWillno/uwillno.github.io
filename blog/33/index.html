@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      AX200 蓝牙设备曾出现视频录制杂音、录音导致蓝屏及描述符请求失败等异常。经排查，软件层面的诊断工具、服务重启、系统休眠设置调整、驱动重装及降级均无效。硬件方面，尝试通过机箱接触导体排静电效果不稳定。最终采用关机断电后，将数据线一端接天线金属处、另一端接地柜子的方案，持续使用一周后蓝牙恢复正常且无杂音，若问题复发则计划更换外置模块。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">AX200 蓝牙设备曾出现视频录制杂音、录音导致蓝屏及描述符请求失败等异常。经排查，软件层面的诊断工具、服务重启、系统休眠设置调整、驱动重装及降级均无效。硬件方面，尝试通过机箱接触导体排静电效果不稳定。最终采用关机断电后，将数据线一端接天线金属处、另一端接地柜子的方案，持续使用一周后蓝牙恢复正常且无杂音，若问题复发则计划更换外置模块。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

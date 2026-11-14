@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      在 Qt6.8.2 迁移测试中，作者针对 QHttpServer 的 nextPendingWebSocketConnection 返回 std::unique_ptr 且作用域内自动释放的问题，探讨了标准库智能指针与 Qt 父子机制的取舍。文章演示了如何通过将 socket 设为 server 的子对象并利用 QObject::connect 转发信号，结合 deleteLater 连接来优雅管理生命周期，既避免了手动 move 操作，又实现了简单的 WebSocket 功能测试与消息转发。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">在 Qt6.8.2 迁移测试中，作者针对 QHttpServer 的 nextPendingWebSocketConnection 返回 std::unique_ptr 且作用域内自动释放的问题，探讨了标准库智能指针与 Qt 父子机制的取舍。文章演示了如何通过将 socket 设为 server 的子对象并利用 QObject::connect 转发信号，结合 deleteLater 连接来优雅管理生命周期，既避免了手动 move 操作，又实现了简单的 WebSocket 功能测试与消息转发。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

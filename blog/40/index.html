@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录将武汉移动光猫 H60G 改桥接并获取公网 IPv6 的折腾过程。作者指出需使用特定账号密码并将桥接类型设为 PPPOEBRIDGED，同时强调不可克隆 MAC 地址。针对网络环境中的 Nader 面板性能不足及机顶盒无法上网问题，文章分析了因面板采用 OTT 模式导致无需 IPTV 配置的原因，并解决了动态 IP 网关异常及 DNS 解析故障，最终通过修改 DNS 使机顶盒恢复正常联网。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录将武汉移动光猫 H60G 改桥接并获取公网 IPv6 的折腾过程。作者指出需使用特定账号密码并将桥接类型设为 PPPOEBRIDGED，同时强调不可克隆 MAC 地址。针对网络环境中的 Nader 面板性能不足及机顶盒无法上网问题，文章分析了因面板采用 OTT 模式导致无需 IPTV 配置的原因，并解决了动态 IP 网关异常及 DNS 解析故障，最终通过修改 DNS 使机顶盒恢复正常联网。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

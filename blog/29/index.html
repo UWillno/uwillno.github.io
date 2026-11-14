@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对头戴设备默认播放器不支持外挂字幕的问题，本文介绍利用 ffmpeg 批量处理 mp4 视频与 vtt 字幕文件的方法。文章提供了生成硬字幕和软字幕的 Shell 脚本示例，分别对应使用默认播放器和第三方播放器。同时讨论了 Windows 环境下脚本逻辑及字体判断等注意事项，并指出硬字幕需重新编码可跑满 CPU，而软字幕速度较快，无需过度优化。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对头戴设备默认播放器不支持外挂字幕的问题，本文介绍利用 ffmpeg 批量处理 mp4 视频与 vtt 字幕文件的方法。文章提供了生成硬字幕和软字幕的 Shell 脚本示例，分别对应使用默认播放器和第三方播放器。同时讨论了 Windows 环境下脚本逻辑及字体判断等注意事项，并指出硬字幕需重新编码可跑满 CPU，而软字幕速度较快，无需过度优化。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

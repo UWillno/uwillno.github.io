@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文介绍了功能路由表的参数规范，区分了需指定具体值的参数和仅需带上的标志参数，并指出异常值可能导致功能异常及部分标志互斥。文章详细说明了农历、皇极经世等功能的调用示例，重点阐述了 MD 编辑与预览模式的区别：前者支持 Base64 或 URL 源且可开启预览，后者为专门的新功能，会将相对路径自动转换为绝对路径以适配博客文章预览逻辑。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文介绍了功能路由表的参数规范，区分了需指定具体值的参数和仅需带上的标志参数，并指出异常值可能导致功能异常及部分标志互斥。文章详细说明了农历、皇极经世等功能的调用示例，重点阐述了 MD 编辑与预览模式的区别：前者支持 Base64 或 URL 源且可开启预览，后者为专门的新功能，会将相对路径自动转换为绝对路径以适配博客文章预览逻辑。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

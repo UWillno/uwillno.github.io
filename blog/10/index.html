@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文介绍皇极经世程序的功能复刻情况。作者因原天纪程式存在 Bug 且年份限制较多，遂使用 C++ 自主编写算法进行功能复刻，未逆向原程序。文中说明解卦部分采用爬虫技术获取数据，阴历数据库源自开源项目，因此当前版本仅支持 1900 至 2099 年。作者强调该程序仅供娱乐参考，可能存在误差，并欢迎反馈以便后续修正与扩展功能。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文介绍皇极经世程序的功能复刻情况。作者因原天纪程式存在 Bug 且年份限制较多，遂使用 C++ 自主编写算法进行功能复刻，未逆向原程序。文中说明解卦部分采用爬虫技术获取数据，阴历数据库源自开源项目，因此当前版本仅支持 1900 至 2099 年。作者强调该程序仅供娱乐参考，可能存在误差，并欢迎反馈以便后续修正与扩展功能。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

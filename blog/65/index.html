@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了一个面向个人项目与资源校验的文件安全功能开发过程。针对早期 AES-CBC 实现安全性不足的问题，文章提出结合非对称加密签名验签与对称加密的混合方案，以保障文件完整性、防篡改及内容保密性。文中详细阐述了密钥拆分、异或合并及秘密共享等机制的原理与限制，强调所有密钥需自行保管且不提供仅解密路径，旨在为静态资源版本校验提供工程化参考。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了一个面向个人项目与资源校验的文件安全功能开发过程。针对早期 AES-CBC 实现安全性不足的问题，文章提出结合非对称加密签名验签与对称加密的混合方案，以保障文件完整性、防篡改及内容保密性。文中详细阐述了密钥拆分、异或合并及秘密共享等机制的原理与限制，强调所有密钥需自行保管且不提供仅解密路径，旨在为静态资源版本校验提供工程化参考。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

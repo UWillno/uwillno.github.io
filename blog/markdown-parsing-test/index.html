@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文对 Markdown 解析能力进行全面测试，涵盖基础文本格式、各类列表嵌套结构及引用块组合。文章演示了图片、动图与视频等多媒体元素的渲染效果，并验证了代码块在 Python、C++ 等语言中的语法高亮显示。此外，还通过表格数据展示了复杂排版功能，确认了解析器对混合内容处理的稳定性。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文对 Markdown 解析能力进行全面测试，涵盖基础文本格式、各类列表嵌套结构及引用块组合。文章演示了图片、动图与视频等多媒体元素的渲染效果，并验证了代码块在 Python、C++ 等语言中的语法高亮显示。此外，还通过表格数据展示了复杂排版功能，确认了解析器对混合内容处理的稳定性。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

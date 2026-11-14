@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文针对 QWasmLocalFileAccess 在 wasm64 环境下适配 showOpenFilePicker() 时出现的崩溃问题。该问题源于 BigInt 与 Number 类型转换不匹配，导致 Uint8Array.subarray() 调用失败。文章分析了影响范围，提出通过禁用 showSaveFilePicker 作为临时规避方案，同时提供了修改 qtbase 源码的具体方法：将 chunkSize 收窄为 32 位整数以兼容 subarray 接口，确保在共享内存场景下的文件写入功能正常运行。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文针对 QWasmLocalFileAccess 在 wasm64 环境下适配 showOpenFilePicker() 时出现的崩溃问题。该问题源于 BigInt 与 Number 类型转换不匹配，导致 Uint8Array.subarray() 调用失败。文章分析了影响范围，提出通过禁用 showSaveFilePicker 作为临时规避方案，同时提供了修改 qtbase 源码的具体方法：将 chunkSize 收窄为 32 位整数以兼容 subarray 接口，确保在共享内存场景下的文件写入功能正常运行。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

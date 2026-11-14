@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      Cloudflare Workers 与 R2 评论系统新增邮件通知功能，旨在应对博客访问门槛提升后的安全考量。该方案通过最小改动插入逻辑：评论时传递邮箱至 Workers 并存储于 R2 JSON 中；回复时若存在对应邮箱则触发通知。通知内容经 AI 美化生成 HTML 格式，同时利用 MD5 哈希保护邮箱隐私。尽管物理机曾受攻击导致仓库私有化，且当前架构因成本考虑暂未引入 D1 数据库，但系统已分离测试环境并预留了由 AI 辅助生成代码的扩展可能，需在新版本评论后更新数据方可生效。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">Cloudflare Workers 与 R2 评论系统新增邮件通知功能，旨在应对博客访问门槛提升后的安全考量。该方案通过最小改动插入逻辑：评论时传递邮箱至 Workers 并存储于 R2 JSON 中；回复时若存在对应邮箱则触发通知。通知内容经 AI 美化生成 HTML 格式，同时利用 MD5 哈希保护邮箱隐私。尽管物理机曾受攻击导致仓库私有化，且当前架构因成本考虑暂未引入 D1 数据库，但系统已分离测试环境并预留了由 AI 辅助生成代码的扩展可能，需在新版本评论后更新数据方可生效。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

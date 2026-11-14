@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      新增空间域图像处理功能，涵盖灰度化、多种噪声模拟（椒盐、高斯、泊松等）及滤波算法（中值、高斯、双边）。同时提供形态学操作如腐蚀与膨胀、二值化、颜色反转以及自定义卷积核支持。预设模板可长按调参，所有处理均基于当前显示图片实时执行，满足从基础转换到复杂自定义滤波的多样化需求。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">新增空间域图像处理功能，涵盖灰度化、多种噪声模拟（椒盐、高斯、泊松等）及滤波算法（中值、高斯、双边）。同时提供形态学操作如腐蚀与膨胀、二值化、颜色反转以及自定义卷积核支持。预设模板可长按调参，所有处理均基于当前显示图片实时执行，满足从基础转换到复杂自定义滤波的多样化需求。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

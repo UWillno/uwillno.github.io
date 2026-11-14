@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录在 Markdown 中集成 LaTeX 渲染的开发过程与测试成果。因 C++ 库支持不足，最终选用 MathJax 将 LaTeX 转换为 SVG 或 PNG 图片进行渲染，并对比了不同格式在内联显示时的效果。文章详细展示了行内与块级公式、矩阵、积分、希腊字母及特殊符号等多种数学表达式的渲染测试，验证了在表格、列表等复杂场景下的兼容性，同时探讨了同步调用稳定性及换行对齐等技术细节，为相关开发提供参考。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录在 Markdown 中集成 LaTeX 渲染的开发过程与测试成果。因 C++ 库支持不足，最终选用 MathJax 将 LaTeX 转换为 SVG 或 PNG 图片进行渲染，并对比了不同格式在内联显示时的效果。文章详细展示了行内与块级公式、矩阵、积分、希腊字母及特殊符号等多种数学表达式的渲染测试，验证了在表格、列表等复杂场景下的兼容性，同时探讨了同步调用稳定性及换行对齐等技术细节，为相关开发提供参考。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

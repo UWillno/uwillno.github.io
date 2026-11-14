@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了 Qt for WebAssembly (Qt6.7.2) 中使用 MediaPlayer 遇到的平台限制与已知问题。文章指出媒体播放需用户交互触发，建议通过计时器延迟设置 source 或 autoPlay；同时提醒避免过高帧率、码率及分辨率，并需处理 CORS 跨域问题。此外，MediaPlayer.Infinite 循环模式当前不可用，多 VideoOutput 实例会导致异常，需在 Qt 6.7.3 中已修复。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了 Qt for WebAssembly (Qt6.7.2) 中使用 MediaPlayer 遇到的平台限制与已知问题。文章指出媒体播放需用户交互触发，建议通过计时器延迟设置 source 或 autoPlay；同时提醒避免过高帧率、码率及分辨率，并需处理 CORS 跨域问题。此外，MediaPlayer.Infinite 循环模式当前不可用，多 VideoOutput 实例会导致异常，需在 Qt 6.7.3 中已修复。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

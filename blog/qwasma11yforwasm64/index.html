@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      为适配 Qt 更新及改善 AI 阅读体验，作者在 QWasmAccessibility/A11y 项目中解决了 WASM64 环境下的崩溃问题。针对 BigInt 老问题，直接在 qwasmaccessibility.cpp 中通过条件编译区分处理：在 WASM64 架构下将 activeElement 转换为 BigInt 返回，而在其他架构保持原有逻辑，从而避免了因动态判断导致的运行时错误，实现了简单有效的修复。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">为适配 Qt 更新及改善 AI 阅读体验，作者在 QWasmAccessibility/A11y 项目中解决了 WASM64 环境下的崩溃问题。针对 BigInt 老问题，直接在 qwasmaccessibility.cpp 中通过条件编译区分处理：在 WASM64 架构下将 activeElement 转换为 BigInt 返回，而在其他架构保持原有逻辑，从而避免了因动态判断导致的运行时错误，实现了简单有效的修复。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

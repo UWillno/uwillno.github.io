@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      近期 Qt 6.11.0 版本发布计划调整，在修复 Bug 的同时优化统计监视器、异步并发加载器及 JSON 读取效率。界面方面移除自带中文字体并引入 SarasaMono 和 Noto，提升首屏体验。新增 Quick3D 模块测试及动态背景切换，Spine 渲染方案调整为 QSG 以确保稳定。主导航移除存在性能问题的 PathView，模型改用 SortFilterProxyModel 增强可读性，服务器日志独立并加入通知系统，加载页由 AI 生成设计。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">近期 Qt 6.11.0 版本发布计划调整，在修复 Bug 的同时优化统计监视器、异步并发加载器及 JSON 读取效率。界面方面移除自带中文字体并引入 SarasaMono 和 Noto，提升首屏体验。新增 Quick3D 模块测试及动态背景切换，Spine 渲染方案调整为 QSG 以确保稳定。主导航移除存在性能问题的 PathView，模型改用 SortFilterProxyModel 增强可读性，服务器日志独立并加入通知系统，加载页由 AI 生成设计。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

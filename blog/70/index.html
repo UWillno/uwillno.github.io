@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了 Windows 性能监视器功能的开发过程，主要基于 PDH、Windows.h 及 DXGI 等接口实现物理机监控数据通过 WebSocket 传输至前端。文章详细阐述了从打开查询、添加计数器到循环采样的核心流程，并指出部分 GPU 显存信息需依赖 PDH 而非 DXGI，同时分析了权限不足导致进程信息获取失败的问题。此外，还总结了 Qt 环境下 QML 模块导入及打包运行时配置的关键注意事项，为相关开发提供参考。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了 Windows 性能监视器功能的开发过程，主要基于 PDH、Windows.h 及 DXGI 等接口实现物理机监控数据通过 WebSocket 传输至前端。文章详细阐述了从打开查询、添加计数器到循环采样的核心流程，并指出部分 GPU 显存信息需依赖 PDH 而非 DXGI，同时分析了权限不足导致进程信息获取失败的问题。此外，还总结了 Qt 环境下 QML 模块导入及打包运行时配置的关键注意事项，为相关开发提供参考。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

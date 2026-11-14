@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对 Qt for WebAssembly 多线程环境下 worker 线程调用 Module.getRandomValue 报错的问题，文章分析了因默认模板缺失 Module 对象及 Worker 无法直接访问主线程 API 导致的异常。解决方案包括调整随机数生成逻辑：在主线程执行后再开启线程，或自行实现基于 QRandomGenerator 的随机字节生成方法，以规避跨线程调用限制并确保功能正常。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对 Qt for WebAssembly 多线程环境下 worker 线程调用 Module.getRandomValue 报错的问题，文章分析了因默认模板缺失 Module 对象及 Worker 无法直接访问主线程 API 导致的异常。解决方案包括调整随机数生成逻辑：在主线程执行后再开启线程，或自行实现基于 QRandomGenerator 的随机字节生成方法，以规避跨线程调用限制并确保功能正常。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

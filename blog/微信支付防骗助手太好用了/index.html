@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      文章吐槽微信支付防骗助手机制僵化，频繁拦截正常交易。用户在进行话费充值、餐饮结账等日常支付时，常遭遇系统误判并强制要求提供交易背景或进行风险测评。即便通过机器人对话或等待客服复审，最终往往因订单超时或理由牵强而失败。作者指出该功能过度依赖用户账户资金量与使用频率，导致小额低频用户支付受阻，因此建议迁移至支付宝等替代平台。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">文章吐槽微信支付防骗助手机制僵化，频繁拦截正常交易。用户在进行话费充值、餐饮结账等日常支付时，常遭遇系统误判并强制要求提供交易背景或进行风险测评。即便通过机器人对话或等待客服复审，最终往往因订单超时或理由牵强而失败。作者指出该功能过度依赖用户账户资金量与使用频率，导致小额低频用户支付受阻，因此建议迁移至支付宝等替代平台。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

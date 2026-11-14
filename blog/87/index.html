@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文详解本站 Markdown 多媒体的标准语法与扩展功能，涵盖图片、视频、动图及音频支持机制。文章介绍了基于 md4c 解析器的配置建议，规范了内联表情与图片尺寸参数（如宽高省略规则），并说明表格插入多媒体及 Latex 块级缩放的实现方式。同时指出视频播放依赖浏览器交互获取尺寸等限制，提供对齐、面板切换等扩展用法，旨在帮助用户构建纯 Markdown 博客时正确配置资源路由与防剧透加密功能。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文详解本站 Markdown 多媒体的标准语法与扩展功能，涵盖图片、视频、动图及音频支持机制。文章介绍了基于 md4c 解析器的配置建议，规范了内联表情与图片尺寸参数（如宽高省略规则），并说明表格插入多媒体及 Latex 块级缩放的实现方式。同时指出视频播放依赖浏览器交互获取尺寸等限制，提供对齐、面板切换等扩展用法，旨在帮助用户构建纯 Markdown 博客时正确配置资源路由与防剧透加密功能。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

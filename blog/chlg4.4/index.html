@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      博客系统更新至 4.4，版本号为 6.13.0。此次更新主要涉及控件风格重构，改用 Template 与 Basic 重写以替代 Material 风格，同时保留配色及回退方案；优化了边框进度与液态玻璃片段着色器性能；增强 Markdown 支持，新增 LaTeX、音频及标准语法，移除部分面板；调整主视图拆分宽度为固定 60%，编辑域滚动不同步，主菜单改为水平弹窗；并将文章模型从 JSON 调回 QML，恢复远程文章支持。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">博客系统更新至 4.4，版本号为 6.13.0。此次更新主要涉及控件风格重构，改用 Template 与 Basic 重写以替代 Material 风格，同时保留配色及回退方案；优化了边框进度与液态玻璃片段着色器性能；增强 Markdown 支持，新增 LaTeX、音频及标准语法，移除部分面板；调整主视图拆分宽度为固定 60%，编辑域滚动不同步，主菜单改为水平弹窗；并将文章模型从 JSON 调回 QML，恢复远程文章支持。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

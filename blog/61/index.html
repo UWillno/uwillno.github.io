@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对 Cloudflare 原生分析功能在 IPv6 及多客户端环境下统计不准的问题，作者利用 Workers 结合 R2 对象存储实现了自定义访客统计方案。该方案通过解析 User-Agent 字段识别操作系统与浏览器类型，并记录 IP、地理位置等 Client 信息。代码完全由 AI 生成，采用异步写入机制避免锁竞争，仅在 WASM 成功加载时触发请求，确保数据准确性且无需持久化隐私敏感信息。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对 Cloudflare 原生分析功能在 IPv6 及多客户端环境下统计不准的问题，作者利用 Workers 结合 R2 对象存储实现了自定义访客统计方案。该方案通过解析 User-Agent 字段识别操作系统与浏览器类型，并记录 IP、地理位置等 Client 信息。代码完全由 AI 生成，采用异步写入机制避免锁竞争，仅在 WASM 成功加载时触发请求，确保数据准确性且无需持久化隐私敏感信息。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

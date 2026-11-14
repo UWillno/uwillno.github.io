@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了 Uww2 开发的优化尝试与遇到的各类问题。文章探讨了启动顺序对跨线程警告的影响、Android 13+ 的通知权限要求以及保活机制在部分系统上的失效情况。针对文件丢失、无响应及自定义选择器效率等实际问题，提出了相应的临时解决方案或放弃处理的决定。此外，还分析了 C++ JNI 与 Java 实现的性能差异、功能冲突下的状态判断逻辑，并最终因实现过于复杂且难以回滚而考虑弃坑，转而寻求 Magisk 模块方案。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了 Uww2 开发的优化尝试与遇到的各类问题。文章探讨了启动顺序对跨线程警告的影响、Android 13+ 的通知权限要求以及保活机制在部分系统上的失效情况。针对文件丢失、无响应及自定义选择器效率等实际问题，提出了相应的临时解决方案或放弃处理的决定。此外，还分析了 C++ JNI 与 Java 实现的性能差异、功能冲突下的状态判断逻辑，并最终因实现过于复杂且难以回滚而考虑弃坑，转而寻求 Magisk 模块方案。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

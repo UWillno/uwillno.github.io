@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      作者因追求便携与护眼而关注 AR 眼镜平替，但嫌弃小米方案接口落后、OLED 屏幕存疑且溢价高，最终放弃购买。转而推荐二手“小米头戴影院”及升级版“临奇头号影院”，指出二者均支持投屏，前者性价比高，后者支持 5G WiFi 与陀螺仪。实测显示两者清晰度可接受代码，适合看番或隐蔽摸鱼，但大尺寸导致办公需频繁调整视线，且遥控器略显累赘，作者认为稳定路由器下 2.4G WiFi 已足够，玩腻后仍会回归传统显示器。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">作者因追求便携与护眼而关注 AR 眼镜平替，但嫌弃小米方案接口落后、OLED 屏幕存疑且溢价高，最终放弃购买。转而推荐二手“小米头戴影院”及升级版“临奇头号影院”，指出二者均支持投屏，前者性价比高，后者支持 5G WiFi 与陀螺仪。实测显示两者清晰度可接受代码，适合看番或隐蔽摸鱼，但大尺寸导致办公需频繁调整视线，且遥控器略显累赘，作者认为稳定路由器下 2.4G WiFi 已足够，玩腻后仍会回归传统显示器。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

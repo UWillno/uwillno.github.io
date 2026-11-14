@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文介绍如何利用 Cloudflare Workers AI 在零成本前提下为静态博客实现 AI 摘要功能。文章阐述了因 Qt 开发限制无法直接引入插件，且市面 API 多需付费或存在安全隐患，故选择结合 Workers 与 AI 服务的方案。文中提供了完整的 Workers 代码示例，演示了设置 CORS 头、处理 POST 请求、截断长文本、调用 Llama 3.2 模型及解析响应结果的逻辑。同时讨论了免费额度限制、恶意访问防护策略及大陆网络连通性等实际部署问题，展示了低成本构建动态功能的可行性。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文介绍如何利用 Cloudflare Workers AI 在零成本前提下为静态博客实现 AI 摘要功能。文章阐述了因 Qt 开发限制无法直接引入插件，且市面 API 多需付费或存在安全隐患，故选择结合 Workers 与 AI 服务的方案。文中提供了完整的 Workers 代码示例，演示了设置 CORS 头、处理 POST 请求、截断长文本、调用 Llama 3.2 模型及解析响应结果的逻辑。同时讨论了免费额度限制、恶意访问防护策略及大陆网络连通性等实际部署问题，展示了低成本构建动态功能的可行性。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

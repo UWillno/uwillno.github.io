@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对 Qt WASM 平台发行版更新滞后及 Bug 频发问题，本文介绍从源码编译构建套件的方法。文章详细说明了在 Windows 环境下使用 MSVC 或 Docker 进行交叉编译的步骤，包括初始化仓库、构建宿主机 Qt6.12 并跳过 qtwebengine 模块、配置多线程选项以兼容 Android WebView 等关键操作。同时提供了解决路径过长及模块冲突的 CMake 参数建议，并讲解了修改 qmake.bat 及在 Qt Creator 中添加构建套件的使用流程。文末结合个人经历探讨了技术折腾的意义与学习成本。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对 Qt WASM 平台发行版更新滞后及 Bug 频发问题，本文介绍从源码编译构建套件的方法。文章详细说明了在 Windows 环境下使用 MSVC 或 Docker 进行交叉编译的步骤，包括初始化仓库、构建宿主机 Qt6.12 并跳过 qtwebengine 模块、配置多线程选项以兼容 Android WebView 等关键操作。同时提供了解决路径过长及模块冲突的 CMake 参数建议，并讲解了修改 qmake.bat 及在 Qt Creator 中添加构建套件的使用流程。文末结合个人经历探讨了技术折腾的意义与学习成本。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

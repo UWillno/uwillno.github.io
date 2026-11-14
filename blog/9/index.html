@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      Qt for WebAssembly 在 QML 文本选中与复制功能上存在适配不足问题，手机端常出现"NotAllowedError"错误且 Ctrl+C 无效。文章演示了通过 MouseArea 监听手势实现文本选区计算，并在释放时显示自定义按钮调用 copy() 方法完成复制。同时指出需自行处理 Markdown 代码块溢出、图片宽度调整及超链接点击等交互缺陷，建议等待官方后续完善。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">Qt for WebAssembly 在 QML 文本选中与复制功能上存在适配不足问题，手机端常出现"NotAllowedError"错误且 Ctrl+C 无效。文章演示了通过 MouseArea 监听手势实现文本选区计算，并在释放时显示自定义按钮调用 copy() 方法完成复制。同时指出需自行处理 Markdown 代码块溢出、图片宽度调整及超链接点击等交互缺陷，建议等待官方后续完善。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      作者因发现 Bilibili 上 Qt/Felgo 教学资源匮乏且旧版视频质量低，决定录制免费教程作为副业，但受限于流量激励微薄、反爬机制干扰及视频学习效率低下等问题，最终将内容转为 Vlog 形式记录。为解决观看体验问题，作者将高清课程资料上传至 OneDrive 并提供直链转换方案，同时宣布降低更新频率以兼顾个人兴趣与教学观感。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">作者因发现 Bilibili 上 Qt/Felgo 教学资源匮乏且旧版视频质量低，决定录制免费教程作为副业，但受限于流量激励微薄、反爬机制干扰及视频学习效率低下等问题，最终将内容转为 Vlog 形式记录。为解决观看体验问题，作者将高清课程资料上传至 OneDrive 并提供直链转换方案，同时宣布降低更新频率以兼顾个人兴趣与教学观感。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

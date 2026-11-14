@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      Qt 6.11.1 发布后修复了 3D 线程池崩溃等 Bug，博客将其作为通用加载器支持多种代码格式。用户可通过 URL 参数直接加载 QML、RCC 二进制文件或 Base64 代码，并配置入口点与 CORS 策略。该加载器涵盖 Core、Quick、Widgets 等核心模块，但需注意当前版本不支持中文内嵌字体且仅包含特定组件集，其他第三方模块调用可能失败。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">Qt 6.11.1 发布后修复了 3D 线程池崩溃等 Bug，博客将其作为通用加载器支持多种代码格式。用户可通过 URL 参数直接加载 QML、RCC 二进制文件或 Base64 代码，并配置入口点与 CORS 策略。该加载器涵盖 Core、Quick、Widgets 等核心模块，但需注意当前版本不支持中文内嵌字体且仅包含特定组件集，其他第三方模块调用可能失败。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

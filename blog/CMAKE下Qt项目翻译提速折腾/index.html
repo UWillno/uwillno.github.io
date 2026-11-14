@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对 CMake 下 Qt 项目编译慢的问题，作者排查发现翻译步骤耗时严重。鉴于架构调整后 QML 文件分布复杂，手动维护 qrc 效率低下，最终利用 CMake 构建目录特性，将 build 下的 QML 文件复制并清洗后加入资源文件，实现了翻译文件的快速生成与复用，有效提升了项目编译速度。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对 CMake 下 Qt 项目编译慢的问题，作者排查发现翻译步骤耗时严重。鉴于架构调整后 QML 文件分布复杂，手动维护 qrc 效率低下，最终利用 CMake 构建目录特性，将 build 下的 QML 文件复制并清洗后加入资源文件，实现了翻译文件的快速生成与复用，有效提升了项目编译速度。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

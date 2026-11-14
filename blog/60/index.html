@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文探讨博客评论系统的安全优化困境。作者基于 Cloudflare Workers 和 R2 构建的简易系统易受伪造，遂尝试多种方案：前端校验因静态可被逆向而无效；引入 C++、持久化动态校验或接入其他平台均因增加复杂度或违背初衷而被放弃；邮件发送功能虽已集成第三方 Worker 实现通知审核，但缺乏邮箱验证机制存在骚扰风险。作者最终认为在免费架构下过度优化徒劳无功，若遇攻击可能直接关闭动态功能。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文探讨博客评论系统的安全优化困境。作者基于 Cloudflare Workers 和 R2 构建的简易系统易受伪造，遂尝试多种方案：前端校验因静态可被逆向而无效；引入 C++、持久化动态校验或接入其他平台均因增加复杂度或违背初衷而被放弃；邮件发送功能虽已集成第三方 Worker 实现通知审核，但缺乏邮箱验证机制存在骚扰风险。作者最终认为在免费架构下过度优化徒劳无功，若遇攻击可能直接关闭动态功能。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

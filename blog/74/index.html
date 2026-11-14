@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了 Android 版性能监视器的开发历程。项目采用纯 Java 实现，利用无障碍服务与 TileService 获取前台应用数据，通过 HTTP 服务器周期性上传至后端。文章对比了 Java、Kotlin 及 Qt 的开发体验，解决了多线程下套接字引擎的退出报错问题。此外，针对经纬度精度控制及反向地理编码，最终选用 BigDataCloud API 替代易被封禁的 OpenStreetMap，实现了手机位置追踪功能。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了 Android 版性能监视器的开发历程。项目采用纯 Java 实现，利用无障碍服务与 TileService 获取前台应用数据，通过 HTTP 服务器周期性上传至后端。文章对比了 Java、Kotlin 及 Qt 的开发体验，解决了多线程下套接字引擎的退出报错问题。此外，针对经纬度精度控制及反向地理编码，最终选用 BigDataCloud API 替代易被封禁的 OpenStreetMap，实现了手机位置追踪功能。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了 QML 水印相机安卓版 0.0.2 的开发进展与问题修复。文章详细阐述了移除分辨率设置菜单的原因、Qt 相机特性支持不足及 Vulkan 后端崩溃的解决过程。此外，还通过引入原子引用计数解决了图片命名冲突，新增源图片独立目录以优化数据管理，并修正了 SwipeView 内存占用与刷新逻辑。最后补充了音量键拍照功能实现及 Android 设备异常强制停止等已知问题的说明。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了 QML 水印相机安卓版 0.0.2 的开发进展与问题修复。文章详细阐述了移除分辨率设置菜单的原因、Qt 相机特性支持不足及 Vulkan 后端崩溃的解决过程。此外，还通过引入原子引用计数解决了图片命名冲突，新增源图片独立目录以优化数据管理，并修正了 SwipeView 内存占用与刷新逻辑。最后补充了音量键拍照功能实现及 Android 设备异常强制停止等已知问题的说明。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

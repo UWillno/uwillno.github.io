@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对静态托管大文件（WASM）超过 25MB 的难题，文章探讨了压缩与分块加载方案。由于 Cloudflare 自带压缩导致 zstd 失效且浏览器兼容性存疑，作者尝试将 WASM 编译后拆分为四块，前端通过 JS 合并读取以优化加载性能。测试发现关闭 Cloudflare 代理后，Github Pages 的连通性与速度优于其他平台，因此决定暂不迁移，并计划修复相关 bug 及探索异步加载。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对静态托管大文件（WASM）超过 25MB 的难题，文章探讨了压缩与分块加载方案。由于 Cloudflare 自带压缩导致 zstd 失效且浏览器兼容性存疑，作者尝试将 WASM 编译后拆分为四块，前端通过 JS 合并读取以优化加载性能。测试发现关闭 Cloudflare 代理后，Github Pages 的连通性与速度优于其他平台，因此决定暂不迁移，并计划修复相关 bug 及探索异步加载。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

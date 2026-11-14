@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      Linux 下 Qt Creator 在使用 Fcitx 或 Fcitx 5 时可能出现中文输入问题，可尝试换用 iBus 解决，但需注意其开机自启在 4K 分辨率下的显示异常及手动重启需求。若坚持使用 Fcitx 5，可通过安装 fcitx5-qt 并建立软链接至 Qt Creator 及 Felgo 插件路径来修复输入功能；针对新版本 fcitx5-qt 失效的情况，建议降级至 5.0.16-1 版本以恢复中文输入支持。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">Linux 下 Qt Creator 在使用 Fcitx 或 Fcitx 5 时可能出现中文输入问题，可尝试换用 iBus 解决，但需注意其开机自启在 4K 分辨率下的显示异常及手动重启需求。若坚持使用 Fcitx 5，可通过安装 fcitx5-qt 并建立软链接至 Qt Creator 及 Felgo 插件路径来修复输入功能；针对新版本 fcitx5-qt 失效的情况，建议降级至 5.0.16-1 版本以恢复中文输入支持。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

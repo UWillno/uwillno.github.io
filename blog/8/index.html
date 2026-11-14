@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      文章探讨 QML Image 加载远程图片时因服务器拒绝请求（Forbidden）导致报错的问题。由于浏览器安全限制无法直接添加请求头，需采用特定方案解决。文中对比了 Felgo 使用 DownloadableResource 类型、Qt/C++ 重写 ImageProvider 以及 QML 结合 XMLHttpRequest 获取 ArrayBuffer 并转为 Base64 等多种方法，分析了各方案的实现细节与局限性，为开发者提供了在跨域限制下加载带请求头图片的可行路径。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">文章探讨 QML Image 加载远程图片时因服务器拒绝请求（Forbidden）导致报错的问题。由于浏览器安全限制无法直接添加请求头，需采用特定方案解决。文中对比了 Felgo 使用 DownloadableResource 类型、Qt/C++ 重写 ImageProvider 以及 QML 结合 XMLHttpRequest 获取 ArrayBuffer 并转为 Base64 等多种方法，分析了各方案的实现细节与局限性，为开发者提供了在跨域限制下加载带请求头图片的可行路径。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

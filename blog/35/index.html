@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文介绍 Qt for Android 在 Android SDK 30+ 环境下处理存储权限申请的方法。文章指出需在 AndroidManifest.xml 中添加 MANAGE_EXTERNAL_STORAGE 权限，并演示了通过 JNI 调用 Environment.isExternalStorageManager() 判断权限状态。若未授权，需构建 Intent 跳转系统设置页面获取权限。同时提供了 Qt 6.2 与 6.8 版本对应的 C++ 代码示例，展示如何利用 QJniObject 及 QtJniTypes 简化 JNI 调用逻辑，并提及可直接使用 Java 实现更简洁的方案。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文介绍 Qt for Android 在 Android SDK 30+ 环境下处理存储权限申请的方法。文章指出需在 AndroidManifest.xml 中添加 MANAGE_EXTERNAL_STORAGE 权限，并演示了通过 JNI 调用 Environment.isExternalStorageManager() 判断权限状态。若未授权，需构建 Intent 跳转系统设置页面获取权限。同时提供了 Qt 6.2 与 6.8 版本对应的 C++ 代码示例，展示如何利用 QJniObject 及 QtJniTypes 简化 JNI 调用逻辑，并提及可直接使用 Java 实现更简洁的方案。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

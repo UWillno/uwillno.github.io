@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了 Qt 博客项目在人机交互设计上的演进历程，从早期模仿桌面应用的复杂布局，到尝试复刻卡巴斯基风格却因浏览器环境限制导致体验不佳，最终放弃多平台适配的纠结，转向“反平台化”的统一方案。文章详细阐述了如何通过悬浮球、抽屉式导航及手势操作等简洁交互，解决 WASM 应用中界面元素过多引发的误触与空间拥挤问题，实现了更优的全平台用户体验。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了 Qt 博客项目在人机交互设计上的演进历程，从早期模仿桌面应用的复杂布局，到尝试复刻卡巴斯基风格却因浏览器环境限制导致体验不佳，最终放弃多平台适配的纠结，转向“反平台化”的统一方案。文章详细阐述了如何通过悬浮球、抽屉式导航及手势操作等简洁交互，解决 WASM 应用中界面元素过多引发的误触与空间拥挤问题，实现了更优的全平台用户体验。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

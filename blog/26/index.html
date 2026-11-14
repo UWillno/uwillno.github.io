@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对 Qt for WebAssembly 缺乏原生路由机制的问题，本文介绍了一种通过查询参数配合 C++ 调用 JavaScript 获取 `window.location.search` 实现页面跳转的简易方案。文章提供了完整的 C++ 与 QML 代码示例，演示了如何注册上下文属性并解析 URL 参数。同时指出该方法虽能凑合使用，但受限于 WASM 特性难以支持 RSS 和 SEO，且框架在 Web 端存在维护困难及潜在 Bug，仅供探索参考。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对 Qt for WebAssembly 缺乏原生路由机制的问题，本文介绍了一种通过查询参数配合 C++ 调用 JavaScript 获取 `window.location.search` 实现页面跳转的简易方案。文章提供了完整的 C++ 与 QML 代码示例，演示了如何注册上下文属性并解析 URL 参数。同时指出该方法虽能凑合使用，但受限于 WASM 特性难以支持 RSS 和 SEO，且框架在 Web 端存在维护困难及潜在 Bug，仅供探索参考。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

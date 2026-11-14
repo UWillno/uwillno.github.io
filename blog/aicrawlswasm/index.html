@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      文章记录了使用 DeepSeek-v4.1-flash 模型分析博客作者背景的过程，重点复盘了 WASM 爬虫在逆向测试中的效率差异。作者通过对比耗时路径与正确路径，揭示了因直觉误判、样本量不足及认知偏差导致的资源浪费问题。文中详细拆解了从侦察、解压到内存扫描的决策树，强调应优先检查运行时明文而非盲目渲染或 OCR。最终指出 AI 能高效处理加密内容，但需明确信息源位置以避免无效尝试，并反思了将用户提示视为质疑而非情报的思维误区。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">文章记录了使用 DeepSeek-v4.1-flash 模型分析博客作者背景的过程，重点复盘了 WASM 爬虫在逆向测试中的效率差异。作者通过对比耗时路径与正确路径，揭示了因直觉误判、样本量不足及认知偏差导致的资源浪费问题。文中详细拆解了从侦察、解压到内存扫描的决策树，强调应优先检查运行时明文而非盲目渲染或 OCR。最终指出 AI 能高效处理加密内容，但需明确信息源位置以避免无效尝试，并反思了将用户提示视为质疑而非情报的思维误区。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

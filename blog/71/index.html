@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对 Qt for WASM 开发中因测试与自动化脚本导致仓库文件混乱且受限于静态托管平台容量的情况，本文介绍了一种清空 Git 历史并保留当前跟踪文件的解决方案。文章记录了使用 git bash 执行备份、重新初始化、恢复文件并提交的操作流程，解决了此前在 PowerShell 下遇到的中文编码问题，为需要快速重置仓库环境提供了实用参考。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对 Qt for WASM 开发中因测试与自动化脚本导致仓库文件混乱且受限于静态托管平台容量的情况，本文介绍了一种清空 Git 历史并保留当前跟踪文件的解决方案。文章记录了使用 git bash 执行备份、重新初始化、恢复文件并提交的操作流程，解决了此前在 PowerShell 下遇到的中文编码问题，为需要快速重置仓库环境提供了实用参考。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

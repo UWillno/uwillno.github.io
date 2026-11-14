@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了博客系统的多项近期调整：框架升级至 Qt6.11.0 以完善 WebAssembly 支持及多媒体功能；界面优化包括引入边缘面板、改用 Repeater 生成文章列表以提升性能，并修复了特定平台下的坐标问题；友链页布局更紧凑且移除个人链接；主导航在收缩模式下可切换页面；新增 Markdown 编辑器及独立的咖啡记录功能；变更日志将内嵌于文章；服务器端增加了 Render 和 GitLab 镜像，并优化了鉴权逻辑与异常重连机制。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了博客系统的多项近期调整：框架升级至 Qt6.11.0 以完善 WebAssembly 支持及多媒体功能；界面优化包括引入边缘面板、改用 Repeater 生成文章列表以提升性能，并修复了特定平台下的坐标问题；友链页布局更紧凑且移除个人链接；主导航在收缩模式下可切换页面；新增 Markdown 编辑器及独立的咖啡记录功能；变更日志将内嵌于文章；服务器端增加了 Render 和 GitLab 镜像，并优化了鉴权逻辑与异常重连机制。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了近期三项主要调整：一是 Qt6.12.0 版本在 WebAssembly 平台修复了中英输入及多媒体播放问题；二是新增 Markdown 扩展加密功能，支持通过点击交互查看包含 C++ 代码、登录验证、密码保护及 AES 对称加密的内容，同时指出该模块处于技术预览阶段且存在性能与安全性限制；三是将 Emoji 字体直接合并至 WebAssembly 构建中，以解决彩色字体体积过大问题并提升显示兼容性。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了近期三项主要调整：一是 Qt6.12.0 版本在 WebAssembly 平台修复了中英输入及多媒体播放问题；二是新增 Markdown 扩展加密功能，支持通过点击交互查看包含 C++ 代码、登录验证、密码保护及 AES 对称加密的内容，同时指出该模块处于技术预览阶段且存在性能与安全性限制；三是将 Emoji 字体直接合并至 WebAssembly 构建中，以解决彩色字体体积过大问题并提升显示兼容性。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

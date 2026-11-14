@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      因误开启火绒 USB 控制导致 WIN TO GO 出现 PIN 登录失败及用户配置文件服务错误等异常。解决步骤为进入高级启动选项选择安全模式（非网络安全模式），随后卸载火绒软件即可恢复系统。文章建议同时使用火绒与 WIN TO GO 的用户应设置密码，以防止因误操作引发类似故障。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">因误开启火绒 USB 控制导致 WIN TO GO 出现 PIN 登录失败及用户配置文件服务错误等异常。解决步骤为进入高级启动选项选择安全模式（非网络安全模式），随后卸载火绒软件即可恢复系统。文章建议同时使用火绒与 WIN TO GO 的用户应设置密码，以防止因误操作引发类似故障。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

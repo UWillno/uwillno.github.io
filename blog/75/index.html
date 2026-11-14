@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文针对 WebAssembly 在 Edge 浏览器中的性能表现进行了实测，分析了 GPU 与 CPU 负载差异及内存带宽对手机帧率的影响。文章介绍了为解决液态玻璃效果导致的卡顿而引入的局部渲染优化方案，并详细说明了基于设备性能的节能建议。此外，还阐述了新增的性能预设功能，通过分级开关圆角、粒子系统、动态背景等特效，帮助用户在不同硬件条件下平衡视觉效果与运行流畅度。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文针对 WebAssembly 在 Edge 浏览器中的性能表现进行了实测，分析了 GPU 与 CPU 负载差异及内存带宽对手机帧率的影响。文章介绍了为解决液态玻璃效果导致的卡顿而引入的局部渲染优化方案，并详细说明了基于设备性能的节能建议。此外，还阐述了新增的性能预设功能，通过分级开关圆角、粒子系统、动态背景等特效，帮助用户在不同硬件条件下平衡视觉效果与运行流畅度。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

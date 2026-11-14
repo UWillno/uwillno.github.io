@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      Qt6.10Beta3 for wasm 在多媒体模块、内存管理及 OpenCV 集成方面存在显著问题。虽然改用多线程套件解决了部分单线程限制，但着色器未过审查导致播放器无画面；非标准启动易引发内存溢出及 QML 白屏。此外，OpenCV 编译需特定原子操作支持，QtQuick.Dialogs 亦出现越界错误。鉴于 RC 版本可能更稳定，作者暂时回退至 Qt6.9.2 使用。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">Qt6.10Beta3 for wasm 在多媒体模块、内存管理及 OpenCV 集成方面存在显著问题。虽然改用多线程套件解决了部分单线程限制，但着色器未过审查导致播放器无画面；非标准启动易引发内存溢出及 QML 白屏。此外，OpenCV 编译需特定原子操作支持，QtQuick.Dialogs 亦出现越界错误。鉴于 RC 版本可能更稳定，作者暂时回退至 Qt6.9.2 使用。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

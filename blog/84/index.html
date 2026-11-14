@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文针对 Qt 在 WASM 环境下 Firefox 浏览器出现的复杂输入异常问题提供编译修复方案。该缺陷已持续多个版本，虽官方 dev 分支已修复但尚未合并至稳定版。文章介绍了获取补丁、下载源码、配置构建环境（含多线程套件）、替换文件及重新编译生成静态库以覆盖原套件的详细步骤，帮助用户自行解决此输入异常问题。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文针对 Qt 在 WASM 环境下 Firefox 浏览器出现的复杂输入异常问题提供编译修复方案。该缺陷已持续多个版本，虽官方 dev 分支已修复但尚未合并至稳定版。文章介绍了获取补丁、下载源码、配置构建环境（含多线程套件）、替换文件及重新编译生成静态库以覆盖原套件的详细步骤，帮助用户自行解决此输入异常问题。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

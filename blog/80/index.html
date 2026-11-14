@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文探讨了 Qt Quick 框架在 WebAssembly 平台上的交互优化方案。文章分析了 SplitView 控件因误触和持久化问题被弃用的原因，并阐述了引入历史栈以兼容多端后退操作及避免重复推入页面的必要性。此外，文中讨论了 Popup 与 Drawer 的独立管理策略、防止用户反复推送同一页面的哈希校验机制，以及针对不同设备缩放逻辑的处理方式，最终指出该方案主要提升了带鱼屏体验。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文探讨了 Qt Quick 框架在 WebAssembly 平台上的交互优化方案。文章分析了 SplitView 控件因误触和持久化问题被弃用的原因，并阐述了引入历史栈以兼容多端后退操作及避免重复推入页面的必要性。此外，文中讨论了 Popup 与 Drawer 的独立管理策略、防止用户反复推送同一页面的哈希校验机制，以及针对不同设备缩放逻辑的处理方式，最终指出该方案主要提升了带鱼屏体验。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

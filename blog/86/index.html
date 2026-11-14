@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文针对代码高亮功能进行了正则表达式的调整与测试。文章展示了包含 URL、路径、注释及宏定义的 C++ 代码，以及 QML 和 Python 语言的示例片段。虽然部分由 AI 生成的测试用例可能无法运行，但整体内容旨在验证不同语法结构下的高亮效果，为开发者提供相关参考。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文针对代码高亮功能进行了正则表达式的调整与测试。文章展示了包含 URL、路径、注释及宏定义的 C++ 代码，以及 QML 和 Python 语言的示例片段。虽然部分由 AI 生成的测试用例可能无法运行，但整体内容旨在验证不同语法结构下的高亮效果，为开发者提供相关参考。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

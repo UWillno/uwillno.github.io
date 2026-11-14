@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      文章分析了卡巴斯基安全浏览组件将混淆加密的 JavaScript 代码误报为木马的事件。作者指出，尽管网站采用了变量名混淆、密钥加密及动态加载外部 CryptoJS 库等防护手段，仍因启发式分析被拦截。文中详细展示了包含 AES 加密逻辑的混淆代码结构，并提供了利用 Python 进行解密还原源码的脚本方案。最终结论认为此类静态页面的主动防御效果有限，且当前网络环境下针对纯静态页面的攻击已较少见。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">文章分析了卡巴斯基安全浏览组件将混淆加密的 JavaScript 代码误报为木马的事件。作者指出，尽管网站采用了变量名混淆、密钥加密及动态加载外部 CryptoJS 库等防护手段，仍因启发式分析被拦截。文中详细展示了包含 AES 加密逻辑的混淆代码结构，并提供了利用 Python 进行解密还原源码的脚本方案。最终结论认为此类静态页面的主动防御效果有限，且当前网络环境下针对纯静态页面的攻击已较少见。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

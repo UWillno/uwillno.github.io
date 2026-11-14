@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文整理了超星学习通平台的多种接口调用方法，涵盖登录注册、静态与预签到、位置及二维码签到、作业答案提取、测验统计、照片上传、拍照签到、课程积分与作业统计以及查看签到情况等功能。文中提供了各功能对应的具体 API 地址及部分参数说明，并提示了部分接口因平台更新已失效的情况，仅供学习参考。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文整理了超星学习通平台的多种接口调用方法，涵盖登录注册、静态与预签到、位置及二维码签到、作业答案提取、测验统计、照片上传、拍照签到、课程积分与作业统计以及查看签到情况等功能。文中提供了各功能对应的具体 API 地址及部分参数说明，并提示了部分接口因平台更新已失效的情况，仅供学习参考。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

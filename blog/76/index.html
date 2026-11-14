@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了博主因外部整改要求而废弃评论功能的经过。原系统采用 Workers 与 R2 存储 JSON 数据，虽具备 WASM 防护且结构开源，但面临邮箱伪造、抓包篡改及内部人员乱发消息等风险。博主尝试通过前端校验、邮箱 MD5 验证及验证码机制进行防御，却因增加复杂度且实际效果有限（如前端校验可被绕过）而最终放弃。文章展示了评论数据结构及部分废弃的验证逻辑代码，并表达了在安全性提升不明显且维护成本过高时，选择简化系统甚至删除用户删除功能的无奈决定。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了博主因外部整改要求而废弃评论功能的经过。原系统采用 Workers 与 R2 存储 JSON 数据，虽具备 WASM 防护且结构开源，但面临邮箱伪造、抓包篡改及内部人员乱发消息等风险。博主尝试通过前端校验、邮箱 MD5 验证及验证码机制进行防御，却因增加复杂度且实际效果有限（如前端校验可被绕过）而最终放弃。文章展示了评论数据结构及部分废弃的验证逻辑代码，并表达了在安全性提升不明显且维护成本过高时，选择简化系统甚至删除用户删除功能的无奈决定。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对注销备案后大陆访问慢的问题，本文介绍利用公网 IPv6 部署 WASM 博客镜像站的方案。通过动态获取源站地址解决编译效率低难题，支持静态托管站独立复制。教程涵盖 DDNS-GO 绑定、Cloudflare AAAA 记录配置及 Let's Encrypt SSL 申请步骤。提供基于 Docker 的物理机部署示例与通用 Nginx 安全配置，包括多线程 WASM 限制处理、COOP/COEP 策略设置及防火墙包规则，适合内部或个人使用。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对注销备案后大陆访问慢的问题，本文介绍利用公网 IPv6 部署 WASM 博客镜像站的方案。通过动态获取源站地址解决编译效率低难题，支持静态托管站独立复制。教程涵盖 DDNS-GO 绑定、Cloudflare AAAA 记录配置及 Let's Encrypt SSL 申请步骤。提供基于 Docker 的物理机部署示例与通用 Nginx 安全配置，包括多线程 WASM 限制处理、COOP/COEP 策略设置及防火墙包规则，适合内部或个人使用。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

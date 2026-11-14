@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      在 Qt 6.11.0 的 WebAssembly 环境中使用 Quick3D 模块进行 3D 拖动时，常因 em-pthreads 线程池耗尽导致标签无响应并抛出错误。经排查发现单线程构建或仅用拖动手势不会触发此问题，但 onFrameSwapped 更新机制仍会导致爆线程。临时解决方案是将线程池大小设为 16，并结合 Qt.callLater 或将拖动后的更新放入间隔为 16 的 Timer 中触发，以此维持应用稳定运行。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">在 Qt 6.11.0 的 WebAssembly 环境中使用 Quick3D 模块进行 3D 拖动时，常因 em-pthreads 线程池耗尽导致标签无响应并抛出错误。经排查发现单线程构建或仅用拖动手势不会触发此问题，但 onFrameSwapped 更新机制仍会导致爆线程。临时解决方案是将线程池大小设为 16，并结合 Qt.callLater 或将拖动后的更新放入间隔为 16 的 Timer 中触发，以此维持应用稳定运行。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

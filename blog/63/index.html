@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对 Qt for WebAssembly 默认 32 位架构及线性内存只增不减的特性，文章分析了单线程与多线程处理文件读写、加密时的内存增长差异。虽多线程因沙盒机制需传递数据导致峰值占用较高，但结合及时释放资源、禁用 URL 缓存、避免使用 MEMFS 文件系统直接读入内存等策略，可有效管理内存。同时指出在 WASM 环境中过度优化引用或拷贝对提升稳定性意义有限，建议优先保障程序稳定运行。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对 Qt for WebAssembly 默认 32 位架构及线性内存只增不减的特性，文章分析了单线程与多线程处理文件读写、加密时的内存增长差异。虽多线程因沙盒机制需传递数据导致峰值占用较高，但结合及时释放资源、禁用 URL 缓存、避免使用 MEMFS 文件系统直接读入内存等策略，可有效管理内存。同时指出在 WASM 环境中过度优化引用或拷贝对提升稳定性意义有限，建议优先保障程序稳定运行。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

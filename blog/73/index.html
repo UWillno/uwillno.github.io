@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      博客作者宣布将网站迁移至 Qt 6.11 Beta3，主要得益于关键稳定性问题的修复。QTBUG-136710 解决了 QML 图像对象在加载期间被删除导致崩溃的严重缺陷，QTBUG-141505 则修复了 Android 原生手势引发的触摸丢失问题。文章指出当前 Chromium 浏览器兼容性最佳，而 Firefox 多媒体模块仍受限。此外，作者分享了关于 MediaPlayer 组件属性覆盖警告的排查经验，并提供了避免设置 audioOutput 导致浏览器标签无响应的代码规避方案，强调技术预览版本在特定编码下可用。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">博客作者宣布将网站迁移至 Qt 6.11 Beta3，主要得益于关键稳定性问题的修复。QTBUG-136710 解决了 QML 图像对象在加载期间被删除导致崩溃的严重缺陷，QTBUG-141505 则修复了 Android 原生手势引发的触摸丢失问题。文章指出当前 Chromium 浏览器兼容性最佳，而 Firefox 多媒体模块仍受限。此外，作者分享了关于 MediaPlayer 组件属性覆盖警告的排查经验，并提供了避免设置 audioOutput 导致浏览器标签无响应的代码规避方案，强调技术预览版本在特定编码下可用。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

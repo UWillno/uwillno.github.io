@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对 OpenCV CPU 处理图像较慢的问题，本文介绍了在 Qt 中新增的着色器预览功能，利用片段着色器实现更灵活的图像处理与滤镜自定义。文章提供了标准的 GLSL 模板代码，并说明了长按编辑、重置预设及导入 JSON 格式配置的使用方式。同时指出了 GPU 处理存在显存复制开销大等注意事项，建议避免传入超大分辨率图片，且 WebAssembly 平台需支持 WebGL2。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对 OpenCV CPU 处理图像较慢的问题，本文介绍了在 Qt 中新增的着色器预览功能，利用片段着色器实现更灵活的图像处理与滤镜自定义。文章提供了标准的 GLSL 模板代码，并说明了长按编辑、重置预设及导入 JSON 格式配置的使用方式。同时指出了 GPU 处理存在显存复制开销大等注意事项，建议避免传入超大分辨率图片，且 WebAssembly 平台需支持 WebGL2。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文探讨在 Android 平台使用 QML WebView 时遇到的权限与功能限制问题。文章指出直接套用 Qt for WebAssembly 方案会导致本地文件读取、相机调用等功能失效，因原生 API 未提供设置 WebChromeClient 的方法。作者尝试了修改 webkit 包、反射及 Xposed 等方案均未成功，最终转向原生开发结合 JNI。文中详细展示了通过重写 onShowFileChooser 实现文件选择，以及处理 onPermissionRequest 以获取相机权限的代码实现。此外，文章还记录了关于文件保存功能（showSaveFilePicker）的未解决难题，包括 blob URL 请求失败及不同浏览器行为差异等现状。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文探讨在 Android 平台使用 QML WebView 时遇到的权限与功能限制问题。文章指出直接套用 Qt for WebAssembly 方案会导致本地文件读取、相机调用等功能失效，因原生 API 未提供设置 WebChromeClient 的方法。作者尝试了修改 webkit 包、反射及 Xposed 等方案均未成功，最终转向原生开发结合 JNI。文中详细展示了通过重写 onShowFileChooser 实现文件选择，以及处理 onPermissionRequest 以获取相机权限的代码实现。此外，文章还记录了关于文件保存功能（showSaveFilePicker）的未解决难题，包括 blob URL 请求失败及不同浏览器行为差异等现状。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

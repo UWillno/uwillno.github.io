@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      文章记录了 Qt 中 Markdown 预览功能的增强方案。针对旧版控件图片尺寸固定、超出可视范围的问题，提出通过正则匹配动态替换宽高百分比的字符串处理法。新版方案采用 md4c 库解析为树形结构，建议利用 ListView 或 Repeater 扁平化展示以提升性能，避免深层嵌套开销。同时指出 Qt Creator 预览机制差异及代码域字体不跟随等已知问题，并探讨了直接文本处理与混合控件展示的取舍策略。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">文章记录了 Qt 中 Markdown 预览功能的增强方案。针对旧版控件图片尺寸固定、超出可视范围的问题，提出通过正则匹配动态替换宽高百分比的字符串处理法。新版方案采用 md4c 库解析为树形结构，建议利用 ListView 或 Repeater 扁平化展示以提升性能，避免深层嵌套开销。同时指出 Qt Creator 预览机制差异及代码域字体不跟随等已知问题，并探讨了直接文本处理与混合控件展示的取舍策略。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

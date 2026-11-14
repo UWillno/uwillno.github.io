@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了 QML 中实现循环滑动的多种方案对比与踩坑经验。作者推荐优先使用 SwipeView，因其封装完善且能避免奇怪 bug，仅需通过 currentIndex 逻辑处理首尾跳转即可；StackLayout 虽可自定义动画但交互手感较差；PathView 因存在大量历史遗留 Bug、跨平台兼容性及事件冲突问题，不建议在复杂布局中使用。文章还指出 Flickable 系列控件在屏幕显示不全时易与 PathView 产生交互冲突，并分享了通过禁止交互开关等兜底代码解决反复折腾问题的最终实践方案。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了 QML 中实现循环滑动的多种方案对比与踩坑经验。作者推荐优先使用 SwipeView，因其封装完善且能避免奇怪 bug，仅需通过 currentIndex 逻辑处理首尾跳转即可；StackLayout 虽可自定义动画但交互手感较差；PathView 因存在大量历史遗留 Bug、跨平台兼容性及事件冲突问题，不建议在复杂布局中使用。文章还指出 Flickable 系列控件在屏幕显示不全时易与 PathView 产生交互冲突，并分享了通过禁止交互开关等兜底代码解决反复折腾问题的最终实践方案。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

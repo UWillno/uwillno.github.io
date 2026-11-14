@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      文章探讨了 Qt for WebAssembly 应用在移动端浏览器中无法利用工具栏收起带来的屏占比优势问题，分析了外部模拟滚动与全屏 API 两种适配方案。作者对比了 HTML5 原生全屏接口与 Emscripten 封装方法，指出前者需处理崩溃风险而后者兼容性更佳。文中提供了基于 EMJS 和 emscripten 的全屏切换、状态获取及事件回调注册的 C++ 代码实现，并建议优先使用 Emscripten 封装以确保跨浏览器兼容性与稳定性。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">文章探讨了 Qt for WebAssembly 应用在移动端浏览器中无法利用工具栏收起带来的屏占比优势问题，分析了外部模拟滚动与全屏 API 两种适配方案。作者对比了 HTML5 原生全屏接口与 Emscripten 封装方法，指出前者需处理崩溃风险而后者兼容性更佳。文中提供了基于 EMJS 和 emscripten 的全屏切换、状态获取及事件回调注册的 C++ 代码实现，并建议优先使用 Emscripten 封装以确保跨浏览器兼容性与稳定性。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

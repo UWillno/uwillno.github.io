@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了 QML 水印相机安卓版 0.0.2 的开发改进，针对安卓 16 设备后退手势失效问题，尝试了多种回调拦截方案并发现 QtBUG-149044 相关缺陷。文章还分析了 Qt.quit 异常退出及 Vulkan 渲染不稳定的情况。此外，优化了水印生成逻辑、调整相机缩放交互方式、重构属性对话框为页面结构，并新增振动反馈与画质调节功能，旨在提升应用稳定性与用户体验。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了 QML 水印相机安卓版 0.0.2 的开发改进，针对安卓 16 设备后退手势失效问题，尝试了多种回调拦截方案并发现 QtBUG-149044 相关缺陷。文章还分析了 Qt.quit 异常退出及 Vulkan 渲染不稳定的情况。此外，优化了水印生成逻辑、调整相机缩放交互方式、重构属性对话框为页面结构，并新增振动反馈与画质调节功能，旨在提升应用稳定性与用户体验。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

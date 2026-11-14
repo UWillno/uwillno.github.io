@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对七彩虹 B460i 平台搭配 i5-10400F 与 RTX 4060 的 ITX 主机，文章记录了通过软件层面降低电压以延长硬件寿命的实践。文中指出 BIOS 节能模式无法有效降压，需开启性能模式并配合软件调整 CPU 核心电压至约 125mV 以维持稳定；显卡方面则利用 MSI Afterburner 将电压控制在 0.87V 左右，实现显存与核心的超频运行。最终在最高功耗 52W（CPU）和 98W（GPU）下均无降频，为同类丐版硬件的长期稳定使用提供了参考方案。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对七彩虹 B460i 平台搭配 i5-10400F 与 RTX 4060 的 ITX 主机，文章记录了通过软件层面降低电压以延长硬件寿命的实践。文中指出 BIOS 节能模式无法有效降压，需开启性能模式并配合软件调整 CPU 核心电压至约 125mV 以维持稳定；显卡方面则利用 MSI Afterburner 将电压控制在 0.87V 左右，实现显存与核心的超频运行。最终在最高功耗 52W（CPU）和 98W（GPU）下均无降频，为同类丐版硬件的长期稳定使用提供了参考方案。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

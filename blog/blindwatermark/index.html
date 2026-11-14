@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文介绍了在项目中新增盲水印功能的实现细节与调整过程。文章阐述了基于现有库的原理，并针对 OpenCV 特性关闭导致的问题，改用 Qt 进行编码解码，同时处理了分量顺序及 Base64 等依赖。文中详细说明了嵌入文字和图片水印时的位深计算、灰度二值化要求及参数差异，对比了不同版本的实现逻辑。最终指出因大量兼容处理导致性能受限，建议追求稳定时优先使用 Python 版本。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文介绍了在项目中新增盲水印功能的实现细节与调整过程。文章阐述了基于现有库的原理，并针对 OpenCV 特性关闭导致的问题，改用 Qt 进行编码解码，同时处理了分量顺序及 Base64 等依赖。文中详细说明了嵌入文字和图片水印时的位深计算、灰度二值化要求及参数差异，对比了不同版本的实现逻辑。最终指出因大量兼容处理导致性能受限，建议追求稳定时优先使用 Python 版本。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

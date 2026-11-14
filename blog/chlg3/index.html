@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      针对近期监测到的异常行为，平台决定限制水印相机及留言插入图片/表情功能，仅对内部人员开放。水印相机原为试验功能，因代码执行机制存在被轻易绕过的安全隐患，无法通过低成本校验保障安全；留言功能则因缺乏身份验证与审核机制，易被滥用。为规避潜在风险并防止问题升级，平台将移除面向公众的上述动态功能，仅保留基础静态能力，后续视情况进一步调整策略。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">针对近期监测到的异常行为，平台决定限制水印相机及留言插入图片/表情功能，仅对内部人员开放。水印相机原为试验功能，因代码执行机制存在被轻易绕过的安全隐患，无法通过低成本校验保障安全；留言功能则因缺乏身份验证与审核机制，易被滥用。为规避潜在风险并防止问题升级，平台将移除面向公众的上述动态功能，仅保留基础静态能力，后续视情况进一步调整策略。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

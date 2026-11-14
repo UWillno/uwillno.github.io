@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本文记录了多平台 LaTeX 支持的开发实践，核心方案是统一采用 MathJax 生成图片。针对 WASM 平台利用浏览器环境直接交互；对于非 WASM 平台，因 QJSEngine 不支持且 QtWebEngine 体积较大，建议统一使用 Qt WebView 模块以降低编码复杂度。文章详细对比了 C++ 与 QML 实现方式，指出 QML 存在控件重叠限制及生命周期管理注意事项，并提供了基于信号槽处理异步 JavaScript 调用的代码示例。此外，文中还提及 MicroTex 项目作为备选方案，分析了其潜在优势及自行渲染在文本内联方面的困难，为不同平台适配提供了参考路径。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了多平台 LaTeX 支持的开发实践，核心方案是统一采用 MathJax 生成图片。针对 WASM 平台利用浏览器环境直接交互；对于非 WASM 平台，因 QJSEngine 不支持且 QtWebEngine 体积较大，建议统一使用 Qt WebView 模块以降低编码复杂度。文章详细对比了 C++ 与 QML 实现方式，指出 QML 存在控件重叠限制及生命周期管理注意事项，并提供了基于信号槽处理异步 JavaScript 调用的代码示例。此外，文中还提及 MicroTex 项目作为备选方案，分析了其潜在优势及自行渲染在文本内联方面的困难，为不同平台适配提供了参考路径。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

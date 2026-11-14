@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      本次更新扩展了 Markdown 多媒体支持，新增图片语法以替代部分表情功能。支持设置图片对齐方式（左、中、右），并允许通过指定宽高或仅指定单一维度来调整网络图片尺寸，避免原图过大影响预览效果。留言与朋友圈组件同步实现该功能，无需重新解析即可使用，但布局细节仍有待完善。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本次更新扩展了 Markdown 多媒体支持，新增图片语法以替代部分表情功能。支持设置图片对齐方式（左、中、右），并允许通过指定宽高或仅指定单一维度来调整网络图片尺寸，避免原图过大影响预览效果。留言与朋友圈组件同步实现该功能，无需重新解析即可使用，但布局细节仍有待完善。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

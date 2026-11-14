@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      Qt/C++ 博客更新 UW4.4 主要涵盖 WASM64 适配、Markdown 重构及性能优化。针对 WASM64 指针变化导致的崩溃问题，通过禁用文件选择器规避保存对话框异常，并参考外部思路修复了媒体播放器的概率性崩溃。Markdown 解析移至并发模块以支持更新模型，同时重新实现跨平台文本选择交互，虽受限于节点独立性无法跨块连续选择。性能优化方面，尝试了防抖、延迟初始化等多种方案，最终采用延迟初始化配合集中处理缓冲的策略解决 WASM 掉帧问题，并将初始内存设为 1GB 及重构 Emscripten 调用以减少耦合。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">Qt/C++ 博客更新 UW4.4 主要涵盖 WASM64 适配、Markdown 重构及性能优化。针对 WASM64 指针变化导致的崩溃问题，通过禁用文件选择器规避保存对话框异常，并参考外部思路修复了媒体播放器的概率性崩溃。Markdown 解析移至并发模块以支持更新模型，同时重新实现跨平台文本选择交互，虽受限于节点独立性无法跨块连续选择。性能优化方面，尝试了防抖、延迟初始化等多种方案，最终采用延迟初始化配合集中处理缓冲的策略解决 WASM 掉帧问题，并将初始内存设为 1GB 及重构 Emscripten 调用以减少耦合。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

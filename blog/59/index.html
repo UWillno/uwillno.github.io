@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      为适配启用多线程构建的 WebAssembly 环境，作者编译了专用于安卓的内部版 Qt for Android。文章记录了从库编译、权限适配到平台兼容性调整的全过程，重点解决了因 SharedArrayBuffer 不支持导致的启动崩溃问题，并探讨了着色器版本差异及 EGL 上下文错误等调试细节，最终通过修改执行入口和分离编译着色器实现了基本运行，同时指出了文件选择失效等遗留问题。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">为适配启用多线程构建的 WebAssembly 环境，作者编译了专用于安卓的内部版 Qt for Android。文章记录了从库编译、权限适配到平台兼容性调整的全过程，重点解决了因 SharedArrayBuffer 不支持导致的启动崩溃问题，并探讨了着色器版本差异及 EGL 上下文错误等调试细节，最终通过修改执行入口和分离编译着色器实现了基本运行，同时指出了文件选择失效等遗留问题。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

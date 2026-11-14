@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      文章探讨 QML 文本控件在浅色模式下超链接颜色过深难读的问题。指出 linkColor 属性仅适用于 StyledText，RichText 需依赖 CSS 标签。尝试 Palette 及官方调色板设置均无效，推测解析时已固化颜色。最终结论是修改全局 QPalette 可生效，但需在控件重建后（如改变 text 属性）才能更新渲染，且 C++ 方案涉及重新编译 WASM。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">文章探讨 QML 文本控件在浅色模式下超链接颜色过深难读的问题。指出 linkColor 属性仅适用于 StyledText，RichText 需依赖 CSS 标签。尝试 Palette 及官方调色板设置均无效，推测解析时已固化颜色。最终结论是修改全局 QPalette 可生效，但需在控件重建后（如改变 text 属性）才能更新渲染，且 C++ 方案涉及重新编译 WASM。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>

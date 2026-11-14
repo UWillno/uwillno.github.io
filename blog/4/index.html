@@ -66,7 +66,7 @@
 
     <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
 
-    <nav aria-label="镜像站点">
+    <nav aria-label="镜像站点与文档">
       <ul style="list-style:none; padding:0; margin:0">
         <template x-for="m in mirrors" :key="m[1]">
           <li style="display:inline-block; margin:3px">
@@ -85,13 +85,7 @@
         </li>
       </ul>
     </nav>
-
-    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
-            white-space:pre-wrap; font-size:1.2rem;
-            color:#be185d; font-weight:bold; margin:.75rem 0 0">
-      源码丢失后改用 Qt6.5 复原时，在 Windows 和 Linux 环境下调试正常，但部署到服务器即报错 SharedArrayBuffer 未定义。文章指出最简单方案是改用 single-threaded 构建套件；若坚持使用 multi-threaded 套件，则需导入 coi-serviceworker.js 并在支持该特性的浏览器中访问，同时建议清理缓存或开启无痕模式以排除干扰。
-
-    </p>
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">源码丢失后改用 Qt6.5 复原时，在 Windows 和 Linux 环境下调试正常，但部署到服务器即报错 SharedArrayBuffer 未定义。文章指出最简单方案是改用 single-threaded 构建套件；若坚持使用 multi-threaded 套件，则需导入 coi-serviceworker.js 并在支持该特性的浏览器中访问，同时建议清理缓存或开启无痕模式以排除干扰。</p>
   </main>
 
   <div id="qt-container" style="position:absolute;inset:0"></div>
