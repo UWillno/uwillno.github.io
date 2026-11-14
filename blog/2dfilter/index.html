@@ -17,16 +17,81 @@
       href="/rss.xml">
 
   <link rel="alternate" type="application/rss+xml" title="UWillno's Blog RSS" href="/rss.xml">
-
   <link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt">
-
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-
   <link rel="alternate" type="text/markdown" title="AI 阅读指南" href="/ai-reading-guide.md">
 
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
-  <link rel="preload" href="/alpine.js" as="script">
   <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
+<style>
+  [hidden] { display: none !important; }
+
+  body {
+    margin: 0;
+    block-size: 100svh;
+    overflow: hidden;
+  }
+
+  #loading {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: hidden;
+    background: #fff;
+    color: #1f2937;
+  }
+
+  #page-title {
+    font-size: 1.8rem;
+    color: #1d4ed8;
+    margin: 0 0 .5rem;
+  }
+
+  #size-text {
+    color: #047857;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  #status { color: #1e40af; }
+  #error { color: #b91c1c; }
+
+  .mirrors {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mirrors li {
+    display: inline-block;
+    margin: 3px;
+  }
+
+  .mirrors a {
+    display: block;
+    padding: 8px 12px;
+    color: #1d4ed8;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  .mirrors a[aria-current="page"] {
+    color: #047857;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  #qt-container {
+    position: absolute;
+    inset: 0;
+    display: none; 
+  }
+</style>
 
   <link rel="preload" href="/fzstd.js" as="script">
   <link rel="preload" href="/qtloader.js" as="script">
@@ -34,145 +99,148 @@
   <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
 
   <script src="/coi-serviceworker.min.js"></script>
-  <script defer src="/alpine.js"></script>
   <script src="/fzstd.js"></script>
   <script src="/qtloader.js"></script>
   <script src="/blog.js"></script>
   <script src="/tex-svg-full.js" defer></script>
   <script src="/beautiful-mermaid.js" defer></script>
 
+
     <meta property="article:published_time" content="Tue, 01 Sep 2026 00:00:44 GMT">
     <meta property="article:section" content="变更">
 </head>
 
-<body x-data="{ ...app() }" x-init="init()" style="block-size:100svh; overflow:hidden">
+<body>
 
-  <main x-show="!ready" aria-labelledby="page-title" style="
-    position:absolute; inset:0;
-    display:flex; flex-direction:column;
-    padding:20px; overflow:hidden;
-    background:#fff;
-    color:#1f2937;
-  ">
+  <main id="loading" aria-labelledby="page-title">
 
-    <h1 id="page-title" style="font-size:1.8rem; color:#1d4ed8; margin:0 0 .5rem">
-      UWillno's Blog - 加入空间域图像处理功能
-    </h1>
+    <h1 id="page-title">UWillno's Blog - 加入空间域图像处理功能</h1>
 
-    <div x-text="sizeText" role="status" aria-live="polite" style="color:#047857; font-weight:bold; font-size:1.4rem;">
-    </div>
+    <div id="size-text" role="status" aria-live="polite"></div>
 
-    <p x-show="!error" x-text="status" role="status" aria-live="polite" style="color:#1e40af"></p>
+    <p id="status" role="status" aria-live="polite">验证运行环境 · 准备加载</p>
 
-    <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
+    <p id="error" role="alert" hidden></p>
 
     <nav aria-label="镜像站点与文档">
-      <ul style="list-style:none; padding:0; margin:0">
-        <template x-for="m in mirrors" :key="m[1]">
-          <li style="display:inline-block; margin:3px">
-            <a :href="m[1] + location.search" x-text="m[0]" :aria-current="isCurrent(m[1]) ? 'page' : false" :style="`display:block; padding:8px 12px;
-                      color:${isCurrent(m[1]) ? '#047857' : '#1d4ed8'};
-                      font-weight:${isCurrent(m[1]) ? 'bold' : 'normal'};
-                      text-decoration:${isCurrent(m[1]) ? 'underline' : 'none'};
-                      text-underline-offset:3px;`" target="_blank" rel="noopener noreferrer"></a>
-          </li>
-        </template>
-        <li style="display:inline-block; margin:3px">
+      <ul class="mirrors">
+        <li><a data-mirror href="https://github.uwillno.com">GitHub</a></li>
+        <li><a data-mirror href="https://vercel.uwillno.com">Vercel</a></li>
+        <li><a data-mirror href="https://uwillno.com">Cloudflare</a></li>
+        <li><a data-mirror href="https://edgeone.uwillno.com">EdgeOne</a></li>
+        <li><a data-mirror href="https://netlify.uwillno.com">Netlify</a></li>
+        <li><a data-mirror href="https://azure.uwillno.com">Azure</a></li>
+        <li><a data-mirror href="https://gitlab.uwillno.com">GitLab</a></li>
+        <li><a data-mirror href="https://render.uwillno.com">Render</a></li>
+        <li>
           <a href="https://github.com/UWillno/uwillno.github.io/blob/main/README.md" target="_blank"
-            rel="noopener noreferrer" style="display:block; padding:8px 12px; color:#1d4ed8; text-decoration:none">
-            README
-          </a>
+            rel="noopener noreferrer">README</a>
         </li>
       </ul>
     </nav>
+
     <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">新增空间域图像处理功能，涵盖灰度化、多种噪声模拟（椒盐、高斯、泊松等）及滤波算法（中值、高斯、双边）。同时提供形态学操作如腐蚀与膨胀、二值化、颜色反转以及自定义卷积核支持。预设模板可长按调参，所有处理均基于当前显示图片实时执行，满足从基础转换到复杂自定义滤波的多样化需求。</p>
   </main>
 
-  <div id="qt-container" style="position:absolute;inset:0"></div>
+  <div id="qt-container"></div>
 
   <script>
     window.showOpenFilePicker = undefined;
 
-    function app() {
-      return {
-        status: '验证运行环境 · 准备加载',
-        sizeText: '',
-        ready: false,
-        error: false,
-        errorMsg: '',
+    
 
-        
-        zstSize: "26259530",
+    function isCurrent(url) {
+      try {
+        return location.hostname === new URL(url).hostname;
+      } catch {
+        return location.hostname.includes(
+          url.replace('https://', '').split('.')[0]
+        );
+      }
+    }
 
-        mirrors: [
-          ['GitHub', 'https://github.uwillno.com'],
-          ['Vercel', 'https://vercel.uwillno.com'],
-          ['Cloudflare', 'https://uwillno.com'],
-          ['EdgeOne', 'https://edgeone.uwillno.com'],
-          ['Netlify', 'https://netlify.uwillno.com'],
-          ['Azure', 'https://azure.uwillno.com'],
-          ['GitLab', 'https://gitlab.uwillno.com'],
-          ['Render', 'https://render.uwillno.com']
-        ],
+    (function enhanceMirrors() {
+      const suffix = location.pathname + location.search;
 
+      document.querySelectorAll('a[data-mirror]').forEach(a => {
+        const base = a.getAttribute('href');
 
-        init() {
-          window.app = this;
-          boot();
-        },
-
-
-        updateProgress(d) {
-          if (!d.useByteProgress || d.totalBytesExpected <= 0) return;
-
-          const loaded = Math.max(0, d.bytesLoaded);
-          const total = d.totalBytesExpected;
-
-          this.sizeText =
-            `${(loaded).toLocaleString()} / ` +
-            `${(total).toLocaleString()} B`;
-
-          this.status = loaded >= total
-            ? '下载完成 · 正在解压'
-            : '正在下载 Blog 资源';
-        },
-
-        onWasmReady(url) {
-          this.sizeText = '';
-          this.status = 'WASM 完成 · 启动 Qt';
-
-          startQtApplication(url);
-        },
-
-        onAppReady() {
-          this.ready = true;
-          const qt = document.getElementById('qt-container');
-          qt.style.display = 'block';
-
-          stopWorker();
-        },
-
-        onError(msg) {
-          if (this.ready || this.error) return;
-
-          this.error = true;
-          this.status = '加载失败';
-          this.errorMsg =
-            '加载失败: ' + (msg?.message || msg || '未知错误');
-
-          stopWorker();
-        },
-
-        isCurrent(url) {
-          try {
-            return location.hostname === new URL(url).hostname;
-          } catch {
-            return location.hostname.includes(
-              url.replace('https://', '').split('.')[0]
-            );
-          }
+        if (isCurrent(base)) {
+          a.setAttribute('aria-current', 'page');
         }
-      };
+
+        a.setAttribute('href', base + suffix);
+      });
+    })();
+
+
+    
+
+    const ui = {
+      loading: document.getElementById('loading'),
+      status: document.getElementById('status'),
+      sizeText: document.getElementById('size-text'),
+      error: document.getElementById('error')
+    };
+
+    
+    const ZST_SIZE = "26259530";
+
+    let isReady = false;
+    let hasError = false;
+
+    function setStatus(text) {
+      ui.status.textContent = text;
+    }
+
+    function setSizeText(text) {
+      ui.sizeText.textContent = text;
+    }
+
+    function updateProgress(d) {
+      if (!d.useByteProgress || d.totalBytesExpected <= 0) return;
+
+      const loaded = Math.max(0, d.bytesLoaded);
+      const total = d.totalBytesExpected;
+
+      setSizeText(
+        `${loaded.toLocaleString()} / ${total.toLocaleString()} B`
+      );
+
+      setStatus(
+        loaded >= total
+          ? '下载完成 · 正在解压'
+          : '正在下载 Blog 资源'
+      );
+    }
+
+    function onWasmReady(url) {
+      setSizeText('');
+      setStatus('WASM 完成 · 启动 Qt');
+      startQtApplication(url);
+    }
+
+    function onAppReady() {
+      isReady = true;
+
+      document.getElementById('qt-container').style.display = 'block';
+      ui.loading.hidden = true;
+
+      stopWorker();
+    }
+
+    function onError(msg) {
+      if (isReady || hasError) return;
+
+      hasError = true;
+      setStatus('加载失败');
+
+      ui.error.textContent =
+        '加载失败: ' + (msg?.message || msg || '未知错误');
+      ui.error.hidden = false;
+      ui.status.hidden = true;
+
+      stopWorker();
     }
 
 
@@ -241,16 +309,12 @@
     
 
     let worker = null;
-    let workerStarted = false;
-
 
     function stopWorker() {
       if (worker) {
         worker.terminate();
         worker = null;
       }
-
-      workerStarted = false;
     }
 
 
@@ -497,53 +561,51 @@
 
       try {
         worker = createWorker(zstSize);
-        workerStarted = true;
 
         worker.onmessage = e => {
           const d = e.data;
 
           switch (d.type) {
             case 'progress':
-              app.updateProgress(d);
+              updateProgress(d);
               break;
 
             case 'status':
-              app.status = d.text;
+              setStatus(d.text);
               break;
 
             case 'wasmReady':
-              app.onWasmReady(d.wasmUrl);
+              onWasmReady(d.wasmUrl);
               break;
 
             case 'error':
-              app.onError(d.error);
+              onError(d.error);
               break;
           }
         };
 
         worker.onerror = e => {
           e.preventDefault();
-          app.onError(e.message || 'Worker 执行异常');
+          onError(e.message || 'Worker 执行异常');
         };
 
         worker.onmessageerror = () => {
-          app.onError('Worker 消息解析失败');
+          onError('Worker 消息解析失败');
         };
 
         worker.postMessage({ type: 'start' });
 
       } catch (err) {
-        app.onError(err.message || '无法创建 Worker');
+        onError(err.message || '无法创建 Worker');
       }
     }
 
 
-    let started = false;
-
+    let booted = false;
 
     async function boot() {
-      if (started) return;
-      started = true;
+      if (booted) return;
+      booted = true;
 
       try {
         if (!supportsJSPI()) {
@@ -560,7 +622,7 @@
           return;
         }
 
-        const zstSize = Number(window.app.zstSize);
+        const zstSize = Number(ZST_SIZE);
 
         if (!Number.isSafeInteger(zstSize) || zstSize <= 0) {
           throw new Error('无效的压缩包大小');
@@ -570,7 +632,7 @@
 
       } catch (err) {
         console.error(err);
-        app.onError(err);
+        onError(err);
       }
     }
 
@@ -584,7 +646,7 @@
         await qtLoad({
           qt: {
             onLoaded: () => {
-              app.onAppReady();
+              onAppReady();
             },
 
             onExit: () => {
@@ -599,9 +661,14 @@
           }
         });
       } catch (err) {
-        app.onError(err);
+        onError(err);
       }
     }
+
+
+    
+
+    boot();
   </script>
 
 </body>
