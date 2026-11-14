@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="h-svh overflow-hidden">
+<html lang="zh-CN">
 
 <head>
   <meta charset="utf-8" />
@@ -15,39 +15,16 @@
       type="application/rss+xml"
       title="UWillno's Blog RSS"
       href="/rss.xml">
-  <script>
-    const saved = localStorage.theme;
-    const dark =
-      saved === 'dark' ||
-      (!saved && matchMedia('(prefers-color-scheme: dark)').matches);
 
-    document.documentElement.classList.toggle('dark', dark);
+  <link rel="alternate" type="application/rss+xml" title="UWillno's Blog RSS" href="/rss.xml">
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </script>
-  <link rel="alternate" type="application/rss+xml"
-        title="UWillno's Blog RSS" href="/rss.xml">
+  <link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt">
 
-  <link rel="alternate" type="text/markdown"
-        title="llms.txt" href="/llms.txt">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
-  <link rel="sitemap" type="application/xml"
-        title="Sitemap" href="/sitemap.xml">
-
-  <link rel="alternate" type="text/markdown"
-        title="AI 阅读指南" href="/ai-reading-guide.md">
+  <link rel="alternate" type="text/markdown" title="AI 阅读指南" href="/ai-reading-guide.md">
 
   <link rel="preload" href="/coi-serviceworker.min.js" as="script">
-  <link rel="stylesheet" href="/runtime.css">
   <link rel="preload" href="/alpine.js" as="script">
   <link rel="icon" type="image/svg+xml" href="logo.svg" />
 
@@ -65,127 +42,63 @@
   <script src="/beautiful-mermaid.js" defer></script>
 </head>
 
-<body x-data="{ ...app(), dark: true }" x-init="init()" :class="dark ? 'dark' : ''" class="h-svh overflow-hidden">
+<body x-data="{ ...app() }" x-init="init()" style="block-size:100svh; overflow:hidden">
 
-  <div x-show="!ready" class="
-  flex flex-col h-full overflow-hidden p-5
-  bg-white text-gray-800
-  dark:bg-[#0b0f19] dark:text-gray-200">
+  <main x-show="!ready" aria-labelledby="page-title" style="
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    padding:20px; overflow:hidden;
+    background:#fff;
+    color:#1f2937;
+  ">
 
-    <div class="flex items-center justify-between">
-      <h1 class="text-3xl font-bold text-brand">
-        UWillno's Blog - 捐赠
-      </h1>
+    <h1 id="page-title" style="font-size:1.8rem; color:#1d4ed8; margin:0 0 .5rem">
+      UWillno's Blog - 捐赠
+    </h1>
+
+    <div x-text="sizeText" role="status" aria-live="polite" style="color:#047857; font-weight:bold; font-size:1.4rem;">
     </div>
-    
-    <div class="h-full min-h-0 overflow-auto whitespace-pre-wrap text-2xl"> 
+
+    <p x-show="!error" x-text="status" role="status" aria-live="polite" style="color:#1e40af"></p>
+
+    <p x-show="error" x-text="errorMsg" role="alert" style="color:#b91c1c"></p>
+
+    <nav aria-label="镜像站点">
+      <ul style="list-style:none; padding:0; margin:0">
+        <template x-for="m in mirrors" :key="m[1]">
+          <li style="display:inline-block; margin:3px">
+            <a :href="m[1] + location.search" x-text="m[0]" :aria-current="isCurrent(m[1]) ? 'page' : false" :style="`display:block; padding:8px 12px;
+                      color:${isCurrent(m[1]) ? '#047857' : '#1d4ed8'};
+                      font-weight:${isCurrent(m[1]) ? 'bold' : 'normal'};
+                      text-decoration:${isCurrent(m[1]) ? 'underline' : 'none'};
+                      text-underline-offset:3px;`" target="_blank" rel="noopener noreferrer"></a>
+          </li>
+        </template>
+        <li style="display:inline-block; margin:3px">
+          <a href="https://github.com/UWillno/uwillno.github.io/blob/main/README.md" target="_blank"
+            rel="noopener noreferrer" style="display:block; padding:8px 12px; color:#1d4ed8; text-decoration:none">
+            README
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <p tabindex="0" role="region" aria-label="描述" style="flex:1; min-block-size:0; overflow:auto;
+            white-space:pre-wrap; font-size:1.2rem;
+            color:#be185d; font-weight:bold; margin:.75rem 0 0">
       
-<a href="https://github.com/UWillno/uwillno.github.io" target="_blank" class="text-brand hover:underline"
-        rel="noopener noreferrer">仓库地址</a>
-      加载太慢，可尝试科学上网、切换镜像站、克隆启动、直接退出。
-      当前平台基于<a href="https://doc.qt.io/qt-6/wasm.html" target="_blank" class="text-brand hover:underline"
-        rel="noopener noreferrer">Qt for WebAssembly</a>
-      浏览器需要支持以下特性：
-      <a href="https://caniuse.com/wasm-simd" target="_blank" class="text-brand hover:underline"
-        rel="noopener noreferrer">WebAssembly SIMD</a>、<a href="https://caniuse.com/sharedarraybuffer" target="_blank"
-        class="text-brand hover:underline" rel="noopener noreferrer">Shared Array Buffer</a>、<a
-        href="https://caniuse.com/mdn-webassembly_jspi" target="_blank" class="text-brand hover:underline"
-        rel="noopener noreferrer">JSPI</a>、<a href="https://caniuse.com/mdn-webassembly_memory64" target="_blank"
-        class="text-brand hover:underline" rel="noopener noreferrer">Memory64</a>
-      默认以中低性能预设运行，高性能预设推荐配置（Chromium）：
-      PC端 I5 10400f + RTX 4060 及以上
-      移动端 骁龙 8 Gen 5 及以上
-    </div>
 
-    
-    <div class="text-center">
-      <div class="text-5xl font-bold text-brand" x-text="Math.floor(percent) + '%'"></div>
-      <div x-text="sizeText"></div>
-      <div x-text="status" x-show="!error" class="font-bold text-brand"></div>
-      
-      <div x-show="error" x-text="errorMsg" class="mt-4 text-red-400 font-medium">
-      </div>
-    </div>
+    </p>
+  </main>
 
-    
-    
-
-    <div class="flex flex-wrap items-center justify-center gap-3 mt-4 text-sm">
-
-      <a href="https://icp.gov.moe/?keyword=20249102" target="_blank" rel="noopener noreferrer"
-        class="text-brand hover:underline">
-        萌ICP备20249102号
-      </a>
-
-      <span class="text-gray-400">·</span>
-
-      
-      <div class="relative" x-data="{ open: false }">
-
-        <button @click="open = !open" class="
-        inline-flex items-center gap-1
-        text-gray-500 hover:text-brand
-        transition
-      ">
-          站点：
-          <span x-text="mirrors.find(m => isCurrent(m[1]))?.[0] || '其它'">
-          </span>
-
-          <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor"
-            viewBox="0 0 24 24">
-
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-
-        </button>
-
-        
-        <div x-cloak x-show="open" @click.outside="open = false" x-transition class="
-        absolute bottom-full left-1/2 -translate-x-1/2 mb-2
-        w-44 overflow-hidden
-        rounded-xl
-        border border-gray-200 dark:border-white/10
-        bg-white/95 dark:bg-[#111827]/95
-        backdrop-blur
-        shadow-xl
-        z-50
-      ">
-
-          <template x-for="m in mirrors">
-            <a :href="m[1] + location.search" @click="open = false" class="
-            block px-4 py-2 text-sm
-            transition
-          " :class="isCurrent(m[1])
-            ? 'bg-brand/10 text-brand font-medium'
-            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5'">
-
-              <span x-text="m[0]"></span>
-            </a>
-          </template>
-
-        </div>
-      </div>
-      <button @click="toggleTheme()" class="
-      px-3 py-1 rounded-md text-sm font-medium
-      bg-brand/20 text-brand
-      hover:bg-brand/30
-      transition">
-        切换主题
-      </button>
-    </div>
-
-  </div>
-
-  <div id="qt-container" class="h-full"></div>
+  <div id="qt-container" style="position:absolute;inset:0"></div>
 
   <script>
     window.showOpenFilePicker = undefined;
-    
+
     function app() {
       return {
         status: '验证运行环境 · 准备加载',
-        percent: 0,
-        target: 0,
         sizeText: '',
         ready: false,
         error: false,
@@ -202,35 +115,15 @@
           ['Netlify', 'https://netlify.uwillno.com'],
           ['Azure', 'https://azure.uwillno.com'],
           ['GitLab', 'https://gitlab.uwillno.com'],
-          ['Render', 'https://render.uwillno.com'],
-          ['IPv6', 'https://ipv6.uwillno.com:9102'],
-          ['Tunnel', 'https://tunnel.uwillno.com']
+          ['Render', 'https://render.uwillno.com']
         ],
 
-        dark: document.documentElement.classList.contains('dark'),
 
         init() {
           window.app = this;
-          this.smoothLoop();
           boot();
         },
 
-        toggleTheme() {
-          this.dark = !this.dark;
-          document.documentElement.classList.toggle('dark', this.dark);
-          localStorage.theme = this.dark ? 'dark' : 'light';
-        },
-
-        smoothLoop() {
-          if (this.ready || this.error) return;
-
-          const diff = this.target - this.percent;
-          this.percent += Math.abs(diff) < 0.06
-            ? diff
-            : diff * 0.1;
-
-          requestAnimationFrame(() => this.smoothLoop());
-        },
 
         updateProgress(d) {
           if (!d.useByteProgress || d.totalBytesExpected <= 0) return;
@@ -238,11 +131,9 @@
           const loaded = Math.max(0, d.bytesLoaded);
           const total = d.totalBytesExpected;
 
-          this.target = Math.min(99, loaded / total * 100);
-
           this.sizeText =
-            `📦 ${(loaded / 1048576).toFixed(2)} / ` +
-            `${(total / 1048576).toFixed(2)} MB`;
+            `${(loaded).toLocaleString()} / ` +
+            `${(total).toLocaleString()} B`;
 
           this.status = loaded >= total
             ? '下载完成 · 正在解压'
@@ -250,8 +141,6 @@
         },
 
         onWasmReady(url) {
-          this.percent = 100;
-          this.target = 100;
           this.sizeText = '';
           this.status = 'WASM 完成 · 启动 Qt';
 
@@ -260,9 +149,6 @@
 
         onAppReady() {
           this.ready = true;
-          this.percent = 100;
-          this.target = 100;
-
           const qt = document.getElementById('qt-container');
           qt.style.display = 'block';
 
@@ -719,375 +605,6 @@
         app.onError(err);
       }
     }
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-
-    
-    
-
-    
-    
-    
-
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-
-    
-    
-
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-
-    
-    
-
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-    
-
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-
-    
-    
-
-    
-
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
   </script>
 
 </body>
