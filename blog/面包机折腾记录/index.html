@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>面包机折腾记录 - UWillno's Blog</title>
+<meta property="og:title" content="面包机折腾记录 - UWillno's Blog">
+<meta property="og:description" content="本文记录了作者使用东菱 TM018 面包机制作健康主食的长期实验心得。文章对比了不同面粉、酵母、糖油及添加剂对发酵效果与口感的影响，指出低糖环境下普通酵母亦可成功，并分享了关于水温、复热方式及无酵面包制作的测试结论。此外，文中还分析了食材成本变化，尝试了蛋糕、饺子皮等其他品类，最终建议非重度爱好者谨慎购买此类机器。">
+<meta property="og:url" content="https://uwillno.com/blog/面包机折腾记录">
+<meta property="og:type" content="website">
+<meta name="description" content="本文记录了作者使用东菱 TM018 面包机制作健康主食的长期实验心得。文章对比了不同面粉、酵母、糖油及添加剂对发酵效果与口感的影响，指出低糖环境下普通酵母亦可成功，并分享了关于水温、复热方式及无酵面包制作的测试结论。此外，文中还分析了食材成本变化，尝试了蛋糕、饺子皮等其他品类，最终建议非重度爱好者谨慎购买此类机器。">
+<link rel="canonical" href="https://uwillno.com/blog/面包机折腾记录">
+<link rel="alternate"
+      type="application/rss+xml"
+      title="UWillno's Blog RSS"
+      href="/rss.xml">
+
+  <link rel="alternate" type="application/rss+xml" title="UWillno's Blog RSS" href="/rss.xml">
+  <link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  <link rel="alternate" type="text/markdown" title="AI 阅读指南" href="/ai-reading-guide.md">
+
+  <link rel="preload" href="/coi-serviceworker.min.js" as="script">
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
+<style>
+  [hidden] { display: none !important; }
+
+  body {
+    margin: 0;
+    block-size: 100svh;
+    overflow: hidden;
+  }
+
+  #loading {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: hidden;
+    background: #fff;
+    color: #1f2937;
+  }
+
+  #page-title {
+    font-size: 1.8rem;
+    color: #1d4ed8;
+    margin: 0 0 .5rem;
+  }
+
+  #size-text {
+    color: #047857;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  #status { color: #1e40af; }
+  #error { color: #b91c1c; }
+
+  .mirrors {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mirrors li {
+    display: inline-block;
+    margin: 3px;
+  }
+
+  .mirrors a {
+    display: block;
+    padding: 8px 12px;
+    color: #1d4ed8;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  .mirrors a[aria-current="page"] {
+    color: #047857;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  #qt-container {
+    position: absolute;
+    inset: 0;
+    display: none; 
+  }
+</style>
+
+  <link rel="preload" href="/fzstd.js" as="script">
+  <link rel="preload" href="/qtloader.js" as="script">
+  <link rel="preload" href="/blog.js" as="script">
+  <link rel="preload" href="/uw.rcc" as="fetch" crossorigin>
+
+  <script src="/coi-serviceworker.min.js"></script>
+  <script src="/fzstd.js"></script>
+  <script src="/qtloader.js"></script>
+  <script src="/blog.js"></script>
+  <script src="/tex-svg-full.js" defer></script>
+  <script src="/beautiful-mermaid.js" defer></script>
+
+
+    <meta property="article:published_time" content="Sat, 21 Nov 2026 00:00:44 GMT">
+    <meta property="article:section" content="拔草">
+</head>
+
+<body>
+
+  <main id="loading" aria-labelledby="page-title">
+
+    <h1 id="page-title">UWillno's Blog - 面包机折腾记录</h1>
+
+    <div id="size-text" role="status" aria-live="polite"></div>
+
+    <p id="status" role="status" aria-live="polite">验证运行环境 · 准备加载</p>
+
+    <p id="error" role="alert" hidden></p>
+
+    <nav aria-label="镜像站点与文档">
+      <ul class="mirrors">
+        <li><a data-mirror href="https://github.uwillno.com">GitHub</a></li>
+        <li><a data-mirror href="https://vercel.uwillno.com">Vercel</a></li>
+        <li><a data-mirror href="https://uwillno.com">Cloudflare</a></li>
+        <li><a data-mirror href="https://edgeone.uwillno.com">EdgeOne</a></li>
+        <li><a data-mirror href="https://netlify.uwillno.com">Netlify</a></li>
+        <li><a data-mirror href="https://azure.uwillno.com">Azure</a></li>
+        <li><a data-mirror href="https://gitlab.uwillno.com">GitLab</a></li>
+        <li><a data-mirror href="https://render.uwillno.com">Render</a></li>
+        <li>
+          <a href="https://github.com/UWillno/uwillno.github.io/blob/main/README.md" target="_blank"
+            rel="noopener noreferrer">README</a>
+        </li>
+      </ul>
+    </nav>
+
+    <p tabindex="0" style="flex:1; min-block-size:0; overflow:auto;white-space:pre-wrap; font-size:1.2rem;color:#be185d;font-weight:bold;margin:.75rem 0 0">本文记录了作者使用东菱 TM018 面包机制作健康主食的长期实验心得。文章对比了不同面粉、酵母、糖油及添加剂对发酵效果与口感的影响，指出低糖环境下普通酵母亦可成功，并分享了关于水温、复热方式及无酵面包制作的测试结论。此外，文中还分析了食材成本变化，尝试了蛋糕、饺子皮等其他品类，最终建议非重度爱好者谨慎购买此类机器。</p>
+  </main>
+
+  <div id="qt-container"></div>
+
+  <script>
+    window.showOpenFilePicker = undefined;
+
+    
+
+    function isCurrent(url) {
+      try {
+        return location.hostname === new URL(url).hostname;
+      } catch {
+        return location.hostname.includes(
+          url.replace('https://', '').split('.')[0]
+        );
+      }
+    }
+
+    (function enhanceMirrors() {
+      const suffix = location.pathname + location.search;
+
+      document.querySelectorAll('a[data-mirror]').forEach(a => {
+        const base = a.getAttribute('href');
+
+        if (isCurrent(base)) {
+          a.setAttribute('aria-current', 'page');
+        }
+
+        a.setAttribute('href', base + suffix);
+      });
+    })();
+
+
+    
+
+    const ui = {
+      loading: document.getElementById('loading'),
+      status: document.getElementById('status'),
+      sizeText: document.getElementById('size-text'),
+      error: document.getElementById('error')
+    };
+
+    
+    const ZST_SIZE = "22562302";
+
+    let isReady = false;
+    let hasError = false;
+
+    function setStatus(text) {
+      ui.status.textContent = text;
+    }
+
+    function setSizeText(text) {
+      ui.sizeText.textContent = text;
+    }
+
+    function updateProgress(d) {
+      if (!d.useByteProgress || d.totalBytesExpected <= 0) return;
+
+      const loaded = Math.max(0, d.bytesLoaded);
+      const total = d.totalBytesExpected;
+
+      setSizeText(
+        `${loaded.toLocaleString()} / ${total.toLocaleString()} B`
+      );
+
+      setStatus(
+        loaded >= total
+          ? '下载完成 · 正在解压'
+          : '正在下载 Blog 资源'
+      );
+    }
+
+    function onWasmReady(url) {
+      setSizeText('');
+      setStatus('WASM 完成 · 启动 Qt');
+      startQtApplication(url);
+    }
+
+    function onAppReady() {
+      isReady = true;
+
+      document.getElementById('qt-container').style.display = 'block';
+      ui.loading.hidden = true;
+
+      stopWorker();
+    }
+
+    function onError(msg) {
+      if (isReady || hasError) return;
+
+      hasError = true;
+      setStatus('加载失败');
+
+      ui.error.textContent =
+        '加载失败: ' + (msg?.message || msg || '未知错误');
+      ui.error.hidden = false;
+      ui.status.hidden = true;
+
+      stopWorker();
+    }
+
+
+    
+
+    async function waitForSWController() {
+      if (!navigator.serviceWorker) return;
+      if (navigator.serviceWorker.controller) return;
+
+      await new Promise(resolve => {
+        const timer = setTimeout(resolve, 2000);
+
+        navigator.serviceWorker.addEventListener(
+          'controllerchange',
+          () => {
+            clearTimeout(timer);
+            resolve();
+          },
+          { once: true }
+        );
+      });
+    }
+
+
+    function supportsJSPI() {
+      return typeof WebAssembly.Suspending === 'function' &&
+        typeof WebAssembly.promising === 'function';
+    }
+
+
+    function ensureCOIReady() {
+      if (
+        crossOriginIsolated &&
+        typeof SharedArrayBuffer !== 'undefined'
+      ) {
+        sessionStorage.removeItem('coi_reload');
+        return true;
+      }
+
+      if (!sessionStorage.getItem('coi_reload')) {
+        sessionStorage.setItem('coi_reload', '1');
+        window.stop();
+        location.reload();
+        return false;
+      }
+
+      throw new Error('SharedArrayBuffer 不可用');
+    }
+
+
+    function isWasm64Supported() {
+      return WebAssembly.validate(new Uint8Array([
+        0x00, 0x61, 0x73, 0x6d, 
+        0x01, 0x00, 0x00, 0x00, 
+
+        
+        0x05,
+        0x03,
+        0x01,
+        0x04, 
+        0x01  
+      ]));
+    }
+
+
+    
+
+    let worker = null;
+
+    function stopWorker() {
+      if (worker) {
+        worker.terminate();
+        worker = null;
+      }
+    }
+
+
+    function createWorker(zstSize) {
+      const fzstdUrl = new URL(
+        'fzstd.js',
+        location.origin
+      ).href;
+
+      const code = `
+    importScripts('${fzstdUrl}');
+
+    const totalSize = ${zstSize};
+
+    const wasmParts = [
+      'blog01.wasm',
+      'blog02.wasm',
+      'blog03.wasm',
+      'blog04.wasm',
+      'blog05.wasm',
+      'blog06.wasm',
+      'blog07.wasm',
+      'blog08.wasm',
+      'blog09.wasm',
+      'blog10.wasm'
+    ];
+
+    
+    const MAX_ATTEMPTS = 5;
+    const BASE_DELAY = 1000;
+    const MAX_DELAY = 5000;
+
+    
+    const partProgress = new Array(wasmParts.length).fill(0);
+
+    function reportProgress() {
+      const bytesLoaded = partProgress.reduce(
+        (sum, size) => sum + size,
+        0
+      );
+
+      self.postMessage({
+        type: 'progress',
+        bytesLoaded,
+        totalBytesExpected: totalSize,
+        useByteProgress: true
+      });
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function downloadPart(index) {
+      const partName = wasmParts[index];
+      const url = new URL(partName, location.origin).href;
+
+      for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+        let reader = null;
+
+        try {
+          
+          partProgress[index] = 0;
+          reportProgress();
+
+          const response = await fetch(url, {
+            cache: 'no-store'
+          });
+
+          if (!response.ok) {
+            throw new Error(
+              partName + ' HTTP ' + response.status
+            );
+          }
+
+          const chunks = [];
+          let loaded = 0;
+
+          if (response.body) {
+            reader = response.body.getReader();
+
+            while (true) {
+              const { done, value } = await reader.read();
+
+              if (done) break;
+
+              chunks.push(value);
+              loaded += value.byteLength;
+
+              partProgress[index] = loaded;
+              reportProgress();
+            }
+          } else {
+            const buffer = new Uint8Array(
+              await response.arrayBuffer()
+            );
+
+            chunks.push(buffer);
+            loaded = buffer.byteLength;
+
+            partProgress[index] = loaded;
+            reportProgress();
+          }
+
+          
+          const result = new Uint8Array(loaded);
+          let offset = 0;
+
+          for (const chunk of chunks) {
+            result.set(chunk, offset);
+            offset += chunk.byteLength;
+          }
+
+          return result;
+
+        } catch (err) {
+          if (reader) {
+            try {
+              await reader.cancel();
+            } catch (_) {}
+          }
+
+          
+          partProgress[index] = 0;
+          reportProgress();
+
+          if (attempt >= MAX_ATTEMPTS) {
+            throw new Error(
+              partName + ' 下载失败，已尝试 ' +
+              MAX_ATTEMPTS + ' 次：' +
+              (err.message || String(err))
+            );
+          }
+
+          const delay = Math.min(
+            BASE_DELAY * Math.pow(2, attempt - 1),
+            MAX_DELAY
+          );
+
+          self.postMessage({
+            type: 'status',
+            text: partName + ' 下载失败，' +
+              (delay / 1000) +
+              ' 秒后重试 (' +
+              attempt + '/' +
+              (MAX_ATTEMPTS - 1) + ')'
+          });
+
+          await sleep(delay);
+        }
+      }
+    }
+
+    async function loadAndMergeWasm() {
+      self.postMessage({
+        type: 'status',
+        text: '正在下载 Blog 资源'
+      });
+
+      
+      
+      const buffers = await Promise.all(
+        wasmParts.map((_, index) => downloadPart(index))
+      );
+
+      const actualSize = buffers.reduce(
+        (sum, buffer) => sum + buffer.byteLength,
+        0
+      );
+
+      if (actualSize !== totalSize) {
+        throw new Error(
+          '合并大小异常：' +
+          actualSize + ' / ' + totalSize
+        );
+      }
+
+      self.postMessage({
+        type: 'status',
+        text: '下载完成，正在合并并解压 zstd'
+      });
+
+      
+      const compressed = new Uint8Array(actualSize);
+      let offset = 0;
+
+      for (const buffer of buffers) {
+        compressed.set(buffer, offset);
+        offset += buffer.byteLength;
+      }
+
+      
+      const decompressed = self.fzstd.decompress(compressed);
+
+      const blob = new Blob(
+        [decompressed],
+        { type: 'application/wasm' }
+      );
+
+      const wasmUrl = URL.createObjectURL(blob);
+
+      self.postMessage({
+        type: 'wasmReady',
+        wasmUrl
+      });
+    }
+
+    let started = false;
+
+    self.onmessage = async function(e) {
+      if (e.data?.type !== 'start' || started) return;
+      started = true;
+
+      try {
+        await loadAndMergeWasm();
+      } catch (err) {
+        self.postMessage({
+          type: 'error',
+          error: '下载或解压失败：' +
+            (err.message || String(err))
+        });
+      }
+    };
+  `;
+
+      const workerUrl = URL.createObjectURL(
+        new Blob([code], {
+          type: 'application/javascript'
+        })
+      );
+
+      try {
+        return new Worker(workerUrl);
+      } finally {
+        URL.revokeObjectURL(workerUrl);
+      }
+    }
+
+
+    
+
+    function startLoading(zstSize) {
+      if (worker) return;
+
+      try {
+        worker = createWorker(zstSize);
+
+        worker.onmessage = e => {
+          const d = e.data;
+
+          switch (d.type) {
+            case 'progress':
+              updateProgress(d);
+              break;
+
+            case 'status':
+              setStatus(d.text);
+              break;
+
+            case 'wasmReady':
+              onWasmReady(d.wasmUrl);
+              break;
+
+            case 'error':
+              onError(d.error);
+              break;
+          }
+        };
+
+        worker.onerror = e => {
+          e.preventDefault();
+          onError(e.message || 'Worker 执行异常');
+        };
+
+        worker.onmessageerror = () => {
+          onError('Worker 消息解析失败');
+        };
+
+        worker.postMessage({ type: 'start' });
+
+      } catch (err) {
+        onError(err.message || '无法创建 Worker');
+      }
+    }
+
+
+    let booted = false;
+
+    async function boot() {
+      if (booted) return;
+      booted = true;
+
+      try {
+        if (!supportsJSPI()) {
+          throw new Error('当前浏览器不支持 JSPI');
+        }
+
+        if (!isWasm64Supported()) {
+          throw new Error('当前浏览器不支持 Memory64');
+        }
+
+        await waitForSWController();
+
+        if (!ensureCOIReady()) {
+          return;
+        }
+
+        const zstSize = Number(ZST_SIZE);
+
+        if (!Number.isSafeInteger(zstSize) || zstSize <= 0) {
+          throw new Error('无效的压缩包大小');
+        }
+
+        startLoading(zstSize);
+
+      } catch (err) {
+        console.error(err);
+        onError(err);
+      }
+    }
+
+
+    
+
+    async function startQtApplication(wasmUrl) {
+      window.wasmUrl = wasmUrl;
+
+      try {
+        await qtLoad({
+          qt: {
+            onLoaded: () => {
+              onAppReady();
+            },
+
+            onExit: () => {
+              setTimeout(() => location.reload(), 2500);
+            },
+
+            entryFunction: window.blog_entry,
+
+            containerElements: [
+              document.getElementById('qt-container')
+            ]
+          }
+        });
+      } catch (err) {
+        onError(err);
+      }
+    }
+
+
+    
+
+    boot();
+  </script>
+
+</body>
+
+</html>

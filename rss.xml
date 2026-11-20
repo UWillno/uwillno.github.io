@@ -5,6 +5,13 @@
         <link>https://uwillno.com</link>
         <description>UWillno's Blog</description>
         <item>
+            <title>面包机折腾记录</title>
+            <link>https://uwillno.com/blog/面包机折腾记录</link>
+            <pubDate>Sat, 21 Nov 2026 00:00:44 GMT</pubDate>
+            <category>拔草</category>
+            <description>本文记录了作者使用东菱 TM018 面包机制作健康主食的长期实验心得。文章对比了不同面粉、酵母、糖油及添加剂对发酵效果与口感的影响，指出低糖环境下普通酵母亦可成功，并分享了关于水温、复热方式及无酵面包制作的测试结论。此外，文中还分析了食材成本变化，尝试了蛋糕、饺子皮等其他品类，最终建议非重度爱好者谨慎购买此类机器。</description>
+        </item>
+        <item>
             <title>Qt/C++ 博客 UW4.5+：体验优化、HTML 简化、WASM精简</title>
             <link>https://uwillno.com/blog/uw4.5+</link>
             <pubDate>Sun, 15 Nov 2026 10:54:44 GMT</pubDate>
